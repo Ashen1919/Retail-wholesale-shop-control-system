@@ -15,14 +15,14 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
     <!--Header-->
-    <header>
+    <header >
         <!--Top Bar-->
         <div class="topBar">
             <div class="contact-details">
@@ -77,9 +77,9 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
             <div class="right-side-icons">
-                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
-                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
                 <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -128,8 +128,24 @@
             </div>
         </div>
     </div>
-
     <!--End of the hero section-->
+
+    <!--features cards-->
+    <div class="features-card">
+        <div class="card1">
+
+        </div>
+        <div class="card1">
+
+        </div>
+        <div class="card1">
+
+        </div>
+        <div class="card1">
+
+        </div>
+    </div>
+    <!--End of features cards-->
 
     <script src="../Assets/js/script.js"></script>
 </body>

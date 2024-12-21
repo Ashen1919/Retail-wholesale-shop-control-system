@@ -11,6 +11,7 @@ html{
 body{
     background: #ffffff;
 }
+
 /*===============================
 Top Bar
 ================================*/
@@ -23,7 +24,7 @@ Top Bar
     max-width: 100%;
     height: 50px;
     justify-content: space-between;
-    position: relative;
+
 }
 .contact-details ul{
     display: flex;
@@ -115,6 +116,9 @@ Nav Bar
     background: #fbf9f9;
     display: flex;
     position: sticky;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    top: 0;
 }
 .logo{
     display: flex;
@@ -289,7 +293,6 @@ Nav Bar
   
     .navmenu {
       padding: 0;
-      z-index: 9997;
     }
   
     .navmenu ul {
@@ -303,7 +306,6 @@ Nav Bar
       background-color: #ffffff;
       border: 1px solid color-mix(in srgb, #1a1f24, transparent 90%);
       box-shadow: none;
-      overflow-y: auto;
       transition: 0.3s;
       z-index: 9998;
     }
@@ -390,7 +392,6 @@ Nav Bar
   
     .mobile-nav-active .navmenu {
       position: fixed;
-      overflow: hidden;
       inset: 0;
       background: rgba(33, 37, 41, 0.8);
       transition: 0.3s;
@@ -572,4 +573,29 @@ Hero section
 }
 /*===============================
 End of the hero section
+================================*/
+
+/*===============================
+Features card section
+================================*/
+.features-card{
+  display: flex;
+  margin-left: 32px;
+  margin-right: 24px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+.features-card .card1{
+  width: 23%;
+  height: 200px;
+  background-color: #e1e3e6;
+  border-radius: 20px;
+}
+.features-card .card1:hover{
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+/*===============================
+End of the features card section
 ================================*/
