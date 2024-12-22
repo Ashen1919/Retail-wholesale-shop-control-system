@@ -28,7 +28,7 @@
             <div class="contact-details">
                 <ul class="contact">
                     <a href="#">
-                        <li><i class="bi bi-envelope-fill text-primary"></i>sandarufoodmart234@gmail.com</li>
+                        <li><i class="bi bi-envelope-fill text-primary"></i>sandarufoodmart@gmail.com</li>
                     </a>
                     <li><i class="bi bi-telephone-fill text-primary"></i>+94 33 267 8970</li>
                 </ul>
