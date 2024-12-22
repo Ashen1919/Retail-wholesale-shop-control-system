@@ -103,6 +103,35 @@ input[type="search"]:focus {
 .social-icon .whatsapp:hover{
     color: rgb(25, 230, 25);
 }
+
+/*Mobile Navigation*/
+@media (min-width: 481px) and (max-width: 1200px) {
+  .topBar{
+    margin-left: -9px;
+    align-items: center;
+    height: 40px;
+  }
+  .topBar .searchBar{
+    display: none;
+  }
+  .contact-details{
+    margin-right: 9px;
+  }
+  .contact-details ul{
+    gap: 10px;
+  }
+  .contact-details ul li{
+    font-size: smaller;
+  }
+  .social-icon{
+    margin-right: 2px;
+    margin-bottom: 12px;
+  }
+  .social-icon a i{
+    font-size: 20px;
+  }
+}
+
 /*===============================
 End of Top Bar
 ================================*/
@@ -278,6 +307,15 @@ Nav Bar
       left: -100%;
       visibility: visible;
     }
+    .right-side-mobile-icons{
+      display: none;
+    }
+    .search-btn{
+      display: none;
+    }
+    .mobile-searchBar{
+      display: none;
+    }
   }
   
   /* Mobile Navigation */
@@ -308,6 +346,7 @@ Nav Bar
       box-shadow: none;
       transition: 0.3s;
       z-index: 9998;
+      
     }
   
     .navmenu a,
@@ -321,6 +360,7 @@ Nav Bar
       justify-content: space-between;
       white-space: nowrap;
       transition: 0.3s;
+      text-decoration: none;
     }
   
     .navmenu a i,
@@ -396,9 +436,46 @@ Nav Bar
       background: rgba(33, 37, 41, 0.8);
       transition: 0.3s;
     }
-  
     .mobile-nav-active .navmenu>ul {
       display: block;
+    }
+    .right-side-icons{
+      display: none;
+    }
+    .right-side-mobile-icons{
+      display: flex;
+    }
+    .right-side-mobile-icons a i{
+      font-size: 25px;
+      transition-duration: 500ms;
+      padding: 20px;
+    }
+    .right-side-mobile-icons a i:hover{
+      transition-duration: 500ms;
+    }
+    .search-icon{
+      display: flex;
+      align-items: center;
+    }
+    .search-btn{
+      padding: 5px 10px 10px 10px;
+      border: none;
+      align-items: center;
+      transition-duration: 500ms;
+      border-radius: 50%;
+      margin-right: 3px;
+    }
+    .search-btn:hover{
+      background-color: #dfdede;
+      transition-duration: 500ms;
+    }
+    .search-btn i{
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .mobile-searchBar{
+      width: 400px;
+      margin: 10px;
     }
   }
 
@@ -491,6 +568,9 @@ Hero section
   transform: translateY(-10px);
   cursor: pointer;
   transition-duration: 500ms;
+}
+.left-card .mob-description{
+  display: none;
 }
 .right-card{
   display: block;
@@ -589,6 +669,29 @@ Hero section
   cursor: pointer;
   transition-duration: 500ms;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .right-bottom-card, .right-top-card{
+    display: none;
+  }
+  .left-card{
+    width: 100%;
+    margin-left: 3px;
+    height: 380px;
+  }
+  .left-card .left-content .sub-title{
+    font-size: large;
+  }
+  .left-card .left-content .main-title{
+    font-size: xx-large;
+  }
+  .left-card .left-content .description{
+    display: none;
+  }
+  .left-card .right-img img{
+    width: 240px;
+    height: auto;
+  }
+}
 /*===============================
 End of the hero section
 ================================*/
@@ -606,7 +709,7 @@ Features card section
 }
 .features-card .card1{
   width: 23%;
-  height: 200px;
+  height: 220px;
   background-color: #ede9e9;
   border-radius: 20px;
   padding-left: 28px;
@@ -633,6 +736,18 @@ Features card section
 }
 .features-card .card1:hover .heading{
   color: #007BFF;
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .features-card{
+    display: block;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .features-card .card1{
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 /*===============================
 End of the features card section

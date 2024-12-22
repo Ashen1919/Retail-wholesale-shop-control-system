@@ -60,6 +60,14 @@
             </div>
             <nav id="navmenu" class="navmenu">
                 <ul>
+                    <div class="mobile-searchBar">
+                        <form action="" method="get" class="search-form">
+                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <button type="submit" class="search-button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
                     <li><a href="#hero" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
                     <li class="dropdown"><a href="#"><span>Categories</span> <i
@@ -73,8 +81,15 @@
                         </ul>
                     </li>
                     <li><a href="#contact">Contact us</a></li>
+                    <div class="right-side-mobile-icons">
+                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                    </div>
                 </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                <div class="search-icon">
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </div>
             </nav>
             <div class="right-side-icons">
                 <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
@@ -94,6 +109,10 @@
                 <p class="main-title">Everything you need, All in one place.</p>
                 <p class="description">Sandaru Food Mart offers fresh, high-quality groceries, ensuring excellent
                     produce, meats, and pantry essentials.</p>
+                    <div class="mob-description">
+                        Sandaru Food Mart offers fresh, high-quality groceries, ensuring excellent
+                        produce, meats, and pantry essentials.
+                    </div>
                 <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
             </div>
             <div class="right-img">
