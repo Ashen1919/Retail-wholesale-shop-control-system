@@ -485,6 +485,12 @@ Hero section
 .left-card .right-img img{
   justify-content: right;
   width: 390px;
+  transition-duration: 500ms;
+}
+.left-card .right-img img:hover{
+  transform: translateY(-10px);
+  cursor: pointer;
+  transition-duration: 500ms;
 }
 .right-card{
   display: block;
@@ -532,6 +538,12 @@ Hero section
 .right-top-card .right-side-img img{
   width: 190px;
   height: auto;
+  transition-duration: 500ms;
+}
+.right-top-card .right-side-img img:hover{
+  transform: translateY(-10px);
+  cursor: pointer;
+  transition-duration: 500ms;
 }
 .right-bottom-card{
   width: 100%;
@@ -570,6 +582,12 @@ Hero section
   height: auto;
   margin-top: 30px;
   margin-left: 7px;
+  transition-duration: 500ms;
+}
+.right-bottom-card .right-side-bottom-img img:hover{
+  transform: translateY(-10px);
+  cursor: pointer;
+  transition-duration: 500ms;
 }
 /*===============================
 End of the hero section
@@ -582,19 +600,39 @@ Features card section
   display: flex;
   margin-left: 32px;
   margin-right: 24px;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
   justify-content: space-between;
 }
 .features-card .card1{
   width: 23%;
   height: 200px;
-  background-color: #e1e3e6;
+  background-color: #ede9e9;
   border-radius: 20px;
+  padding-left: 28px;
+  transition: all ease-in-out 0.4s;
+  border: 2px solid #ede9e9;
 }
 .features-card .card1:hover{
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transform: translateY(-7px);
+  transition-duration: 500ms;
+  background-color: #fffbfb;
+  border: 2px solid #a9a9a9;
+}
+.features-card .card1 .icon{
+  margin-top: 10px;
+  font-size: 50px;
+  color: #007bff;
+}
+.features-card .card1 .heading{
+  font-size: x-large;
+  font-weight: 700;
+  transition-duration: 500ms;
+}
+.features-card .card1:hover .heading{
+  color: #007BFF;
 }
 /*===============================
 End of the features card section

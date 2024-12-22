@@ -15,14 +15,14 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/styles.css" rel="stylesheet">
+    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 
 <body>
     <!--Header-->
-    <header >
+    <header>
         <!--Top Bar-->
         <div class="topBar">
             <div class="contact-details">
@@ -133,16 +133,48 @@
     <!--features cards-->
     <div class="features-card">
         <div class="card1">
-
+            <div class="icon">
+                <i class="bi bi-truck"></i>
+            </div>
+            <div class="heading">
+                <p>Fast Delivery</p>
+            </div>
+            <div class="description">
+                <p>Quick, reliable, fresh groceries delivered promptly to your doorstep daily.</p>
+            </div>
         </div>
         <div class="card1">
-
+            <div class="icon">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div class="heading">
+                <p>100% Secure Payment</p>
+            </div>
+            <div class="description">
+                <p>Secure payment ensures safe, reliable transactions at Sandaru Food Mart.</p>
+            </div>
         </div>
         <div class="card1">
-
+            <div class="icon">
+                <i class="bi bi-shop"></i>
+            </div>
+            <div class="heading">
+                <p>Quality Guarantee</p>
+            </div>
+            <div class="description">
+                <p>Ensuring freshness, authenticity, and satisfaction with every product guaranteed.</p>
+            </div>
         </div>
         <div class="card1">
-
+            <div class="icon">
+                <i class="bi bi-gift"></i>
+            </div>
+            <div class="heading">
+                <p>Daily Offers</p>
+            </div>
+            <div class="description">
+                <p>Exciting daily offers at Sandaru Food Mart: Save big, shop smart!</p>
+            </div>
         </div>
     </div>
     <!--End of features cards-->
