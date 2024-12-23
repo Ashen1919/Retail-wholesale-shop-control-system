@@ -8,19 +8,23 @@
 
     <!-- Favicons -->
     <link
-        href="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+        href="../Assets/images/logo.png"
         rel="icon">
     <link
-        href="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+        href="../Assets/images/logo.png"
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!--Preloader-->
+    
+    <!--End of Preloader-->
     <!--Header-->
     <header>
         <!--Top Bar-->
@@ -53,7 +57,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href=""><img
-                        src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                        src="../Assets/images/logo.png"
                         alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>
                 </a>
@@ -109,14 +113,10 @@
                 <p class="main-title">Everything you need, All in one place.</p>
                 <p class="description">Sandaru Food Mart offers fresh, high-quality groceries, ensuring excellent
                     produce, meats, and pantry essentials.</p>
-                    <div class="mob-description">
-                        Sandaru Food Mart offers fresh, high-quality groceries, ensuring excellent
-                        produce, meats, and pantry essentials.
-                    </div>
                 <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
             </div>
             <div class="right-img">
-                <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766c9da002d58a19516/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                <img src="../Assets/images/shopping cart.png"
                     alt="Card-image">
             </div>
         </div>
@@ -129,19 +129,19 @@
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-img">
-                    <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766e05b00173cb93d66/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                    <img src="../Assets/images/fruit & vege bucket.png"
                         alt="Card-image">
                 </div>
             </div>
             <div class="right-bottom-card">
                 <div class="left-bottom-text">
                     <p class="sub-bottom-text">15% OFF</p>
-                    <p class="main-bottom-text">Shop fresh, shop smart</p>
+                    <p class="main-bottom-text">Shop fresh,shop smart</p>
                     <p>Top-quality, reliable, durable house essentials.</p>
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-bottom-img">
-                    <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766ea840013ba06342b/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                    <img src="../Assets/images/households.png"
                         alt="Card-image">
                 </div>
             </div>
