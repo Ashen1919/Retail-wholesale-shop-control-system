@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 *{
     margin: 0;
     padding: 0;
@@ -11,6 +12,13 @@ html{
 body{
     background: #ffffff;
 }
+/*===============================
+Preloader
+================================*/
+
+/*===============================
+End of preloader
+================================*/
 
 /*===============================
 Top Bar
@@ -24,7 +32,6 @@ Top Bar
     max-width: 100%;
     height: 50px;
     justify-content: space-between;
-
 }
 .contact-details ul{
     display: flex;
@@ -519,7 +526,9 @@ Hero section
   width: 100%;
   background-color: #ebe7e7;
   padding: 10px;
+  position: relative;
 }
+/*left card*/
 .left-card{
   width: 50%;
   height: 510px;
@@ -532,7 +541,7 @@ Hero section
   display: flex;
 }
 .left-card .sub-title{
-  font-size: x-large;
+  font-size: 30px;
   font-weight: 500;
   color: #e71414;
 }
@@ -561,7 +570,7 @@ Hero section
 }
 .left-card .right-img img{
   justify-content: right;
-  width: 390px;
+  width: 360px;
   transition-duration: 500ms;
 }
 .left-card .right-img img:hover{
@@ -670,26 +679,49 @@ Hero section
   transition-duration: 500ms;
 }
 @media (min-width: 481px) and (max-width: 767px) {
-  .right-bottom-card, .right-top-card{
-    display: none;
+  .hero{
+    display: block;
   }
   .left-card{
     width: 100%;
     margin-left: 3px;
-    height: 380px;
+    height: 595px;
+    padding-top: 20px;
+    display: block;
   }
   .left-card .left-content .sub-title{
-    font-size: large;
+    font-size: 25px;
   }
   .left-card .left-content .main-title{
-    font-size: xx-large;
-  }
-  .left-card .left-content .description{
-    display: none;
+    font-size: 35px;
   }
   .left-card .right-img img{
-    width: 240px;
+    width: 250px;
     height: auto;
+    margin-left: 65px;
+  }
+  .right-card{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .right-top-card, .right-bottom-card{
+    margin-left: 3px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    height: 360px;
+  }
+  .right-top-card .left-text .sub-text{
+    font-size: 25px;
+  }
+  .right-top-card .left-text .main-text{
+    font-size: 35px;
+  }
+  .right-bottom-card .left-bottom-text .sub-bottom-text{
+    font-size: 25px;
+  }
+  .right-bottom-card .left-bottom-text .main-bottom-text{
+    font-size: 35px;
   }
 }
 /*===============================
