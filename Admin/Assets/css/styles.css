@@ -1,0 +1,70 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: #ffffff;
+}
+
+:root{
+    --button-color: #007bff;
+    --btn-hover: #005ec3;
+}
+/*===============================
+Top Bar
+================================*/
+.top-bar{
+    width: 100%;
+    height: 65px;
+    background-color: #1F2937;
+    align-items: center;
+    display: flex;
+}
+.top-bar .title{
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.search-bar{
+    margin-left: 100px;
+}
+.search-bar input{
+    width: 300px;
+    padding: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-color: transparent;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    outline: none;
+}
+.search-bar button{
+    padding: 7px;
+    margin-left: -6px;
+    border: none;
+    padding-right: 15px;
+    background-color: var(--button-color);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+    transition-duration: 500ms;
+}
+.search-bar button:hover{
+    background-color: var(--btn-hover);
+    transition-duration: 500ms;
+}
+.search-bar button i{
+    margin-left: 7px;
+    color: #ffffff;
+    align-items: center;
+    font-size: 16px;
+}
+/*===============================
+End of top Bar
+================================*/
