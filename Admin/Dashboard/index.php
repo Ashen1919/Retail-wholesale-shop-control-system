@@ -18,12 +18,26 @@
 
 <body>
     <div class="top-bar">
-        <div class="title">
-            <p>Admin Dashboard</p>
+        <div class="left">
+            <div class="title">
+                <p>Admin Dashboard</p>
+            </div>
+            <div class="search-bar">
+                <input type="search" name="search" id="search" placeholder="Search">
+                <button><i class="bi bi-search"></i></button>
+            </div>
         </div>
-        <div class="search-bar">
-            <input type="search" name="search" id="search" placeholder="Search">
-            <button><i class="bi bi-search"></i></button>
+        <div class="right">
+            <div class="profile">
+                <img src="../Assets/images/profile_default.jpg" alt="Default profile" class="pro-avatar">
+                <p>Admin</p>
+            </div>
+            <div class="log-out">
+                <button class="logout-button">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </div>
+
         </div>
     </div>
 
