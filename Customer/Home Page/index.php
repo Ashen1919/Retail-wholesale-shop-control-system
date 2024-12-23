@@ -8,19 +8,23 @@
 
     <!-- Favicons -->
     <link
-        href="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+        href="../Assets/images/logo.png"
         rel="icon">
     <link
-        href="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+        href="../Assets/images/logo.png"
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <!--Preloader-->
+    
+    <!--End of Preloader-->
     <!--Header-->
     <header>
         <!--Top Bar-->
@@ -53,13 +57,21 @@
         <div class="navbar">
             <div class="logo">
                 <a href=""><img
-                        src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766629c000934fe54e2/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                        src="../Assets/images/logo.png"
                         alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>
                 </a>
             </div>
             <nav id="navmenu" class="navmenu">
                 <ul>
+                    <div class="mobile-searchBar">
+                        <form action="" method="get" class="search-form">
+                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <button type="submit" class="search-button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
                     <li><a href="#hero" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
                     <li class="dropdown"><a href="#"><span>Categories</span> <i
@@ -73,8 +85,15 @@
                         </ul>
                     </li>
                     <li><a href="#contact">Contact us</a></li>
+                    <div class="right-side-mobile-icons">
+                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                    </div>
                 </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                <div class="search-icon">
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </div>
             </nav>
             <div class="right-side-icons">
                 <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
@@ -97,7 +116,7 @@
                 <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
             </div>
             <div class="right-img">
-                <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766c9da002d58a19516/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                <img src="../Assets/images/shopping cart.png"
                     alt="Card-image">
             </div>
         </div>
@@ -110,19 +129,19 @@
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-img">
-                    <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766e05b00173cb93d66/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                    <img src="../Assets/images/fruit & vege bucket.png"
                         alt="Card-image">
                 </div>
             </div>
             <div class="right-bottom-card">
                 <div class="left-bottom-text">
                     <p class="sub-bottom-text">15% OFF</p>
-                    <p class="main-bottom-text">Shop fresh, shop smart</p>
+                    <p class="main-bottom-text">Shop fresh,shop smart</p>
                     <p>Top-quality, reliable, durable house essentials.</p>
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-bottom-img">
-                    <img src="https://cloud.appwrite.io/v1/storage/buckets/6766627e001d33e3cf21/files/6766ea840013ba06342b/view?project=672a1dc2000b4396bb7d&project=672a1dc2000b4396bb7d&mode=admin"
+                    <img src="../Assets/images/households.png"
                         alt="Card-image">
                 </div>
             </div>

@@ -33,3 +33,6 @@ document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     e.stopImmediatePropagation();
   });
 });
+/**
+ * Preloader
+ */

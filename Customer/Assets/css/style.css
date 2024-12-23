@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Michroma&display=swap");
 *{
     margin: 0;
     padding: 0;
@@ -11,6 +12,13 @@ html{
 body{
     background: #ffffff;
 }
+/*===============================
+Preloader
+================================*/
+
+/*===============================
+End of preloader
+================================*/
 
 /*===============================
 Top Bar
@@ -24,7 +32,6 @@ Top Bar
     max-width: 100%;
     height: 50px;
     justify-content: space-between;
-
 }
 .contact-details ul{
     display: flex;
@@ -103,6 +110,35 @@ input[type="search"]:focus {
 .social-icon .whatsapp:hover{
     color: rgb(25, 230, 25);
 }
+
+/*Mobile Navigation*/
+@media (min-width: 481px) and (max-width: 1200px) {
+  .topBar{
+    margin-left: -9px;
+    align-items: center;
+    height: 40px;
+  }
+  .topBar .searchBar{
+    display: none;
+  }
+  .contact-details{
+    margin-right: 9px;
+  }
+  .contact-details ul{
+    gap: 10px;
+  }
+  .contact-details ul li{
+    font-size: smaller;
+  }
+  .social-icon{
+    margin-right: 2px;
+    margin-bottom: 12px;
+  }
+  .social-icon a i{
+    font-size: 20px;
+  }
+}
+
 /*===============================
 End of Top Bar
 ================================*/
@@ -278,6 +314,15 @@ Nav Bar
       left: -100%;
       visibility: visible;
     }
+    .right-side-mobile-icons{
+      display: none;
+    }
+    .search-btn{
+      display: none;
+    }
+    .mobile-searchBar{
+      display: none;
+    }
   }
   
   /* Mobile Navigation */
@@ -308,6 +353,7 @@ Nav Bar
       box-shadow: none;
       transition: 0.3s;
       z-index: 9998;
+      
     }
   
     .navmenu a,
@@ -321,6 +367,7 @@ Nav Bar
       justify-content: space-between;
       white-space: nowrap;
       transition: 0.3s;
+      text-decoration: none;
     }
   
     .navmenu a i,
@@ -396,9 +443,46 @@ Nav Bar
       background: rgba(33, 37, 41, 0.8);
       transition: 0.3s;
     }
-  
     .mobile-nav-active .navmenu>ul {
       display: block;
+    }
+    .right-side-icons{
+      display: none;
+    }
+    .right-side-mobile-icons{
+      display: flex;
+    }
+    .right-side-mobile-icons a i{
+      font-size: 25px;
+      transition-duration: 500ms;
+      padding: 20px;
+    }
+    .right-side-mobile-icons a i:hover{
+      transition-duration: 500ms;
+    }
+    .search-icon{
+      display: flex;
+      align-items: center;
+    }
+    .search-btn{
+      padding: 5px 10px 10px 10px;
+      border: none;
+      align-items: center;
+      transition-duration: 500ms;
+      border-radius: 50%;
+      margin-right: 3px;
+    }
+    .search-btn:hover{
+      background-color: #dfdede;
+      transition-duration: 500ms;
+    }
+    .search-btn i{
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .mobile-searchBar{
+      width: 400px;
+      margin: 10px;
     }
   }
 
@@ -442,7 +526,9 @@ Hero section
   width: 100%;
   background-color: #ebe7e7;
   padding: 10px;
+  position: relative;
 }
+/*left card*/
 .left-card{
   width: 50%;
   height: 510px;
@@ -455,7 +541,7 @@ Hero section
   display: flex;
 }
 .left-card .sub-title{
-  font-size: x-large;
+  font-size: 30px;
   font-weight: 500;
   color: #e71414;
 }
@@ -484,13 +570,16 @@ Hero section
 }
 .left-card .right-img img{
   justify-content: right;
-  width: 390px;
+  width: 360px;
   transition-duration: 500ms;
 }
 .left-card .right-img img:hover{
   transform: translateY(-10px);
   cursor: pointer;
   transition-duration: 500ms;
+}
+.left-card .mob-description{
+  display: none;
 }
 .right-card{
   display: block;
@@ -589,6 +678,52 @@ Hero section
   cursor: pointer;
   transition-duration: 500ms;
 }
+@media (min-width: 481px) and (max-width: 767px) {
+  .hero{
+    display: block;
+  }
+  .left-card{
+    width: 100%;
+    margin-left: 3px;
+    height: 595px;
+    padding-top: 20px;
+    display: block;
+  }
+  .left-card .left-content .sub-title{
+    font-size: 25px;
+  }
+  .left-card .left-content .main-title{
+    font-size: 35px;
+  }
+  .left-card .right-img img{
+    width: 250px;
+    height: auto;
+    margin-left: 65px;
+  }
+  .right-card{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .right-top-card, .right-bottom-card{
+    margin-left: 3px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    height: 360px;
+  }
+  .right-top-card .left-text .sub-text{
+    font-size: 25px;
+  }
+  .right-top-card .left-text .main-text{
+    font-size: 35px;
+  }
+  .right-bottom-card .left-bottom-text .sub-bottom-text{
+    font-size: 25px;
+  }
+  .right-bottom-card .left-bottom-text .main-bottom-text{
+    font-size: 35px;
+  }
+}
 /*===============================
 End of the hero section
 ================================*/
@@ -606,7 +741,7 @@ Features card section
 }
 .features-card .card1{
   width: 23%;
-  height: 200px;
+  height: 220px;
   background-color: #ede9e9;
   border-radius: 20px;
   padding-left: 28px;
@@ -633,6 +768,18 @@ Features card section
 }
 .features-card .card1:hover .heading{
   color: #007BFF;
+}
+@media (min-width: 481px) and (max-width: 767px) {
+  .features-card{
+    display: block;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 10px;
+  }
+  .features-card .card1{
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 /*===============================
 End of the features card section
