@@ -1,13 +1,22 @@
-body {
+*{
     margin: 0;
-    background-color: #000000;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  
+}
+    
+    
+    body {
+    margin: 0;
+    background-color: #f54141;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
+  
 .form-container {
-    background: #5a93ff;
+    background: #15eebf;
     padding: 20px;
     text-align: center;
     display: flex;
@@ -15,21 +24,24 @@ body {
     width: 300px;
     height: 400px;
     justify-content: space-around;
+
 }
+
 .form-container h1 {
-    color: #ff9900;
-    margin-bottom: 20px;
+    color: #0e0d0d;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .form-container label {
     display: block;
     text-align: left;
     color: #000000;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-size: 16px;
 }
 .form-container input {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 .form-container a {
     color: #001aff;
@@ -37,10 +49,10 @@ body {
     margin-bottom: 10px;
 }
 .form-container button {
-    background-color: #007bff;
+    background-color: #0dccee;
     color: #fff;
-    padding: 10px 20px;
-    margin: 10px;
+    padding: 5px 20px;
+    margin: 2px;
 }
 .form-container p {
     font-size: 14px;
@@ -50,4 +62,21 @@ body {
 #fp{
     display: block;
     text-align: right;
+    margin-bottom: 3px;
+}
+img{
+    height: 60px;
+    width: 60px;
+
+}
+
+
+#pass-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 200px;
+   margin-bottom: 5px;
+   margin-top: -60px;
+   cursor: pointer;
+
 }

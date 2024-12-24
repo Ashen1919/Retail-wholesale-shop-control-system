@@ -21,32 +21,28 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-<div class="wrapper">
-    <form action="">
-    <h1>Log In</h1>
-            <i class='bx bxs-envelope'></i>
+
+    <div class="form-container">
+
+
+        <form> 
+            <img src="../Assets/images/logo.png" alt="logo">
+<h1>Login</h1>
+
             <label for="email">Email</label>
-            <div class="input-box">
-           <input type="email" id="email" placeholder="Enter your email" required>       
-        </div>
-            <i class='bx bxs-lock-alt'></i>
+            <input type="email" id="email" placeholder="Enter your Email" required>
+            
             <label for="password">Password</label>
-            <div class="input-box">
-            <input type="password" id="password" placeholder="Enter your password" required>
-            </div>
+            <input type="password" id="password" placeholder="Enter your Password" required>
+          
+            <img id="pass-icon"src="../Assets/images/eye close.png">
+            
+            
+            <a id="fp" href="#">Forgot Password?</a><br>
 
-        <div class="remrmber-forgot">
-        <a href="#" class="forgot-password">Forgot Password?</a>
-        </div>
-
-        <button type="submit" class="btn">Login</button>
-        
-    </form>
-    <p class="signup-text">
-        Don't have an account? <a href="#">Sign up now</a>
-    </p>
-
-</div>
-
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account?<a href="#">Sign up now</a></p>
+    </div>
 </body>
 </html>
