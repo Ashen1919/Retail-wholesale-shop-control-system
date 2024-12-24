@@ -784,3 +784,120 @@ Features card section
 /*===============================
 End of the features card section
 ================================*/
+
+/*===============================
+shop by category
+================================*/
+
+.category-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.category-header {
+text-align: center;
+margin-bottom: 30px;
+display: flex;
+justify-content: center; /* Changed from space-between */
+align-items: center;
+}
+
+.category-header h2 {
+text-align: center;
+font-family: 'Playfair Display', serif;
+font-size: 2.5rem;
+font-weight: 600;
+color: #333;
+margin: 40px 0;
+position: relative;
+}
+
+.category-header h2::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 50%;
+transform: translateX(-50%);
+width: 100px;
+height: 3px;
+background: linear-gradient(to right, #f51616, #2196F3);
+}
+
+.category-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr); /* Changed from repeat(4, 1fr) */
+gap: 20px;
+margin-bottom: 20px;
+}
+
+.category-item {
+  text-align: center;
+}
+
+.category-image {
+width: 200px;
+height: 200px;
+border-radius: 50%;
+border: 5px solid #eee;
+padding: 10px;
+margin-bottom: 10px;
+object-fit: contain; /* Ensures the image is scaled and cropped to fit the circle */
+transition: transform 0.3s;
+}
+
+
+
+
+.category-image:hover {
+  transform: scale(1.05);
+}
+
+.category-name {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+}
+.styled-link {
+display: inline-block; /* Make it behave like a button */
+font-size: 20px; /* Larger text for better visibility */
+font-weight: bold; /* Make it stand out */
+color: rgb(0, 0, 0); /* Text color */
+text-decoration: none; /* Remove underline */
+font-family: 'Playfair Display', serif; /* Elegant font style */
+padding: 6px 30px; /* Add space around the text */
+background: linear-gradient(135deg, #2196F3, #ff758c, #f51616); /* Vibrant gradient background */
+border-radius: 50px; /* Fully rounded edges */
+box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+transition: all 0.4s ease; /* Smooth transition for hover effects */
+position: relative; /* Allows us to add a 3D hover effect */
+overflow: hidden; /* Ensures animation stays inside the button */
+}
+
+.styled-link i {
+margin-right: 8px; /* Space between the icon and text */
+font-size: 22px; /* Larger icon size */
+}
+
+.styled-link::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%; /* Hidden initially */
+width: 300%;
+height: 300%;
+background: rgba(255, 255, 255, 0.1); /* Subtle shine effect */
+transform: rotate(45deg); /* Rotated for a diagonal effect */
+transition: left 0.4s ease; /* Smooth movement */
+}
+
+.styled-link:hover::before {
+left: 100%; /* Move the shine effect across the button */
+}
+
+.styled-link:hover {
+transform: translateY(-5px); /* Button "lifts" on hover */
+box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+background: linear-gradient(135deg, #f51616, #ff758c, #2196F3); /* Reverse gradient for dynamic feel */
+color: rgb(235, 226, 226); /* Text color */
+}

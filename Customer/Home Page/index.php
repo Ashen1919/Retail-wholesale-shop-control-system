@@ -197,6 +197,59 @@
     </div>
     <!--End of features cards-->
 
+    <!--Category Section-->
+
+    <div class="category-section">
+        <div class="category-header">
+            <h2 style="text-align: center;">Shop by Category</h2>
+            
+        </div>
+        
+        <div class="category-grid">
+            <div class="category-item">
+                <img src="../Assets/images/shop by category/grocery.png" alt="Grocery" class="category-image">
+                <div class="category-name">
+                    <a href="grocery.html" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> Grocery
+                    </a>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../Assets/images/shop by category/vegetables.jpg" alt="Vegetables" class="category-image">
+                <div class="category-name">
+                    <a href="vegetables.html" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> Vegetables
+                    </a>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../Assets/images/shop by category/fruit.jpg" alt="Fruits" class="category-image">
+                <div class="category-name">
+                    <a href="fruits.html" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> Fruits
+                    </a>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../Assets/images/shop by category/beverages.jpg" alt="Beverages" class="category-image">
+                <div class="category-name">
+                    <a href="beverages.html" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> Beverages
+                    </a>
+                </div>
+            </div>
+            <div class="category-item">
+                <img src="../Assets/images/shop by category/household.jpg" alt="Household" class="category-image">
+                <div class="category-name">
+                    <a href="household.html" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> Household
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
     <script src="../Assets/js/script.js"></script>
 </body>
 
