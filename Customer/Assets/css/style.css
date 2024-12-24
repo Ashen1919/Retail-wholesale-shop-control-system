@@ -780,6 +780,18 @@ Features card section
     width: 100%;
     margin-bottom: 15px;
   }
+  .form{
+    width:70;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  .form , .logo png{
+    width: 90px;
+    height: 65px;
+    margin-left: 28px;
+
+  }
 }
 /*===============================
 End of the features card section
