@@ -33,6 +33,7 @@
             <input type="email" id="email" placeholder="Enter your Email" required>
             <div class="password-container">
     <div class="input-wrapper">
+   <label for="email">Password
       <input type="password" id="password" placeholder="Enter your password">
       <button id="togglePassword" class="toggle-btn">
         <i id="icon" class="fas fa-eye-slash"></i>
@@ -47,7 +48,7 @@
         <p>Don't have an account?<a href="#">Sign up now</a></p>
     </div>
 
-
+    
     <script src="../Assets/js/login.js"></script>
 </body>
 </html>
