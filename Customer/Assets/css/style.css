@@ -9,8 +9,9 @@ html{
     scroll-behavior: smooth;
 }
 
-body{
-    background: #ffffff;
+body {
+  background: #ffffff;
+  padding-top: 140px; /* Combined height of topBar (50px) and navbar (90px) */
 }
 /*===============================
 Preloader
@@ -23,15 +24,24 @@ End of preloader
 /*===============================
 Top Bar
 ================================*/
-.topBar{
-    margin-left: 4px;
-    margin-right: 4px;
-    padding: 3px;
-    display: flex;
-    background: #f7f5f5;
-    max-width: 100%;
-    height: 50px;
-    justify-content: space-between;
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.topBar {
+  margin: 0; /* Remove margins */
+  padding: 3px;
+  display: flex;
+  background: #f7f5f5;
+  height: 50px;
+  justify-content: space-between;
+  width: 100%;
 }
 .contact-details ul{
     display: flex;
@@ -146,15 +156,12 @@ End of Top Bar
 /*===============================
 Nav Bar
 ================================*/
-.navbar{
-    max-width: 100%;
-    height: 90px;
-    background: #fbf9f9;
-    display: flex;
-    position: sticky;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    top: 0;
+.navbar {
+  width: 100%;
+  height: 90px;
+  background: #fbf9f9;
+  display: flex;
+  position: relative; /* Change from fixed/sticky to relative */
 }
 .logo{
     display: flex;
