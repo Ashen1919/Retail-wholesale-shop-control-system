@@ -351,7 +351,7 @@
                     <div class="product-info">
                         <h3 class="price">Rs 450.00 LKR</h3>
                         
-                        <p class="product-name">Vim Anti-Bacterial Dishwash  </p><p>500ml</p>
+                        <p class="product-name">Vim Dishwash  </p><p>500ml</p>
                         <button class="add-to-cart">Add To Cart
                         </button>
                     </div>
@@ -397,7 +397,7 @@
                     <div class="product-info">
                         <h3 class="price">Rs 550.00 LKR</h3>
                         
-                        <p class="product-name">Ambewela Full Cream Fresh Milk </p><p>1L</p>
+                        <p class="product-name">Ambewela Fresh Milk </p><p>1L</p>
                         <button class="add-to-cart">Add To Cart
                         
                         </button>
@@ -413,7 +413,7 @@
                     <div class="product-info">
                         <h3 class="price">Rs 420.00 LKR</h3>
                         
-                        <p class="product-name">Sunlight Lemon Detergent Soap </p><p>110g * 3</p>
+                        <p class="product-name">Sunlight Lemon Soap </p><p>110g * 3</p>
                         <button class="add-to-cart">Add To Cart
                         </button>
                     </div>
