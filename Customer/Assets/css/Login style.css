@@ -8,13 +8,13 @@
     
     body {
     margin: 0;
-    background-color: #f54141;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
-  
+    font-family: Arial, sans-serif;
+    display: flex;
+    background-color: #4b0082; 
+    }
 .form-container {
     background: #15eebf;
     padding: 20px;
@@ -70,13 +70,61 @@ img{
 
 }
 
-
-#pass-icon{
-    width: 20px;
-    height: 20px;
-    margin-left: 200px;
-   margin-bottom: 5px;
-   margin-top: -60px;
-   cursor: pointer;
-
+.password{
+    display: inline-block;
+    position: relative;
+    border: 1px solid #000;
 }
+.password input
+{
+    padding: 10px 5px;
+    outline: none;
+    border: 0;
+}
+.pass-icon{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    cursor:pointer;
+}
+.password-container {
+    width: 300px;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  input:focus {
+    border-color: #6200ea;
+  }
+  
+  .toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .toggle-btn i {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .toggle-btn i:hover {
+    color: #ff4081; /* Highlight color for hover */
+  }

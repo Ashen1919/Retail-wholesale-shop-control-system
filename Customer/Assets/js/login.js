@@ -1,17 +1,12 @@
-var a;
-function pass()
-{
-    if(a==1)
-    {
-        document.getElementById('password').type='password';
-        document.getElementById('pass-icon').src='../Assets/images/eye open.png';
-        a=0;
-        }
+const passwordInput = document.getElementById('password');
+const togglePassword = document.getElementById('togglePassword');
+const icon = document.getElementById('icon');
 
-        else
-        {document.getElementById('password').type='password';
-        document.getElementById('pass-icon').src='../Assets/images/eye open.png';
-            a=1;
-        }
-    }
+togglePassword.addEventListener('click', () => {
+  // Toggle password visibility
+  const isPasswordVisible = passwordInput.type === 'text';
+  passwordInput.type = isPasswordVisible ? 'password' : 'text';
 
+  // Toggle the icon
+  icon.className = isPasswordVisible ? 'fas fa-eye-slash' : 'fas fa-eye';
+});
