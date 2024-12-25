@@ -25,8 +25,9 @@
     
     <!--End of Preloader-->
     <!--Header-->
-    <header>
-        <!--Top Bar-->
+    <header class="header-wrapper">
+        
+        <!--Top Bar-->   
         <div class="topBar">
             <div class="contact-details">
                 <ul class="contact">
