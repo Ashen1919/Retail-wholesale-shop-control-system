@@ -33,3 +33,18 @@ document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
     e.stopImmediatePropagation();
   });
 });
+/**
+ * Preloader
+ */
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  
+  if (window.location.hash === '#categories') {
+      
+      const categoriesSection = document.getElementById('categories');
+      if (categoriesSection) {
+          categoriesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+  }
+});

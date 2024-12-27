@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  
+}
+    
+    
+    body {
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    background-color: #4b0082; 
+    }
+.form-container {
+    background: #15eebf;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    justify-content: space-around;
+
+}
+
+.form-container h1 {
+    color: #0e0d0d;
+    margin-bottom: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-container label {
+    display: block;
+    text-align: left;
+    color: #000000;
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+.form-container input {
+    width: 100%;
+    margin-bottom: 5px;
+}
+.form-container a {
+    color: #001aff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.form-container button {
+    background-color: #ee850d;
+    color: #fff;
+    padding: 5px 20px;
+    margin: 2px;
+}
+.form-container p {
+    font-size: 14px;
+    color: #000000;
+    margin-bottom: 5px;
+}
+#fp{
+    display: block;
+    text-align: right;
+    margin-bottom: 3px;
+}
+img{
+    height: 60px;
+    width: 60px;
+
+}
+
+.password{
+    display: inline-block;
+    position: relative;
+    border: 1px solid #000;
+}
+.password input
+{
+    padding: 10px 5px;
+    outline: none;
+    border: 0;
+}
+.pass-icon{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    cursor:pointer;
+}
+.password-container {
+    width: 300px;
+  }
+  
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+  }
+  
+  input:focus {
+    border-color: #335bdf;
+  }
+  
+  .toggle-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .toggle-btn i {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .toggle-btn i:hover {
+    color: #ff4081; /* Highlight color for hover */
+  }
