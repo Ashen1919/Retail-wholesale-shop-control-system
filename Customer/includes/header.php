@@ -75,7 +75,7 @@
                     </div>
                     <li><a href="../Home Page/index.php" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
-                    <li class="dropdown"><a href="#"><span>Categories</span> <i
+                    <li class="dropdown"><a href="../Home Page/index.php#categories"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="../Categories/Grocery.php">Grocery</a></li>

@@ -26,6 +26,8 @@
     color: #333;
     position: relative;
     display: inline-block;
+    margin-top: 10px; 
+    padding-top: 0;
 }
 
 .category-header h2::after {
@@ -43,7 +45,7 @@
     text-align: center;
     margin-bottom: 30px;
     position: relative;
-    padding-bottom: 15px;
+    padding-top: 0;
 }
 
 .category-description p {
@@ -69,7 +71,7 @@
 
 .sort-section select {
     padding: 8px 15px;
-    border: 1px solid #504b4b;
+    border: 1px solid #bbbbbb;
     border-radius: 5px;
     outline: none;
     cursor: pointer;
@@ -166,10 +168,13 @@
     .category-main {
         padding: 10px;
         padding-top: 140px;
+        margin-top: 10px; 
+        padding-top: 0;
     }
 
     .category-header h2 {
         font-size: 2rem;
+        
     }
 
     .category-description {
