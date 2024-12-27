@@ -123,7 +123,7 @@
 
     <!--Category Section-->
 
-    <div class="category-section">
+    <div class="category-section"id="categories">
         <div class="category-header">
             <h2 style="text-align: center;">Shop by Category</h2>
         </div>

@@ -807,11 +807,14 @@ End of the features card section
 /*===============================
 shop by category
 ================================*/
-
+html {
+  scroll-behavior: smooth;
+}
 .category-section {
   max-width: 100%;
   margin-left: 24px;
   padding: 20px;
+  scroll-margin-top: 100px;
 }
 
 .category-header {
