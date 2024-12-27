@@ -163,7 +163,7 @@
 
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
-    .grocery-main {
+    .category-main {
         padding: 10px;
         padding-top: 140px;
     }

@@ -140,7 +140,7 @@
             <div class="category-item">
                 <img src="../Assets/images/shop by category/vegetables.jpg" alt="Vegetables" class="category-image">
                 <div class="category-name">
-                    <a href="Vegetables.php" class="styled-link">
+                    <a href="../Categories/Vegetables.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Vegetables
                     </a>
                 </div>
@@ -148,7 +148,7 @@
             <div class="category-item">
                 <img src="../Assets/images/shop by category/fruit.jpg" alt="Fruits" class="category-image">
                 <div class="category-name">
-                    <a href="Fruits.php" class="styled-link">
+                    <a href="../Categories/Fruits.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Fruits
                     </a>
                 </div>
@@ -156,7 +156,7 @@
             <div class="category-item">
                 <img src="../Assets/images/shop by category/beverages.jpg" alt="Beverages" class="category-image">
                 <div class="category-name">
-                    <a href="Beverages.php" class="styled-link">
+                    <a href="../Categories/Beverages.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Beverages
                     </a>
                 </div>
@@ -164,7 +164,7 @@
             <div class="category-item">
                 <img src="../Assets/images/shop by category/household.jpg" alt="Household" class="category-image">
                 <div class="category-name">
-                    <a href="Household.php" class="styled-link">
+                    <a href="../Categories/Household.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Household
                     </a>
                 </div>
