@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grocery - Sandaru Food Mart</title>
+    <title>Vegetables - Sandaru Food Mart</title>
 
     <!-- Favicons -->
     <link
@@ -28,17 +28,17 @@
     <ol class="breadcrumb">
         
         <li class="breadcrumb-item">Categories</li>
-        <li class="breadcrumb-item active" aria-current="page">Grocery</li>
+        <li class="breadcrumb-item active" aria-current="page">Vegetables</li>
     </ol>
 </nav>
 
     <main class="category-main">
         <div class="category-header">
-            <h2>..Grocery..</h2>
+            <h2>..Vegetables..</h2>
         </div>
 
         <div class="category-description">
-            <p><i>Send and deliver Online grocery - Lowest Prices</i></p>
+            <p><i>Get fresh vegetables delivered to your home</i></p>
         </div>
 
         <div class="sort-section">
@@ -56,12 +56,12 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Pack of 10 Eggs">
+                    <img src="../Assets/images/Vegetables_Page/Carrot.jpg" alt="Pack of 10 Eggs">
                 </div>
                 <div class="product-details">
-                    <h3>Rice Samba Bulk</h3>
-                    <p class="price">Rs. 240.00</p>
-                    <p class="weight">(1kg)</p>
+                    <h3>Carrot </h3>
+                    <p class="price">Rs. 130.00</p>
+                    <p class="weight">(500g)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
@@ -72,12 +72,12 @@
             <!-- Product Card 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/eggs.jfif" alt="Pack of 10 Eggs">
+                    <img src="../Assets/images/Vegetables_Page/beans.jpg" alt="Pack of 10 Eggs">
                 </div>
                 <div class="product-details">
-                    <h3>Pack of 10 Eggs</h3>
-                    <p class="price">Rs. 521.00</p>
-                    <p class="weight">(Large 10S)</p>
+                    <h3>Green Beans</h3>
+                    <p class="price">Rs. 135.00</p>
+                    <p class="weight">(250g)</p>
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
@@ -86,12 +86,12 @@
             <!-- Product Card 3 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/white-sugar.jpg" alt="White Sugar">
+                    <img src="../Assets/images/Vegetables_Page/brinjal.jpg" alt="White Sugar">
                 </div>
                 <div class="product-details">
-                    <h3>White Sugar</h3>
-                    <p class="price">Rs. 298.00</p>
-                    <p class="weight">(1 kg)</p>
+                    <h3>Brinjal</h3>
+                    <p class="price">Rs. 207.00</p>
+                    <p class="weight">(350g)</p>
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
@@ -100,12 +100,12 @@
             <!-- Product Card 4 -->
             <div class="product-card">
                 <div class="product-image">
-                <img src="../Assets/images/Grocery_Page/dhal.jpg" alt="Catch Canned Fish">
+                <img src="../Assets/images/Vegetables_Page/pumpkin.jpg" alt="Catch Canned Fish">
                 </div>
                 <div class="product-details">
-                    <h3>Mysoore Dhal Bulk</h3>
-                    <p class="price">Rs. 280.00</p>
-                    <p class="weight">(1kg)</p>
+                    <h3>Pumpkin</h3>
+                    <p class="price">Rs. 110.00</p>
+                    <p class="weight">(500g)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
@@ -114,12 +114,12 @@
             <!-- Product Card 5 -->
             <div class="product-card">
                 <div class="product-image">
-                <img src="../Assets/images/Grocery_Page/canned-fish.jpg" alt="Catch Canned Fish">
+                <img src="../Assets/images/Vegetables_Page/ash plantain.jpg" alt="Catch Canned Fish">
                 </div>
                 <div class="product-details">
-                    <h3>Catch Canned Fish</h3>
-                    <p class="price">Rs. 650.00</p>
-                    <p class="weight">(425g)</p>
+                    <h3>Ash plantain</h3>
+                    <p class="price">Rs. 45.00</p>
+                    <p class="weight">(250g)</p>
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
@@ -128,12 +128,12 @@
             <!-- Product Card 6 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/noodles.jpg" alt="White Sugar">
+                    <img src="../Assets/images/Vegetables_Page/beetroot.jpg" alt="White Sugar">
                 </div>
                 <div class="product-details">
-                    <h3>Harischandra Plain Noodles</h3>
-                    <p class="price">Rs. 300.00</p>
-                    <p class="weight">(400g)</p>
+                    <h3>Beetroot </h3>
+                    <p class="price">Rs. 150.00</p>
+                    <p class="weight">(250g)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>

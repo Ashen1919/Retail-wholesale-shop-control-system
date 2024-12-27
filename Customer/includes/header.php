@@ -79,10 +79,10 @@
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="../Categories/Grocery.php">Grocery</a></li>
-                            <li><a href="Vegetables.php">Vegetables</a></li>
-                            <li><a href="Fruits.php">Fruits</a></li>
-                            <li><a href="Beverages.php">Beverages</a></li>
-                            <li><a href="Household.php">Household</a></li>
+                            <li><a href="../Categories/Vegetables.php">Vegetables</a></li>
+                            <li><a href="../Categories/Fruits.php">Fruits</a></li>
+                            <li><a href="../Categories/Beverages.php">Beverages</a></li>
+                            <li><a href="../Categories/Household.php">Household</a></li>
                         </ul>
                     </li>
                     <li><a href="#contact">Contact us</a></li>
