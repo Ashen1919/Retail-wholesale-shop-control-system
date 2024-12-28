@@ -31,15 +31,9 @@
 
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Enter your Email" required>
-            <div class="password-container">
-    <div class="input-wrapper">
-   <label for="email">Password
-      <input type="password" id="password" placeholder="Enter your password">
-      <button id="togglePassword" class="toggle-btn">
-        <i id="icon" class="fas fa-eye-slash"></i>
-      </button>
-    </div>
-  </div>
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password"require>   
+                    <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
             
             <a id="fp" href="#">Forgot Password?</a><br>
 
@@ -47,7 +41,6 @@
         </form>
         <p>Don't have an account?<a href="#">Sign up now</a></p>
     </div>
-
     
     <script src="../Assets/js/login.js"></script>
 </body>

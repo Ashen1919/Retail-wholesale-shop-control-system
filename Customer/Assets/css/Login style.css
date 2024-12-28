@@ -49,7 +49,7 @@
     margin-bottom: 10px;
 }
 .form-container button {
-    background-color: #ee850d;
+    background-color: #0da7ee;
     color: #fff;
     padding: 5px 20px;
     margin: 2px;
@@ -68,25 +68,6 @@ img{
     height: 60px;
     width: 60px;
 
-}
-
-.password{
-    display: inline-block;
-    position: relative;
-    border: 1px solid #000;
-}
-.password input
-{
-    padding: 10px 5px;
-    outline: none;
-    border: 0;
-}
-.pass-icon{
-    position:absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px;
-    cursor:pointer;
 }
 .password-container {
     width: 300px;
@@ -108,23 +89,18 @@ img{
   }
   
   input:focus {
-    border-color: #335bdf;
+    border-color: #6200ea;
   }
   
-  .toggle-btn {
+  .toggle-icon {
     position: absolute;
     right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-  }
-  
-  .toggle-btn i {
     font-size: 18px;
     color: #666;
+    cursor: pointer;
   }
   
-  .toggle-btn i:hover {
+  .toggle-icon:hover {
     color: #ff4081; /* Highlight color for hover */
   }
+  
