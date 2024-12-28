@@ -1,7 +1,15 @@
 /* Add these styles to your existing style.css */
 .account-info p {
-    font-size: 16px;
-    margin-bottom: 10px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    justify-content: space-around;
+    background: #f5f3f3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .actions {

@@ -9,33 +9,18 @@
 <body>
     <div class="account-info">
         <h1>Account Information</h1>
-        <?php
-        // PHP Code to fetch user details
-        $conn = new mysqli('localhost', 'root', '', 'your_database');
+        
+             "<p><strong>Full Name:   </strong> " . htmlspecialchars($row['fullName']) 
+          "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) 
+             "<p><strong>Phone Number:</strong> " . htmlspecialchars($row['phone']) 
+             "<p><strong>Address:</strong> " . htmlspecialchars($row['address']) 
+             "<p><strong>Gender:</strong> " . htmlspecialchars($row['gender']) 
+             "<p><strong>Password:</strong> *********
+     
+             "<p>No account information found.</p>
+        
 
-        if ($conn->connect_error) {
-            die('Connection failed: ' . $conn->connect_error);
-        }
-
-        // Replace '1' with a dynamic user ID based on your session/login
-        $userID = 1;
-        $sql = "SELECT * FROM accounts WHERE id = $userID";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            echo "<p><strong>Full Name:</strong> " . htmlspecialchars($row['fullName']) . "</p>";
-            echo "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) . "</p>";
-            echo "<p><strong>Phone Number:</strong> " . htmlspecialchars($row['phone']) . "</p>";
-            echo "<p><strong>Address:</strong> " . htmlspecialchars($row['address']) . "</p>";
-            echo "<p><strong>Gender:</strong> " . htmlspecialchars($row['gender']) . "</p>";
-            echo "<p><strong>Password:</strong> *********</p>";
-        } else {
-            echo "<p>No account information found.</p>";
-        }
-
-        $conn->close();
-        ?>
+        
         <div class="actions">
             <a href="edit_account.php" class="btn">Edit</a>
             <a href="logout.php" class="btn">Log Out</a>
