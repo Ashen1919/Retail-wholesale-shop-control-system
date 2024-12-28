@@ -11,27 +11,28 @@ body {
 .form-container {
     background: #ffffff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
+    height: 600px;
 }
 .form-container h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: -10px;
 }
 .form-container label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 .form-container input,
 .form-container select,
 .form-container button {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 .form-container button {
     background-color: #007bff;

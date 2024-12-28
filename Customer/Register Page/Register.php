@@ -22,8 +22,11 @@
 </head>
 <body>
     <div class="form-container">
+
+
         <h1>Register</h1>
         <form id="registerForm" action="process_register.php" method="POST">
+
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="first_name" required>
 
@@ -57,14 +60,6 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            const password = document.getElementById('password').value;
-            if (password.length < 6) {
-                alert('Password must be at least 6 characters long.');
-                event.preventDefault();
-            }
-        });
-    </script>
+    <script src="../Assets/js/Register.js"></script>
 </body>
 </html>
