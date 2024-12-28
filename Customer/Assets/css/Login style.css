@@ -16,7 +16,6 @@
     background-color: #4b0082; 
     }
 .form-container {
-    background: #15eebf;
     padding: 20px;
     text-align: center;
     display: flex;
@@ -24,6 +23,10 @@
     width: 300px;
     height: 400px;
     justify-content: space-around;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   
 
 }
 
