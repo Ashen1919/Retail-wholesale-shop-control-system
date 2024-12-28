@@ -1,66 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .form-container {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-        }
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .form-container label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-container input,
-        .form-container select,
-        .form-container button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .form-container button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .form-container button:hover {
-            background-color: #0056b3;
-        }
-        .form-container .login-link {
-            text-align: center;
-            margin-top: 10px;
-        }
-        .form-container .login-link a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .form-container .login-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Sandaru Food Mart</title>
+
+    <!-- Favicons -->
+    <link
+        href="../Assets/images/logo.png"
+        rel="icon">
+    <link
+        href="../Assets/images/logo.png"
+        rel="apple-touch-icon">
+
+    <!-- Css Stylesheets -->
+    <link href="../Assets/css/Register.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+    
 </head>
 <body>
     <div class="form-container">
