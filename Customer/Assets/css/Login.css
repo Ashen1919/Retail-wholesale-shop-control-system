@@ -13,7 +13,7 @@
     height: 100vh;
     font-family: Arial, sans-serif;
     display: flex;
-    background-color: #4b0082; 
+    background-color: #8143ad; 
     }
 .form-container {
     padding: 20px;
@@ -23,7 +23,7 @@
     width: 300px;
     height: 400px;
     justify-content: space-around;
-    background: #ca3434;
+    background: #f5f3f3;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
