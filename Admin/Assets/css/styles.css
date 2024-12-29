@@ -20,6 +20,7 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
+  width: 100%;
 }
 
 .container {
@@ -99,6 +100,7 @@ body {
   line-height: 60px;
   text-align: start;
   white-space: nowrap;
+  font-size: 20px;
 }
 
 /* --------- curve outside ---------- */
