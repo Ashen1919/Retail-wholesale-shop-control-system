@@ -1059,7 +1059,6 @@ Best Selling Products Section
     margin-bottom: 15px;
     line-height: 1.4;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     transition: color 0.3s ease;
@@ -1069,7 +1068,6 @@ Best Selling Products Section
 .product-card:hover .product-name {
     color: #f51616;
     background: linear-gradient(to right, #f51616, #2196F3);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
