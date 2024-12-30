@@ -2,17 +2,13 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/styles.css" rel="stylesheet">
@@ -42,6 +38,24 @@
                 <li>
                     <a href="#">
                         <span class="icon">
+                            <ion-icon name="bookmark-outline"></ion-icon>
+                        </span>
+                        <span class="title">Categories</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="basket-outline"></ion-icon>
+                        </span>
+                        <span class="title">Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
                         <span class="title">Customers</span>
@@ -51,18 +65,45 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
+                            <ion-icon name="cart-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Order Management</span>
                     </a>
                 </li>
 
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
+                            <ion-icon name="star-half-outline"></ion-icon>
                         </span>
-                        <span class="title">Help</span>
+                        <span class="title">Reviews</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </span>
+                        <span class="title">Contact</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="title">Lendings</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="person-outline"></ion-icon>
+                        </span>
+                        <span class="title">Cashier</span>
                     </a>
                 </li>
 
@@ -72,24 +113,6 @@
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
                         <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
                     </a>
                 </li>
             </ul>
