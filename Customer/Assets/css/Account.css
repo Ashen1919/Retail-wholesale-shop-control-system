@@ -1,41 +1,85 @@
-/* Add these styles to your existing style.css */
-.account-info  {
-    padding: 50px;
-    text-align:center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 400px;
-    justify-content: space-around; 
-    background: #ebe6e6;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(34, 14, 14, 0.2);
-}
-
-.actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 00px;
-}
-
-.btn {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .account-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
-}
-
-.btn:hover {
-    background-color: #00b336;
-}
-
-.btn.danger {
-    background-color: #dc3535;
-}
-
-.btn.danger:hover {
-    background-color: #1379b4;
-}
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    background: #f9f9f9;
+  }
+  
+  input[readonly] {
+    background: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button.edit {
+    background: #007bff;
+    color: white;
+  }
+  
+  button.logout {
+    background: #6c757d;
+    color: white;
+  }
+  
+  button.delete {
+    background: #dc3545;
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  
