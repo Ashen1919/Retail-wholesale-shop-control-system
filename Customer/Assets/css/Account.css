@@ -76,7 +76,7 @@ body {
   
   button.delete {
     background: #dc3545;
-    color: white;
+    color: rgb(238, 231, 231);
   }
   
   button:hover {
