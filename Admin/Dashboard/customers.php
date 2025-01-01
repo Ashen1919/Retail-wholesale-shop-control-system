@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2>Customers Management</h2>
+<p>Manage your categories here.</p>
+
 </body>
 </html>
