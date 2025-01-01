@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #ededf3;
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,7 +9,7 @@ body {
     height: 100vh;
 }
 .form-container {
-    background: #ffffff;
+    background: #d6d2d2;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -35,7 +35,7 @@ body {
     border-radius: 2px;
 }
 .form-container button {
-    background-color: #007bff;
+    background-color: #006eff;
     color: white;
     border: none;
     cursor: pointer;
