@@ -26,18 +26,26 @@
                 <div class="card-1">
                     <h5>Earnings</h5>
                 </div>
-                <div class="card-2"></div>
-                <div class="card-3"></div>
+                <div class="card-2">
+                    <h5>Orders</h5>
+                </div>
+                <div class="card-3">
+                    <h5>Customers</h5>
+                </div>
             </div>
         </div>
         <div class="right-side-dash">
-            <h4>Today Overview</h4>
+            <h4>Total Overview</h4>
             <div class="dash-cards">
                 <div class="card-1">
                     <h5>Earnings</h5>
                 </div>
-                <div class="card-2"></div>
-                <div class="card-3"></div>
+                <div class="card-2">
+                    <h5>Orders</h5>
+                </div>
+                <div class="card-3">
+                    <h5>Customers</h5>
+                </div>
             </div>
         </div>
     </div>
