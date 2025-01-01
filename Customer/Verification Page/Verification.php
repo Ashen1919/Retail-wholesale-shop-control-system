@@ -3,8 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verification Form</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sandaru Food Mart</title>
+
+    <!-- Favicons -->
+    <link
+        href="../Assets/images/logo.png"
+        rel="icon">
+    <link
+        href="../Assets/images/logo.png"
+        rel="apple-touch-icon">
+
+    <!-- Css Stylesheets -->
+    <link href="../Assets/css/Verification.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
     <div class="verification-form">
@@ -29,6 +42,6 @@
             <button type="submit">Verify Code</button>
         </form>
     </div>
-    <script src="script.js"></script>
+    <script src="Verification.js"></script>
 </body>
 </html>
