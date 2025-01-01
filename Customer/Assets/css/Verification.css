@@ -58,6 +58,8 @@ button:hover {
     background: #0056b3;
 }
 .code{
-    margin: 20px 0;
+    margin: 2px 0;
     text-align: left;
+    align-items: left;
+
 }

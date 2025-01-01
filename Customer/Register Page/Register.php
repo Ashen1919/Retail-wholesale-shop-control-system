@@ -56,7 +56,7 @@
             <button type="submit">Sign Up</button>
         </form>
         <div class="login-link">
-            <p>Do you have an account?  </p>
+            <p>Do you have an account? <a href="login.php">Login Here</a></p>
         </div>
     </div>
 
