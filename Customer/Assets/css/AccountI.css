@@ -7,7 +7,7 @@
     width: 300px;
     height: 400px;
     justify-content: space-around;
-    background: #f5f3f3;
+    background: #ebe6e6;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -29,7 +29,7 @@
 }
 
 .btn:hover {
-    background-color: #000cb3;
+    background-color: #2700b3;
 }
 
 .btn.danger {
@@ -37,5 +37,5 @@
 }
 
 .btn.danger:hover {
-    background-color: #a71d72;
+    background-color: #a71d1d;
 }

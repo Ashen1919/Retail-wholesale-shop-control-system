@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/AccountI.css" rel="stylesheet">
+    <link href="../Assets/css/Customer/Assets/css/AccountI.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
