@@ -5,14 +5,14 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #ebe4e4;
 }
 
 .verification-form {
-    background: #fff;
+    background: #f5f1f1;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(214, 23, 23, 0.1);
     width: 300px;
     text-align: center;
 }
@@ -44,7 +44,7 @@ body {
     transition: border-color 0.3s;
 }
 .code-box:focus {
-    border-color: #007bff;
+    border-color: #0752a3;
 }
 
 
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #001bb3;
 }
 .code{
     display: block;
