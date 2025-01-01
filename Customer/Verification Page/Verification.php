@@ -35,6 +35,9 @@
                     Mobile Verification
                 </label>
             </div>
+            <div class="code">
+            <a href="Get code">Get code</a>
+            </div>
             <div class="code-input">
                 <label for="verificationCode">Enter the Code:</label>
                 <input type="text" id="verificationCode" name="verificationCode" maxlength="6" required>
