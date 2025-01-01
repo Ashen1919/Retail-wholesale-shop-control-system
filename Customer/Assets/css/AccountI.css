@@ -1,21 +1,21 @@
 /* Add these styles to your existing style.css */
-.account-info p {
-    padding: 20px;
-    text-align: center;
+.account-info  {
+    padding: 50px;
+    text-align:center;
     display: flex;
     flex-direction: column;
     width: 300px;
     height: 400px;
-    justify-content: space-around;
-    background: #f5f3f3;
+    justify-content: space-around; 
+    background: #ebe6e6;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(34, 14, 14, 0.2);
 }
 
 .actions {
     display: flex;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 00px;
 }
 
 .btn {
@@ -29,13 +29,13 @@
 }
 
 .btn:hover {
-    background-color: #000cb3;
+    background-color: #00b336;
 }
 
 .btn.danger {
-    background-color: #dc3545;
+    background-color: #dc3535;
 }
 
 .btn.danger:hover {
-    background-color: #a71d2a;
+    background-color: #a71d1d;
 }
