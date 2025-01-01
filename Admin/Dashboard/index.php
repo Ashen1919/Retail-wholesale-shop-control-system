@@ -7,7 +7,7 @@
     <title>Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="icon"> 
     <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
