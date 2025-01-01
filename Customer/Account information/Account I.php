@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/Customer/Assets/css/AccountI.css" rel="stylesheet">
+    <link href="../Assets/css/AccountI.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -23,11 +23,11 @@
     <div class="account-info">
         <h1>Account Information</h1>
         
-             "<p><strong>Full Name:   </strong> " . htmlspecialchars($row['fullName']) 
-            "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) 
-             "<p><strong>Phone Number:</strong> " . htmlspecialchars($row['phone']) 
-             "<p><strong>Address:</strong> " . htmlspecialchars($row['address']) 
-             "<p><strong>Gender:</strong> " . htmlspecialchars($row['gender']) 
+             "<p><strong>Full Name:   </strong> " . htmlspecialchars($row['fullName']) </p>
+            "<p><strong>Email:</strong> " . htmlspecialchars($row['email'])</p> 
+             "<p><strong>Phone Number:</strong> " . htmlspecialchars($row['phone'])</p> 
+             "<p><strong>Address:</strong> " . htmlspecialchars($row['address']) </p>
+             "<p><strong>Gender:</strong> " . htmlspecialchars($row['gender']) </p>
              "<p><strong>Password:</strong> *********
      
              "<p>No account information found.</p>
