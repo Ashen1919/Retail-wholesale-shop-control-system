@@ -27,10 +27,26 @@ body {
     text-align: left;
 }
 
-.code-input {
-    margin: 20px 0;
-    text-align: left;
+.code-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
+
+.code-box {
+    width: 40px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+.code-box:focus {
+    border-color: #007bff;
+}
+
 
 .code-input label {
     display: block;
@@ -58,8 +74,12 @@ button:hover {
     background: #0056b3;
 }
 .code{
-    margin: 2px 0;
-    text-align: left;
-    align-items: left;
-
+    display: block;
+    text-align:left;
+    margin-bottom: 10px;
+}
+.ETC{
+    display: block;
+    text-align:left;
+    margin-bottom: 10px;
 }

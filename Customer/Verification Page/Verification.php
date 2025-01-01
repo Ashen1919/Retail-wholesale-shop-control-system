@@ -38,9 +38,16 @@
             <div class="code">
             <a href="Get code">Get code</a>
             </div>
-            <div class="code-input">
+           <div class="ETC">
                 <label for="verificationCode">Enter the Code:</label>
-                <input type="text" id="verificationCode" name="verificationCode" maxlength="6" required>
+            </div>
+            <div class="code-inputs">
+                <input type="text" maxlength="1" class="code-box" required>
+                <input type="text" maxlength="1" class="code-box" required>
+                <input type="text" maxlength="1" class="code-box" required>
+                <input type="text" maxlength="1" class="code-box" required>
+                <input type="text" maxlength="1" class="code-box" required>
+                <input type="text" maxlength="1" class="code-box" required>
             </div>
             <button type="submit">Verify Code</button>
         </form>

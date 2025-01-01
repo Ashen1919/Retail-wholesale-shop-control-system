@@ -1,6 +1,6 @@
 /* Add these styles to your existing style.css */
 .account-info p {
-    padding: 20px;
+    padding: 50px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -33,9 +33,9 @@
 }
 
 .btn.danger {
-    background-color: #dc3545;
+    background-color: #dc353d;
 }
 
 .btn.danger:hover {
-    background-color: #a71d2a;
+    background-color: #a71d72;
 }
