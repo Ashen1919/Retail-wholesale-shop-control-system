@@ -50,18 +50,16 @@
         <option value="female">Female</option>
         <option value="other">Other</option>
     </select>
-    <div class="password-container">
-    <div class="input-wrapper">
-      <label for="new-password">New Password:</label>
-      <input type="password" id="new-password" placeholder="Enter your new password">
-      <i id="toggleNewPassword" class="fas fa-eye-slash toggle-icon"></i>
-    </div>
-    <div class="input-wrapper">
+<div class="password-section">
+    <label for="N password">New Password</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
+</div>
+    <div class="password-section">
       <label for="retype-password">Retype Password:</label>
       <input type="password" id="retype-password" placeholder="Retype your password">
       <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
     </div>
-  </div>
     <button type="submit">Sign Up</button>
 </form>
 <div class="login-link">
