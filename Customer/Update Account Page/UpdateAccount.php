@@ -15,7 +15,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/Register.css" rel="stylesheet">
+    <link href="../Assets/css/UpdateAccount.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -53,6 +53,8 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
             <div class="password-container">
+
+
     <div class="input-wrapper">
       <input type="password" id="password" placeholder="Enter your password">
       <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
@@ -66,6 +68,6 @@
         </div>
     </div>
 
-    <script src="../Assets/js/Register.js"></script>
+    <script src="../Assets/js/UpdateAccount.js"></script>
 </body>
 </html>
