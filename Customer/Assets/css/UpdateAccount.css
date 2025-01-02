@@ -54,7 +54,7 @@
 .form-container .login-link a:hover {
     text-decoration: underline;
 }
-.password-section{
+.input-wrapper{
     padding-right: 30px;
 }
 .password-section input{
