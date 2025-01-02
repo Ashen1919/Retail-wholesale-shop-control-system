@@ -18,33 +18,35 @@
 </head>
 
 <body>
-    <h2>Dashboard </h2>
-    <div class="content">
-        <div class="left-side-dash">
-            <h4>Today Overview</h4>
-            <div class="dash-cards">
-                <div class="card-1">
-                    <h5>Earnings</h5>
-                </div>
-                <div class="card-2">
-                    <h5>Orders</h5>
-                </div>
-                <div class="card-3">
-                    <h5>Customers</h5>
+    <div class="main-body">
+        <h2 style="color:white; margin-bottom:10px;">Dashboard </h2>
+        <div class="content">
+            <div class="left-side-dash">
+                <h4 style="color:white;">Today Overview</h4>
+                <div class="dash-cards">
+                    <div class="card-1">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Earnings</h4>
+                    </div>
+                    <div class="card-2">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Orders</h4>
+                    </div>
+                    <div class="card-3">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Customers</h4>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="right-side-dash">
-            <h4>Total Overview</h4>
-            <div class="dash-cards">
-                <div class="card-1">
-                    <h5>Earnings</h5>
-                </div>
-                <div class="card-2">
-                    <h5>Orders</h5>
-                </div>
-                <div class="card-3">
-                    <h5>Customers</h5>
+            <div class="right-side-dash">
+                <h4 style="color:white;">Total Overview</h4>
+                <div class="dash-cards">
+                    <div class="card-1">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Earnings</h4>
+                    </div>
+                    <div class="card-2">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Orders</h4>
+                    </div>
+                    <div class="card-3">
+                        <h4 style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">Customers</h4>
+                    </div>
                 </div>
             </div>
         </div>

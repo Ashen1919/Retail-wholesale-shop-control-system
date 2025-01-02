@@ -182,6 +182,7 @@ Main Content
 .dashboard:hover{
     background-color: #363f4b;
     transition: 0.2s ease-out;
+    
 }
 .dashboard:hover i{
     color: #f01515;
@@ -190,9 +191,9 @@ Main Content
 
 .right-side {
     width: 80%;
-    display: flex;
+    background-color: #111827;
+    padding: 10px;
 }
-
 /*===============================
 End of main content
 ================================*/
