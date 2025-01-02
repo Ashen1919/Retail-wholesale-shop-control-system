@@ -6,6 +6,7 @@
   <title>Show/Hide Password</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link href="../Assets/css/p.css" rel="stylesheet">
 </head>
 <body>
   <div class="password-container">
