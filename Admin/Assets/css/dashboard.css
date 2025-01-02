@@ -121,3 +121,79 @@ Main-body
 /*===============================
 End of main-body
 ================================*/
+
+/*===============================
+Chart section
+================================*/
+.chart-section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 10px;
+}
+.bar-chart{
+    margin-top: 20px;
+    width: 60%;
+    height: 75vh;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+.bar-chart-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.canvas {
+    width: 100% ;
+    height: 100% ;
+    
+}
+
+.bar-chart .chart-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.bar-chart #timePeriod{
+    background-color: #111827;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 0 5px 0 5px;
+    outline: none;
+}
+.pie-chart{
+    margin-top: 20px;
+    width: 40%;
+    height: 75vh;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.pie-chart-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.canvas-pie{
+    width: 100% ;
+    height: 100% ;
+}
+/*===============================
+End of chart section
+================================*/

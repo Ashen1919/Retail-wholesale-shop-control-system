@@ -1,0 +1,402 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", serif;
+    color: white;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: #ffffff;
+    overflow-x: auto;
+}
+
+:root{
+    --button-color: #007bff;
+    --btn-hover: #005ec3;
+}
+/*===============================
+Top Bar
+================================*/
+.top-bar{
+    width: 80%;
+    height: 65px;
+    background-color: #1F2937;
+    align-items: center;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    margin-left: 20%;
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50%;
+}
+.title{
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.search-bar{
+    right: 0;
+    margin-left: 10px;
+}
+.search-bar input{
+    width: 300px;
+    padding: 5px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-color: transparent;
+    padding-left: 15px;
+    padding-bottom: 5px;
+    outline: none;
+}
+.search-bar button{
+    padding: 7px;
+    margin-left: -6px;
+    border: none;
+    padding-right: 15px;
+    background-color: var(--button-color);
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    justify-content: center;
+    transition-duration: 500ms;
+}
+.search-bar button:hover{
+    background-color: var(--btn-hover);
+    transition-duration: 500ms;
+}
+.search-bar button i{
+    margin-left: 7px;
+    color: #ffffff;
+    align-items: center;
+    font-size: 16px;
+}
+.profile{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 340px;
+}
+.profile .pro-avatar{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-left: 200px;
+}
+.profile p{
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.right{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 23px;
+    width: 50%;
+}
+.log-out {
+    display: flex;
+    padding: 8px;
+    margin-left: 25px;
+}
+
+.logout-button {
+    background-color: #f81212; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-button:hover {
+    background-color: #d90505; 
+    transform: scale(1.03); 
+}
+
+.logout-button:active {
+    background-color: #c10000; 
+}
+
+.logout-button i {
+    font-size: 18px; 
+}
+
+/*===============================
+End of top Bar
+================================*/
+
+/*===============================
+Main Content
+================================*/
+.main-content {
+    display: flex;
+    width: 100%;
+    height: 150vh;
+}
+
+/*Left Navigation*/
+.left-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 999;
+    background-color: #1F2937;
+    color: #fff;
+}
+.dashboard{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px; 
+    font-weight: bold;
+    height: 2rem;
+    cursor: pointer;
+    border-bottom:2px solid #1F2937 ;
+    transition: 0.3s ease-in;
+    margin-bottom: 10px;
+    padding: 25px 5px 25px 15px;
+    
+}
+.dashboard i{
+    margin-bottom: 4px;
+    transition: 0.2s ease-out;
+}
+.left-side a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.left-side a:hover{
+    color: #ffffff;
+}
+.dashboard:hover{
+    background-color: #363f4b;
+    transition: 0.2s ease-out;
+    
+}
+.dashboard:hover i{
+    color: #f01515;
+    transition: 0.2s ease-in;
+}
+
+.right-side {
+    width: 80%;
+    background-color: #111827;
+    padding: 10px;
+    height: 300vh;
+    right: 0;
+    margin-left: 20%;
+    margin-top: 65px;
+}
+/*===============================
+End of main content
+================================*/
+
+/*===============================
+Main-body
+================================*/
+.content{
+    width: 100%;
+    height: 40vh;
+    background-color: #111827;
+    display: flex;
+    gap: 10px;
+}
+.left-side-dash, .right-side-dash{
+    width: 50%;
+    display: block;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.dash-cards{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 10px;
+}
+.card-1, .card-2, .card-3{
+    width: 35%;
+    height: 31vh;
+    background-color: #111827;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-1 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-2 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-3 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-1 .value{
+    font-size: 2rem;
+}
+.dash-cards .card-2 .value{
+    font-size: 2rem;
+}
+.dash-cards .card-3 .value{
+    font-size: 2rem;
+}
+.card-1:hover{
+    scale: 1.03;
+    transition: 0.3s ease-out;
+}
+.card-1:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
+    transition: 0.3s ease-out;
+}
+.card-2:hover{
+    scale: 1.03;
+    transition: 0.3s ease-out;
+}
+.card-2:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
+    transition: 0.3s ease-out;
+}
+.card-3:hover{
+    scale: 1.03;
+    transition: 0.3s ease-out;
+}
+.card-3:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
+    transition: 0.3s ease-out;
+}
+/*===============================
+End of main-body
+================================*/
+
+/*===============================
+Chart section
+================================*/
+.chart-section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 10px;
+}
+.bar-chart{
+    margin-top: 20px;
+    width: 60%;
+    height: 60vh;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+.bar-chart-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.canvas {
+    width: 100% ;
+    height: 100% ;
+    
+}
+
+.chart-head{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.chart-head .report-btn a{
+    text-decoration: none;
+    color: #f01515;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+.chart-head .report-btn i{
+    margin-left: 5px;
+    color: #f01515;
+    margin-bottom: 5px;
+}
+.bar-chart #timePeriod{
+    background-color: #111827;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 0 5px 0 5px;
+    outline: none;
+}
+.pie-chart{
+    margin-top: 20px;
+    width: 40%;
+    height: 60vh;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.pie-chart-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.canvas-pie{
+    width: 100% ;
+    height: 100% ;
+}
+/*===============================
+End of chart section
+================================*/
