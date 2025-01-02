@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #ededf3;
@@ -31,8 +32,7 @@ body {
     width: 100%;
     padding: 5px;
     margin-bottom: 5px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+    border: none;
 }
 .form-container button {
     background-color: #006eff;
@@ -54,3 +54,18 @@ body {
 .form-container .login-link a:hover {
     text-decoration: underline;
 }
+.password-section{
+    padding-right: 30px;
+}
+.password-section input{
+    position: relative;
+}
+.form-container .toggle-icon {
+    position: absolute;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    padding-top: 10px;
+    height: 34px;
+  }

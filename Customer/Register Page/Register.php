@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,47 +21,48 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="form-container">
+
+<div class="form-container">
 
 
-        <h1>Register</h1>
-        <form id="registerForm" action="process_register.php" method="POST">
+<h1>Register</h1>
+<form id="registerForm" action="process_register.php" method="POST">
 
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="first_name" required>
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="first_name" required>
 
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="last_name" required>
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="last_name" required>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
 
-            <label for="phoneNumber">Phone Number</label>
-            <input type="tel" id="phoneNumber" name="phone_number" required>
+    <label for="phoneNumber">Phone Number</label>
+    <input type="tel" id="phoneNumber" name="phone_number" required>
 
-            <label for="address">Address</label>
-            <input type="text" id="address" name="address" required>
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" required>
 
-            <label for="gender">Gender</label>
-            <select id="gender" name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
+    <label for="gender">Gender</label>
+    <select id="gender" name="gender" required>
+        <option value="" disabled selected>Select Gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+<div class="password-section">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter your password">
+    <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
+</div> 
+    <button type="submit">Sign Up</button>
+</form>
+<div class="login-link">
+    <p>Do you have an account? <a href="login.php">Login Here</a></p>
+</div>
+</div>
 
-            <input type="password" id="password" placeholder="Enter your password">
-      <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-
-            <button type="submit">Sign Up</button>
-        </form>
-        <div class="login-link">
-            <p>Do you have an account? <a href="login.php">Login Here</a></p>
-        </div>
-    </div>
-
-    <script src="../Assets/js/Register.js"></script>
+  
+  <script src="../Assets/js/UpdateAccount.js"></script>
 </body>
 </html>

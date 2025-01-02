@@ -50,10 +50,11 @@
         <option value="female">Female</option>
         <option value="other">Other</option>
     </select>
+<div class="password-section">
     <label for="password">Password</label>
     <input type="password" id="password" placeholder="Enter your password">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-   
+</div> 
     <button type="submit">Sign Up</button>
 </form>
 <div class="login-link">
