@@ -1,8 +1,11 @@
-const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-document.getElementById('registerForm').addEventListener('submit', function(event) {
-    const password = document.getElementById('password').value;
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long.');
-        event.preventDefault();
-    }
+const passwordInput = document.getElementById('password');
+const togglePassword = document.getElementById('togglePassword');
+
+togglePassword.addEventListener('click', () => {
+  // Toggle password visibility
+  const isPasswordVisible = passwordInput.type === 'text';
+  passwordInput.type = isPasswordVisible ? 'password' : 'text';
+
+  // Toggle the icon
+  togglePassword.className = isPasswordVisible ? 'fas fa-eye-slash toggle-icon' : 'fas fa-eye toggle-icon';
 });
