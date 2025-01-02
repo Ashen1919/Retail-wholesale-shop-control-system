@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", serif;
+    color: white;
 }
 html{
     scroll-behavior: smooth;
@@ -11,6 +12,7 @@ html{
 body{
     background: #ffffff;
     overflow-x: auto;
+    
 }
 
 :root{
@@ -65,16 +67,55 @@ Main-body
     cursor: pointer;
     transition: 0.3s ease-in;
 }
+.dash-cards .card-1 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-2 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-3 i{
+    font-size: 3.5rem;
+    color: #ffffff42;
+    transition: 0.3s ease-in;
+}
+.dash-cards .card-1 .value{
+    font-size: 2rem;
+}
+.dash-cards .card-2 .value{
+    font-size: 2rem;
+}
+.dash-cards .card-3 .value{
+    font-size: 2rem;
+}
 .card-1:hover{
     scale: 1.03;
+    transition: 0.3s ease-out;
+}
+.card-1:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
     transition: 0.3s ease-out;
 }
 .card-2:hover{
     scale: 1.03;
     transition: 0.3s ease-out;
 }
+.card-2:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
+    transition: 0.3s ease-out;
+}
 .card-3:hover{
     scale: 1.03;
+    transition: 0.3s ease-out;
+}
+.card-3:hover i{
+    color: #f01515;
+    transform: scale(1.2) ;
     transition: 0.3s ease-out;
 }
 /*===============================
