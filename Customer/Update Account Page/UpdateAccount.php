@@ -60,11 +60,9 @@
       <input type="password" id="rt-password" placeholder="Enter your Retype password">
       <i id="rt-togglePassword" class="fas fa-eye-slash toggle-icon"></i>
     </div>
-    <button type="submit">Sign Up</button>
+    <button type="submit">Update</button>
 </form>
-<div class="login-link">
-    <p>Do you have an account? <a href="login.php">Login Here</a></p>
-</div>
+
 </div>
 
   
