@@ -1,0 +1,278 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 0;
+}
+
+.header-section{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.header-section input[type="text"], 
+.header-section input[type="number"], 
+.header-section select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+.header-section button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.header-section button:hover{
+    background-color: #0056b3;
+}
+
+.secondary-header{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-section{
+    display: flex;
+    margin-bottom: 10px;
+    gap: 25px;
+}
+
+.secondary-header input[type="text"], 
+.secondary-header input[type="number"], 
+.secondary-header select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 180px;
+}
+
+.secondary-header-btn{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.secondary-header button {
+    padding: 5px 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
+
+.clear-btn{
+    background-color: #6C757D;
+}
+
+.clear-btn:hover{
+    background-color: #5a6268;
+}
+
+.add-btn{
+    background-color: #28A745;
+}
+
+.add-btn:hover{
+    background-color: #218838;
+}
+
+.table-div{
+    border: solid 1px #000;
+    height: 335px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+thead{
+    background-color: #686868;
+    color: #fff;
+}
+
+.actions {
+    display: flex;
+    gap: 5px;
+}
+
+.actions button {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.actions button.edit {
+    background-color: #2196F3;
+    color: #fff;
+}
+
+.actions button.delete {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.footer-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+}
+
+.footer-section input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.footer-section button {
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.four-btns{
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.four-btns button{
+    width: 150px;
+}
+
+.upper-btns{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lower-btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.continue-btn{
+    background-color: #28A745;
+}
+
+.continue-btn:hover{
+    background-color: #218838;
+}
+
+.new-btn{
+    background-color: #17A2B8;
+}
+
+.new-btn:hover{
+    background-color: #117a8b;
+}
+
+.register-btn{
+    background-color: #6F42C1;
+}
+
+.register-btn:hover{
+    background-color: #563d7c;
+}
+
+.reset-btn{
+    background-color: #FD7E14;
+}
+
+.reset-btn:hover{
+    background-color: #e8590c;
+}
+
+.lending-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.lending-section div{
+    margin: 20px;
+}
+
+.styled-input-box {
+    display: inline-block;
+    position: relative;
+    border: 2px solid #000; 
+    padding: 2px 10px;
+    border-radius: 3px;
+    margin: 5px 0;
+}
+
+.styled-input-box label {
+    position: absolute;
+    top: -10px;
+    left: 10px; 
+    background: #fff; 
+    padding: 0 5px; 
+    font-size: 14px; 
+}
+
+.styled-input-box input {
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+    width: 100%; 
+    padding: 5px; 
+}
+
+.amount-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.final-action{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+
+.final-action button{
+    border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    font-size:x-large
+}
+
+.save-btn{
+    background-color: #007BFF;
+}
+
+.save-btn:hover{
+    background-color: #0056b3;
+}
+
+.print-btn{
+    background-color: #343A40;
+}
+
+.print-btn:hover{
+    background-color: #212529;
+}
