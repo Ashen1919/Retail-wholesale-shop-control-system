@@ -57,8 +57,8 @@
 </div>
     <div class="password-section1">
       <label for="retype-password">Retype Password:</label>
-      <input type="password" id="retype-password" placeholder="Enter your Retype password">
-      <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
+      <input type="password" id="rt-password" placeholder="Enter your Retype password">
+      <i id="rt-togglePassword" class="fas fa-eye-slash toggle-icon"></i>
     </div>
     <button type="submit">Sign Up</button>
 </form>

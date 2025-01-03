@@ -60,9 +60,12 @@ body {
 }
 .password-section1{
     padding-right: 30px;
-    background-color: aqua;
+   
 }
 .password-section input{
+    position: relative;
+}
+.password-section1 input{
     position: relative;
 }
 .form-container .toggle-icon {
