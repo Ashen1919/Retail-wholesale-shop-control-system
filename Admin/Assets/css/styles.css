@@ -206,7 +206,7 @@ Main Content
     width: 80%;
     background-color: #111827;
     padding: 10px;
-    height: 300vh;
+    height: 200vh;
     right: 0;
     margin-left: 20%;
     margin-top: 65px;
@@ -321,6 +321,7 @@ Chart section
     height: auto;
     display: flex;
     gap: 10px;
+    margin-top: 10px;
 }
 .bar-chart{
     margin-top: 20px;
@@ -359,11 +360,21 @@ Chart section
     gap: 5px;
     display: flex;
     align-items: center;
+    transition: 0.3s ease-in;
 }
 .chart-head .report-btn i{
     margin-left: 5px;
     color: #f01515;
     margin-bottom: 5px;
+    transition: 0.3s ease-in;
+}
+.report-btn:hover a{
+    color: #ffffff;
+    transition: 0.3s ease-out;
+}
+.report-btn:hover i{
+    color: #ffffff;
+    transition: 0.3s ease-out;
 }
 .bar-chart #timePeriod{
     background-color: #111827;
@@ -399,4 +410,56 @@ Chart section
 }
 /*===============================
 End of chart section
+================================*/
+
+/*===============================
+Top selling section
+================================*/
+.top-selling{
+    margin-top: 30px;
+    width: 100%;
+    height: 78vh;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+.table-section{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.table-top{
+    background-color: #111827;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    border-collapse: collapse;
+    transition: 0.3s ease-in;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.table-top tbody tr:hover{
+    background: rgba(31, 41, 55, 0.7);
+    transition: 0.3s ease-out;
+}
+.table-top thead tr{
+    text-align: center;
+}
+.table-top th, .table-top td{
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-collapse: collapse;
+}
+/*===============================
+End of top selling
 ================================*/
