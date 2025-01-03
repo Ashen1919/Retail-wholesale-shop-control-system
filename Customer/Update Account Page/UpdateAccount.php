@@ -52,14 +52,14 @@
     </select>
 <div class="password-section">
     <label for="N password">New Password</label>
-    <input type="password" id="password" placeholder="Enter your password">
+    <input type="password" id="password" placeholder="Enter your New password">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
 </div>
-    <div class="password-section">
+    <div class="password-section1">
       <label for="retype-password">Retype Password:</label>
-      <input type="password" id="retype-password" placeholder="Retype your password">
-      <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
-    </div>
+      <input type="password" id="password" placeholder="Enter your Retype password">
+      <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
+</div>
     <button type="submit">Sign Up</button>
 </form>
 <div class="login-link">

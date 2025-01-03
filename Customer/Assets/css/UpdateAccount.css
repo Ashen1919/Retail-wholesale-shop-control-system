@@ -57,12 +57,16 @@ body {
 .password-section{
     padding-right: 30px;
 }
+.password-section1{
+    padding-right: 30px;
+    background-color: aqua;
+}
 .password-section input{
     position: relative;
 }
 .form-container .toggle-icon {
     position: absolute;
-    color: black;
+    color: rgb(5, 4, 4);
     cursor: pointer;
     background-color: white;
     padding: 5px;
