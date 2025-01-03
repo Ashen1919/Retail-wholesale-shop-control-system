@@ -25,15 +25,20 @@ body {
 
 .header-section button {
     padding: 5px 10px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007BFF;
+    color: #fff;
     border: none;
     cursor: pointer;
+}
+
+.header-section button:hover{
+    background-color: #0056b3;
 }
 
 .secondary-header{
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .input-section{
@@ -58,27 +63,49 @@ body {
 
 .secondary-header button {
     padding: 5px 10px;
-    background-color: #4CAF50;
-    color: white;
+    color: #fff;
     border: none;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
+
+.clear-btn{
+    background-color: #6C757D;
+}
+
+.clear-btn:hover{
+    background-color: #5a6268;
+}
+
+.add-btn{
+    background-color: #28A745;
+}
+
+.add-btn:hover{
+    background-color: #218838;
 }
 
 .table-div{
-    background-color: aquamarine;
+    border: solid 1px #000;
+    height: 370px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
 }
 
 table th, table td {
     border: 1px solid #ccc;
     padding: 10px;
     text-align: left;
+}
+
+thead{
+    background-color: #686868;
+    color: #fff;
 }
 
 .actions {
@@ -94,22 +121,20 @@ table th, table td {
 
 .actions button.edit {
     background-color: #2196F3;
-    color: white;
+    color: #fff;
 }
 
 .actions button.delete {
     background-color: #f44336;
-    color: white;
+    color: #fff;
 }
 
 .footer-section {
-    margin-top: 20px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     position: fixed;
     bottom: 0;
-    padding: 20px;
     width: 95%;
 }
 
@@ -121,8 +146,7 @@ table th, table td {
 
 .footer-section button {
     padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
+    color: #fff;
     border: none;
     cursor: pointer;
     border-radius: 20px;
@@ -130,6 +154,9 @@ table th, table td {
 
 .four-btns{
     width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .four-btns button{
@@ -147,18 +174,55 @@ table th, table td {
     justify-content: space-between;
 }
 
+.continue-btn{
+    background-color: #28A745;
+}
+
+.continue-btn:hover{
+    background-color: #218838;
+}
+
+.new-btn{
+    background-color: #17A2B8;
+}
+
+.new-btn:hover{
+    background-color: #117a8b;
+}
+
+.register-btn{
+    background-color: #6F42C1;
+}
+
+.register-btn:hover{
+    background-color: #563d7c;
+}
+
+.reset-btn{
+    background-color: #FD7E14;
+}
+
+.reset-btn:hover{
+    background-color: #e8590c;
+}
+
 .lending-section{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+
+.lending-section div{
+    margin: 20px;
 }
 
 .styled-input-box {
     display: inline-block;
     position: relative;
-    border: 2px solid #c91515; 
+    border: 2px solid #000; 
     padding: 2px 10px;
     border-radius: 3px;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 
 .styled-input-box label {
@@ -182,13 +246,34 @@ table th, table td {
 .amount-section{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .final-action{
     display: flex;
     flex-direction: column;
+    justify-content: space-around
 }
 
 .final-action button{
     border-radius: 5px;
+    width: 200px;
+    height: 50px;
+    font-size:x-large
+}
+
+.save-btn{
+    background-color: #007BFF;
+}
+
+.save-btn:hover{
+    background-color: #0056b3;
+}
+
+.print-btn{
+    background-color: #343A40;
+}
+
+.print-btn:hover{
+    background-color: #212529;
 }

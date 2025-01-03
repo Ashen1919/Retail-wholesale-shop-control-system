@@ -62,14 +62,14 @@
                 </div>
             </div>
             <div class="secondary-header-btn">
-                <button>Clear</button>
-                <button>Add</button>
+                <button class="clear-btn">Clear</button>
+                <button class="add-btn">Add</button>
             </div>
         </div>
 
         <div class="table-div">
-            <thead>
-                    <table>
+            <table>
+                <thead>
                     <tr>
                         <th>No</th>
                         <th>Product ID</th>
@@ -90,17 +90,17 @@
         <div class="footer-section">
             <div class="four-btns">
                 <div class="upper-btns">
-                    <button>Continue</button>
-                    <button>New</button>
+                    <button class="continue-btn">Continue</button>
+                    <button class="new-btn">New</button>
                 </div>
                 <div class="lower-btns"> 
-                    <button>Register</button>
-                    <button>Reset</button>
+                    <button class="register-btn">Register</button>
+                    <button class="reset-btn">Reset</button>
                 </div>
             </div>
             <div class="lending-section">
                 <label><input type="checkbox" name="payment" value="lending"> Lending</label>
-                <div class="styled-input-box">
+                <div id="styled-input-box" class="styled-input-box">
                     <label>Amount</label>
                     <input type="number" placeholder="0.00">
                 </div>
@@ -121,8 +121,8 @@
                 </div>
             </div>
             <div class="final-action">
-                <button>Save</button>
-                <button>Print</button>
+                <button class="save-btn">Save</button>
+                <button class="print-btn">Print</button>
             </div>
         </div>
     </div>
