@@ -21,11 +21,11 @@
                 <button>Search</button>
             </div>
             <div>
-            <label for="date">Date : </label>
+                <label for="date">Date : </label>
                 <input type="text" disabled>
             </div>
             <div>
-            <label for="time">Time : </label>
+                <label for="time">Time : </label>
                 <input type="text" disabled>
             </div>
         </div>
