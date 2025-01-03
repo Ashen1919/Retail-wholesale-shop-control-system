@@ -55,13 +55,11 @@
     <input type="password" id="password" placeholder="Enter your Newpassword">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
 </div>
-<div class="password-section">
-    <label for="retype-password">Retype Password</label>
-    <input type="password" id="retype-password" placeholder="Retype your password">
-    <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
-  </div>
-  <div id="error-message"></div>
-  
+    <div class="password-section1">
+      <label for="retype-password">Retype Password:</label>
+      <input type="password" id="retype-password" placeholder="Enter your Retype password">
+      <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
+    </div>
     <button type="submit">Sign Up</button>
 </form>
 <div class="login-link">
