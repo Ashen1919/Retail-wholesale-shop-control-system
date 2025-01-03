@@ -56,6 +56,8 @@ body {
 }
 .password-section{
     padding-right: 30px;
+    position: relative;
+  margin-bottom: 20px;
 }
 .password-section1{
     padding-right: 30px;
@@ -72,4 +74,15 @@ body {
     padding: 5px;
     padding-top: 10px;
     height: 34px;
+    
   }
+  .form-container .toggle-icon1 {
+    position: absolute;
+    color: rgb(5, 4, 4);
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    padding-top: 10px;
+    height: 34px;
+  }
+  
