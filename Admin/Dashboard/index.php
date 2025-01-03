@@ -180,8 +180,56 @@
                             </div>
                         </div>
                         <div class="pie-chart-card">
-                            <canvas class="canvas-pie" width="100px" height="100px" id="myPieChart"></canvas>
+                            <canvas class="canvas-pie" style="width:100%;max-width:360px height:100%; max-height:360px;"
+                                id="myPieChart"></canvas>
                         </div>
+                    </div>
+                </div>
+                <!--Top selling section-->
+                <div class="top-selling">
+                    <h3 style="color: white; margin-bottom: 15px">Top Selling</h3>
+                    <div class="table-section">
+                        <table class="table-top">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>Sold</th>
+                                    <th>Total Earning</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nadu Rice 5Kg</td>
+                                    <td>1,500</td>
+                                    <td>In Stock</td>
+                                    <td>200</td>
+                                    <td>300,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Dhal 1Kg</td>
+                                    <td>340</td>
+                                    <td>In Stock</td>
+                                    <td>155</td>
+                                    <td>52,700</td>
+                                </tr>
+                                <tr>
+                                    <td>Sugar 1Kg</td>
+                                    <td>400</td>
+                                    <td>Low Stock</td>
+                                    <td>100</td>
+                                    <td>40,000</td>
+                                </tr>
+                                <tr>
+                                    <td>Samba Rice 10Kg</td>
+                                    <td>2,500</td>
+                                    <td>In Stock</td>
+                                    <td>95</td>
+                                    <td>161,500</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -192,7 +240,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../Assets/js/bar-chart.js"></script>
-    <script src="../Assets/js/pie-chart.js"></script>
+    <script src="../Assets/js/pie-charts.js"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>
