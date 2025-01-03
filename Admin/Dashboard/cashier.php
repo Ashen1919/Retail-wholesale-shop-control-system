@@ -104,8 +104,8 @@
 
         <!--Right side-->
         <div class="right-side">
-        <h2 style="color:white; margin-bottom:20px;">Cashier Management </h2>
-
+            <h2 style="color:white; margin-bottom:20px;">Cashier Management </h2>
+            cashier
         </div>
         <!--End of right side-->
     </div>
