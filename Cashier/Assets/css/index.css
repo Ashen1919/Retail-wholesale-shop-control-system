@@ -30,7 +30,13 @@
     gap: 10px;
 }
 
-.counter-button {
+.menu-button.active {
+    background-color: #4CAF50; /* Highlight color */
+    color: white;
+}
+
+
+#counter-button {
     background-color: #2980b9;
     color: white;
     border: none;
@@ -42,7 +48,7 @@
     width: 200px;
 }
 
-.statistics-button {
+#statistics-button {
     background-color: #2980b9;
     color: white;
     border: none;

@@ -14,8 +14,8 @@
             </div>
 
             <div class="menu-buttons">
-                <button class="counter-button">Counter</button>
-                <button class="statistics-button">Statistics</button>
+                <button id="counter-button" class="menu-button" data-page="./counter.php">Counter</button>
+                <button id="statistics-button" class="menu-button" data-page="./statistics.php">Statistics</button>
             </div>
 
             <div class="menu-profile">
@@ -29,8 +29,8 @@
             </div>
         </div>
 
-        <div class="content">
-        </div>
+        <div class="content"></div>
     </div>
+    <script src="./Assets/js/index.js"></script>
 </body>
 </html>
