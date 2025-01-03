@@ -15,11 +15,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
-    height: 600px;
+    height: 650px;
 }
 .form-container h1 {
     text-align: center;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
 }
 .form-container label {
     font-weight: bold;

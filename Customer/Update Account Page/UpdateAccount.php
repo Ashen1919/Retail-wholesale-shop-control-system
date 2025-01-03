@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/Register.css" rel="stylesheet">
+    <link href="../Assets/css/UpdateAccount.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -25,7 +25,7 @@
 <div class="form-container">
 
 
-<h1>Register</h1>
+<h1>Update Account</h1>
 <form id="registerForm" action="process_register.php" method="POST">
 
     <label for="firstName">First Name</label>
@@ -51,10 +51,15 @@
         <option value="other">Other</option>
     </select>
 <div class="password-section">
-    <label for="password">Password</label>
+    <label for="N password">New Password</label>
     <input type="password" id="password" placeholder="Enter your password">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-</div> 
+</div>
+    <div class="password-section">
+      <label for="retype-password">Retype Password:</label>
+      <input type="password" id="retype-password" placeholder="Retype your password">
+      <i id="toggleRetypePassword" class="fas fa-eye-slash toggle-icon"></i>
+    </div>
     <button type="submit">Sign Up</button>
 </form>
 <div class="login-link">
