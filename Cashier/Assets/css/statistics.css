@@ -52,6 +52,7 @@ caption {
 
 .sales-table, .cashier-table {
     border: none; 
+    height: 550px;
 }
 
 .sales-table{
