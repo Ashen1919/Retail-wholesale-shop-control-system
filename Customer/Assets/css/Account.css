@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
+  
+  }
+  
+  .account-container {
+    background: #c7bebe;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display:flex;
+    flex-direction: column;
+  }
+  
+  h1 {
+    font-size: 10px;
+    margin-bottom: 20px;
+    color: #0a0909;
+    text-align: center;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content:space-between;
+    
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #292828;
+  }
+  
+  input {
+    width: 65%;
+    padding: 1px;
+    border: 3px solid #f3f1f1;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #313131;
+    background: #eeeaea;
+  }
+  
+  input[readonly] {
+    background: #e9ecef;
+    cursor: not-allowed;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 5px 35px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  button.edit {
+    background: #007bff;
+    color: white;
+    
+  }
+  
+  
+  
+  button:hover {
+    opacity: 0.9;
+  }
+  

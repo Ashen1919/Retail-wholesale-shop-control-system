@@ -1,0 +1,71 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ededf3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.form-container {
+    background: #d6d2d2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 600px;
+}
+.form-container h1 {
+    text-align: center;
+    margin-bottom: -10px;
+}
+.form-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 2px;
+}
+.form-container input,
+.form-container select,
+.form-container button {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+}
+.form-container button {
+    background-color: #006eff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.form-container button:hover {
+    background-color: #0056b3;
+}
+.form-container .login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+.form-container .login-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+.form-container .login-link a:hover {
+    text-decoration: underline;
+}
+.password-section{
+    padding-right: 30px;
+}
+.password-section input{
+    position: relative;
+}
+.form-container .toggle-icon {
+    position: absolute;
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    padding-top: 10px;
+    height: 34px;
+  }

@@ -9,3 +9,4 @@ togglePassword.addEventListener('click', () => {
   // Toggle the icon
   togglePassword.className = isPasswordVisible ? 'fas fa-eye-slash toggle-icon' : 'fas fa-eye toggle-icon';
 });
+
