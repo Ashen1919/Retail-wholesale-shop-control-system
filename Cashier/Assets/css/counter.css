@@ -6,13 +6,13 @@ body {
 }
 
 .container {
-    padding: 20px;
+    padding: 0;
 }
 
 .header-section{
     display: flex;
     justify-content: space-around;
-    margin: 20px 0px;
+    margin-bottom: 20px;
 }
 
 .header-section input[type="text"], 
@@ -89,7 +89,7 @@ body {
 
 .table-div{
     border: solid 1px #000;
-    height: 370px;
+    height: 335px;
 }
 
 table {
@@ -241,7 +241,6 @@ thead{
     width: 100%; 
     padding: 5px; 
 }
-
 
 .amount-section{
     display: flex;
