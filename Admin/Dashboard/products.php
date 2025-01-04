@@ -11,7 +11,7 @@
     <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/styles.css" rel="stylesheet">
+    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -91,6 +91,11 @@
             <a href="cashier.php">
                 <div class="dashboard">
                     <i class="bi bi-person"></i>Cashier
+                </div>
+            </a>
+            <a href="promotion.php">
+                <div class="dashboard">
+                    <i class="bi bi-percent"></i>Promotions
                 </div>
             </a>
             <a href="settings.php">
