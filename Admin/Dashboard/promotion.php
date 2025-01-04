@@ -14,6 +14,7 @@
     <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="../Assets/css/promotion.css" rel="stylesheet">
 
 </head>
 
@@ -109,7 +110,26 @@
 
         <!--Right side-->
         <div class="right-side">
+            <div class="table-section">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Promo ID</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
+            <button>
+                <i class="bi bi-plus fs-3" ></i>
+                Add Promo
+            </button>
         </div>
         <!--End of right side-->
     </div>

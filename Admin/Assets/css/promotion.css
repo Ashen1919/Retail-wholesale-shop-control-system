@@ -1,0 +1,48 @@
+body {
+    overflow: hidden;
+}
+
+.right-side {
+    height: 94vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.table-section {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    height: 86%;
+    padding: 10px;
+}
+
+table{
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.right-side button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.right-side i {
+    padding-bottom: 10px;
+}
+
+button:hover {
+    background-color: #005ec3;
+}
+
