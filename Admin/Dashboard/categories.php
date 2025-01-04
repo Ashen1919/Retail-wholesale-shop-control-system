@@ -11,7 +11,8 @@
     <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/styles.css" rel="stylesheet">
+    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/category.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -108,8 +109,82 @@
         <!--End of left side-->
 
         <!--Right side-->
-        <div class="right-side">
-
+        <div class="right-side-category">
+            <h2 style="color:white; margin-bottom:20px;">Categories</h2>
+            <div class="category-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grocery</td>
+                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
+                                snacks, and essentials.</td>
+                            <td><img src="../Assets/images/categories/grocery.png" alt=""></td>
+                            <td >
+                                <div class="action">
+                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Vegetables</td>
+                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
+                                snacks, and essentials.</td>
+                            <td><img src="../Assets/images/categories/vegetables.jpg" alt=""></td>
+                            <td >
+                                <div class="action">
+                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fruits</td>
+                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
+                                snacks, and essentials.</td>
+                            <td><img src="../Assets/images/categories/fruit.jpg" alt=""></td>
+                            <td >
+                                <div class="action">
+                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Household</td>
+                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
+                                snacks, and essentials.</td>
+                            <td><img src="../Assets/images/categories/household.jpg" alt=""></td>
+                            <td >
+                                <div class="action">
+                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Beverages</td>
+                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
+                                snacks, and essentials.</td>
+                            <td><img src="../Assets/images/categories/beverages.jpg" alt=""></td>
+                            <td >
+                                <div class="action">
+                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--End of right side-->
     </div>
