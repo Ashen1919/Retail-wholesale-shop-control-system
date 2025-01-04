@@ -93,6 +93,11 @@
                     <i class="bi bi-person"></i>Cashier
                 </div>
             </a>
+            <a href="promotion.php">
+                <div class="dashboard">
+                    <i class="bi bi-percent"></i>Promotions
+                </div>
+            </a>
             <a href="settings.php">
                 <div class="dashboard">
                     <i class="bi bi-gear-wide-connected"></i>Settings
