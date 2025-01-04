@@ -1,0 +1,77 @@
+
+.right-side-category{
+    width: 80%;
+    background-color: #111827;
+    padding: 10px;
+    height: 100vh;
+    right: 0;
+    margin-left: 20%;
+    margin-top: 65px;
+    overflow-y: hidden;
+}
+.category-table{
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+table{
+    width: 100%;
+    height: auto;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid #111827; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+}
+table th, table td{
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    border-collapse: collapse;
+}
+table th{
+    text-align: center;
+}
+table tbody tr{
+    transition: 0.3s ease-in;
+}
+table tbody tr:hover{
+    background:#111827;
+    transition: 0.3s ease-out;
+}
+table td img{
+    width: 70px;
+    height: auto;
+}
+table tbody tr .action{
+    display: flex;
+    gap: 10px;
+}
+table tbody tr .action button{
+    padding: 3px 13px 5px 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+table tbody tr .action .edit{
+    background-color: #007bff;
+    transition: 0.3s ease-out;
+}
+table tbody tr .action .edit:hover{
+    background-color: #005ec3;
+    transition: 0.3s ease-in;
+}
+table tbody tr .action .delete{
+    background-color: #f00a0a;
+    transition: 0.3s ease-out;
+}
+table tbody tr .action .delete:hover{
+    background-color: #D90505;
+    transition: 0.3s ease-in;
+}
