@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #ededf3;
+    background-color: #0f0f9e;
     margin: 0;
     padding: 0;
     display: flex;
@@ -15,16 +15,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
-    height: 650px;
+    height: 600px;
 }
 .form-container h1 {
     text-align: center;
-    margin-bottom: -5px;
+    margin-bottom: 10px;
+    font-size: 35px;
 }
 .form-container label {
     font-weight: bold;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: -2px;
 }
 .form-container input,
 .form-container select,
@@ -56,16 +57,34 @@ body {
 }
 .password-section{
     padding-right: 30px;
+    
+}
+.password-section1{
+    padding-right: 30px;
+   
 }
 .password-section input{
     position: relative;
 }
+.password-section1 input{
+    position: relative;
+}
 .form-container .toggle-icon {
     position: absolute;
-    color: black;
+    color: rgb(5, 4, 4);
     cursor: pointer;
     background-color: white;
     padding: 5px;
     padding-top: 10px;
     height: 34px;
   }
+  .form-container .toggle-icon1 {
+    position: absolute;
+    color: rgb(5, 4, 4);
+    cursor: pointer;
+    background-color: white;
+    padding: 5px;
+    padding-top: 10px;
+    height: 34px;
+  }
+  
