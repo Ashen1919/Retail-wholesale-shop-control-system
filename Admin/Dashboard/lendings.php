@@ -14,6 +14,7 @@
     <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="../Assets/css/lendings.css" rel="stylesheet">
 
 </head>
 
@@ -109,7 +110,75 @@
 
         <!--Right side-->
         <div class="right-side">
+            <!-- Total Lendings Section -->
+            <div class="total-lendings">
+                <div class="header">
+                    <div class="search-bar">
+                        <input type="search" name="search-lendings" placeholder="Search">
+                        <button><i class="bi bi-search"></i></button>
+                    </div>
+                    <h3>Total Lendings</h3>
+                    <button class="filter-button"><i class="bi bi-funnel"></i> Filter</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>NIC</th>
+                            <th>P. Number</th>
+                            <th>Address</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
 
+            <!-- Lower Section with Lendings and Repayments -->
+            <div class="lower-section">
+                <div class="lendings">
+                    <div class="header">
+                        <h4>Lendings</h4>
+                        <div class="actions">
+                            <button><i class="bi bi-search"></i></button>
+                            <button><i class="bi bi-funnel"></i></button>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>NIC</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="repayments">
+                    <div class="header">
+                        <h4>Repayments</h4>
+                        <div class="actions">
+                            <button><i class="bi bi-search"></i></button>
+                            <button><i class="bi bi-funnel"></i></button>
+                        </div>
+                </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>NIC</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!--End of right side-->
     </div>

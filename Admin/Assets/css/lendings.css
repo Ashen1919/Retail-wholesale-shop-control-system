@@ -1,0 +1,85 @@
+body {
+    overflow: hidden;
+}
+
+.right-side {
+    height: 94vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.total-lendings, .lendings, .repayments {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.total-lendings {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.header .search-bar input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: 5px;
+}
+
+.header .filter-button, .header .actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.header .filter-button:hover, .header .actions button:hover {
+    background-color: #005ec3;
+}
+
+.header h3, .header h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.table th, .table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.lower-section {
+    display: flex;
+    gap: 20px;
+}
+
+.lower-section {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.lendings, .repayments {
+    width: 50%;
+}
