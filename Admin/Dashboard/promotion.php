@@ -177,6 +177,9 @@
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Promo</h3>
             <form id="addPromoForm">
+                <label for="promoId">Promo ID:</label>
+                <input type="text" id="promoId" name="promoId" disabled>
+
                 <label for="promoTitle">Title:</label>
                 <input type="text" id="promoTitle" name="promoTitle" required>
                 
