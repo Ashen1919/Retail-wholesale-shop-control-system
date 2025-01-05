@@ -127,9 +127,10 @@
                             <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
                                 snacks, and essentials.</td>
                             <td><img src="../Assets/images/categories/grocery.png" alt=""></td>
-                            <td >
+                            <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -139,9 +140,10 @@
                             <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
                                 snacks, and essentials.</td>
                             <td><img src="../Assets/images/categories/vegetables.jpg" alt=""></td>
-                            <td >
+                            <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -151,9 +153,10 @@
                             <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
                                 snacks, and essentials.</td>
                             <td><img src="../Assets/images/categories/fruit.jpg" alt=""></td>
-                            <td >
+                            <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -163,9 +166,10 @@
                             <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
                                 snacks, and essentials.</td>
                             <td><img src="../Assets/images/categories/household.jpg" alt=""></td>
-                            <td >
+                            <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -175,9 +179,10 @@
                             <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
                                 snacks, and essentials.</td>
                             <td><img src="../Assets/images/categories/beverages.jpg" alt=""></td>
-                            <td >
+                            <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -200,19 +205,23 @@
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Category</h3>
             <form id="addPromoForm">
+                <label for="catID">Category ID:</label>
+                <input type="text" id="catID" name="catID" required>
+
                 <label for="name">Category Name:</label>
                 <input type="text" id="name" name="name" required>
-                
+
                 <label for="categoryDescription">Description:</label>
                 <textarea id="categoryDescription" name="categoryDescription" required></textarea>
-                
+
                 <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)" required>
-                
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
+                    onchange="previewImage(event)" required>
+
                 <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
+                    <img id="imagePreview" src="" alt="Image Preview" />
                 </div>
-                
+
                 <button type="submit">Add Category</button>
             </form>
         </div>
@@ -224,19 +233,23 @@
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Category</h3>
             <form id="addPromoForm">
+                <label for="catID">Category ID:</label>
+                <input type="text" id="catID" name="catID" required disabled>
+
                 <label for="name">Category Name:</label>
                 <input type="text" id="name" name="name" required>
-                
+
                 <label for="categoryDescription">Description:</label>
                 <textarea id="categoryDescription" name="categoryDescription" required></textarea>
-                
+
                 <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)" required>
-                
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
+                    onchange="previewImage(event)" required>
+
                 <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
+                    <img id="imagePreview" src="" alt="Image Preview" />
                 </div>
-                
+
                 <button type="submit">Update Category</button>
             </form>
         </div>
