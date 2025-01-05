@@ -126,8 +126,8 @@
                 </table>
             </div>
 
-            <button>
-                <i class="bi bi-plus fs-3" ></i>
+            <button onclick="openModal('addPromoModal')">
+                <i class="bi bi-plus fs-3"></i>
                 Add Promo
             </button>
         </div>
@@ -135,7 +135,33 @@
     </div>
     <!--End of main body-->
 
+    <!-- Add Promo Modal -->
+    <div id="addPromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
+            <h3>Add Promo</h3>
+            <form id="addPromoForm">
+                <label for="promoTitle">Title:</label>
+                <input type="text" id="promoTitle" name="promoTitle" required>
+                
+                <label for="promoDescription">Description:</label>
+                <textarea id="promoDescription" name="promoDescription" required></textarea>
+                
+                <label for="promoImage">Image:</label>
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
+                
+                <!-- Display selected image preview -->
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview"/>
+                </div>
+                
+                <button type="submit">Add Promo</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Assets/js/script.js"></script>
+    <script src="../Assets/js/promotion.js"></script>
 
 </body>
 
