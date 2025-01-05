@@ -25,3 +25,12 @@ function previewImage(event) {
     
     output.src = URL.createObjectURL(event.target.files[0]);
 }
+
+function upreviewImage(event) {
+    var output = document.getElementById('u_imagePreview');
+    var container = document.getElementById('u_imagePreviewContainer');
+    
+    container.style.display = 'block';
+    
+    output.src = URL.createObjectURL(event.target.files[0]);
+}

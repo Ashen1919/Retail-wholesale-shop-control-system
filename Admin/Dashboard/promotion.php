@@ -214,13 +214,13 @@
                 <textarea id="promoDescription" name="promoDescription" required></textarea>
                 
                 <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="upreviewImage(event)" required>
                 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
+                <div id="u_imagePreviewContainer" style="display: none;">
+                    <img id="u_imagePreview" src="" alt="Image Preview"/>
                 </div>
                 
-                <button type="submit">Update</button>
+                <button type="submit">Update Promo</button>
             </form>
         </div>
     </div>
