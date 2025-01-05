@@ -160,6 +160,34 @@
         </div>
     </div>
 
+    <!-- Update Promo Modal -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Promo</h3>
+            <form id="updatePromoForm">
+                <label for="promoId">Promo ID:</label>
+                <input type="text" id="promoId" name="promoId" disabled>
+
+                <label for="promoTitle">Title:</label>
+                <input type="text" id="promoTitle" name="promoTitle" required>
+                
+                <label for="promoDescription">Description:</label>
+                <textarea id="promoDescription" name="promoDescription" required></textarea>
+                
+                <label for="promoImage">Image:</label>
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
+                
+                <!-- Display selected image preview -->
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview"/>
+                </div>
+                
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/promotion.js"></script>
 
