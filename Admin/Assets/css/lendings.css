@@ -3,17 +3,19 @@ body {
 }
 
 .right-side {
-    height: 94vh;
+    height: 92vh;
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
 .total-lendings, .lendings, .repayments {
+    height: 42vh; /* Adjust this value as needed */
+    overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin-bottom: 20px;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 .total-lendings {
@@ -34,6 +36,7 @@ body {
 
 .header .search-bar input {
     padding: 5px;
+    padding-left: 10px;
     border: 1px solid #ccc;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -69,17 +72,18 @@ body {
     border: 1px solid #ccc;
 }
 
-.lower-section {
-    display: flex;
-    gap: 20px;
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #1f2937;
+    z-index: 1;
 }
 
 .lower-section {
-    flex: 1;
     display: flex;
     gap: 10px;
 }
 
 .lendings, .repayments {
-    width: 50%;
+    flex: 1;
 }
