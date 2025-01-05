@@ -12,7 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/category.css" rel="stylesheet">
+    <link href="../Assets/css/categorie.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -129,7 +129,7 @@
                             <td><img src="../Assets/images/categories/grocery.png" alt=""></td>
                             <td >
                                 <div class="action">
-                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -141,7 +141,7 @@
                             <td><img src="../Assets/images/categories/vegetables.jpg" alt=""></td>
                             <td >
                                 <div class="action">
-                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -153,7 +153,7 @@
                             <td><img src="../Assets/images/categories/fruit.jpg" alt=""></td>
                             <td >
                                 <div class="action">
-                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -165,7 +165,7 @@
                             <td><img src="../Assets/images/categories/household.jpg" alt=""></td>
                             <td >
                                 <div class="action">
-                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -177,7 +177,7 @@
                             <td><img src="../Assets/images/categories/beverages.jpg" alt=""></td>
                             <td >
                                 <div class="action">
-                                    <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -185,12 +185,65 @@
                     </tbody>
                 </table>
             </div>
+            <button onclick="openModal('addPromoModal')">
+                <i class="bi bi-plus fs-3"></i>
+                Add Category
+            </button>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
+    <!-- Add Promo Modal -->
+    <div id="addPromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
+            <h3>Add Category</h3>
+            <form id="addPromoForm">
+                <label for="name">Category Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="categoryDescription">Description:</label>
+                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+                
+                <label for="categoryImage">Image:</label>
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)" required>
+                
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview"/>
+                </div>
+                
+                <button type="submit">Add Category</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Promo Modal -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Category</h3>
+            <form id="addPromoForm">
+                <label for="name">Category Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="categoryDescription">Description:</label>
+                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+                
+                <label for="categoryImage">Image:</label>
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)" required>
+                
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview"/>
+                </div>
+                
+                <button type="submit">Update Category</button>
+            </form>
+        </div>
+    </div>
+
     <script src="../Assets/js/script.js"></script>
+    <script src="../Assets/js/promotion.js"></script>
 
 </body>
 
