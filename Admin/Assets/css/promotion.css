@@ -46,7 +46,36 @@ button:hover {
     background-color: #005ec3;
 }
 
-/* Add Promo Modal styles */
+.action {
+    display: flex;
+    justify-content: space-around;
+}
+
+.action button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer; 
+    padding: 5px;
+    font-size: x-large;
+}
+
+.action button.edit i {
+    color: blue;
+}
+
+.action button.edit:hover i {
+    color: darkblue; 
+}
+
+.action button.delete i {
+    color: red; 
+}
+
+.action button.delete:hover i {
+    color: darkred; 
+}
+
+/* Add & Update Promo Modal styles */
 .modal {
     display: none; 
     position: fixed;
