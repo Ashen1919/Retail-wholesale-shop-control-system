@@ -8,10 +8,13 @@
 
     <!-- Favicons -->
     <link href="../Assets/images/logo.png" rel="icon">
+ 
     <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/cashier.css" rel="stylesheet">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -109,13 +112,34 @@
 
         <!--Right side-->
         <div class="right-side">
-            <h2 style="color:white; margin-bottom:20px;">Cashier Management </h2>
-            cashier
+            <section>
+        <table>
+          <thead>
+            <tr>
+              <th>Cashier ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>NIC</th>
+              <th>Phone Number</th>
+              <th>Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="cashierTableBody">
+            <!-- Dynamic Rows will be added here -->
+          </tbody>
+        </table>
+</section>
+        <button id="addCashierBtn" class="add-btn">+ Add Cashier</button>
+      
+            
+            
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
+    <script src="../Assets/js/cashier.js"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>
