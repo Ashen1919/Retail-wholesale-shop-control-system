@@ -110,6 +110,14 @@ thead{
     color: #fff;
 }
 
+table tbody tr:nth-child(even) {
+    background-color: #d6d6d6; 
+}
+
+table tbody tr:hover {
+    background-color: white; 
+}
+
 table tbody tr .action{
     display: flex;
     justify-content: space-around;
