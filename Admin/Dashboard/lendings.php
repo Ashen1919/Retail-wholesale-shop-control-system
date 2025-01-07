@@ -14,6 +14,7 @@
     <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="../Assets/css/lendings.css" rel="stylesheet">
 
 </head>
 
@@ -109,7 +110,205 @@
 
         <!--Right side-->
         <div class="right-side">
+            <!-- Total Lendings Section -->
+            <div class="total-lendings">
+                <div class="header">
+                    <div class="search-bar">
+                        <input type="search" name="search-lendings" placeholder="Search">
+                        <button><i class="bi bi-search"></i></button>
+                    </div>
+                    <h3>Total Lendings</h3>
+                    <button class="filter-button"><i class="bi bi-funnel"></i> Filter</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>NIC</th>
+                            <th>P. Number</th>
+                            <th>Address</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>123456789V</td>
+                            <td>+94 71 123 4567</td>
+                            <td>123 Main Street, Colombo</td>
+                            <td>Rs. 25,000</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>987654321V</td>
+                            <td>+94 77 987 6543</td>
+                            <td>456 High Street, Kandy</td>
+                            <td>Rs. 45,500</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Perera</td>
+                            <td>564738291V</td>
+                            <td>+94 71 456 7890</td>
+                            <td>789 Lake Road, Galle</td>
+                            <td>Rs. 15,750</td>
+                        </tr>
+                        <tr>
+                            <td>Kavindi Silva</td>
+                            <td>345678912V</td>
+                            <td>+94 75 345 6789</td>
+                            <td>234 Hill Avenue, Jaffna</td>
+                            <td>Rs. 32,000</td>
+                        </tr>
+                        <tr>
+                            <td>Suresh De Silva</td>
+                            <td>912345678V</td>
+                            <td>+94 72 912 3456</td>
+                            <td>567 Beach Road, Negombo</td>
+                            <td>Rs. 60,000</td>
+                        </tr>
+                        <tr>
+                            <td>John Doe</td>
+                            <td>123456789V</td>
+                            <td>+94 71 123 4567</td>
+                            <td>123 Main Street, Colombo</td>
+                            <td>Rs. 25,000</td>
+                        </tr>
+                        <tr>
+                            <td>Jane Smith</td>
+                            <td>987654321V</td>
+                            <td>+94 77 987 6543</td>
+                            <td>456 High Street, Kandy</td>
+                            <td>Rs. 45,500</td>
+                        </tr>
+                        <tr>
+                            <td>Amal Perera</td>
+                            <td>564738291V</td>
+                            <td>+94 71 456 7890</td>
+                            <td>789 Lake Road, Galle</td>
+                            <td>Rs. 15,750</td>
+                        </tr>
+                        <tr>
+                            <td>Kavindi Silva</td>
+                            <td>345678912V</td>
+                            <td>+94 75 345 6789</td>
+                            <td>234 Hill Avenue, Jaffna</td>
+                            <td>Rs. 32,000</td>
+                        </tr>
+                        <tr>
+                            <td>Suresh De Silva</td>
+                            <td>912345678V</td>
+                            <td>+94 72 912 3456</td>
+                            <td>567 Beach Road, Negombo</td>
+                            <td>Rs. 60,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
+            <!-- Lower Section with Lendings and Repayments -->
+            <div class="lower-section">
+                <div class="lendings">
+                    <div class="header">
+                        <h4>Lendings</h4>
+                        <div class="actions">
+                            <button><i class="bi bi-search"></i></button>
+                            <button><i class="bi bi-funnel"></i></button>
+                        </div>
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>NIC</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123456789V</td>
+                                <td>2025-01-01</td>
+                                <td>Rs. 12,000</td>
+                            </tr>
+                            <tr>
+                                <td>987654321V</td>
+                                <td>2025-01-02</td>
+                                <td>Rs. 25,500</td>
+                            </tr>
+                            <tr>
+                                <td>564738291V</td>
+                                <td>2025-01-03</td>
+                                <td>Rs. 18,750</td>
+                            </tr>
+                            <tr>
+                                <td>345678912V</td>
+                                <td>2025-01-04</td>
+                                <td>Rs. 30,000</td>
+                            </tr>
+                            <tr>
+                                <td>912345678V</td>
+                                <td>2025-01-05</td>
+                                <td>Rs. 50,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="repayments">
+                    <div class="header">
+                        <h4>Repayments</h4>
+                        <div class="actions">
+                            <button><i class="bi bi-search"></i></button>
+                            <button><i class="bi bi-funnel"></i></button>
+                        </div>
+                </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>NIC</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123456789V</td>
+                                <td>2025-01-01</td>
+                                <td>Rs. 12,000</td>
+                            </tr>
+                            <tr>
+                                <td>987654321V</td>
+                                <td>2025-01-02</td>
+                                <td>Rs. 25,500</td>
+                            </tr>
+                            <tr>
+                                <td>564738291V</td>
+                                <td>2025-01-03</td>
+                                <td>Rs. 18,750</td>
+                            </tr>
+                            <tr>
+                                <td>345678912V</td>
+                                <td>2025-01-04</td>
+                                <td>Rs. 30,000</td>
+                            </tr>
+                            <tr>
+                                <td>912345678V</td>
+                                <td>2025-01-05</td>
+                                <td>Rs. 50,000</td>
+                            </tr>
+                            <tr>
+                                <td>111222333V</td>
+                                <td>2025-01-06</td>
+                                <td>Rs. 20,000</td>
+                            </tr>
+                            <tr>
+                                <td>444555666V</td>
+                                <td>2025-01-07</td>
+                                <td>Rs. 35,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!--End of right side-->
     </div>

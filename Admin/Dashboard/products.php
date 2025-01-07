@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/products.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -109,12 +110,276 @@
 
         <!--Right side-->
         <div class="right-side">
-
+            <div class="head-section">
+                <div class="topic">
+                    <h2 style="color:white; margin-bottom:20px;">Products</h2>
+                </div>
+                <div class="button-section">
+                    <button class="addbtn" onclick="openModal('addPromoModal')">
+                        <i class="bi bi-plus fs-3"></i>
+                        Add Product
+                    </button>
+                    <div class="catFilter">
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn"><i class="bi bi-funnel"></i> Filter by
+                                category
+                                <i class="bi bi-chevron-down"></i></button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <p>Grocery</p>
+                                <p>Vegetables</p>
+                                <p>Fruits</p>
+                                <p>Household</p>
+                                <p>Beverages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-details">
+                <!--Product details-->
+                <div class="products-content">
+                    <div class="product-img">
+                        <h4>Samba 5kg</h4>
+                        <img src="../Assets/images/products/samba.jpg" alt="">
+                    </div>
+                    <div class="general-details">
+                        <h5 class="general-topic">General Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product ID :</p>
+                            <p style="opacity:70%">p001</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Description:</p>
+                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
+                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
+                                and fried rice.</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product Category :</p>
+                            <p style="opacity:70%">Grocery</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Quantity :</p>
+                            <p style="opacity:70%">100</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Supplier :</p>
+                            <p style="opacity:70%">Araliya</p>
+                        </div>
+                    </div>
+                    <div class="price-details">
+                        <h5 class="general-topic">Price Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Purchased Price :</p>
+                            <p style="opacity:70%">1,200</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Price :</p>
+                            <p style="opacity:70%">1,500</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Profit :</p>
+                            <p style="opacity:70%">300</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Price :</p>
+                            <p style="opacity:70%">1,350</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Profit :</p>
+                            <p style="opacity:70%">150</p>
+                        </div>
+                        <div class="action">
+                            <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-content">
+                    <div class="product-img">
+                        <h4>Samba 5kg</h4>
+                        <img src="../Assets/images/products/samba.jpg" alt="">
+                    </div>
+                    <div class="general-details">
+                        <h5 class="general-topic">General Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product ID :</p>
+                            <p style="opacity:70%">p001</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Description:</p>
+                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
+                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
+                                and fried rice.</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product Category :</p>
+                            <p style="opacity:70%">Grocery</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Quantity :</p>
+                            <p style="opacity:70%">100</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Supplier :</p>
+                            <p style="opacity:70%">Araliya</p>
+                        </div>
+                    </div>
+                    <div class="price-details">
+                        <h5 class="general-topic">Price Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Purchased Price :</p>
+                            <p style="opacity:70%">1,200</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Price :</p>
+                            <p style="opacity:70%">1,500</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Profit :</p>
+                            <p style="opacity:70%">300</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Price :</p>
+                            <p style="opacity:70%">1,350</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Profit :</p>
+                            <p style="opacity:70%">150</p>
+                        </div>
+                        <div class="action">
+                            <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-content">
+                    <div class="product-img">
+                        <h4>Samba 5kg</h4>
+                        <img src="../Assets/images/products/samba.jpg" alt="">
+                    </div>
+                    <div class="general-details">
+                        <h5 class="general-topic">General Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product ID :</p>
+                            <p style="opacity:70%">p001</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Description:</p>
+                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
+                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
+                                and fried rice.</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product Category :</p>
+                            <p style="opacity:70%">Grocery</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Quantity :</p>
+                            <p style="opacity:70%">100</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Supplier :</p>
+                            <p style="opacity:70%">Araliya</p>
+                        </div>
+                    </div>
+                    <div class="price-details">
+                        <h5 class="general-topic">Price Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Purchased Price :</p>
+                            <p style="opacity:70%">1,200</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Price :</p>
+                            <p style="opacity:70%">1,500</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Profit :</p>
+                            <p style="opacity:70%">300</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Price :</p>
+                            <p style="opacity:70%">1,350</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Profit :</p>
+                            <p style="opacity:70%">150</p>
+                        </div>
+                        <div class="action">
+                            <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="products-content">
+                    <div class="product-img">
+                        <h4>Samba 5kg</h4>
+                        <img src="../Assets/images/products/samba.jpg" alt="">
+                    </div>
+                    <div class="general-details">
+                        <h5 class="general-topic">General Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product ID :</p>
+                            <p style="opacity:70%">p001</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Description:</p>
+                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
+                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
+                                and fried rice.</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Product Category :</p>
+                            <p style="opacity:70%">Grocery</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Quantity :</p>
+                            <p style="opacity:70%">100</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Supplier :</p>
+                            <p style="opacity:70%">Araliya</p>
+                        </div>
+                    </div>
+                    <div class="price-details">
+                        <h5 class="general-topic">Price Details</h5>
+                        <div class="id">
+                            <p style="font-weight:700; ">Purchased Price :</p>
+                            <p style="opacity:70%">1,200</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Price :</p>
+                            <p style="opacity:70%">1,500</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Retail Profit :</p>
+                            <p style="opacity:70%">300</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Price :</p>
+                            <p style="opacity:70%">1,350</p>
+                        </div>
+                        <div class="id">
+                            <p style="font-weight:700; ">Wholesale Profit :</p>
+                            <p style="opacity:70%">150</p>
+                        </div>
+                        <div class="action">
+                            <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                    class="bi bi-pencil-square"></i></button>
+                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
+    <script src="../Assets/js/product.js"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>

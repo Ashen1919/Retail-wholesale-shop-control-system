@@ -1,0 +1,175 @@
+.right-side{
+    height: 220vh;
+}
+.head-section{
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+.head-section .button-section .addbtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.3s ease-out;
+    justify-self: center;
+}
+
+.head-section .button-section i {
+    padding-bottom: 5px;
+}
+
+.head-section .button-section .addbtn:hover {
+    background-color: #005ec3;
+    transition: 0.3s ease-out;
+}
+.button-section{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.button-section .catFilter button{
+    background: transparent;
+    border: 2px solid white;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+    padding: 8px 7px;
+    border-radius: 25px;
+}
+.catFilter{
+    display: flex;
+    gap: 5px;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background: rgba(31, 41, 55, 0.7);
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin-top: 2px;
+    margin-left: 20px;
+}
+.dropdown-content p{
+    transition: 0.3s ease-out;
+    cursor: pointer;
+    padding: 5px 12px;
+}
+.dropdown-content p:hover{
+    color: rgba(255, 255, 255, 0.582);
+}
+.show {
+    display: block;
+}
+
+/* Product details section */
+.product-section{
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+.products-content{
+    display: flex;
+    width: 100%;
+    height: auto;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+.products-content:hover{
+    background-color: #111827;
+    transition: 0.1s ease-in;
+}
+.product-img{
+    width: 20%;
+    height: auto;
+    padding: 5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: block;
+}
+.product-img img{
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    border-radius: 25px;
+    margin-top: 10px;
+}
+.general-details{
+    width: 60%;
+    height: auto;
+    padding: 5px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    display: block;
+}
+.general-details h5{
+    opacity: 50%;
+}
+.general-details .id{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.price-details h5{
+    opacity: 50%;
+}
+.price-details{
+    width: 20%;
+    height: auto;
+    padding: 5px;
+    display: block;
+    position: relative;
+}
+.price-details .id{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.price-details .action{
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 3px;
+}
+.price-details .action button{
+    padding: 3px 13px 5px 13px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.price-details .action .edit{
+    background-color: #007bff;
+    transition: 0.3s ease-out;
+}
+.price-details .action .edit:hover{
+    background-color: #005ec3;
+    transition: 0.3s ease-in;
+}
+.price-details .action .delete{
+    background-color: #f00a0a;
+    transition: 0.3s ease-out;
+}
+.price-details .action .delete:hover{
+    background-color: #D90505;
+    transition: 0.3s ease-in;
+}
