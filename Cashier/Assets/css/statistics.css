@@ -29,6 +29,8 @@ table th {
     color: white;
     text-transform: uppercase;
     font-size: 14px;
+    position: sticky;
+    top: 0;
 }
 
 table tbody tr:nth-child(even) {
