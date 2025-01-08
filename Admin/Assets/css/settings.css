@@ -4,10 +4,6 @@
     overflow: hidden;
 }
 
-h2 {
-    padding-bottom: 15px;
-}
-
 .profile-header {
     display: flex;
     align-items: center;
@@ -69,6 +65,7 @@ h2 {
 .profile-info h3 {
     margin: 0;
     font-size: 1.5rem;
+    color: white;
 }
 
 .profile-info p {
@@ -84,8 +81,8 @@ h2 {
 .info-fields {
     display: flex;
     justify-content: space-around;
-    gap: 20px;
-    margin-bottom: 20px;
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
 .left-fields {
@@ -101,9 +98,7 @@ h2 {
 .field {
     display: inline-block;
     position: relative;
-    border: 3px solid #000; 
-    padding: 2px 10px;
-    border-radius: 5px;
+    border: none;
     margin: 10px 0;
     width: 400px;
 }
@@ -115,29 +110,30 @@ h2 {
     background: #1f2937; 
     padding: 0 5px; 
     font-size: 14px; 
+    color: #c7c7c7;
 }
 
 .field input {
-    border: none; 
+    border: none;
     outline: none; 
-    font-size: 16px;
+    font-size: 20px;
     width: 100%; 
-    padding: 5px; 
     background-color: #1f2937;
+    color: white;
 }
 
 .edit-button {
     text-align: right;
 }
 
+.edit-button i {
+    padding-bottom: 7px;
+}
+
 .edit-button button {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-}
-
-.edit-button i {
-    padding-bottom: 7px;
 }
 
 .edit-button button:hover {
