@@ -374,12 +374,140 @@
                     </div>
                 </div>
             </div>
+            <div class="pagination">
+                <button class="previous"> <i class="bi bi-arrow-left"></i> Previous</button>
+                <button class="next">Next <i class="bi bi-arrow-right"></i> </button>
+            </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
-    <script src="../Assets/js/product.js"></script>
+    <!-- Add Product Modal -->
+    <div id="addPromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
+            <h3>Add Product</h3>
+            <form id="addPromoForm">
+                <div class="full-row">
+                    <div class="head-row">
+                        <div class="left-row">
+                            <label for="proID">Product ID:</label>
+                            <input type="text" id="proID" name="proID" required>
+
+                            <label for="name">Product Name:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label style="margin-top:3px;" for="category">Product Category:</label>
+                            <select name="category" id="Category" required>
+                                <option value="grocery">Grocery</option>
+                                <option value="vegetable">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="household">Household</option>
+                                <option value="beverages">Beverages</option>
+                            </select>
+
+                            <label style="margin-top:9px;" for="quantity">Product Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required>
+
+                            <label for="supplier">Supplier:</label>
+                            <input type="text" id="supplier" name="supplier" required>
+
+                            <label for="categoryImage">Image:</label>
+                            <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
+                                onchange="previewImage(event)" required>
+                        </div>
+                        <div class="right-row">
+                            <label for="purPrice">Purchased Price:</label>
+                            <input type="text" id="purPrice" name="purPrice" required>
+
+                            <label for="retPrice">Retail Price:</label>
+                            <input type="text" id="retPrice" name="retPrice" required>
+
+                            <label for="retProfit">Retail Profit:</label>
+                            <input type="text" id="retProfit" name="retProfit" required>
+
+                            <label for="whoPrice">Wholesale Price:</label>
+                            <input type="text" id="whoPrice" name="whoPrice" required>
+
+                            <label for="whoProfit">Wholesale Profit:</label>
+                            <input type="text" id="whoProfit" name="whoProfit" required>
+                        </div>
+                    </div>
+                    <div class="bottom-row">
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+
+                        <button class="addPro" type="submit">Add Product</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Promo Modal -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Product</h3>
+            <form id="addPromoForm">
+                <div class="full-row">
+                    <div class="head-row">
+                        <div class="left-row">
+                            <label for="proID">Product ID:</label>
+                            <input type="text" id="proID" name="proID" required>
+
+                            <label for="name">Product Name:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label style="margin-top:3px;" for="category">Product Category:</label>
+                            <select name="category" id="Category" required>
+                                <option value="grocery">Grocery</option>
+                                <option value="vegetable">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="household">Household</option>
+                                <option value="beverages">Beverages</option>
+                            </select>
+
+                            <label style="margin-top:9px;" for="quantity">Product Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required>
+
+                            <label for="supplier">Supplier:</label>
+                            <input type="text" id="supplier" name="supplier" required>
+
+                            <label for="categoryImage">Image:</label>
+                            <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
+                                onchange="previewImage(event)" required>
+                        </div>
+                        <div class="right-row">
+                            <label for="purPrice">Purchased Price:</label>
+                            <input type="text" id="purPrice" name="purPrice" required>
+
+                            <label for="retPrice">Retail Price:</label>
+                            <input type="text" id="retPrice" name="retPrice" required>
+
+                            <label for="retProfit">Retail Profit:</label>
+                            <input type="text" id="retProfit" name="retProfit" required>
+
+                            <label for="whoPrice">Wholesale Price:</label>
+                            <input type="text" id="whoPrice" name="whoPrice" required>
+
+                            <label for="whoProfit">Wholesale Profit:</label>
+                            <input type="text" id="whoProfit" name="whoProfit" required>
+                        </div>
+                    </div>
+                    <div class="bottom-row">
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+
+                        <button class="addPro" type="submit">Add Product</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Assets/js/products.js"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>
