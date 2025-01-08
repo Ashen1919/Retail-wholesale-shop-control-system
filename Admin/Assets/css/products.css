@@ -273,7 +273,7 @@ h3 {
     font-weight: bold;
 }
 
-input[type="text"], input[type="file"], textarea {
+input[type="text"], input[type="file"], input[type="number"] ,textarea, select {
     width: 100%;
     padding: 5px;
     margin: 0 0 5px;
@@ -283,17 +283,21 @@ input[type="text"], input[type="file"], textarea {
     font-size: 16px;
     color: #000;
 }
-
+select option{
+    color: black;
+}
 button[type="submit"] {
     background-color: #4CAF50;
     color: white;
-    padding: 5px 20px;
+    padding: 5px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
+    width: 200px;
     font-size: 16px;
     transition: background-color 0.3s;
+    display: flex;
+    justify-self: center;
 }
 
 button[type="submit"]:hover {

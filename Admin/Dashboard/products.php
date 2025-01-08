@@ -373,242 +373,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="products-content">
-                    <div class="product-img">
-                        <h4>Samba 5kg</h4>
-                        <img src="../Assets/images/products/samba.jpg" alt="">
-                    </div>
-                    <div class="general-details">
-                        <h5 class="general-topic">General Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product ID :</p>
-                            <p style="opacity:70%">p001</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Description:</p>
-                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
-                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
-                                and fried rice.</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product Category :</p>
-                            <p style="opacity:70%">Grocery</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Quantity :</p>
-                            <p style="opacity:70%">100</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Supplier :</p>
-                            <p style="opacity:70%">Araliya</p>
-                        </div>
-                    </div>
-                    <div class="price-details">
-                        <h5 class="general-topic">Price Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Purchased Price :</p>
-                            <p style="opacity:70%">1,200</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Price :</p>
-                            <p style="opacity:70%">1,500</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Profit :</p>
-                            <p style="opacity:70%">300</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Price :</p>
-                            <p style="opacity:70%">1,350</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Profit :</p>
-                            <p style="opacity:70%">150</p>
-                        </div>
-                        <div class="action">
-                            <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                    class="bi bi-pencil-square"></i></button>
-                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="products-content">
-                    <div class="product-img">
-                        <h4>Samba 5kg</h4>
-                        <img src="../Assets/images/products/samba.jpg" alt="">
-                    </div>
-                    <div class="general-details">
-                        <h5 class="general-topic">General Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product ID :</p>
-                            <p style="opacity:70%">p001</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Description:</p>
-                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
-                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
-                                and fried rice.</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product Category :</p>
-                            <p style="opacity:70%">Grocery</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Quantity :</p>
-                            <p style="opacity:70%">100</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Supplier :</p>
-                            <p style="opacity:70%">Araliya</p>
-                        </div>
-                    </div>
-                    <div class="price-details">
-                        <h5 class="general-topic">Price Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Purchased Price :</p>
-                            <p style="opacity:70%">1,200</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Price :</p>
-                            <p style="opacity:70%">1,500</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Profit :</p>
-                            <p style="opacity:70%">300</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Price :</p>
-                            <p style="opacity:70%">1,350</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Profit :</p>
-                            <p style="opacity:70%">150</p>
-                        </div>
-                        <div class="action">
-                            <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                    class="bi bi-pencil-square"></i></button>
-                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="products-content">
-                    <div class="product-img">
-                        <h4>Samba 5kg</h4>
-                        <img src="../Assets/images/products/samba.jpg" alt="">
-                    </div>
-                    <div class="general-details">
-                        <h5 class="general-topic">General Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product ID :</p>
-                            <p style="opacity:70%">p001</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Description:</p>
-                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
-                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
-                                and fried rice.</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product Category :</p>
-                            <p style="opacity:70%">Grocery</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Quantity :</p>
-                            <p style="opacity:70%">100</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Supplier :</p>
-                            <p style="opacity:70%">Araliya</p>
-                        </div>
-                    </div>
-                    <div class="price-details">
-                        <h5 class="general-topic">Price Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Purchased Price :</p>
-                            <p style="opacity:70%">1,200</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Price :</p>
-                            <p style="opacity:70%">1,500</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Profit :</p>
-                            <p style="opacity:70%">300</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Price :</p>
-                            <p style="opacity:70%">1,350</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Profit :</p>
-                            <p style="opacity:70%">150</p>
-                        </div>
-                        <div class="action">
-                            <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                    class="bi bi-pencil-square"></i></button>
-                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="products-content">
-                    <div class="product-img">
-                        <h4>Samba 5kg</h4>
-                        <img src="../Assets/images/products/samba.jpg" alt="">
-                    </div>
-                    <div class="general-details">
-                        <h5 class="general-topic">General Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product ID :</p>
-                            <p style="opacity:70%">p001</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Description:</p>
-                            <p style="opacity:70%">Samba rice is a premium, short-grain variety known for its unique
-                                aroma and slightly sticky texture when cooked, making it ideal for dishes like biryani
-                                and fried rice.</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Product Category :</p>
-                            <p style="opacity:70%">Grocery</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Quantity :</p>
-                            <p style="opacity:70%">100</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Supplier :</p>
-                            <p style="opacity:70%">Araliya</p>
-                        </div>
-                    </div>
-                    <div class="price-details">
-                        <h5 class="general-topic">Price Details</h5>
-                        <div class="id">
-                            <p style="font-weight:700; ">Purchased Price :</p>
-                            <p style="opacity:70%">1,200</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Price :</p>
-                            <p style="opacity:70%">1,500</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Retail Profit :</p>
-                            <p style="opacity:70%">300</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Price :</p>
-                            <p style="opacity:70%">1,350</p>
-                        </div>
-                        <div class="id">
-                            <p style="font-weight:700; ">Wholesale Profit :</p>
-                            <p style="opacity:70%">150</p>
-                        </div>
-                        <div class="action">
-                            <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                    class="bi bi-pencil-square"></i></button>
-                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="pagination">
                 <button class="previous"> <i class="bi bi-arrow-left"></i> Previous</button>
@@ -628,37 +392,53 @@
                 <div class="full-row">
                     <div class="head-row">
                         <div class="left-row">
-                            <label for="catID">Product ID:</label>
-                            <input type="text" id="catID" name="catID" required>
+                            <label for="proID">Product ID:</label>
+                            <input type="text" id="proID" name="proID" required>
 
                             <label for="name">Product Name:</label>
                             <input type="text" id="name" name="name" required>
 
-                            <label for="category">Product Category:</label>
-                            <input type="text" id="category" name="category" required>
+                            <label style="margin-top:3px;" for="category">Product Category:</label>
+                            <select name="category" id="Category" required>
+                                <option value="grocery">Grocery</option>
+                                <option value="vegetable">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="household">Household</option>
+                                <option value="beverages">Beverages</option>
+                            </select>
 
-                            <label for="name">Product Name:</label>
-                            <input type="text" id="name" name="name" required>
+                            <label style="margin-top:9px;" for="quantity">Product Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required>
 
-                            <label for="name">Product Name:</label>
-                            <input type="text" id="name" name="name" required>
-
-                            <label for="name">Product Name:</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="supplier">Supplier:</label>
+                            <input type="text" id="supplier" name="supplier" required>
 
                             <label for="categoryImage">Image:</label>
                             <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
                                 onchange="previewImage(event)" required>
                         </div>
                         <div class="right-row">
+                            <label for="purPrice">Purchased Price:</label>
+                            <input type="text" id="purPrice" name="purPrice" required>
 
+                            <label for="retPrice">Retail Price:</label>
+                            <input type="text" id="retPrice" name="retPrice" required>
+
+                            <label for="retProfit">Retail Profit:</label>
+                            <input type="text" id="retProfit" name="retProfit" required>
+
+                            <label for="whoPrice">Wholesale Price:</label>
+                            <input type="text" id="whoPrice" name="whoPrice" required>
+
+                            <label for="whoProfit">Wholesale Profit:</label>
+                            <input type="text" id="whoProfit" name="whoProfit" required>
                         </div>
                     </div>
                     <div class="bottom-row">
                         <label for="categoryDescription">Description:</label>
                         <textarea id="categoryDescription" name="categoryDescription" required></textarea>
 
-                        <button type="submit">Add Product</button>
+                        <button class="addPro" type="submit">Add Product</button>
                     </div>
                 </div>
             </form>
@@ -671,24 +451,58 @@
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Product</h3>
             <form id="addPromoForm">
-                <label for="catID">Category ID:</label>
-                <input type="text" id="catID" name="catID" required disabled>
+                <div class="full-row">
+                    <div class="head-row">
+                        <div class="left-row">
+                            <label for="proID">Product ID:</label>
+                            <input type="text" id="proID" name="proID" required>
 
-                <label for="name">Category Name:</label>
-                <input type="text" id="name" name="name" required>
+                            <label for="name">Product Name:</label>
+                            <input type="text" id="name" name="name" required>
 
-                <label for="categoryDescription">Description:</label>
-                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+                            <label style="margin-top:3px;" for="category">Product Category:</label>
+                            <select name="category" id="Category" required>
+                                <option value="grocery">Grocery</option>
+                                <option value="vegetable">Vegetables</option>
+                                <option value="fruits">Fruits</option>
+                                <option value="household">Household</option>
+                                <option value="beverages">Beverages</option>
+                            </select>
 
-                <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
-                    onchange="previewImage(event)" required>
+                            <label style="margin-top:9px;" for="quantity">Product Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required>
 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview" />
+                            <label for="supplier">Supplier:</label>
+                            <input type="text" id="supplier" name="supplier" required>
+
+                            <label for="categoryImage">Image:</label>
+                            <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
+                                onchange="previewImage(event)" required>
+                        </div>
+                        <div class="right-row">
+                            <label for="purPrice">Purchased Price:</label>
+                            <input type="text" id="purPrice" name="purPrice" required>
+
+                            <label for="retPrice">Retail Price:</label>
+                            <input type="text" id="retPrice" name="retPrice" required>
+
+                            <label for="retProfit">Retail Profit:</label>
+                            <input type="text" id="retProfit" name="retProfit" required>
+
+                            <label for="whoPrice">Wholesale Price:</label>
+                            <input type="text" id="whoPrice" name="whoPrice" required>
+
+                            <label for="whoProfit">Wholesale Profit:</label>
+                            <input type="text" id="whoProfit" name="whoProfit" required>
+                        </div>
+                    </div>
+                    <div class="bottom-row">
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+
+                        <button class="addPro" type="submit">Add Product</button>
+                    </div>
                 </div>
-
-                <button type="submit">Update Category</button>
             </form>
         </div>
     </div>
