@@ -110,6 +110,7 @@
 
         <!--Right side-->
         <div class="right-side">
+            <h2>Promotions</h2>
             <div class="table-section">
                 <table>
                     <thead>

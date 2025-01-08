@@ -3,13 +3,21 @@ body {
 }
 
 .right-side {
-    height: 94vh;
+    height: 92vh;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 10px;
 }
+
+.right-side h2 {
+    color: white;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+
 
 .table-section {
     border: 1px solid #ccc;
@@ -33,6 +41,10 @@ table thead th {
     top: 0;
     background-color: #1f2937;
     z-index: 1;
+}
+
+table tbody tr:hover{
+    background:#1f2937;
 }
 
 .right-side button {
@@ -59,28 +71,27 @@ button:hover {
     justify-content: space-around;
 }
 
-.action button {
-    background-color: transparent;
+table tbody tr .action button{
+    padding: 3px 13px 0 13px;
+    color: white;
     border: none;
-    cursor: pointer; 
-    padding: 5px;
-    font-size: x-large;
+    border-radius: 5px;
 }
 
-.action button.edit i {
-    color: blue;
+table tbody tr .action .edit{
+    background-color: #007bff;
 }
 
-.action button.edit:hover i {
-    color: darkblue; 
+table tbody tr .action .edit:hover{
+    background-color: #005ec3;
 }
 
-.action button.delete i {
-    color: red; 
+table tbody tr .action .delete{
+    background-color: #f00a0a;
 }
 
-.action button.delete:hover i {
-    color: darkred; 
+table tbody tr .action .delete:hover{
+    background-color: #D90505;
 }
 
 /* Add & Update Promo Modal styles */
