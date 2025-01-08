@@ -52,7 +52,7 @@
     </select>
 <div class="password-section">
     <label for="N password">New Password</label>
-    <input type="password" id="password" placeholder="Enter your Newpassword">
+    <input type="password" id="password" placeholder="Enter your New password">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
 </div>
     <div class="password-section1">
