@@ -108,6 +108,8 @@ table th, table td {
 thead{
     background-color: #686868;
     color: #fff;
+    position: sticky;
+    top: 0;
 }
 
 table tbody tr:nth-child(even) {
