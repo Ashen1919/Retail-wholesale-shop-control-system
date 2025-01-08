@@ -16,7 +16,6 @@ function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
 
-
 function previewImage(event) {
     var output = document.getElementById('imagePreview');
     var container = document.getElementById('imagePreviewContainer');

@@ -116,7 +116,7 @@
                 <div class="profile-header">
                     <div class="profile-avatar">
                         <img src="../Assets/images/profile_default.jpg" alt="Profile Picture">
-                        <button><i class="bi bi-camera-fill"></i></button>
+                        <button onclick="openModal('updatePictureModal')"><i class="bi bi-camera-fill"></i></button>
                     </div>
                     <div class="profile-info">
                         <h3>Full Name</h3>
@@ -216,6 +216,24 @@
                     <input type="number" id="postal-code" name="postal-code" maxlength="5" >
                 </div>
                 <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Profile Picture Modal -->
+    <div id="updatePictureModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePictureModal')">&times;</span>
+            <h3>Update Profile Picture</h3>
+            <form id="updatePictureForm">
+                <label for="profilePicture"></label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" onchange="previewImage(event)" required>
+                
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview"/>
+                </div>
+                
+                <button type="submit">Upload</button>
             </form>
         </div>
     </div>
