@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistics</title>
+    <title>Sandaru Food Mart</title>
+
+    <!-- Favicons -->
+    <link href="./Assets/images/logo.png" rel="icon">
+    <link href="./Assets/images/logo.png" rel="apple-touch-icon">
+
+    <!-- CSS Stylesheets -->
     <link href="./Assets/css/statistics.css" rel="stylesheet" >
 </head>
 <body>
