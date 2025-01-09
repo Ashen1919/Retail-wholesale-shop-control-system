@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .container {
@@ -90,6 +91,7 @@ body {
 .table-div{
     border: solid 1px #000;
     height: 335px;
+    overflow-y: auto;
 }
 
 table {
@@ -106,27 +108,39 @@ table th, table td {
 thead{
     background-color: #686868;
     color: #fff;
+    position: sticky;
+    top: 0;
 }
 
-.actions {
+table tbody tr:nth-child(even) {
+    background-color: #d6d6d6; 
+}
+
+table tbody tr:hover {
+    background-color: white; 
+}
+
+table tbody tr .action{
     display: flex;
-    gap: 5px;
+    justify-content: space-around;
 }
-
-.actions button {
-    padding: 5px;
+table tbody tr .action button{
+    padding: 7px 13px 5px 13px;
+    color: white;
     border: none;
-    cursor: pointer;
+    border-radius: 5px;
 }
-
-.actions button.edit {
-    background-color: #2196F3;
-    color: #fff;
+table tbody tr .action .edit{
+    background-color: #007bff;
 }
-
-.actions button.delete {
-    background-color: #f44336;
-    color: #fff;
+table tbody tr .action .edit:hover{
+    background-color: #005ec3;
+}
+table tbody tr .action .delete{
+    background-color: #f00a0a;
+}
+table tbody tr .action .delete:hover{
+    background-color: #D90505;
 }
 
 .footer-section {
@@ -229,7 +243,7 @@ thead{
     position: absolute;
     top: -10px;
     left: 10px; 
-    background: #fff; 
+    background: #ecf0f1; 
     padding: 0 5px; 
     font-size: 14px; 
 }
