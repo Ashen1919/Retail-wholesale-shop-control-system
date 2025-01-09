@@ -12,3 +12,8 @@ document.getElementById('deleteAccount').addEventListener('click', () => {
         window.location.href = 'homepage.html';
     }
 });
+
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+  }
+  
