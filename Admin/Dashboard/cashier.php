@@ -111,8 +111,10 @@
         <!--End of left side-->
 
         <!--Right side-->
+   
         <div class="right-side">
             <section>
+               <h1> Cashier</h1>
         <table>
           <thead>
             <tr>
@@ -130,10 +132,7 @@
           </tbody>
         </table>
 </section>
-        <button id="addCashierBtn" class="add-btn">+ Add Cashier</button>
-      
-            
-            
+        <button id="addCashierBtn" class="add-btn">+ Add Cashier</button>        
         </div>
         <!--End of right side-->
     </div>

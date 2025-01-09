@@ -38,8 +38,9 @@ table tbody tr:nth-child(even) {
 }
 
 table tbody tr:hover {
-    background-color: #e9f7e9; 
+    background-color: #f7f5e9; 
 }
+
 
 caption {
     font-size: 1.5em;
