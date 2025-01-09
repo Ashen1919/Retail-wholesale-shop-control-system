@@ -10,7 +10,7 @@ body {
 }
 
 .total-lendings, .lendings, .repayments {
-    height: 42vh; /* Adjust this value as needed */
+    height: 42vh;
     overflow-y: auto;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -41,6 +41,7 @@ body {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-right: 5px;
+    color: black;
 }
 
 .header .filter-button, .header .actions button {

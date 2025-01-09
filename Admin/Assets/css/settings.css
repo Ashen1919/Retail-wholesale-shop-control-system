@@ -1,0 +1,292 @@
+.right-side {
+    padding: 20px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-avatar{
+    position: relative;
+}
+
+.profile-avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 5px solid #000000;
+}
+
+.profile-avatar button{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    padding: 0 8px 8px 8px;
+    border: 1px solid black;
+    border-radius: 20px;
+    bottom: -10px;
+    left: 55px;
+}
+
+.profile-avatar i{
+    font-size: 20px;
+    color: #000000;
+}
+
+.profile-avatar button:hover{
+    background-color: black;
+    border-color: white;
+    color: white;
+}
+
+.profile-avatar i:hover{
+    color: white;
+}
+
+.personal-info{
+    background-color: #1f2937;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info {
+    margin-left: 20px;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.profile-info p {
+    margin: 0;
+    color: #c7c7c7;
+}
+
+.personal-info h4 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.info-fields {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.left-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.right-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.field {
+    display: inline-block;
+    position: relative;
+    border: 2px solid #c7c7c7; 
+    padding: 2px 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 400px;
+}
+
+.field label {
+    position: absolute;
+    top: -10px;
+    left: 10px; 
+    background: #1f2937; 
+    padding: 0 5px; 
+    font-size: 14px; 
+    color: #c7c7c7;
+}
+
+.field input {
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+    width: 100%; 
+    padding: 10px;
+    background-color: #1f2937;
+    color: white;
+}
+
+.edit-button {
+    text-align: right;
+}
+
+.edit-button i {
+    padding-bottom: 7px;
+}
+
+.edit-button button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.edit-button button:hover {
+    background-color: #005ec3;
+}
+
+/* Update Profile Modals styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding-top: 50px;
+}
+
+.modal-content {
+    left: 11%;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    padding-top: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: end;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box {
+    display: inline-block;
+    position: relative;
+    border: 2px solid #858585; 
+    padding: 2px;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.box label {
+    position: absolute;
+    top: -10px;
+    left: 10px; 
+    background: #fff; 
+    padding: 0 5px; 
+    font-size: 14px; 
+    color: #494949;
+}
+
+.box input[type="text"],
+.box input[type="email"],
+.box input[type="tel"],
+.box input[type="number"],
+.box input[type="date"],
+.box textarea {
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+    width: 100%; 
+    padding: 5px;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+}
+
+.box textarea {
+    resize: vertical;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.box:has(input:focus),
+.box:has(textarea:focus) {
+    border-color: black;  
+}
+
+.updateForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.updateForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#updateAdminModal {
+    padding: 20px;
+}
+
+#updateAdminForm {
+    font-family: 'Arial', sans-serif;
+}
+
+#updateAdminForm input,
+#updateAdminForm textarea {
+    font-family: 'Arial', sans-serif;
+}
+
+#imagePreview {
+    max-width: 100%;
+    margin-bottom: 10px;
+    height: 200px;
+}
+
+#updatePictureForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#updatePictureForm button[type="submit"]:hover {
+    background-color: #218838;
+}
