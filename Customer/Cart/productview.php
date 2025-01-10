@@ -15,7 +15,7 @@
         
     <!-- CSS Files -->
     
-    <link href="../Customer/Cart/style.css" rel="stylesheet">
+    <link href="../Assets/css/cart_style.css" rel="stylesheet">
     
 </head>
 <body>
@@ -26,10 +26,10 @@
            <div class="slider"></div> 
 
            <div class="product">
-              <img src="../Customer/Cart/image/teabag.png" alt="Tea Bags">
+              <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
            </div>
            <div class="preview">
-              <img src="../Customer/Cart/image/teabag.png" alt="Tea Bags">
+              <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
            </div>
 
            <div class="col">

@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
         
     <!-- CSS Files -->
-    <link href="../Customer/Cart/style.css" rel="stylesheet">
+    <link href="../Assets/css/cart_style.css" rel="stylesheet">
     
 </head>
 <body>
