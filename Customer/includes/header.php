@@ -58,7 +58,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href=""><img
-                        src="./Customer/Assets/images/logo.png"
+                        src="../Assets/images/logo.png"
                         alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>
                 </a>
@@ -73,16 +73,16 @@
                             </button>
                         </form>
                     </div>
-                    <li><a href="./Customer/Home Page/index.php" class="active">Home<br></a></li>
+                    <li><a href="../../index.php" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
-                    <li class="dropdown"><a href="./Customer/Home Page/index.php#categories"><span>Categories</span> <i
+                    <li class="dropdown"><a href="#"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
-                            <li><a href="./Customer/Categories/Grocery.php">Grocery</a></li>
-                            <li><a href="./Customer/Categories/Vegetables.php">Vegetables</a></li>
-                            <li><a href="./Customer/Categories/Fruits.php">Fruits</a></li>
-                            <li><a href="./Customer/Categories/Beverages.php">Beverages</a></li>
-                            <li><a href="./Customer/Categories/Household.php">Household</a></li>
+                            <li><a href="../Categories/Grocery.php">Grocery</a></li>
+                            <li><a href="../Categories/Vegetables.php">Vegetables</a></li>
+                            <li><a href="../Categories/Fruits.php">Fruits</a></li>
+                            <li><a href="../Categories/Beverages.php">Beverages</a></li>
+                            <li><a href="../Categories/Household.php">Household</a></li>
                         </ul>
                     </li>
                     <li><a href="#contact">Contact us</a></li>
@@ -109,7 +109,7 @@
     
 
 
-    <script src="./Customer/Assets/js/script.js"></script>
+    <script src="../Assets/js/script.js"></script>
 
     
 </body>

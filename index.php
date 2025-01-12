@@ -22,7 +22,82 @@
     <!--End of Preloader-->
 
     <!-- Include Header -->
-    <?php include './Customer/includes/header.php'; ?>
+    <header class="header-wrapper">
+
+        <!--Top Bar-->
+        <div class="topBar">
+            <div class="contact-details">
+                <ul class="contact">
+                    <a href="#">
+                        <li><i class="bi bi-envelope-fill text-primary"></i>sandarufoodmart@gmail.com</li>
+                    </a>
+                    <li><i class="bi bi-telephone-fill text-primary"></i>+94 33 267 8970</li>
+                </ul>
+            </div>
+            <div class="searchBar">
+                <form action="" method="get" class="search-form">
+                    <input type="search" name="search" id="search" placeholder="Search Here">
+                    <button type="submit" class="search-button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="social-icon">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <!--End of Top Bar-->
+
+        <!--Nav Bar-->
+        <div class="navbar">
+            <div class="logo">
+                <a href=""><img src="./Customer/Assets/images/logo.png" alt="logo">
+                    <p>Sandaru Food <span class="mart">Mart</span></p>
+                </a>
+            </div>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <div class="mobile-searchBar">
+                        <form action="" method="get" class="search-form">
+                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <button type="submit" class="search-button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <li><a href="./Customer/Home Page/index.php" class="active">Home<br></a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li class="dropdown"><a href="#"><span>Categories</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="./Customer/Categories/Grocery.php">Grocery</a></li>
+                            <li><a href="./Customer/Categories/Vegetables.php">Vegetables</a></li>
+                            <li><a href="./Customer/Categories/Fruits.php">Fruits</a></li>
+                            <li><a href="./Customer/Categories/Beverages.php">Beverages</a></li>
+                            <li><a href="./Customer/Categories/Household.php">Household</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact us</a></li>
+                    <div class="right-side-mobile-icons">
+                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                    </div>
+                </ul>
+                <div class="search-icon">
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </div>
+            </nav>
+            <div class="right-side-icons">
+                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+            </div>
+        </div>
+        <!--End of Nav Bar-->
+    </header>
 
     <!--Hero section-->
     <div class="hero">
@@ -131,7 +206,8 @@
                 </div>
             </div>
             <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/vegetables.jpg" alt="Vegetables" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/vegetables.jpg" alt="Vegetables"
+                    class="category-image">
                 <div class="category-name">
                     <a href="./Customer/Categories/Vegetables.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Vegetables
@@ -147,7 +223,8 @@
                 </div>
             </div>
             <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/beverages.jpg" alt="Beverages" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/beverages.jpg" alt="Beverages"
+                    class="category-image">
                 <div class="category-name">
                     <a href="./Customer/Categories/Beverages.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Beverages
@@ -155,7 +232,8 @@
                 </div>
             </div>
             <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/household.jpg" alt="Household" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/household.jpg" alt="Household"
+                    class="category-image">
                 <div class="category-name">
                     <a href="./Customer/Categories/Household.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Household
@@ -266,7 +344,8 @@
                 <!-- Product 6 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="./Customer/Assets/images/best selling products/Vim Dishwash.jpeg" alt="Vim Anti-Bacterial">
+                        <img src="./Customer/Assets/images/best selling products/Vim Dishwash.jpeg"
+                            alt="Vim Anti-Bacterial">
                         <span class="volume">500ml</span>
                     </div>
                     <div class="product-info">
