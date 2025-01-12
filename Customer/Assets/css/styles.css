@@ -677,7 +677,7 @@ Nav Bar
     margin-bottom: 10px;
   }
   .mobile-searchBar {
-    width: 350px;
+    width: 320px;
     margin: 10px;
   }
 }
@@ -921,7 +921,7 @@ Hero section
     font-size: 35px;
   }
   .right-top-card .right-side-img img {
-    width: 170px;
+    width: 160px;
     height: auto;
     margin-top: 40px;
     margin-left: -20px;
@@ -937,7 +937,7 @@ Hero section
     margin-top: -5px;
   }
   .right-bottom-card .right-side-bottom-img img {
-    width: 170px;
+    width: 160px;
     height: auto;
     margin-top: 70px;
     margin-left: 7px;
