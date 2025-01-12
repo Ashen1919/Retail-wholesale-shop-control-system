@@ -61,8 +61,6 @@
     <p>Do you have an account? <a href="login.php">Login Here</a></p>
 </div>
 </div>
-
-  
-  <script src="../Assets/js/UpdateAccount.js"></script>
+  <script src="../Assets/js/Register.js"></script>
 </body>
 </html>
