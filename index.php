@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -69,7 +70,7 @@
                     </div>
                     <li><a href="./Customer/Home Page/index.php" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
-                    <li class="dropdown"><a href="#"><span>Categories</span> <i
+                    <li class="dropdown"><a href="#categories"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="./Customer/Categories/Grocery.php">Grocery</a></li>
@@ -435,6 +436,37 @@
 
     <!--End of Best Selling Products Section-->
 
+    <!--Logo animation-->
+    <div class="logos">
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+    </div>
+    <!--End of Logo animation-->
 
     <script src="./Customer/Assets/js/script.js"></script>
 
