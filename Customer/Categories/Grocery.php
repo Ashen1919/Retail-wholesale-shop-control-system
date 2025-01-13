@@ -73,7 +73,7 @@
             <!-- Product Card 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/eggs.jfif" alt="Pack of 10 Eggs">
+                    <img src="../Assets/images/Grocery_Page/eggs.jpg" alt="Pack of 10 Eggs">
                 </div>
                 <div class="product-details">
                     <h3>Pack of 10 Eggs</h3>
