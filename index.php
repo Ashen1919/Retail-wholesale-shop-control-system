@@ -12,7 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
-    <link href="./Customer/Assets/css/logo.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -68,7 +68,7 @@
                             </button>
                         </form>
                     </div>
-                    <li><a href="./Customer/Home Page/index.php" class="active">Home<br></a></li>
+                    <li><a href="" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
                     <li class="dropdown"><a href="#categories"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -435,6 +435,15 @@
     </section>
 
     <!--End of Best Selling Products Section-->
+
+    <!--Promotion Area-->
+    <div class="promo-section">
+        <div class="promo-vector">
+            <img src="./Customer/Assets/images/promotion-vector.png" alt="">
+        </div>
+        <div class="promo-slider"></div>
+    </div>
+    <!--End of Promotion Area-->
 
     <!--Logo animation-->
     <div class="logos">
