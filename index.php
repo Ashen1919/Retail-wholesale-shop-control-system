@@ -55,7 +55,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href=""><img src="./Customer/Assets/images/logo.png" alt="logo">
-                    <p>Sandaru Food <span class="mart">Mart</span></p>
+                    <p>Sandaru Food <span class="mart">Ma</span></p>
                 </a>
             </div>
             <nav id="navmenu" class="navmenu">
