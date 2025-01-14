@@ -11,7 +11,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet" />
-    <link href="../Assets/css/products.css" rel="stylesheet" />
+    <link href="../Assets/css/product.css" rel="stylesheet" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -1298,6 +1298,5 @@
     </div>
 
     <script src="../Assets/js/products.js"></script>
-    <script src="../Assets/js/script.js"></script>
   </body>
 </html>
