@@ -13,7 +13,12 @@
     height: 100vh;
     font-family: Arial, sans-serif;
     display: flex;
-    background-color: #8143ad; 
+  
+    }
+    .form-background{
+        background-color: #666;
+      width: 600px;
+      height: 700px;
     }
 .form-container {
     padding: 20px;
@@ -41,7 +46,7 @@
     font-size: 16px;
 }
 .form-container input {
-    width: 100%;
+    width: 80%;
     margin-bottom: 5px;
 }
 .form-container a {
@@ -54,6 +59,8 @@
     color: #fff;
     padding: 5px 20px;
     margin: 2px;
+    border: none;
+    border-radius: 5px;
 }
 .form-container p {
     font-size: 14px;
