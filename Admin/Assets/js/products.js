@@ -152,5 +152,3 @@ window.addEventListener('load', () => {
         }
     });
 });
-
-
