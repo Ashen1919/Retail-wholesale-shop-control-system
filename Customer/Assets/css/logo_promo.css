@@ -85,7 +85,7 @@ Promotion section
 }
 .promo-section .promo-vector:hover img{
     transition: 0.3s ease-in;
-    transform: translateY(-5%);
+    transform: translateY(-2%);
 } 
 /*-----------------------------
 End of promotion section
