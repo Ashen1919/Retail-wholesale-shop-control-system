@@ -15,18 +15,23 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
+   
     <link href="../Assets/css/Login.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="form-background">
 
-    <div class="form-container">
+    <img src="../Assets/images/logo.png" alt="logo">
+
+
+        <div class="form-container">
 
 
         <form> 
-            <img src="../Assets/images/logo.png" alt="logo">
+        
 <h1>Login</h1>
 
             <label for="email">Email</label>
@@ -41,6 +46,7 @@
         </form>
         <p>Don't have an account?<a href="#">Sign up now</a></p>
     </div>
+</div>
     
     <script src="../Assets/js/login.js"></script>
 </body>

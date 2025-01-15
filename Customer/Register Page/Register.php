@@ -21,44 +21,45 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <div class="form-background">
+        <div class="form-container">
+            <h1>Register</h1>
+            <form id="registerForm" action="process_register.php" method="POST">
 
-<div class="form-container">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="first_name" required>
 
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="last_name" required>
 
-<h1>Register</h1>
-<form id="registerForm" action="process_register.php" method="POST">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
 
-    <label for="firstName">First Name</label>
-    <input type="text" id="firstName" name="first_name" required>
+                <label for="phoneNumber">Phone Number</label>
+                <input type="tel" id="phoneNumber" name="phone_number" required>
 
-    <label for="lastName">Last Name</label>
-    <input type="text" id="lastName" name="last_name" required>
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
 
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="phoneNumber">Phone Number</label>
-    <input type="tel" id="phoneNumber" name="phone_number" required>
-
-    <label for="address">Address</label>
-    <input type="text" id="address" name="address" required>
-
-    <label for="gender">Gender</label>
-    <select id="gender" name="gender" required>
-        <option value="" disabled selected>Select Gender</option>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-    </select>
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
 <div class="password-section">
     <label for="password">Password</label>
     <input type="password" id="password" placeholder="Enter your password">
     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-</div> 
+</div>
+<div class="button">
     <button type="submit">Sign Up</button>
+    </div>
 </form>
 <div class="login-link">
     <p>Do you have an account? <a href="login.php">Login Here</a></p>
+</div>
 </div>
 </div>
   <script src="../Assets/js/Register.js"></script>
