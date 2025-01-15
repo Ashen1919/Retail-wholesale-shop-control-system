@@ -87,6 +87,12 @@ Promotion section
     transition: 0.3s ease-in;
     transform: translateY(-1%);
 } 
+
+.promo-slider{
+    width: 60%;
+    display: flex;
+    padding: 5px;
+}
 /*-----------------------------
 End of promotion section
 ------------------------------*/

@@ -441,7 +441,9 @@
         <div class="promo-vector">
             <img src="./Customer/Assets/images/promotion-vector.png" alt="">
         </div>
-        <div class="promo-slider"></div>
+        <div class="promo-slider">
+            
+        </div>
     </div>
     <!--End of Promotion Area-->
 
