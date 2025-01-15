@@ -7,11 +7,12 @@
     <title>Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link href="../Assets/images/logo.png" rel="icon">
-    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
+    <link href="./Customer/Assets/images/logo.png" rel="icon">
+    <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -22,7 +23,82 @@
     <!--End of Preloader-->
 
     <!-- Include Header -->
-    <?php include '../includes/header.php'; ?>
+    <header class="header-wrapper">
+
+        <!--Top Bar-->
+        <div class="topBar">
+            <div class="contact-details">
+                <ul class="contact">
+                    <a href="#">
+                        <li><i class="bi bi-envelope-fill text-primary"></i>sandarufoodmart@gmail.com</li>
+                    </a>
+                    <li><i class="bi bi-telephone-fill text-primary"></i>+94 33 267 8970</li>
+                </ul>
+            </div>
+            <div class="searchBar">
+                <form action="" method="get" class="search-form">
+                    <input type="search" name="search" id="search" placeholder="Search Here">
+                    <button type="submit" class="search-button">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+            <div class="social-icon">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <!--End of Top Bar-->
+
+        <!--Nav Bar-->
+        <div class="navbar">
+            <div class="logo">
+                <a href=""><img src="./Customer/Assets/images/logo.png" alt="logo">
+                    <p>Sandaru Food <span class="mart">Ma</span></p>
+                </a>
+            </div>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <div class="mobile-searchBar">
+                        <form action="" method="get" class="search-form">
+                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <button type="submit" class="search-button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <li><a href="" class="active">Home<br></a></li>
+                    <li><a href="#about">About us</a></li>
+                    <li class="dropdown"><a href="#categories"><span>Categories</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li><a href="./Customer/Categories/Grocery.php">Grocery</a></li>
+                            <li><a href="./Customer/Categories/Vegetables.php">Vegetables</a></li>
+                            <li><a href="./Customer/Categories/Fruits.php">Fruits</a></li>
+                            <li><a href="./Customer/Categories/Beverages.php">Beverages</a></li>
+                            <li><a href="./Customer/Categories/Household.php">Household</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contact">Contact us</a></li>
+                    <div class="right-side-mobile-icons">
+                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                    </div>
+                </ul>
+                <div class="search-icon">
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </div>
+            </nav>
+            <div class="right-side-icons">
+                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+            </div>
+        </div>
+        <!--End of Nav Bar-->
+    </header>
 
     <!--Hero section-->
     <div class="hero">
@@ -35,7 +111,7 @@
                 <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
             </div>
             <div class="right-img">
-                <img src="../Assets/images/shopping cart.png" alt="Card-image">
+                <img src="./Customer/Assets/images/shopping cart.png" alt="Card-image">
             </div>
         </div>
         <div class="right-card">
@@ -47,7 +123,7 @@
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-img">
-                    <img src="../Assets/images/fruit & vege bucket.png" alt="Card-image">
+                    <img src="./Customer/Assets/images/fruit & vege bucket.png" alt="Card-image">
                 </div>
             </div>
             <div class="right-bottom-card">
@@ -58,7 +134,7 @@
                     <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
                 </div>
                 <div class="right-side-bottom-img">
-                    <img src="../Assets/images/households.png" alt="Card-image">
+                    <img src="./Customer/Assets/images/households.png" alt="Card-image">
                 </div>
             </div>
         </div>
@@ -123,41 +199,44 @@
 
         <div class="category-grid">
             <div class="category-item">
-                <img src="../Assets/images/shop by category/grocery.png" alt="Grocery" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/grocery.png" alt="Grocery" class="category-image">
                 <div class="category-name">
-                    <a href="../Categories/Grocery.php" class="styled-link">
+                    <a href="./Customer/Categories/Grocery.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Grocery
                     </a>
                 </div>
             </div>
             <div class="category-item">
-                <img src="../Assets/images/shop by category/vegetables.jpg" alt="Vegetables" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/vegetables.jpg" alt="Vegetables"
+                    class="category-image">
                 <div class="category-name">
-                    <a href="../Categories/Vegetables.php" class="styled-link">
+                    <a href="./Customer/Categories/Vegetables.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Vegetables
                     </a>
                 </div>
             </div>
             <div class="category-item">
-                <img src="../Assets/images/shop by category/fruit.jpg" alt="Fruits" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/fruit.jpg" alt="Fruits" class="category-image">
                 <div class="category-name">
-                    <a href="../Categories/Fruits.php" class="styled-link">
+                    <a href="./Customer/Categories/Fruits.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Fruits
                     </a>
                 </div>
             </div>
             <div class="category-item">
-                <img src="../Assets/images/shop by category/beverages.jpg" alt="Beverages" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/beverages.jpg" alt="Beverages"
+                    class="category-image">
                 <div class="category-name">
-                    <a href="../Categories/Beverages.php" class="styled-link">
+                    <a href="./Customer/Categories/Beverages.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Beverages
                     </a>
                 </div>
             </div>
             <div class="category-item">
-                <img src="../Assets/images/shop by category/household.jpg" alt="Household" class="category-image">
+                <img src="./Customer/Assets/images/shop by category/household.jpg" alt="Household"
+                    class="category-image">
                 <div class="category-name">
-                    <a href="../Categories/Household.php" class="styled-link">
+                    <a href="./Customer/Categories/Household.php" class="styled-link">
                         <i class="bi bi-basket2-fill"></i> Household
                     </a>
                 </div>
@@ -185,7 +264,7 @@
                 <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Dhal.jpg" alt="Dhal">
+                        <img src="./Customer/Assets/images/best selling products/Dhal.jpg" alt="Dhal">
                         <span class="volume">1kg</span>
                     </div>
                     <div class="product-info">
@@ -201,7 +280,7 @@
                 <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Bread.jpg" alt="Bread">
+                        <img src="./Customer/Assets/images/best selling products/Bread.jpg" alt="Bread">
                         <span class="volume">450g</span>
                     </div>
                     <div class="product-info">
@@ -217,7 +296,7 @@
                 <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Carrot.jpg" alt="Carrot">
+                        <img src="./Customer/Assets/images/best selling products/Carrot.jpg" alt="Carrot">
                         <span class="volume">500g</span>
                     </div>
                     <div class="product-info">
@@ -234,7 +313,7 @@
                 <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Potatoes.jpg" alt="Potatoes">
+                        <img src="./Customer/Assets/images/best selling products/Potatoes.jpg" alt="Potatoes">
                         <span class="volume">500g</span>
                     </div>
                     <div class="product-info">
@@ -250,7 +329,7 @@
                 <!-- Product 5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Big Onions.jpg" alt="Big Onions">
+                        <img src="./Customer/Assets/images/best selling products/Big Onions.jpg" alt="Big Onions">
                         <span class="weight">500g</span>
                     </div>
                     <div class="product-info">
@@ -266,7 +345,8 @@
                 <!-- Product 6 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Vim Dishwash.jpeg" alt="Vim Anti-Bacterial">
+                        <img src="./Customer/Assets/images/best selling products/Vim Dishwash.jpeg"
+                            alt="Vim Anti-Bacterial">
                         <span class="volume">500ml</span>
                     </div>
                     <div class="product-info">
@@ -282,7 +362,7 @@
                 <!-- Product 7 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Coconut.jpg" alt="Coconut">
+                        <img src="./Customer/Assets/images/best selling products/Coconut.jpg" alt="Coconut">
                         <span class="volume">1unit</span>
                     </div>
                     <div class="product-info">
@@ -299,7 +379,7 @@
                 <!-- Product 8 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Milk shoties.jpg"
+                        <img src="./Customer/Assets/images/best selling products/Milk shoties.jpg"
                             alt="Munchee Milk Short Cake">
                         <span class="weight">200g</span>
                     </div>
@@ -316,7 +396,7 @@
                 <!-- Product 9 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/Fresh milk.jpg" alt="Fresh milk">
+                        <img src="./Customer/Assets/images/best selling products/Fresh milk.jpg" alt="Fresh milk">
                         <span class="volume">1L</span>
                     </div>
                     <div class="product-info">
@@ -333,7 +413,7 @@
                 <!-- Product 10 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="../Assets/images/best selling products/sunlight.png" alt="Sunlight(Lemon)">
+                        <img src="./Customer/Assets/images/best selling products/sunlight.png" alt="Sunlight(Lemon)">
                         <span class="volume">330g</span>
                     </div>
                     <div class="product-info">
@@ -356,8 +436,50 @@
 
     <!--End of Best Selling Products Section-->
 
+    <!--Promotion Area-->
+    <div class="promo-section">
+        <div class="promo-vector">
+            <img src="./Customer/Assets/images/promotion-vector.png" alt="">
+        </div>
+        <div class="promo-slider">
+            
+        </div>
+    </div>
+    <!--End of Promotion Area-->
 
-    <script src="../Assets/js/script.js"></script>
+    <!--Logo animation-->
+    <div class="logos">
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+        <div class="logo-slide">
+            <img src="./Customer/Assets/images/logos/Araliya-logo-removebg-preview.png" alt="Araliya-logo">
+            <img src="./Customer/Assets/images/logos/Coca-Cola-logo.png" alt="coca-cola-logo">
+            <img src="./Customer/Assets/images/logos/Elephant_House_logo.png" alt="elephant-house-logo">
+            <img src="./Customer/Assets/images/logos/kotmale-logo-removebg-preview.png" alt="kotmale-logo">
+            <img src="./Customer/Assets/images/logos/maliban-logo-removebg-preview.png" alt="maliban-logo">
+            <img src="./Customer/Assets/images/logos/munchee-logo-removebg-preview.png" alt="munchee-logo">
+            <img src="./Customer/Assets/images/logos/unilever-logo-removebg-preview.png" alt="unilever-logo">
+        </div>
+    </div>
+    <!--End of Logo animation-->
+
+    <script src="./Customer/Assets/js/script.js"></script>
 
 
 </body>

@@ -15,7 +15,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -73,9 +73,9 @@
                             </button>
                         </form>
                     </div>
-                    <li><a href="../Home Page/index.php" class="active">Home<br></a></li>
+                    <li><a href="../../index.php" class="active">Home<br></a></li>
                     <li><a href="#about">About us</a></li>
-                    <li class="dropdown"><a href="../Home Page/index.php#categories"><span>Categories</span> <i
+                    <li class="dropdown"><a href="#"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
                             <li><a href="../Categories/Grocery.php">Grocery</a></li>

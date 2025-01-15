@@ -1,0 +1,98 @@
+/*-----------------------------
+Logo slider section
+------------------------------*/
+
+.logos{
+    width: 100%;
+    height: 20vh;
+    background: white;
+    white-space: nowrap;
+    padding: 30px 0;
+    overflow: hidden;
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.logo-slide{
+    display: inline-block;
+    animation: 20s slide infinite linear;
+}
+
+.logos:hover .logo-slide{
+    animation-play-state: paused;
+}
+
+.logo-slide img{
+    height: 100px;
+    margin-left: 35px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.logo-slide img:hover{
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+@media (max-width:481px){
+    .logo-slide img{
+        height: 50px;
+    }
+    .logos{
+        height: 15vh;
+    }
+}
+
+@media (min-width:576px) and (max-width:991px){
+    .logos{
+        height: 15vh;
+    }
+}
+/*-----------------------------
+End of Logo slider section
+------------------------------*/
+
+/*-----------------------------
+Promotion section
+------------------------------*/
+.promo-section{
+    width: 100%;
+    height: 50vh;
+    background-color: white;
+    display: flex;
+    gap: 10px;
+}
+.promo-section .promo-vector{
+    width: 40%;
+    height: auto;
+    position: relative;
+}
+
+.promo-section .promo-vector img {
+    object-fit: cover;
+    height: 100%; 
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+.promo-section .promo-vector:hover img{
+    transition: 0.3s ease-in;
+    transform: translateY(-1%);
+} 
+
+.promo-slider{
+    width: 60%;
+    display: flex;
+    padding: 5px;
+}
+/*-----------------------------
+End of promotion section
+------------------------------*/

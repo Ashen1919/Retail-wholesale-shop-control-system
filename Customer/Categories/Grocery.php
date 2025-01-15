@@ -14,8 +14,8 @@
         rel="apple-touch-icon">
         
     <!-- CSS Files -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/Categories.css" rel="stylesheet">
+    <link href="../Assets/css/styles.css" rel="stylesheet">
+    <link href="../Assets/css/Category.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -41,6 +41,7 @@
             <p><i>Send and deliver Online grocery - Lowest Prices</i></p>
         </div>
 
+
         <div class="sort-section">
             <label for="sort">Sort by:</label>
             <select name="sort" id="sort">
@@ -56,7 +57,7 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Pack of 10 Eggs">
+                    <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Samba">
                 </div>
                 <div class="product-details">
                     <h3>Rice Samba Bulk</h3>
@@ -72,7 +73,7 @@
             <!-- Product Card 2 -->
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/eggs.jfif" alt="Pack of 10 Eggs">
+                    <img src="../Assets/images/Grocery_Page/eggs.jpg" alt="Pack of 10 Eggs">
                 </div>
                 <div class="product-details">
                     <h3>Pack of 10 Eggs</h3>
