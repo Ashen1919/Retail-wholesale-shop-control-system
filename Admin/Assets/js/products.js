@@ -57,70 +57,98 @@ window.onclick = function (event) {
 };
 
 // Pagination Script
-const productsPerPage = 4;
-const productDetails = document.querySelectorAll('.products-content');
-const totalProducts = productDetails.length;
-const totalPages = Math.ceil(totalProducts / productsPerPage);
+const pageNumbers = document.querySelector(".pageNumbers");
+const listItems = document.querySelectorAll(".products-content");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
 
-const paginationContainer = document.querySelector('.pagination');
-const prevButton = document.querySelector('.previous');
-const nextButton = document.querySelector('.next');
-
-// Create dynamic page buttons based on total pages
-paginationContainer.innerHTML = '<button class="previous"> <i class="bi bi-arrow-left"></i> Previous</button>';
-for (let i = 1; i <= totalPages; i++) {
-    const pageButton = document.createElement('button');
-    pageButton.classList.add('page-btn');
-    pageButton.textContent = i;
-    paginationContainer.appendChild(pageButton);
-}
-paginationContainer.innerHTML += '<button class="next">Next <i class="bi bi-arrow-right"></i></button>';
-
-const pageButtons = Array.from(paginationContainer.querySelectorAll('.page-btn'));
+const contentLimit = 10;
+const pageCount = Math.ceil(listItems.length / contentLimit);
 let currentPage = 1;
 
-// Function to show products based on the current page
-function showProducts(page) {
-    const start = (page - 1) * productsPerPage;
-    const end = start + productsPerPage;
+const displayPageNumbers = (index) => {
+    const pageNumber = document.createElement("a");
+    pageNumber.innerText = index;
+    pageNumber.setAttribute('href', "#");
+    pageNumber.setAttribute("index", index);
+    pageNumber.classList.add("page-number");
+    pageNumbers.appendChild(pageNumber);
+};
 
-    productDetails.forEach((product, index) => {
-        product.style.display = index >= start && index < end ? 'block' : 'none';
-    });
-
-    // Highlight the active page button
-    pageButtons.forEach((btn, index) => {
-        btn.classList.toggle('active', index === page - 1);
-    });
-
-    // Enable/Disable prev/next buttons
-    prevButton.disabled = page === 1;
-    nextButton.disabled = page === totalPages;
-}
-
-// Event listeners for page buttons
-pageButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        currentPage = index + 1;
-        showProducts(currentPage);
-    });
-});
-
-// Event listeners for prev/next buttons
-prevButton.addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        showProducts(currentPage);
+const getPageNumbers = () => {
+    for (let i = 1; i <= pageCount; i++) {
+        displayPageNumbers(i);
     }
-});
+};
 
-nextButton.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        currentPage++;
-        showProducts(currentPage);
+const disableButton = (button) => {
+    button.classList.add("disabled");
+    button.setAttribute("disabled", true);
+};
+
+const enableButton = (button) => {
+    button.classList.remove("disabled");
+    button.removeAttribute("disabled");
+};
+
+const controlButtonsStatus = () => {
+    if (currentPage === 1) {
+        disableButton(prevButton);
+    } else {
+        enableButton(prevButton);
     }
+    if (pageCount === currentPage) {
+        disableButton(nextButton);
+    } else {
+        enableButton(nextButton);
+    }
+};
+
+const handleActivePageNumber = () => {
+    document.querySelectorAll('.page-number').forEach((button) => {
+        button.classList.remove("active");
+        const pageIndex = Number(button.getAttribute("index"));
+        if (pageIndex === currentPage) {
+            button.classList.add("active");
+        }
+    });
+};
+
+const setCurrentPage = (pageNum) => {
+    currentPage = pageNum;
+
+    handleActivePageNumber();
+    controlButtonsStatus();
+
+    const prevRange = (pageNum - 1) * contentLimit;
+    const currRange = pageNum * contentLimit;
+
+    listItems.forEach((item, index) => {
+        if (index >= prevRange && index < currRange) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+};
+
+window.addEventListener('load', () => {
+    getPageNumbers();
+    setCurrentPage(1);
+
+    prevButton.addEventListener('click', () => {
+        setCurrentPage(currentPage - 1);
+    });
+
+    nextButton.addEventListener("click", () => {
+        setCurrentPage(currentPage + 1);
+    });
+
+    // Re-adding click listeners for dynamically created page numbers
+    document.querySelector(".pageNumbers").addEventListener('click', (event) => {
+        if (event.target.classList.contains("page-number")) {
+            const pageIndex = Number(event.target.getAttribute('index'));
+            setCurrentPage(pageIndex);
+        }
+    });
 });
-
-// Initialize the first page
-showProducts(currentPage);
-
