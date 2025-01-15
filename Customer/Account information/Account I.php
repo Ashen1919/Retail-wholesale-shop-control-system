@@ -14,6 +14,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
+    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="../Assets/css/Account.css" rel="stylesheet">
     <link href="../Assets/css/UpdateAccount.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,11 +29,14 @@
 
 
 <div class="right-side">
-<div class="log-out">
-                <button class="logout-button">
+    <div class="logout-button"> 
+        <button class="btn-dlt">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </button>
             </div>
+                
+                  
+            
             <div class="profile-container">
            
                 <!-- Profile Section -->
@@ -91,7 +95,13 @@
                     </div>
                 </div>
 </div>
-<button class="btn-dlt">Delete</button>
+                <div class="dlt-button">   
+                    <button class="btn-dlt">
+                         <i class="bi bi-pencil-square"></i>Delete
+                        </button>
+</div>
+
+                    
     <!-- Update Admin Modal -->
     <div id="updateAccount" class="modal">
         <div class="modal-content">

@@ -127,6 +127,7 @@
 
 .edit-button {
   text-align: right;
+
 }
 
 .edit-button i {
@@ -140,7 +141,7 @@
 }
 
 .edit-button button:hover {
-  background-color: #005ec3;
+  background-color: #1423ec;
 }
 
 /* Update Profile Modals styles */
@@ -295,55 +296,56 @@
 
 
 
-.logout {
-  display: flex;
-  padding: 8px;
-  margin-left: 25px;
-}
-
 .logout-button {
   text-align: right;
-  background-color: #f81212; 
-  color: #fff; 
+ 
+}
+
+.logout-button button{
+  text-align: center;
+  background-color: #f80909; 
   border: none;
-  border-radius: 5px; 
-  padding: 10px 20px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px; 
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 5px;
+  width: 100px;
 }
-
-.logout-button:hover {
-  background-color: #d90505; 
-  transform: scale(1.03); 
-}
-
-.logout-button:active {
-  background-color: #c10000; 
-}
-
 .logout-button i {
-  font-size: 18px; 
-}
-.btn-dlt{
-  text-align: right;
-}
-
-.btn-dlt  {
   padding-bottom: 7px;
 }
 
-.btn-dlt {
+.logout-button button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 
-.btn-dlt  {
-  background-color: #005ec3;
+.logout-button button:hover {
+  background-color: #aa0303;
 }
+
+
+.dlt-button {
+  text-align: center;
+ 
+}
+
+.dlt-button button{
+  text-align: center;
+  background-color: #db0909; 
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+}
+.dlt-button i {
+  padding-bottom: 7px;
+}
+
+.dlt-button button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dlt-button button:hover {
+  background-color: #aa0303;
+}
+

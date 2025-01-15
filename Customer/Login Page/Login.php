@@ -15,7 +15,7 @@
         rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-   
+    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="../Assets/css/Login.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -23,10 +23,13 @@
 </head>
 <body>
     <div class="form-background">
-
-    <img src="../Assets/images/logo.png" alt="logo">
-
-
+    <div class="background-image">
+            <img src="../Assets/images/logo.png" alt="logo">
+           <div class="shop-name"> Sandaru Food <span class="mart"> Mart </span></p></div>
+           <div class="bch-img">
+           <img src="../Assets/images/Register_page/Register background.png" alt="logo">
+</div>
+</div>
         <div class="form-container">
 
 
