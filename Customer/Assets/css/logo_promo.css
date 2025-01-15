@@ -91,7 +91,7 @@ Promotion section
 .promo-slider{
     width: 60%;
     display: flex;
-    
+    padding: 5px;
 }
 /*-----------------------------
 End of promotion section
