@@ -1,14 +1,16 @@
-// script.js
-document.getElementById('logout').addEventListener('click', () => {
-    alert('Logged out successfully!');
-    // Redirect to login page
-    window.location.href = 'login.html';
-});
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'block';
+}
 
-document.getElementById('deleteAccount').addEventListener('click', () => {
-    if (confirm('Are you sure you want to delete your account?')) {
-        alert('Account deleted!');
-        // Redirect to homepage or perform additional actions
-        window.location.href = 'homepage.html';
-    }
-});
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
+
+function previewImage(event) {
+    var output = document.getElementById('imagePreview');
+    var container = document.getElementById('imagePreviewContainer');
+    
+    container.style.display = 'block';
+    
+    output.src = URL.createObjectURL(event.target.files[0]);
+}

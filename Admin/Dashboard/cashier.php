@@ -111,8 +111,10 @@
         <!--End of left side-->
 
         <!--Right side-->
+   
         <div class="right-side">
             <section>
+               <h1> Cashier</h1>
         <table>
           <thead>
             <tr>
@@ -126,18 +128,75 @@
             </tr>
           </thead>
           <tbody id="cashierTableBody">
+            
             <!-- Dynamic Rows will be added here -->
           </tbody>
         </table>
 </section>
-        <button id="addCashierBtn" class="add-btn">+ Add Cashier</button>
-      
-            
-            
+        <button id="addCashierBtn" onclick="openModal('AddCashier')" class="add-btn">+ Add Cashier</button>        
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
+
+<!-- Update Admin Modal -->
+<div id="AddCashier" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('AddCashier')">&times;</span>
+            <h3>Add Cashier</h3>
+            <form id="AddCashier" class="updateForm">
+                <div class="box">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+" title="Only alphabetic characters are allowed.">
+                </div>
+                <div class="box">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" pattern="[A-Za-z]+" title="Only alphabetic characters are allowed." >
+                </div>
+                <div class="box">
+                    <label for="nic">NIC</label>
+                    <input type="text" id="nic" name="nic" maxlength="12" pattern="[0-9]{9}[vVxX]|[0-9]{12}" title="Enter a valid NIC (e.g., 123456789V or 200012345678)" >
+                </div>
+                <div class="box">
+                    <label for="dob">Phone Number</label>
+                    <input type="date" id="dob" name="dob" pattern="\d{4}-\d{2}-\d{2}" title="Enter a valid date (e.g., 1990-12-31)"> 
+                </div>
+                <div class="box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@example\.com" title="Email must be in the format user@example.com"> 
+                </div>
+                
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- Update cashier -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Cashier</h3>
+            <form id="addPromoForm">
+                <label for="fname">First Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="lname">Last Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="nic">NIC:</label>
+                <input type="text" id="nic" name="nic" required>
+
+                <label for="phone number">Phone Number:</label>
+                <input type="text" id="phone number" name="phone number" required>
+                
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
 
     <script src="../Assets/js/cashier.js"></script>
     <script src="../Assets/js/script.js"></script>

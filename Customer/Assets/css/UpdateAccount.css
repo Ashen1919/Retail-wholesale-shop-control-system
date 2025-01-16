@@ -27,13 +27,14 @@ body {
     display: block;
     margin-bottom: -2px;
 }
-.form-container input,
+.form-container input:not(#password,#rt-password),
 .form-container select,
 .form-container button {
     width: 100%;
     padding: 5px;
     margin-bottom: 5px;
     border: none;
+    border-radius: 5px;
 }
 .form-container button {
     background-color: #006eff;
@@ -58,16 +59,32 @@ body {
 .password-section{
     padding-right: 30px;
     
+    
 }
 .password-section1{
     padding-right: 30px;
+  
    
 }
 .password-section input{
     position: relative;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+   
 }
 .password-section1 input{
     position: relative;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+   
 }
 .form-container .toggle-icon {
     position: absolute;
@@ -76,7 +93,11 @@ body {
     background-color: white;
     padding: 5px;
     padding-top: 10px;
+    padding-left: 6px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
     height: 34px;
+   
   }
   .form-container .toggle-icon1 {
     position: absolute;
@@ -86,5 +107,7 @@ body {
     padding: 5px;
     padding-top: 10px;
     height: 34px;
+  
+    
   }
   

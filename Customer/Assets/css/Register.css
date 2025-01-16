@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #ededf3;
+    background-color: aqua;
     margin: 0;
     padding: 0;
     display: flex;
@@ -9,36 +9,137 @@ body {
     align-items: center;
     height: 100vh;
 }
-.form-container {
-    background: #d6d2d2;
+.form-background{
+    background: #807c7c;
+    backdrop-filter: blur(30px); 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    width: 800px;
     height: 600px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    padding: 0px 50px 0px 0px;
 }
-.form-container h1 {
+.background-image {
+    position: relative;
+    padding: 200px;
+    height: 250px;
+    top: -260px; 
+}
+.shop-name{
+    position: absolute;
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    margin-bottom: -10px;
+    left: 90px;
+    color: #161af5;
+    transition-duration: 500ms;
+}
+
+.shop-name .mart{
+    position: absolute;
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 90px;
+    color: #f51616;
+    transition-duration: 500ms;
+}
+
+.background-image img{
+    width: 100px;
+    height: 100px; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   left: 40px;
+}
+.bch-img{
+    position: absolute;
+    padding: 10px;
+    height: 10px;
+    top: 350px; 
+    left: 40px;
+}
+.bch-img img{
+    width: 400px;
+    height: 400px; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+.form-container {
+    background: #d6d2d2;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+   
+    
+   
+   
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container h1 {
+    justify-content: center;
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: -8px;
 }
 .form-container label {
     font-weight: bold;
     display: block;
     margin-bottom: 2px;
+    
 }
-.form-container input,
-.form-container select,
-.form-container button {
+.form-container input:not(#password),
+.form-container select
+ {
     width: 100%;
-    padding: 5px;
+    height: 20px;
+    padding: 0 0 0 5px;
     margin-bottom: 5px;
     border: none;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    
 }
+
+.button {
+    text-align: center;
+   
+}
+
 .form-container button {
     background-color: #006eff;
     color: white;
     border: none;
     cursor: pointer;
+    width: 50%;
+    padding: 5px 0;
+   font-size: 12px;
+   border-radius: 5px;
 }
 .form-container button:hover {
     background-color: #0056b3;
@@ -50,6 +151,7 @@ body {
 .form-container .login-link a {
     color: #007bff;
     text-decoration: none;
+    
 }
 .form-container .login-link a:hover {
     text-decoration: underline;
@@ -58,14 +160,32 @@ body {
     padding-right: 30px;
 }
 .password-section input{
-    position: relative;
+   width: 100%;
+    height: 20px;
+    padding: 0 0 0 5px;
+    margin-bottom: 5px;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+   
 }
+
 .form-container .toggle-icon {
     position: absolute;
-    color: black;
+    color: rgb(5, 4, 4);
     cursor: pointer;
     background-color: white;
     padding: 5px;
-    padding-top: 10px;
-    height: 34px;
+    margin-top: 2px;
+    padding-top: 3px;
+    padding-left: 6px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 20px;
+   
+    
+   
   }

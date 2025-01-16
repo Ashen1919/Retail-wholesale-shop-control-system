@@ -5,6 +5,9 @@
     font-family: "Poppins", serif;
     color: white;
 }
+    h1{
+        font-size: 10px;
+ }
 
     table{
       width: 100%;
@@ -25,7 +28,7 @@
   
   
   table th, table td {
-    border: 1px solid #bdc3c7;
+    border: 1px solid #d7dcdf;
     padding: 10px;
     text-align: center;
   }
@@ -70,4 +73,248 @@ table tbody tr .action .delete:hover{
     background-color: #D90505;
     transition: 0.3s ease-in;
 }
+table tbody tr:hover{
+    background:#111827;
+    transition: 0.3s ease-out;
+}
   
+
+/* Update Profile Modals styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+    padding-top: 50px;
+}
+
+.modal-content {
+    left: 11%;
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    padding-top: 10px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: end;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.box {
+    display: inline-block;
+    position: relative;
+    border: 2px solid #858585; 
+    padding: 2px;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.box label {
+    position: absolute;
+    top: -10px;
+    left: 10px; 
+    background: #fff; 
+    padding: 0 5px; 
+    font-size: 14px; 
+    color: #494949;
+}
+
+.box input[type="text"],
+.box input[type="email"],
+.box input[type="tel"],
+.box input[type="number"],
+.box input[type="date"],
+.box textarea {
+    border: none; 
+    outline: none; 
+    font-size: 16px;
+    width: 100%; 
+    padding: 5px;
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+}
+
+.box textarea {
+    resize: vertical;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.box:has(input:focus),
+.box:has(textarea:focus) {
+    border-color: black;  
+}
+
+.updateForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 14px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.updateForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+#updateAdminModal {
+    padding: 20px;
+}
+
+#updateAdminForm {
+    font-family: 'Arial', sans-serif;
+}
+
+#updateAdminForm input,
+#updateAdminForm textarea {
+    font-family: 'Arial', sans-serif;
+}
+
+#imagePreview {
+    max-width: 100%;
+    margin-bottom: 10px;
+    height: 200px;
+}
+
+#updatePictureForm button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#updatePictureForm button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+
+
+/* Add & Update Promo Modal styles */
+.modal {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    position: fixed;
+    z-index: 1; 
+    width: 100%; 
+    height: 100%;
+    overflow: hidden; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    transition: opacity 0.3s ease;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px; 
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+    box-sizing: border-box; 
+    display: flex; 
+    justify-self: center;
+    margin-top: 12%;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h3 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="file"], textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 0 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #000;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+label {
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    color: #000;
+    margin-top: 0px;
+    display: block;
+}

@@ -1,0 +1,141 @@
+/*-----------------------------
+Logo slider section
+------------------------------*/
+
+.logos{
+    width: 100%;
+    height: 20vh;
+    background: white;
+    white-space: nowrap;
+    padding: 30px 0;
+    overflow: hidden;
+}
+
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+.logo-slide{
+    display: inline-block;
+    animation: 20s slide infinite linear;
+}
+
+.logos:hover .logo-slide{
+    animation-play-state: paused;
+}
+
+.logo-slide img{
+    height: 100px;
+    margin-left: 35px;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+
+.logo-slide img:hover{
+    scale: 1.1;
+    transition: 0.3s ease-in;
+}
+
+@media (max-width:481px){
+    .logo-slide img{
+        height: 50px;
+    }
+    .logos{
+        height: 15vh;
+    }
+}
+
+@media (min-width:576px) and (max-width:991px){
+    .logos{
+        height: 15vh;
+    }
+}
+/*-----------------------------
+End of Logo slider section
+------------------------------*/
+
+/*-----------------------------
+Promotion section
+------------------------------*/
+.promo-section {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    gap: 10px;
+    background-image: url('../images/promo-cover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative; 
+    background-color: black;
+    color: white; 
+}
+
+.promo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    backdrop-filter: blur(5px); 
+    z-index: 1; 
+}
+
+.promo-section .text-section{
+    position: absolute;
+    z-index: 2;
+    left: 10%;
+    top: 25%;
+}
+.promo-section .text-section p{
+    font-size: 1.2rem;
+    margin-top: 20px;
+}
+
+.promo-section .text-section a{
+    text-decoration: none;
+}
+
+.promo-section .text-section button{
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    gap: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: #007BFF;
+    border: 2px solid #007BFF;
+    transition: 0.3s ease-out;
+}
+
+.promo-section .text-section button:hover{
+    background-color: transparent;
+    border: 2px solid white;
+    transition: 0.3s ease-in;
+}
+
+.promo-section .text-section button i{
+    margin-bottom: 3px;
+    color: white;
+}
+
+@media (min-width:576px) and (max-width:991px){
+    .promo-section{
+        height: 30vh;
+    }
+    .promo-section .text-section{
+        left: 5%;
+    }
+}
+/*-----------------------------
+End of promotion section
+------------------------------*/

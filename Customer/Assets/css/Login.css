@@ -13,9 +13,79 @@
     height: 100vh;
     font-family: Arial, sans-serif;
     display: flex;
-    background-color: #8143ad; 
+  
     }
-.form-container {
+    .form-background{
+        background: #807c7c;
+        backdrop-filter: blur(30px); 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 800px;
+        height: 600px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        position: relative;
+        padding: 0px 50px 0px 0px;
+    }
+    .background-image {
+        position: relative;
+        padding: 200px;
+        height: 250px;
+        top: -260px; 
+    }
+    .shop-name{
+        position: absolute;
+        width: 300px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        left: 90px;
+        color: #161af5;
+        transition-duration: 500ms;
+    }
+    
+    .shop-name .mart{
+        position: absolute;
+        width: 300px;
+        font-size: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        left: 90px;
+        color: #f51616;
+        transition-duration: 500ms;
+    }
+    
+    .background-image img{
+        width: 100px;
+        height: 100px; 
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+       left: 40px;
+    }
+    .bch-img{
+        position: absolute;
+        padding: 10px;
+        height: 10px;
+        top: 350px; 
+        left: 60px;
+    }
+    .bch-img img{
+        width: 300px;
+        height: 300px; 
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       text-align: center;
+    }
+    .form-container {
     padding: 20px;
     text-align: center;
     display: flex;
@@ -54,6 +124,8 @@
     color: #fff;
     padding: 5px 20px;
     margin: 2px;
+    border: none;
+    border-radius: 5px;
 }
 .form-container p {
     font-size: 14px;

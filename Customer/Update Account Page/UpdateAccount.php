@@ -25,7 +25,7 @@
 <div class="form-container">
 
 
-<h1>Update Account</h1>
+<h1>Update Cashier</h1>
 <form id="registerForm" action="process_register.php" method="POST">
 
     <label for="firstName">First Name</label>
