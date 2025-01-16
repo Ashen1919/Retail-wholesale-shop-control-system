@@ -142,7 +142,8 @@
             
         </div>
     </main>
-
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
     
 
     <script src="../Assets/js/script.js"></script>
