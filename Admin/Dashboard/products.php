@@ -1297,6 +1297,6 @@
       </div>
     </div>
 
-    <script src="../Assets/js/products.js"></script>
+    <script src="../Assets/js/product.js"></script>
   </body>
 </html>
