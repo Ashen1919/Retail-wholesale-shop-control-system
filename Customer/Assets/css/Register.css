@@ -21,18 +21,74 @@ body {
     justify-content: right;
     align-items: center;
     position: relative;
-    
+    padding: 0px 50px 0px 0px;
+}
+.background-image {
+    position: relative;
+    padding: 200px;
+    height: 250px;
+    top: -260px; 
+}
+.shop-name{
+    position: absolute;
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 90px;
+    color: #161af5;
+    transition-duration: 500ms;
 }
 
+.shop-name .mart{
+    position: absolute;
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 90px;
+    color: #f51616;
+    transition-duration: 500ms;
+}
+
+.background-image img{
+    width: 100px;
+    height: 100px; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   left: 40px;
+}
+.bch-img{
+    position: absolute;
+    padding: 10px;
+    height: 10px;
+    top: 350px; 
+    left: 40px;
+}
+.bch-img img{
+    width: 400px;
+    height: 400px; 
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+}
 .form-container {
     background: #d6d2d2;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     height: 500px;
     display: flex;
     flex-direction: column;
+   
     
    
    
@@ -46,12 +102,14 @@ form {
 .form-container h1 {
     justify-content: center;
     text-align: center;
-    margin-bottom: -10px;
+    margin-top: -5px;
+    margin-bottom: -8px;
 }
 .form-container label {
     font-weight: bold;
     display: block;
     margin-bottom: 2px;
+    
 }
 .form-container input:not(#password),
 .form-container select
@@ -93,6 +151,7 @@ form {
 .form-container .login-link a {
     color: #007bff;
     text-decoration: none;
+    
 }
 .form-container .login-link a:hover {
     text-decoration: underline;
@@ -119,12 +178,14 @@ form {
     color: rgb(5, 4, 4);
     cursor: pointer;
     background-color: white;
-    padding: 3px;
+    padding: 5px;
     margin-top: 2px;
-right: 50px;
+    padding-top: 3px;
+    padding-left: 6px;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
     height: 20px;
+   
     
    
   }
