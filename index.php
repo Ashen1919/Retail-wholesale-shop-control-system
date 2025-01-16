@@ -11,7 +11,8 @@
     <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="./Customer/Assets/css/style.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -478,6 +479,70 @@
         </div>
     </div>
     <!--End of Logo animation-->
+
+    <!--Footer section-->
+    <footer id="footer" class="footer position-relative light-background">
+
+        <div class="container footer-top">
+            <div class="row gy-4">
+                <div class="col-lg-5 col-md-12 footer-about">
+                    <a href="index.html" class="logo d-flex text-decoration-none align-items-center">
+                        <span class="sitename">Sandaru Food Mart</span>
+                    </a>
+                    <p>Sandaru Food Mart: Your trusted retail and wholesale destination offering fresh, quality
+                        products, competitive prices, and exceptional customer service. </p>
+                    <div class="social-links d-flex">
+                        <a href=""><i class="bi bi-whatsapp"></i></a>
+                        <a href=""><i class="bi bi-facebook"></i></a>
+                        <a href=""><i class="bi bi-instagram"></i></a>
+                        <a href=""><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#">Terms of service</a></li>
+                        <li><a href="#">Privacy policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-6 footer-links">
+                    <h4>Our Categories</h4>
+                    <ul>
+                        <li><a href="./Customer/Categories/Grocery.php">Grocery</a></li>
+                        <li><a href="./Customer/Categories/Vegetables.php">Vegetables</a></li>
+                        <li><a href="./Customer/Categories/Fruits.php">Fruits</a></li>
+                        <li><a href="./Customer/Categories/Beverages.php">Beverages</a></li>
+                        <li><a href="./Customer/Categories/Household.php">Household</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                    <h4>Contact Us</h4>
+                    <p>328/1/D, Kokiskade Junction,</p>
+                    <p>Kirillawala, Kandy Road.</p>
+                    <p>Sri Lanka</p>
+                    <p class="mt-4"><strong>Phone:</strong> <span>+94 33 267 8970</span></p>
+                    <p><strong>Email:</strong> <span>sandarufoodmart@gmail.com</span></p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container copyright text-center mt-4">
+            <p>© <span>Copyright</span> <strong class="sitename">Sandaru Food Mart</strong> <span>All Rights
+                    Reserved</span></p>
+            <div class="credits">
+                Designed by <a href="">NextWave Creaters</a>
+            </div>
+        </div>
+
+    </footer>
+    <!--End of footer section-->
 
     <script src="./Customer/Assets/js/script.js"></script>
 
