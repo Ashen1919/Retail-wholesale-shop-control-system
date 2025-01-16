@@ -21,35 +21,35 @@
 <body>
     <!-- Include Header -->
 <?php include '../includes/header.php'; ?>
-    
-    <div class="hero">
-        <div class="row">
-           <div class="col"></div>
-           <div class="slider"></div> 
 
-           <div class="product">
+     <body>
+  <div class="product-page">
+
+    <div class="product-image">
+    <div class="col"></div>
+    <div class="slider"></div> 
               <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
            </div>
-           <div class="preview">
-              <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
-           </div>
-
-           <div class="col">
-
-           <div class="content">
-
-                <p class="brand">Brand:Zesta </p>
-
-
-           </div>
-            
-           </div> 
-        </div>
-    </div>
-    
-
  
-
+    <div class="product-details">
+      <h2>Brand: Zesta</h2>
+      <h1>Zesta 90g 50 Tea Bags</h1>
+      <p class="price">Rs. 300.00</p>
+      <div class="quantity">
+        <label for="quantity">Select Quantity:</label>
+        <div class="quantity-controls">
+          <button id="decrease">-</button>
+          <input type="number" id="quantity" value="1" min="1">
+          <button id="increase">+</button>
+        </div>
+      </div>
+      <button class="add-to-cart">Add to Cart</button>
+      <button class="wishlist">Add to Wishlist</button>
+      <p class="stock-info">In Stock</p>
+      <p class="delivery-info">Island wide delivery</p>
+    </div>
+  </div>
+  <script src="../Assets/js/cart.js"></script>
 
 </body>
 </html>
