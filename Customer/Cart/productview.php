@@ -19,6 +19,8 @@
     
 </head>
 <body>
+    <!-- Include Header -->
+<?php include '../includes/header.php'; ?>
     
     <div class="hero">
         <div class="row">
