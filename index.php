@@ -11,7 +11,7 @@
     <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/style.css" rel="stylesheet">
     <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -55,7 +55,7 @@
         <div class="navbar">
             <div class="logo">
                 <a href=""><img src="./Customer/Assets/images/logo.png" alt="logo">
-                    <p>Sandaru Food <span class="mart">Ma</span></p>
+                    <p>Sandaru Food <span class="mart">Mart</span></p>
                 </a>
             </div>
             <nav id="navmenu" class="navmenu">
@@ -106,7 +106,8 @@
             <div class="left-content">
                 <p class="sub-title">100% Fresh</p>
                 <p class="main-title">Everything you need, All in one place.</p>
-                <p class="description">Sandaru Food Mart offers fresh, high-quality groceries, ensuring excellent
+                <p class="description">Sandaru Food Mart offers fresh, high-quality groceries, ensuring
+                    excellent
                     produce, meats, and pantry essentials.</p>
                 <button class="shop-btn">Shop Now <i class="bi bi-arrow-right"></i></button>
             </div>
@@ -442,7 +443,7 @@
             <img src="./Customer/Assets/images/promotion-vector.png" alt="">
         </div>
         <div class="promo-slider">
-            
+
         </div>
     </div>
     <!--End of Promotion Area-->

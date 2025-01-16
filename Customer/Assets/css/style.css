@@ -735,6 +735,7 @@ Hero section
   padding-left: 27px;
   padding-top: 40px;
   display: flex;
+  position: relative;
 }
 .left-card .sub-title {
   font-size: 30px;
@@ -777,6 +778,7 @@ Hero section
 .left-card .mob-description {
   display: none;
 }
+
 .right-card {
   display: block;
   width: 50%;
@@ -1020,6 +1022,27 @@ Hero section
   }
   .right-top-card .left-text .shop-btn {
     margin-top: 15px;
+  }
+}
+
+@media screen and (max-width:1440px) {
+  .right-bottom-card .left-bottom-text .main-bottom-text{
+    margin-top: -10px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width:1280px) {
+  .left-card .left-content .main-title{
+    margin-top: -10px;
+    font-size: 35px;
+  }
+  .right-card .right-top-card .main-text{
+    font-size: 37px;
+  }
+  .right-bottom-card .left-bottom-text .main-bottom-text{
+    margin-top: -10px;
+    font-size: 25px;
   }
 }
 /*===============================
