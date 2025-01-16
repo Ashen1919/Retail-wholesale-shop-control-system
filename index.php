@@ -12,7 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="./Customer/Assets/css/style.css" rel="stylesheet">
-    <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -439,11 +439,10 @@
 
     <!--Promotion Area-->
     <div class="promo-section">
-        <div class="promo-vector">
-            <img src="./Customer/Assets/images/promotion-vector.png" alt="">
-        </div>
-        <div class="promo-slider">
-
+        <div class="text-section">
+            <h1>Seamless Shopping, Anytime & Anywhere</h1>
+            <p>Your Retail and Wholesale Partner for Smarter Delivery Solutions</p>
+            <a href="#categories"><button>Shop Now <i class="bi bi-arrow-right"></i></button></a>
         </div>
     </div>
     <!--End of Promotion Area-->
