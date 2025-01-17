@@ -117,3 +117,36 @@
     margin-top: 6px;
     font-size: 13px;
   }
+
+  /*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: #007bff;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: rgb(243, 241, 241);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, #007bff, transparent 20%);
+  color: white;
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
