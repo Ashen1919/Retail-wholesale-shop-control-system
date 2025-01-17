@@ -21,7 +21,6 @@
 }
 
 .category-header h2 {
-    font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
     color: #333;
     position: relative;
@@ -51,7 +50,6 @@
 .category-description p {
     color: #555;
     font-size: 1.2rem;
-    font-family: 'Playfair Display', serif;
 }
 
 .sort-section {
