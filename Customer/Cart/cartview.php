@@ -19,15 +19,7 @@
 </head>
 <body>
     <!-- Include Header -->
-    <!-- <?php include '../includes/header.php'; ?>
-
-    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        
-        <li class="breadcrumb-item">Categories</li>
-        
-    </ol>
-    </nav> -->
+    <?php include '../includes/header.php'; ?>
 
     <script src="../Assets/js/script.js"></script>
     
