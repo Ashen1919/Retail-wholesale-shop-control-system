@@ -1140,7 +1140,6 @@ html {
 
 .category-header h2 {
   text-align: center;
-  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   font-weight: 600;
   color: #333;
@@ -1151,7 +1150,7 @@ html {
 .category-header h2::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
@@ -1328,7 +1327,6 @@ Best Selling Products Section
   font-size: 2.5rem;
   font-weight: 600;
   color: #333;
-  font-family: "Playfair Display", serif;
   margin: 0;
   position: relative;
   display: inline-block;
@@ -1337,7 +1335,7 @@ Best Selling Products Section
 .section-title::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   width: 100px;
