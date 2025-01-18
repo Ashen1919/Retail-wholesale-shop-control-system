@@ -12,7 +12,7 @@
 
     <!-- CSS Files -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/Category.css" rel="stylesheet">
+    <link href="../Assets/css/Categories.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link
