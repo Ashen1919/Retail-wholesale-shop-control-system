@@ -49,7 +49,7 @@
                 </form>
             </div>
             <div class="social-icon">
-                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="./Admin/Dashboard/index.php"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
             </div>
