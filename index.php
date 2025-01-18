@@ -11,12 +11,12 @@
     <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="./Customer/Assets/css/style.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
     <link href="./Customer/Assets/css/contact.css" rel="stylesheet">
     <link href="./Customer/Assets/css/offer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
     <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
-    <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
