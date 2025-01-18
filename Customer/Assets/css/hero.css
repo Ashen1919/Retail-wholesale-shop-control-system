@@ -1,0 +1,334 @@
+/*===============================
+Hero section
+================================*/
+.hero {
+    display: flex;
+    width: 100%;
+    background-color: #ebe7e7;
+    padding: 10px;
+    position: relative;
+  }
+  /*left card*/
+  .left-card {
+    width: 50%;
+    height: 510px;
+    background-color: #b8ccef;
+    padding: 10px;
+    margin-left: 24px;
+    border-radius: 20px;
+    padding-left: 27px;
+    padding-top: 40px;
+    display: flex;
+    position: relative;
+  }
+  .left-card .sub-title {
+    font-size: 30px;
+    font-weight: 500;
+    color: #e71414;
+  }
+  .left-card .main-title {
+    font-size: 40px;
+    font-weight: 700;
+  }
+  .left-card .left-content .description {
+    font-weight: 400;
+  }
+  .left-card .shop-btn {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    color: #ebe7e7;
+    font-weight: 500;
+    transition-duration: 500ms;
+  }
+  .left-card .shop-btn:hover {
+    background-color: transparent;
+    color: #000000;
+  }
+  .left-card .right-img {
+    width: 350px;
+  }
+  .left-card .right-img img {
+    justify-content: right;
+    width: 360px;
+    transition-duration: 500ms;
+  }
+  .left-card .right-img img:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition-duration: 500ms;
+  }
+  .left-card .mob-description {
+    display: none;
+  }
+  
+  .right-card {
+    display: block;
+    width: 50%;
+    margin-right: 38px;
+  }
+  .right-top-card {
+    width: 100%;
+    height: 250px;
+    background-color: #9be6a0;
+    margin-left: 24px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding-left: 23px;
+    padding-top: 12px;
+    display: flex;
+  }
+  .right-top-card .left-text {
+    margin-right: 10px;
+    padding-top: 5px;
+  }
+  .right-top-card .left-text .sub-text {
+    font-size: 30px;
+    color: #1345eb;
+    font-weight: 500;
+  }
+  .right-top-card .left-text .main-text {
+    font-size: 40px;
+    font-weight: 700;
+    margin-top: -10px;
+  }
+  .right-top-card .left-text .shop-btn {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    color: #ebe7e7;
+    font-weight: 500;
+    transition-duration: 500ms;
+  }
+  .right-top-card .left-text p {
+    margin-top: -10px;
+  }
+  .right-top-card .left-text .shop-btn:hover {
+    background-color: transparent;
+    color: #000000;
+  }
+  .right-top-card .right-side-img img {
+    width: 190px;
+    height: auto;
+    transition-duration: 500ms;
+  }
+  .right-top-card .right-side-img img:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition-duration: 500ms;
+  }
+  .right-bottom-card {
+    width: 100%;
+    height: 250px;
+    background-color: #f0ea85;
+    margin-left: 24px;
+    border-radius: 20px;
+    padding-left: 23px;
+    padding-top: 12px;
+    display: flex;
+  }
+  .right-bottom-card .left-bottom-text .sub-bottom-text {
+    font-size: 30px;
+    font-weight: 500;
+    color: #02840b;
+  }
+  .right-bottom-card .left-bottom-text .main-bottom-text {
+    font-size: 35px;
+    font-weight: 700;
+  }
+  .right-bottom-card .left-bottom-text .shop-btn {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: #007bff;
+    border: 2px solid #007bff;
+    color: #ebe7e7;
+    font-weight: 500;
+    transition-duration: 500ms;
+  }
+  .right-bottom-card .left-bottom-text .shop-btn:hover {
+    background-color: transparent;
+    color: #000000;
+  }
+  .right-bottom-card .right-side-bottom-img img {
+    width: 250px;
+    height: auto;
+    margin-top: 30px;
+    margin-left: 7px;
+    transition-duration: 500ms;
+  }
+  .right-bottom-card .right-side-bottom-img img:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+    transition-duration: 500ms;
+  }
+  @media (max-width: 481px) {
+    .hero {
+      display: block;
+    }
+    .left-card {
+      width: 100%;
+      margin-left: 3px;
+      height: 595px;
+      padding-top: 20px;
+      display: block;
+    }
+    .left-card .left-content .sub-title {
+      font-size: 25px;
+    }
+    .left-card .left-content .main-title {
+      font-size: 35px;
+      margin-top: -15px;
+    }
+    .left-card .right-img img {
+      width: 190px;
+      height: auto;
+      margin-left: 65px;
+      margin-top: -5px;
+    }
+    .right-card {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .right-top-card,
+    .right-bottom-card {
+      margin-left: 3px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      height: 360px;
+    }
+    .right-top-card .left-text .sub-text {
+      font-size: 25px;
+      margin-top: 5px;
+    }
+    .right-top-card .left-text .main-text {
+      font-size: 35px;
+    }
+    .right-top-card .right-side-img img {
+      width: 160px;
+      height: auto;
+      margin-top: 40px;
+      margin-left: -20px;
+    }
+    .right-bottom-card .left-bottom-text .sub-bottom-text {
+      font-size: 25px;
+    }
+    .right-bottom-card .left-bottom-text .main-bottom-text {
+      font-size: 35px;
+      margin-top: -18px;
+    }
+    .right-bottom-card .left-bottom-text p {
+      margin-top: -5px;
+    }
+    .right-bottom-card .right-side-bottom-img img {
+      width: 160px;
+      height: auto;
+      margin-top: 70px;
+      margin-left: 7px;
+      transition-duration: 500ms;
+    }
+  }
+  
+  /* middle screen responsive */
+  @media (min-width: 576px) and (max-width: 991px) {
+    .hero {
+      display: block;
+    }
+    .left-card {
+      width: 100%;
+      margin-left: 3px;
+      height: auto;
+      padding-top: 20px;
+      display: flex;
+    }
+    .left-card .left-content .sub-title {
+      font-size: 25px;
+    }
+    .left-card .left-content .main-title {
+      font-size: 35px;
+      margin-top: -15px;
+    }
+    .left-card .right-img img {
+      width: 190px;
+      height: auto;
+      margin-left: 25px;
+      margin-top: -5px;
+    }
+    .right-card {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      display: flex;
+      gap: 5px;
+    }
+    .right-top-card,
+    .right-bottom-card {
+      margin-left: 3px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+      height: auto;
+      width: 50%;
+    }
+    .right-top-card .left-text .sub-text {
+      font-size: 25px;
+      margin-top: 5px;
+    }
+    .right-top-card .left-text .main-text {
+      font-size: 35px;
+    }
+    .right-top-card .right-side-img img {
+      width: 170px;
+      height: auto;
+      margin-top: 40px;
+      margin-left: -20px;
+    }
+    .right-bottom-card .left-bottom-text .sub-bottom-text {
+      font-size: 25px;
+    }
+    .right-bottom-card .left-bottom-text .main-bottom-text {
+      font-size: 30px;
+      margin-top: -18px;
+    }
+    .right-bottom-card .left-bottom-text p {
+      margin-top: -5px;
+    }
+    .right-bottom-card .right-side-bottom-img img {
+      width: 170px;
+      height: auto;
+      margin-top: 70px;
+      margin-left: 7px;
+      transition-duration: 500ms;
+    }
+    .right-bottom-card .left-bottom-text .shop-btn {
+      margin-bottom: 20px;
+    }
+    .right-top-card .left-text .shop-btn {
+      margin-top: 15px;
+    }
+  }
+  
+  @media screen and (max-width:1440px) {
+    .right-bottom-card .left-bottom-text .main-bottom-text{
+      margin-top: -10px;
+      font-size: 28px;
+    }
+  }
+  
+  @media screen and (max-width:1280px) {
+    .left-card .left-content .main-title{
+      margin-top: -10px;
+      font-size: 35px;
+    }
+    .right-card .right-top-card .main-text{
+      font-size: 37px;
+    }
+    .right-bottom-card .left-bottom-text .main-bottom-text{
+      margin-top: -10px;
+      font-size: 25px;
+    }
+  }
+  /*===============================
+  End of the hero section
+  ================================*/
