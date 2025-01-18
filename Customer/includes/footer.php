@@ -143,7 +143,7 @@
                 <h4>Useful Links</h4>
                 <ul>
                     <li><a href="../../index.php">Home</a></li>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="../aboutus/aboutus.php">About us</a></li>
                     <li><a href="#categories">Categories</a></li>
                     <li><a href="#">Terms of service</a></li>
                     <li><a href="#">Privacy policy</a></li>
