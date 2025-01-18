@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beverages - Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
-        
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
+
     <!-- CSS Files -->
-    <link href="../Assets/css/styles.css" rel="stylesheet">
-    <link href="../Assets/css/Category.css" rel="stylesheet">
+    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/Categories.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
     <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        
-        <li class="breadcrumb-item">Categories</li>
-        <li class="breadcrumb-item active" aria-current="page">Beverages</li>
-    </ol>
-</nav>
+        <ol class="breadcrumb">
+
+            <li class="breadcrumb-item">Categories</li>
+            <li class="breadcrumb-item active" aria-current="page">Beverages</li>
+        </ol>
+    </nav>
 
     <main class="category-main">
         <div class="category-header">
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            
+
 
             <!-- Product Card 2 -->
             <div class="product-card">
@@ -100,7 +100,7 @@
             <!-- Product Card 4 -->
             <div class="product-card">
                 <div class="product-image">
-                <img src="../Assets/images/Beverages_Page/pepsi.jpg" alt="Catch Canned Fish">
+                    <img src="../Assets/images/Beverages_Page/pepsi.jpg" alt="Catch Canned Fish">
                 </div>
                 <div class="product-details">
                     <h3>Pepsi</h3>
@@ -114,7 +114,7 @@
             <!-- Product Card 5 -->
             <div class="product-card">
                 <div class="product-image">
-                <img src="../Assets/images/Beverages_Page/orange.jpg" alt="Catch Canned Fish">
+                    <img src="../Assets/images/Beverages_Page/orange.jpg" alt="Catch Canned Fish">
                 </div>
                 <div class="product-details">
                     <h3>Elephant House Orange </h3>
@@ -139,12 +139,14 @@
                 </div>
             </div>
 
-            
+
         </div>
     </main>
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
-    
 
     <script src="../Assets/js/script.js"></script>
 </body>
+
 </html>
