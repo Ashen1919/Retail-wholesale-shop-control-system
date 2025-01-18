@@ -200,7 +200,7 @@
 
     <div class="category-section" id="categories">
         <div class="category-header">
-            <h2 style="text-align: center;">Shop by Category</h2>
+            <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
         </div>
 
         <div class="category-grid">
@@ -258,7 +258,7 @@
     <section class="best-sellers">
         <div class="section-header">
             <div class="title-container">
-                <h2 class="section-title">Best Selling Products</h2>
+                <h2 class="section-title" style="font-family: poppins;">Best Selling Products</h2>
             </div>
 
         </div>
@@ -444,7 +444,7 @@
 
     <!--Offers Area-->
     <div class="title-sec">
-        <h2 class="section-title">Daily Offers</h2>
+        <h2 class="section-title" style="font-family: poppins;">Daily Offers</h2>
     </div>
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
@@ -501,7 +501,7 @@
 
         <!-- Section Title -->
         <div class="container title-section" data-aos="fade-up">
-            <h2 class="section-title">Contact Us</h2>
+            <h2 class="section-title" style="font-family: poppins;">Contact Us</h2>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
