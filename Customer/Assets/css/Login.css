@@ -1,97 +1,85 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-  
+    font-family: "Poppins", serif;
 }
-    
-    
-    body {
+
+body {
     margin: 0;
     justify-content: center;
     align-items: center;
     height: 100vh;
     font-family: Arial, sans-serif;
     display: flex;
-  
-    }
-    .form-background{
-        background: #807c7c;
-        backdrop-filter: blur(30px); 
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        width: 800px;
-        height: 600px;
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        position: relative;
-        padding: 0px 50px 0px 0px;
-    }
-    .background-image {
-        position: relative;
-        padding: 200px;
-        height: 250px;
-        top: -260px; 
-    }
-    .shop-name{
-        position: absolute;
-        width: 300px;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        left: 90px;
-        color: #161af5;
-        transition-duration: 500ms;
-    }
-    
-    .shop-name .mart{
-        position: absolute;
-        width: 300px;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        left: 90px;
-        color: #f51616;
-        transition-duration: 500ms;
-    }
-    
-    .background-image img{
-        width: 100px;
-        height: 100px; 
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       text-align: center;
-       left: 40px;
-    }
-    .bch-img{
-        position: absolute;
-        padding: 10px;
-        height: 10px;
-        top: 350px; 
-        left: 60px;
-    }
-    .bch-img img{
-        width: 300px;
-        height: 300px; 
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       text-align: center;
-    }
-    .form-container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.form-background {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(30px);
     padding: 20px;
+    border-radius: 25px;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    position: relative;
+    padding: 0px 50px 0px 0px;
+    gap: 40px;
+}
+
+.background-image {
+    position: relative;
+    height: 90%;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shop-name {
+    display: flex;
+    gap: 10px;
+}
+
+.shop-name h1 {
+    color: #161af5;
+    font-size: 35px;
+}
+
+#mart{
+    color: #f51616;
+    font-size: 35px;
+}
+
+.background-image img {
+    width: 150px;
+    height: 141px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.bch-img img {
+    width: 330px;
+    height: 330px;
+}
+
+form {
+    width: 100%;
+   
+}
+
+.form-container {
     text-align: center;
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 400px;
+    width: 45%;
+    height: 90%;
     justify-content: space-around;
     background: #d6d3d3;
     border-radius: 10px;
@@ -102,78 +90,126 @@
     color: #070707;
     margin-bottom: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
 }
+
 .form-container label {
     display: block;
     text-align: left;
     color: #000000;
-    margin-bottom: 3px;
-    font-size: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-top: 5px;
+    font-size: 20px;
+   
 }
+
 .form-container input {
-    width: 100%;
-    margin-bottom: 5px;
+    width: 75%;
+    margin-bottom: 15px;
 }
+
 .form-container a {
     color: #001aff;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+   margin-right: 10px;
 }
+
 .form-container button {
     background-color: #0da7ee;
-    color: #fff;
-    padding: 5px 20px;
+    color: #0a0909;
+    padding: 5px 60px;
     margin: 2px;
     border: none;
     border-radius: 5px;
+    font-size: 20px;
+    gap: 10px;
+    margin-bottom: 35px;
 }
+
 .form-container p {
-    font-size: 14px;
+    font-size: 16px;
     color: #000000;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+  
 }
-#fp{
+
+#fp {
     display: block;
     text-align: right;
     margin-bottom: 3px;
 }
-img{
+
+img {
     height: 60px;
     width: 60px;
 
 }
+
 .password-container {
     width: 300px;
-  }
-  
-  .input-wrapper {
+}
+
+.input-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-  }
-  
-  input {
-    width: 100%;
+}
+
+input:not(#password){
+    width: 80%;
     padding: 10px 40px 10px 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(255, 255, 255);
     border-radius: 8px;
     outline: none;
-  }
-  
-  input:focus {
-    border-color: #6200ea;
-  }
-  
-  .toggle-icon {
+}
+#password{
+    width: 70%;
+    padding: 10px 40px 10px 10px;
+    font-size: 16px;
+    border: 1px solid rgb(255, 255, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+
+}
+input:focus {
+    border-color: #f5f7f6;
+}
+
+.toggle-icon {
     position: absolute;
     right: 10px;
     font-size: 18px;
     color: #666;
     cursor: pointer;
+}
+
+.toggle-icon:hover {
+    color: #ff4081;
+    /* Highlight color for hover */
+}
+
+.form-container .toggle-icon {
+    position: absolute;
+    color: rgb(5, 4, 4);
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    margin-top: -62px;
+    margin-left: 180px;
+    margin-right: 55px;
+    padding-top: 15px;
+    padding-left: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 26px;
+    border: #f5eeee;
   }
-  
-  .toggle-icon:hover {
-    color: #ff4081; /* Highlight color for hover */
-  }
-  

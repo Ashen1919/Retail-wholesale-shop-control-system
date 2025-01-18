@@ -7,50 +7,49 @@
     <title>Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="../Assets/css/Login.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="form-background">
-    <div class="background-image">
+        <div class="background-image">
             <img src="../Assets/images/logo.png" alt="logo">
-           <div class="shop-name"> Sandaru Food <span class="mart"> Mart </span></p></div>
-           <div class="bch-img">
-           <img src="../Assets/images/Register_page/Register background.png" alt="logo">
-</div>
-</div>
+            <div class="shop-name">
+                <h1>Sandaru Food</h1>
+                <h1 id="mart">Mart<h1>
+            </div>
+            <div class="bch-img">
+                <img src="../Assets/images/Register_page/Register background.png" alt="logo">
+            </div>
+        </div>
         <div class="form-container">
+            <form>
+                <h1>Login</h1>
 
-
-        <form> 
-        
-<h1>Login</h1>
-
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your Email" required>
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password"require>   
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your Email" required>
+                <div class="password-section">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
                     <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-            
-            <a id="fp" href="#">Forgot Password?</a><br>
+                </div>
 
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account?<a href="#">Sign up now</a></p>
+                <a id="fp" href="#">Forgot Password?</a><br>
+
+                <button type="submit">Login</button>
+
+                <p>Don't have an account?<a href="#">Sign up now</a></p>
+            </form>
+           
+        </div>
     </div>
-</div>
-    
+
     <script src="../Assets/js/login.js"></script>
 </body>
+
 </html>
