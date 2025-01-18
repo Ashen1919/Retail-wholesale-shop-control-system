@@ -11,7 +11,7 @@
     <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="./Customer/Assets/css/style.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
     <link href="./Customer/Assets/css/contact.css" rel="stylesheet">
     <link href="./Customer/Assets/css/offer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
