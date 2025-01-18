@@ -11,8 +11,9 @@
     <link href="./Customer/Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="./Customer/Assets/css/styles.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/style.css" rel="stylesheet">
     <link href="./Customer/Assets/css/contact.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
     <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -438,6 +439,9 @@
     </section>
 
     <!--End of Best Selling Products Section-->
+
+    <!--Offers Area-->
+    <!--End of Offers Area-->
 
     <!--Promotion Area-->
     <div class="promo-section">
