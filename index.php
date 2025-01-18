@@ -74,7 +74,7 @@
                         </form>
                     </div>
                     <li><a href="" class="active">Home<br></a></li>
-                    <li><a href="#about">About us</a></li>
+                    <li><a href="./Customer/aboutus/aboutus.php">About us</a></li>
                     <li class="dropdown"><a href="#categories"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>
