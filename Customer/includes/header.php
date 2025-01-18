@@ -57,7 +57,7 @@
         <!--Nav Bar-->
         <div class="navbar">
             <div class="logo">
-                <a href=""><img
+                <a href="../../index.php"><img
                         src="../Assets/images/logo.png"
                         alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>

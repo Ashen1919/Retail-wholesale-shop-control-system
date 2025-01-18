@@ -34,7 +34,7 @@
 
     <main class="category-main">
         <div class="category-header">
-            <h2>..Household..</h2>
+            <h2 style="font-family: poppins;">..Household..</h2>
         </div>
 
         <div class="category-description">
