@@ -74,7 +74,7 @@ Promotion section
     background-repeat: no-repeat;
     position: relative; 
     background-color: black;
-    color: white; 
+    color: white;
 }
 
 .promo-section::before {

@@ -13,9 +13,11 @@
     <!-- Css Stylesheets -->
     <link href="./Customer/Assets/css/style.css" rel="stylesheet">
     <link href="./Customer/Assets/css/contact.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/offer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
     <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
-    <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/logo_promo.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
@@ -441,6 +443,47 @@
     <!--End of Best Selling Products Section-->
 
     <!--Offers Area-->
+    <div class="title-sec">
+        <h2 class="section-title">Daily Offers</h2>
+    </div>
+    <div class="swiper">
+        <div class="swiper-wrapper card-wrper">
+            <!--Slide 01-->
+            <div class="swiper-slide">
+                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
+                <h2 class="topic">Summer Sale</h2>
+                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
+            </div>
+            <!--Slide 02-->
+            <div class="swiper-slide">
+                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
+                <h2 class="topic">Winter Discount</h2>
+                <p class="text">Get 30% off on all products this winter season!</p>
+            </div>
+            <!--Slide 03-->
+            <div class="swiper-slide">
+                <img src="./Customer/Assets/images/offers/Black Friday.jpeg" alt="offer image">
+                <h2 class="topic">Black Friday</h2>
+                <p class="text">Exclusive discounts on Groceries for Black Friday!</p>
+            </div>
+            <!--Slide 04-->
+            <div class="swiper-slide">
+                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
+                <h2 class="topic">Summer Sale</h2>
+                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
+            </div>
+            <!--Slide 05-->
+            <div class="swiper-slide">
+                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
+                <h2 class="topic">Winter Discount</h2>
+                <p class="text">Get 30% off on all products this winter season!</p>
+            </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
     <!--End of Offers Area-->
 
     <!--Promotion Area-->
@@ -641,7 +684,8 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <script src="./Customer/Assets/js/script.js"></script>
-
+    <script src="./Customer/Assets/js/offer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 </body>
 
