@@ -293,6 +293,12 @@ input[type="submit"]:hover{
     border: 2px solid black;
     color: black;
 }
+.details .names-details{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 @media (max-width:481px){
     .review-image{
@@ -302,14 +308,17 @@ input[type="submit"]:hover{
         display: block;
         padding: 0;
     }
-    .names{
+    .details .names-details{
         margin-bottom: 15px;
-    }
-    .names input[type="text"]{
-        margin-left: 54px;
+        display: block;
     }
     textarea{
         width: 370px;
+        margin-top: 10px;
+    }
+    input[type = "text"]{
+        width: 300px;
+        margin-top: 10px;
     }
 }
 
@@ -322,6 +331,12 @@ input[type="submit"]:hover{
     }
     input[type = "text"]{
         width: 270px;
+    }
+    .details .names-details{
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 }
 /*-------------------------------------

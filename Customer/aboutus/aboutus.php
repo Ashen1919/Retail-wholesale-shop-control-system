@@ -12,7 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/aboutuss.css" rel="stylesheet">
+    <link href="../Assets/css/aboutus.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -196,11 +196,11 @@
             </div>
             <form action="" method="post">
                 <div class="details">
-                    <div class="names" style="display:flex; gap:10px; align-items:center;">
+                    <div class="names-details">
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" placeholder="Your Name">
                     </div>
-                    <div style="display:flex; gap:10px; align-items:center;">
+                    <div class="names-details">
                         <label for="name">Occupation:</label>
                         <input type="text" name="name" id="name" placeholder="Your occupation">
                     </div>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="feedback">
                     <label for="name">Your Feedback:</label>
-                    <textarea name="feedback" id="feedback"></textarea>
+                    <textarea name="feedback" id="feedback" placeholder="Your Feedback"></textarea>
                 </div>
                 <input type="submit" value="Submit">
             </form>
