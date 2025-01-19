@@ -97,7 +97,8 @@
                     ⭐⭐⭐⭐
                 </div>
                 <div class="comment">
-                    <p>The shop has a great variety of products, excellent customer service, and fast delivery. Highly recommended for online shopping!</p>
+                    <p>The shop has a great variety of products, excellent customer service, and fast delivery. Highly
+                        recommended for online shopping!</p>
                 </div>
                 <div class="image-feedback">
                     <img src="../Assets/images/feedback/951.jpg" alt="Person">
@@ -114,7 +115,8 @@
                     ⭐⭐⭐⭐⭐
                 </div>
                 <div class="comment">
-                    <p>I appreciate the friendly staff and the organized store layout. Prices are fair, and I’ll definitely shop here again.</p>
+                    <p>I appreciate the friendly staff and the organized store layout. Prices are fair, and I’ll
+                        definitely shop here again.</p>
                 </div>
                 <div class="image-feedback">
                     <img src="../Assets/images/feedback/3546.jpg" alt="Person">
@@ -131,7 +133,8 @@
                     ⭐⭐⭐
                 </div>
                 <div class="comment">
-                    <p>Delivery was quick, and the product quality exceeded my expectations. The online system is user-friendly and hassle-free.</p>
+                    <p>Delivery was quick, and the product quality exceeded my expectations. The online system is
+                        user-friendly and hassle-free.</p>
                 </div>
                 <div class="image-feedback">
                     <img src="../Assets/images/feedback/16320.jpg" alt="Person">
@@ -148,7 +151,8 @@
                     ⭐⭐⭐⭐⭐
                 </div>
                 <div class="comment">
-                    <p>Great in-store experience! Staff were helpful, and checkout was quick. I found everything I needed without any issues.</p>
+                    <p>Great in-store experience! Staff were helpful, and checkout was quick. I found everything I
+                        needed without any issues.</p>
                 </div>
                 <div class="image-feedback">
                     <img src="../Assets/images/feedback/18778.jpg" alt="Person">
@@ -165,7 +169,8 @@
                     ⭐⭐⭐⭐⭐
                 </div>
                 <div class="comment">
-                    <p>The inventory is well-stocked, and customer support was responsive. Online orders are processed efficiently, and tracking was accurate.</p>
+                    <p>The inventory is well-stocked, and customer support was responsive. Online orders are processed
+                        efficiently, and tracking was accurate.</p>
                 </div>
                 <div class="image-feedback">
                     <img src="../Assets/images/feedback/56066.jpg" alt="Person">
@@ -183,7 +188,42 @@
     </div>
 
     <!--Review add section-->
-    
+    <div class="review-section">
+        <h3 class="top">Leave a Review</h3>
+        <div class="body-content">
+            <div class="review-image">
+                <img src="../Assets/images/review.png" alt="Review Image">
+            </div>
+            <form action="" method="post">
+                <div class="details">
+                    <div class="names" style="display:flex; gap:10px; align-items:center;">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" placeholder="Your Name">
+                    </div>
+                    <div style="display:flex; gap:10px; align-items:center;">
+                        <label for="name">Occupation:</label>
+                        <input type="text" name="name" id="name" placeholder="Your occupation">
+                    </div>
+
+                </div>
+                <div class="rate">
+                    <label for="name">Rating:</label>
+                    <select name="rating" id="rating">
+                        <option value="rating">1</option>
+                        <option value="rating">2</option>
+                        <option value="rating">3</option>
+                        <option value="rating">4</option>
+                        <option value="rating">5</option>
+                    </select>
+                </div>
+                <div class="feedback">
+                    <label for="name">Your Feedback:</label>
+                    <textarea name="feedback" id="feedback"></textarea>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
