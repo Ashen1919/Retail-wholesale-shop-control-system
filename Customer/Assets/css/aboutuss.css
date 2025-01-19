@@ -129,3 +129,74 @@
         height: 30vh;
     }
 }
+
+/*-------------------------------------
+Testomonial slider
+-------------------------------------*/
+.swiper{
+    width: 100%;
+    height: 57vh;
+}
+.swiper .top{
+    font-weight:600;
+    margin-bottom:20px;
+    margin-left: 7%;
+}
+.swiper-wrapper{
+    max-height: 45vh;
+}
+.swiper-slide{
+    user-select: none;
+    height: 45vh;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.05);
+    display: block;
+}
+.rating{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.comment p{
+    text-align: center;
+    margin-bottom: 10px;
+}
+.image-feedback{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.image-feedback img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.name{
+    display: flex;
+    justify-content: center;
+}
+.job{
+    display: flex;
+    justify-content: center;
+}
+.swiper-pagination{
+    margin-top: 10px;
+}
+
+@media (max-width:481px){
+    .swiper{
+        height: 50vh;
+    }
+}
+
+@media (min-width:576px) and (max-width:991px){
+    .swiper{
+        height: 35vh;
+    }
+}
+/*-------------------------------------
+End of testomonial slider
+-------------------------------------*/
