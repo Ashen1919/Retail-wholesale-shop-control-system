@@ -136,8 +136,9 @@ Testomonial slider
 .swiper{
     width: 100%;
     height: 57vh;
+    margin-bottom: 10px;
 }
-.swiper .top{
+.top{
     font-weight:600;
     margin-bottom:20px;
     margin-left: 7%;
@@ -199,4 +200,130 @@ Testomonial slider
 }
 /*-------------------------------------
 End of testomonial slider
+-------------------------------------*/
+
+/*-------------------------------------
+Review Section
+-------------------------------------*/
+.review-section{
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    position: relative;
+}
+.body-content{
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    height: auto;
+}
+.review-image{
+    width: 30%;
+    height: auto;
+}
+.review-image img{
+    width: 100%;
+    height: 60vh;
+    background-position: center;
+}
+form{
+    width: 70%;
+    height: auto;
+    display: block;
+}
+.details{
+    width: 100%;
+    height: auto;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+label{
+    font-size: 20px;
+    font-weight: 500;
+}
+input[type = "text"] {
+    padding: 8px;
+    width: 400px;
+    border-radius: 10px;
+}
+.rate{
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+select{
+    padding: 5px;
+    width: 100px;
+    color: black;
+    border-radius: 10px;
+}
+option{
+    color: black;
+}
+.feedback{
+    width: 100%;
+    display: block;
+    margin-top: 25px;
+}
+textarea{
+    margin-top: 20px;
+    width: 100%;
+    height: 150px;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+}
+input[type="submit"]{
+    padding: 10px;
+    width: 100px;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    margin-top: 25px;
+    background-color: #007bff;
+    transition: 0.3s ease-in;
+}
+input[type="submit"]:hover{
+    transition: 0.3s ease-out;
+    background-color: transparent;
+    border: 2px solid black;
+    color: black;
+}
+
+@media (max-width:481px){
+    .review-image{
+        display: none;
+    }
+    .details{
+        display: block;
+        padding: 0;
+    }
+    .names{
+        margin-bottom: 15px;
+    }
+    .names input[type="text"]{
+        margin-left: 54px;
+    }
+    textarea{
+        width: 370px;
+    }
+}
+
+@media (min-width:576px) and (max-width:991px){
+    .review-image{
+        display: none;
+    }
+    .details{
+        padding: 0;
+    }
+    input[type = "text"]{
+        width: 270px;
+    }
+}
+/*-------------------------------------
+End of review section
 -------------------------------------*/
