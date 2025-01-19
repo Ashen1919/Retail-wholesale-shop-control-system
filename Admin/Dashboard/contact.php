@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/contact.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -109,7 +110,30 @@
 
         <!--Right side-->
         <div class="right-side">
-
+        <h2 style="color: white; margin-bottom: 20px">Contact</h2>
+            <div class="customer-content">
+                <div class="category-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ashen Gimhana</td>
+                                <td>ashendissanayaka0@gmail.com</td>
+                                <td>About payment problem</td>
+                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
+                                efficiently, and tracking was accurate.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!--End of right side-->
     </div>
