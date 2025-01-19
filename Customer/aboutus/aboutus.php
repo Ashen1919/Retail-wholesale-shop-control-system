@@ -12,9 +12,10 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/aboutus.css" rel="stylesheet">
+    <link href="../Assets/css/aboutuss.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -85,6 +86,135 @@
         </div>
     </div>
 
+    <!-- Slider main container -->
+    <div class="swiper">
+        <h3 class="top">User Feedbacks</h3>
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">
+                <div class="rating">
+                    ⭐⭐⭐⭐
+                </div>
+                <div class="comment">
+                    <p>The shop has a great variety of products, excellent customer service, and fast delivery. Highly recommended for online shopping!</p>
+                </div>
+                <div class="image-feedback">
+                    <img src="../Assets/images/feedback/951.jpg" alt="Person">
+                </div>
+                <div class="name">
+                    <h5>Jane Smith</h5>
+                </div>
+                <div class="job">
+                    <p>Software Engineer</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <div class="comment">
+                    <p>I appreciate the friendly staff and the organized store layout. Prices are fair, and I’ll definitely shop here again.</p>
+                </div>
+                <div class="image-feedback">
+                    <img src="../Assets/images/feedback/3546.jpg" alt="Person">
+                </div>
+                <div class="name">
+                    <h5>Jacob Oram</h5>
+                </div>
+                <div class="job">
+                    <p>Civil Engineer</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="rating">
+                    ⭐⭐⭐
+                </div>
+                <div class="comment">
+                    <p>Delivery was quick, and the product quality exceeded my expectations. The online system is user-friendly and hassle-free.</p>
+                </div>
+                <div class="image-feedback">
+                    <img src="../Assets/images/feedback/16320.jpg" alt="Person">
+                </div>
+                <div class="name">
+                    <h5>Micheal Clark</h5>
+                </div>
+                <div class="job">
+                    <p>Doctor</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <div class="comment">
+                    <p>Great in-store experience! Staff were helpful, and checkout was quick. I found everything I needed without any issues.</p>
+                </div>
+                <div class="image-feedback">
+                    <img src="../Assets/images/feedback/18778.jpg" alt="Person">
+                </div>
+                <div class="name">
+                    <h5>Harry Fernando</h5>
+                </div>
+                <div class="job">
+                    <p>Businessman</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="rating">
+                    ⭐⭐⭐⭐⭐
+                </div>
+                <div class="comment">
+                    <p>The inventory is well-stocked, and customer support was responsive. Online orders are processed efficiently, and tracking was accurate.</p>
+                </div>
+                <div class="image-feedback">
+                    <img src="../Assets/images/feedback/56066.jpg" alt="Person">
+                </div>
+                <div class="name">
+                    <h5>Ann Steven</h5>
+                </div>
+                <div class="job">
+                    <p>Teacher</p>
+                </div>
+            </div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!--Review add section-->
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper('.swiper', {
+
+            loop: true,
+            spaceBetween: 30,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                dynamicBullets: true
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 2
+                },
+                1024: {
+                    slidesPerView: 3
+                }
+            }
+
+        });
+    </script>
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
 </body>
