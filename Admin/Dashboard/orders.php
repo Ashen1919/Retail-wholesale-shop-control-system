@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/order.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -109,14 +110,75 @@
 
         <!--Right side-->
         <div class="right-side">
+            <div class="heading">
+                <h2 style="color:white; margin-bottom:20px;">Order Management</h2>
+                <div class="date">
+                    <label for="date" style="color:white;">Filter by Date:</label>
+                    <input type="date" name="date" id="date">
+                </div>
+            </div>
 
+            <!--Table Content-->
+            <div class="category-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Email</th>
+                            <th>Order Date</th>
+                            <th>Order Type</th>
+                            <th>Order Status</th>
+                            <th>Total Amount</th>
+                            <th>Address</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>ashengimhana58@gmail.com</td>
+                            <td>19/01/2025</td>
+                            <td>Online</td>
+                            <td>In-progress</td>
+                            <td>2,570</td>
+                            <td>NO:222,Nedungolla,Mandawala</td>
+                            <td>
+                                <div class="action">
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
-    <script src="../Assets/js/script.js"></script>
+    <!-- Update Promo Modal -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Order Status</h3>
+            <form id="addPromoForm">
 
+                <label for="name" style="margin-top:5px;">Order Status:</label>
+                <select name="type" id="type">
+                    <option value="select one...">Select One...</option>
+                    <option value="in-progress">In-progress</option>
+                    <option value="ready-to-ship">Ready to ship</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="canceled">Canceled</option>
+                </select>
+
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="../Assets/js/script.js"></script>
+    <script src="../Assets/js/promotion.js"></script>
 </body>
 
 </html>

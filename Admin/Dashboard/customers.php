@@ -12,7 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/customers.css" rel="stylesheet">
+    <link href="../Assets/css/customer.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -120,6 +120,7 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
+                                <th>Customer Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -129,8 +130,11 @@
                                 <td>Ashen</td>
                                 <td>Dissanayaka</td>
                                 <td>0764426675</td>
+                                <td>Online</td>
                                 <td>
                                     <div class="action">
+                                        <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                                class="bi bi-pencil-square"></i></button>
                                         <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                     </div>
                                 </td>
@@ -138,6 +142,10 @@
                         </tbody>
                     </table>
                 </div>
+                <button onclick="openModal('addPromoModal')">
+                    <i class="bi bi-plus fs-3"></i>
+                    Add Customer
+                </button>
             </div>
         </div>
         <!--End of right side-->
@@ -148,24 +156,26 @@
     <div id="addPromoModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
-            <h3>Add Category</h3>
+            <h3>Add Customer</h3>
             <form id="addPromoForm">
-                <label for="catID">Category ID:</label>
+                <label for="catID">Email:</label>
                 <input type="text" id="catID" name="catID" required>
 
-                <label for="name">Category Name:</label>
+                <label for="name">First Name:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for="categoryDescription">Description:</label>
-                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="name" required>
 
-                <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
-                    onchange="previewImage(event)" required>
+                <label for="name">Phone Number:</label>
+                <input type="text" id="name" name="name" required>
 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview" />
-                </div>
+                <label for="name" style="margin-top:5px;">Customer Type:</label>
+                <select name="type" id="type">
+                    <option value="select one...">Select One...</option>
+                    <option value="online">Online</option>
+                    <option value="in-store">In-store</option>
+                </select>
 
                 <button type="submit">Add Category</button>
             </form>
@@ -178,22 +188,24 @@
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Category</h3>
             <form id="addPromoForm">
-                <label for="catID">Category ID:</label>
-                <input type="text" id="catID" name="catID" required disabled>
+            <label for="catID">Email:</label>
+                <input type="text" id="catID" name="catID" required>
 
-                <label for="name">Category Name:</label>
+                <label for="name">First Name:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for="categoryDescription">Description:</label>
-                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="name" required>
 
-                <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
-                    onchange="previewImage(event)" required>
+                <label for="name">Phone Number:</label>
+                <input type="text" id="name" name="name" required>
 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview" />
-                </div>
+                <label for="name" style="margin-top:5px;">Customer Type:</label>
+                <select name="type" id="type">
+                    <option value="select one...">Select One...</option>
+                    <option value="online">Online</option>
+                    <option value="in-store">In-store</option>
+                </select>
 
                 <button type="submit">Update Category</button>
             </form>
