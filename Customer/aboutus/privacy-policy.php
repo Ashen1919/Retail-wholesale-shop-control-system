@@ -259,7 +259,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Smooth scroll for sidebar navigation
+            
             $('.sidebar-nav a').on('click', function (event) {
                 if (this.hash !== "") {
                     event.preventDefault();
