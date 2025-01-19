@@ -1,7 +1,13 @@
-.right-side{
+.right-side-product{
     height: auto;
     display: block;
     position: relative;
+    width: 80%;
+    background-color: #111827;
+    padding: 10px;
+    right: 0;
+    margin-left: 20%;
+    margin-top: 65px;
   }
   .head-section{
     width: 100%;
@@ -78,7 +84,8 @@
   
   /* Product details section */
   .product-details{
-    display: block;
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
     width: 100%;
     height: auto;
     padding: 5px;
@@ -299,7 +306,6 @@
     justify-content: start;
     bottom: 0;
     width: 100%;
-    position: relative;
   }
   .pagination{
     width: 500px;
@@ -344,3 +350,4 @@
   .hidden{
     display: none
   }
+  
