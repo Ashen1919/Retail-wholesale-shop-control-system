@@ -23,7 +23,7 @@
     <div class="top-bar">
         <div class="left">
             <div class="search-bar">
-                <input type="search" name="search" id="search" placeholder="Search">
+                <input type="search" name="search" id="search" style="color: black;" placeholder="Search">
                 <button><i class="bi bi-search"></i></button>
             </div>
         </div>
