@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Sandaru Food Mart</title>
-
-    <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
-        
     <!-- CSS Files -->
     <link href="../Assets/css/checkout.css" rel="stylesheet">
     
@@ -20,8 +11,9 @@
 <body>
     <!-- Include Header -->
    <?php include '../includes/header.php'; ?> 
+
      <div>
-     <h2>Checkout</h2>
+     <h2>  Checkout</h2>
      </div>
 
     <div class="payment-container">
