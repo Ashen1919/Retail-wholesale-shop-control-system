@@ -120,7 +120,6 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
-                                <th>Customer Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -130,7 +129,6 @@
                                 <td>Ashen</td>
                                 <td>Dissanayaka</td>
                                 <td>0764426675</td>
-                                <td>Online</td>
                                 <td>
                                     <div class="action">
                                         <button onclick="openModal('updatePromoModal')" class="edit"><i
@@ -170,13 +168,6 @@
                 <label for="name">Phone Number:</label>
                 <input type="text" id="name" name="name" required>
 
-                <label for="name" style="margin-top:5px;">Customer Type:</label>
-                <select name="type" id="type">
-                    <option value="select one...">Select One...</option>
-                    <option value="online">Online</option>
-                    <option value="in-store">In-store</option>
-                </select>
-
                 <button type="submit">Add Category</button>
             </form>
         </div>
@@ -199,13 +190,6 @@
 
                 <label for="name">Phone Number:</label>
                 <input type="text" id="name" name="name" required>
-
-                <label for="name" style="margin-top:5px;">Customer Type:</label>
-                <select name="type" id="type">
-                    <option value="select one...">Select One...</option>
-                    <option value="online">Online</option>
-                    <option value="in-store">In-store</option>
-                </select>
 
                 <button type="submit">Update Category</button>
             </form>
