@@ -50,7 +50,7 @@
         .keep-shopping {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -83,6 +83,22 @@
                 Rs. 8900.00
             </div>
             <div class="status-cancelled">Cancelled</div>
+        </div>
+
+        <div class="order-card">
+            <div>
+                <strong>Order 003</strong><br>
+                Rs. 980.00
+            </div>
+            <div class="status-delivered">Delivered</div>
+        </div>
+
+        <div class="order-card">
+            <div>
+                <strong>Order 004</strong><br>
+                Rs. 1350.00
+            </div>
+            <div class="status-delivered">Delivered</div>
         </div>
 
         <div class="keep-shopping">
