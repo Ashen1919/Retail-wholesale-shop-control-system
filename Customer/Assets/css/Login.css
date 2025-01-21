@@ -166,7 +166,7 @@ input:not(#password){
     outline: none;
 }
 #password{
-    width: 70%;
+    width: 78%;
     padding: 10px 40px 10px 10px;
     font-size: 16px;
     border: 1px solid rgb(255, 255, 255);
@@ -204,12 +204,60 @@ input:focus {
     background-color: rgb(255, 255, 255);
     padding: 5px;
     margin-top: -62px;
-    margin-left: 180px;
-    margin-right: 55px;
-    padding-top: 15px;
-    padding-left: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
+    margin-left: 350px;
+    margin-right: 20px;
+    padding-top: 16px;
+    padding-left: -15px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius:10px;
     height: 26px;
+    width: 30px;
     border: #f5eeee;
   }
+
+
+  /* For tablets (screens 768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .form-background {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 20px;
+    }
+  
+    .background-image img {
+      max-width: 200px;
+    }
+  
+    .form-container {
+      width: 50%; /* Adjust width for tablets */
+    }
+  }
+  
+  /* For desktops (screens wider than 1024px) */
+  @media (min-width: 1366px) {
+    .form-background {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 20px;
+    }
+  
+    .background-image img {
+      max-width: 768px;
+    }
+  
+    .form-container {
+      width: 50%; /* Adjust width for desktops */
+    }
+  }
+  
+  /* For mobile devices (screens smaller than 800px) */
+  @media (max-width: 800px) {
+    .form-container {
+      width: 50%; /* Default width for mobile */
+    }
+  
+    .background-image img {
+      max-width: 360px;
+    }
+  }
+  
