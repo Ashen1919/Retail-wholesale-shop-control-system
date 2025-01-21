@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
         
     <!-- CSS Files -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/styles.css" rel="stylesheet">
     <link href="../Assets/css/Categories.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -34,7 +34,7 @@
 
     <main class="category-main">
         <div class="category-header">
-            <h2>..Household..</h2>
+            <h2 style="font-family: poppins;">..Household..</h2>
         </div>
 
         <div class="category-description">

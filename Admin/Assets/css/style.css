@@ -59,6 +59,7 @@ Top Bar
     padding-left: 15px;
     padding-bottom: 5px;
     outline: none;
+    color: black;
 }
 .search-bar button{
     padding: 7px;

@@ -57,7 +57,7 @@
         <!--Nav Bar-->
         <div class="navbar">
             <div class="logo">
-                <a href=""><img
+                <a href="../../index.php"><img
                         src="../Assets/images/logo.png"
                         alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>
@@ -74,7 +74,7 @@
                         </form>
                     </div>
                     <li><a href="../../index.php" class="active">Home<br></a></li>
-                    <li><a href="#about">About us</a></li>
+                    <li><a href="../aboutus/aboutus.php">About us</a></li>
                     <li class="dropdown"><a href="#"><span>Categories</span> <i
                                 class="bi bi-chevron-down toggle-dropdown"></i></a>
                         <ul>

@@ -11,5 +11,5 @@ decreaseButton.addEventListener('click', () => {
 
 increaseButton.addEventListener('click', () => {
   const currentValue = parseInt(quantityInput.value, 10);
-  quantityInput.value = currentValue + 1;
+    quantityInput.value = currentValue + 1;
 });

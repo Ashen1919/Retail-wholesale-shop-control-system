@@ -35,6 +35,7 @@
       <h2>Brand: Zesta</h2>
       <h1>Zesta 90g 50 Tea Bags</h1>
       <p class="price">Rs. 300.00</p>
+      
       <div class="quantity">
         <label for="quantity">Select Quantity:</label>
         <div class="quantity-controls">
@@ -43,12 +44,15 @@
           <button id="increase">+</button>
         </div>
       </div>
+
       <button class="add-to-cart">Add to Cart</button>
+      </br>
       <button class="wishlist">Add to Wishlist</button>
       <p class="stock-info">In Stock</p>
       <p class="delivery-info">Island wide delivery</p>
     </div>
   </div>
+  <!-- js Files -->
   <script src="../Assets/js/cart.js"></script>
 
 </body>

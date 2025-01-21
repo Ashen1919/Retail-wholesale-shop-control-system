@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/reviews.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -22,7 +23,7 @@
     <div class="top-bar">
         <div class="left">
             <div class="search-bar">
-                <input type="search" name="search" id="search" placeholder="Search">
+                <input type="search" name="search" id="search" style="color: black;" placeholder="Search">
                 <button><i class="bi bi-search"></i></button>
             </div>
         </div>
@@ -109,7 +110,39 @@
 
         <!--Right side-->
         <div class="right-side">
-
+            <h2 style="color: white; margin-bottom: 20px">Reviews</h2>
+            <div class="customer-content">
+                <div class="category-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Occupation</th>
+                                <th>Ratings</th>
+                                <th>Feedback</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ashen Gimhana</td>
+                                <td>Software Engineer</td>
+                                <td>5</td>
+                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
+                                efficiently, and tracking was accurate.</td>
+                                <td>Pending</td>
+                                <td>
+                                    <div class="action">
+                                        <button  class="edit">Accept</button>
+                                        <button class="delete">Reject</i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <!--End of right side-->
     </div>

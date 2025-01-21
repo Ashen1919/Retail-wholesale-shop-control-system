@@ -12,6 +12,7 @@
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="../Assets/css/customer.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -22,7 +23,7 @@
     <div class="top-bar">
         <div class="left">
             <div class="search-bar">
-                <input type="search" name="search" id="search" placeholder="Search">
+                <input type="search" name="search" id="search" style="color: black;" placeholder="Search">
                 <button><i class="bi bi-search"></i></button>
             </div>
         </div>
@@ -109,12 +110,93 @@
 
         <!--Right side-->
         <div class="right-side">
-
+            <div class="customer-content">
+                <h2 style="color:white; margin-bottom:20px;">Customer Management </h2>
+                <div class="category-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Phone Number</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>ashengimhana58@gmail.com</td>
+                                <td>Ashen</td>
+                                <td>Dissanayaka</td>
+                                <td>0764426675</td>
+                                <td>
+                                    <div class="action">
+                                        <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                                class="bi bi-pencil-square"></i></button>
+                                        <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button onclick="openModal('addPromoModal')">
+                    <i class="bi bi-plus fs-3"></i>
+                    Add Customer
+                </button>
+            </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
+    <!-- Add Promo Modal -->
+    <div id="addPromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
+            <h3>Add Customer</h3>
+            <form id="addPromoForm">
+                <label for="catID">Email:</label>
+                <input type="text" id="catID" name="catID" required>
+
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="name">Phone Number:</label>
+                <input type="text" id="name" name="name" required>
+
+                <button type="submit">Add Category</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Update Promo Modal -->
+    <div id="updatePromoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
+            <h3>Update Category</h3>
+            <form id="addPromoForm">
+            <label for="catID">Email:</label>
+                <input type="text" id="catID" name="catID" required>
+
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="name">Phone Number:</label>
+                <input type="text" id="name" name="name" required>
+
+                <button type="submit">Update Category</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Assets/js/promotion.js"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>
