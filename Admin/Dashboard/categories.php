@@ -1,6 +1,7 @@
 <?php
 include("db_con.php");
 
+//Add a category
 if (isset($_POST['add_btn'])) {
     $name = $_POST['name'];
     $description = $_POST['categoryDescription'];
@@ -8,7 +9,7 @@ if (isset($_POST['add_btn'])) {
     $image_name = $_FILES['categoryImage']['name'];
     $tmp = explode(".", $image_name);
     $newFileName = round(microtime(true)) . '.' . end($tmp);
-    $uploadPath = "uploads/" . $newFileName;
+    $uploadPath = "../Assets/images/categories/" . $newFileName;
 
     if (move_uploaded_file($_FILES['categoryImage']["tmp_name"], $uploadPath)) {
 
@@ -24,6 +25,11 @@ if (isset($_POST['add_btn'])) {
         $message = "fail";
     }
 }
+
+//Display all categories
+$sql_display = "SELECT * FROM categories";
+$result = mysqli_query($conn, $sql_display);
+
 ?>
 
 
@@ -151,11 +157,14 @@ if (isset($_POST['add_btn'])) {
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                            while($row = mysqli_fetch_assoc($result))
+                        {
+                        ?>
                         <tr>
-                            <td>Grocery</td>
-                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
-                                snacks, and essentials.</td>
-                            <td><img src="../Assets/images/categories/grocery.png" alt=""></td>
+                            <td> <?php echo $row['name']; ?> </td>
+                            <td> <?php echo $row['description']; ?> </td>
+                            <td><img src="../Assets/images/categories/<?php echo $row['image']; ?>" alt="Category Image"></td>
                             <td>
                                 <div class="action">
                                     <button onclick="openModal('updatePromoModal')" class="edit"><i
@@ -164,58 +173,9 @@ if (isset($_POST['add_btn'])) {
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>Vegetables</td>
-                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
-                                snacks, and essentials.</td>
-                            <td><img src="../Assets/images/categories/vegetables.jpg" alt=""></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Fruits</td>
-                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
-                                snacks, and essentials.</td>
-                            <td><img src="../Assets/images/categories/fruit.jpg" alt=""></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Household</td>
-                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
-                                snacks, and essentials.</td>
-                            <td><img src="../Assets/images/categories/household.jpg" alt=""></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Beverages</td>
-                            <td>Fresh, high-quality grocery items at Sandaru Food Mart, including produce, meats, dairy,
-                                snacks, and essentials.</td>
-                            <td><img src="../Assets/images/categories/beverages.jpg" alt=""></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php 
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -266,7 +226,7 @@ if (isset($_POST['add_btn'])) {
         <div class="modal-content">
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Category</h3>
-            <form id="addPromoForm">
+            <form id="addPromoForm" action="categories.php" method="post" enctype="multipart/form-data">
 
                 <label for="name">Category Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -275,14 +235,9 @@ if (isset($_POST['add_btn'])) {
                 <textarea id="categoryDescription" name="categoryDescription" required></textarea>
 
                 <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
-                    onchange="previewImage(event)" required>
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" required>
 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview" />
-                </div>
-
-                <button type="submit">Update Category</button>
+                <button type="submit" name="update_btn">Update Category</button>
             </form>
         </div>
     </div>
