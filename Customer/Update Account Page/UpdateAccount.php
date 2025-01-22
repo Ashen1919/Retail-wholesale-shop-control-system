@@ -40,13 +40,6 @@
             <label for="address">Address</label>
             <input type="text" id="address" name="address" required>
 
-            <label for="gender">Gender</label>
-            <select id="gender" name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-            </select>
             <div class="password-section">
                 <label for="N password">New Password</label>
                 <input type="password" id="password" placeholder="Enter your New password">
