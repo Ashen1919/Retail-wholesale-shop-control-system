@@ -19,11 +19,11 @@
 
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(to right, #2196f3, #f51616);
+            background: url('../Assets/images/terms_of_service.jpg');
             background-size: cover;
             background-position: center;
-            color: white;
-            padding: 10px 0;
+            color: black;
+            padding: 50px 0;
             margin-bottom: 40px;
             position: relative;
         }
@@ -32,41 +32,27 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            text-align: center;
         }
 
         .breadcrumb {
             background: transparent;
             padding: 0;
             margin-bottom: 20px;
-            text-align: left;
         }
 
         .breadcrumb a {
-            color: #000;
+            color: black;
             text-decoration: none;
         }
 
-        .breadcrumb-item.active {
-            color: #000;
-        }
-
         .breadcrumb-item + .breadcrumb-item::before {
-            color: #000;
+            color: white;
         }
 
         .hero-title {
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .last-updated {
-            font-size: 0.9rem;
-            text-align: right;
-            margin-top: -40px;
-            padding-right: 20px;
         }
 
         /* Content Section */
