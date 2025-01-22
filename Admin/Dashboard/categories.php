@@ -1,3 +1,32 @@
+<?php
+include("db_con.php");
+
+if (isset($_POST['add_btn'])) {
+    $name = $_POST['name'];
+    $description = $_POST['categoryDescription'];
+
+    $image_name = $_FILES['categoryImage']['name'];
+    $tmp = explode(".", $image_name);
+    $newFileName = round(microtime(true)) . '.' . end($tmp);
+    $uploadPath = "uploads/" . $newFileName;
+
+    if (move_uploaded_file($_FILES['categoryImage']["tmp_name"], $uploadPath)) {
+
+        $sql = "INSERT INTO categories(name, description, image) VALUES ('$name', '$description', '$newFileName')";
+        $data = mysqli_query($conn, $sql);
+
+        if ($data) {
+            $message = "success";
+        } else {
+            $message = "fail";
+        }
+    } else {
+        $message = "fail";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -204,9 +233,19 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Category</h3>
-            <form id="addPromoForm">
-                <label for="catID">Category ID:</label>
-                <input type="text" id="catID" name="catID" required>
+            <form id="addPromoForm" action="categories.php" method="post" enctype="multipart/form-data">
+
+                <div class="success" id="success"
+                    style="display: <?php echo (isset($message) && $message == 'success') ? 'block' : 'none'; ?>;">
+                    <span class="close_popup" onclick="closeModal('success')">&times;</span>
+                    <p>Category Added Successfully!</p>
+                </div>
+
+                <div class="fail" id="fail"
+                    style="display: <?php echo (isset($message) && $message == 'fail') ? 'block' : 'none'; ?>;">
+                    <span class="close_popup" onclick="closeModal('fail')">&times;</span>
+                    <p>Failed to add category!</p>
+                </div>
 
                 <label for="name">Category Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -215,14 +254,9 @@
                 <textarea id="categoryDescription" name="categoryDescription" required></textarea>
 
                 <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*"
-                    onchange="previewImage(event)" required>
+                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" required>
 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview" />
-                </div>
-
-                <button type="submit">Add Category</button>
+                <button type="submit" name="add_btn">Add Category</button>
             </form>
         </div>
     </div>
@@ -233,8 +267,6 @@
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Category</h3>
             <form id="addPromoForm">
-                <label for="catID">Category ID:</label>
-                <input type="text" id="catID" name="catID" required disabled>
 
                 <label for="name">Category Name:</label>
                 <input type="text" id="name" name="name" required>
