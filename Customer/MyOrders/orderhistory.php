@@ -14,7 +14,7 @@
         rel="apple-touch-icon">
         
     <!-- CSS Files -->
-    <link href="../Assets/css/cart_style.css" rel="stylesheet">
+    <!-- <link href="../Assets/css/cart_style.css" rel="stylesheet"> -->
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -27,7 +27,7 @@
             margin: auto;
         }
         .order-card {
-            background-color: #e3f2fd;
+            background-color:rgb(232, 240, 168);
             border-radius: 8px;
             margin-bottom: 10px;
             padding: 10px 20px;
@@ -52,6 +52,7 @@
             justify-content: center;
             margin-top: 30px;
         }
+        
     </style>
 </head>
 <body>
@@ -59,7 +60,7 @@
     <?php include '../includes/header.php'; ?>
 
     <div class="order-history">
-        <h4>Order History</h4>
+        <h4 style="font-weight:600; margin-bottom:20px;">Order History</h4>
         <div class="mb-3">
             <label for="filter" class="form-label">Show:</label>
             <select id="filter" class="form-select">
@@ -100,10 +101,19 @@
             </div>
             <div class="status-delivered">Delivered</div>
         </div>
+        
+        <!-- <div class="keep-shopping">
+            <button a href="../../index.php" class="btn btn-primary">
+            <h3 style="font-weight:600; margin-bottom:10px;">Keep Shopping</h3>
+            </button>
+        </div> -->
 
         <div class="keep-shopping">
-            <button class="btn btn-primary">Keep Shopping</button>
+                    <a href="../../index.php" class="styled-link">
+                        <i class="btn btn-primary"></i> Keep Shopping
+                    </a>
         </div>
+
     </div>
 
     <!-- Bootstrap JS -->
@@ -129,8 +139,8 @@
         });
     </script>
 
-    
-
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
 </body>
 </html>

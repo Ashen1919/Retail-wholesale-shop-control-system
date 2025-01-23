@@ -132,17 +132,17 @@
                 <p>Order Delivery</p>
             </div>
             <a href="#" class="track-button">
-                Track Your Order
+                <h4 style="font-weight:600; margin-bottom:10px;">Track Your Order</h4>
                 <img src="..\Assets\images\cart images\truck-d.png" alt="Delivery Icon" height="35">
             </a>
         </div>
     </div>
-
-    <script src="../Assets/js/script.js"></script>
     
+    <script src="../Assets/js/script.js"></script>
 
- 
-
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
+    
 
 </body>
 </html>
