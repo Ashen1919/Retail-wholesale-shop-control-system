@@ -881,7 +881,7 @@ if (isset($_POST['add_product_btn'])) {
     <div class="modal-content">
       <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
       <h3>Add Product</h3>
-      <form id="addPromoForm" action="products.php" method="post" enctype="multipart/form-data">
+      <form id="addPromoForm" action="" method="post" enctype="multipart/form-data">
         <div class="full-row">
           <div class="head-row">
             <div class="left-row">
