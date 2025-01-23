@@ -48,18 +48,18 @@ if(isset($_POST['register_btn'])){
                 <label for="phoneNumber">Phone Number</label>
                 <input type="tel" id="phoneNumber" name="phone_number" placeholder="Enter your phone number" required>
 
-                <div class="password-section">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
-                </div>
-                <div class="button">
-                    <button type="submit" name="register_btn" >Sign Up</button>
-                </div>
-                <div class="login-link">
-                    <p>Do you have an account? <a href="login.php">Login Here</a></p>
-                </div>
-            </form>
-        </div>
+            <div class="password-section">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
+            </div>
+            <div class="button">
+                <button type="submit">Sign Up</button>
+            </div>
+            <div class="login-link">
+                <p>Do you have an account? <a href="login.php">Login Here</a></p>
+            </div>
+        </form>
+    </div>
     </div>
 </div>
