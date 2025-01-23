@@ -1,41 +1,41 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Poppins", serif;
-}
-
-body {
-    margin: 0;
+.modal-wrapper {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    display: flex;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.form-background {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(30px);
-    padding: 20px;
-    border-radius: 25px;
-    width: 800px;
-    height: 600px;
+.back {
+    background:rgba(0,0,0,0.7);
+    left: 0;
+    top: 0;
+    width: 60%;
+    height: 85%;
     display: flex;
-    justify-content: right;
-    align-items: center;
-    position: relative;
-    padding: 0px 50px 0px 0px;
+    padding: 30px;
+    border-radius: 20px;
     gap: 40px;
-    
+    position: relative;
 }
 
-.background-image {
-    position: relative;
+.modal-wrapper.active {
+    display: flex;
+}
+
+.modal-wrapper .form-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-wrapper .background-image {
     height: 90%;
     width: 55%;
     display: flex;
@@ -43,121 +43,117 @@ body {
     align-items: center;
 }
 
-.shop-name {
+.modal-wrapper .shop-name {
     display: flex;
     gap: 10px;
 }
 
-.shop-name h1 {
+.modal-wrapper .shop-name h1 {
     color: #161af5;
     font-size: 35px;
+    font-weight: 700;
 }
 
-#mart{
+.modal-wrapper #mart {
     color: #f51616;
     font-size: 35px;
 }
 
-.background-image img {
+.modal-wrapper .background-image img {
     width: 150px;
     height: 141px;
     padding-top: 5px;
     padding-bottom: 10px;
 }
 
-.bch-img img {
+.modal-wrapper .bch-img img {
     width: 330px;
     height: 330px;
 }
 
-
-.form-container {
-    background: #d6d2d2;
-    padding: 20px;
+.modal-wrapper .form-container {
+    background-color: white;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(8, 4, 4, 0.2);
-    height: 80%;
-    width: 38%;
-    display: flex;
-    flex-direction: column;
-   
+    width: 400px;
+    max-width: 90%;
 }
 
-form {
+.modal-wrapper form {
     display: flex;
     flex-direction: column;
     gap: 2px;
-   
 }
 
-.form-container h1 {
+.modal-wrapper .form-container h1 {
     justify-content: center;
     text-align: center;
     margin-top: -5px;
-    margin-bottom: -8px;
+    margin-bottom: 8px;
 }
-.form-container label {
-    
+
+.modal-wrapper .form-container label {
     display: block;
     margin-bottom: 2px;
-    
 }
-.form-container input:not(#password),
-.form-container select
- {
+
+.modal-wrapper .form-container input:not(#password){
     width: 100%;
-    height: 20px;
+    height: 25px;
     padding: 0 0 0 5px;
     margin-bottom: 5px;
-    border:none;
+    border: none;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
     font-size: 16px;
-    
+    background-color: rgb(175, 175, 175);
 }
 
-   
-    
+.modal-wrapper .form-container input::placeholder {
+    color: gray; 
+}
 
-.button {
+.modal-wrapper .button {
     text-align: center;
-   
-   
 }
 
-.form-container button {
+.modal-wrapper .form-container button {
     background-color: #006eff;
     color: rgb(8, 8, 8);
     border: none;
     cursor: pointer;
     width: 50%;
     padding: 5px 0;
-   font-size: 16px;
-   border-radius: 5px;
+    font-size: 16px;
+    border-radius: 5px;
 }
-.form-container button:hover {
+
+.modal-wrapper .form-container button:hover {
     background-color: #0056b3;
 }
-.form-container .login-link {
+
+.modal-wrapper .form-container .login-link {
     text-align: center;
     margin-top: 10px;
 }
-.form-container .login-link a {
+
+.modal-wrapper .form-container .login-link a {
     color: #007bff;
     text-decoration: none;
-    
 }
-.form-container .login-link a:hover {
+
+.modal-wrapper .form-container .login-link a:hover {
     text-decoration: underline;
 }
-.password-section{
+
+.modal-wrapper .password-section {
     padding-right: 30px;
-  
 }
-.password-section input{
-   width: 100%;
-    height: 20px;
+
+.modal-wrapper .password-section input {
+    width: 100%;
+    height: 25px;
     padding: 0 0 0 5px;
     margin-bottom: 5px;
     border: none;
@@ -166,28 +162,32 @@ form {
     font-size: 16px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-   
-    
-   
+    background-color: rgb(175, 175, 175);
 }
 
-.form-container .toggle-icon {
+.modal-wrapper .form-container .toggle-icon {
     position: absolute;
     color: rgb(5, 4, 4);
     cursor: pointer;
-    background-color: white;
+    background-color: rgb(175, 175, 175);
     padding: 5px;
-    margin-top: -25px;
-    margin-left: 265px;
-    padding-top: 4px;
-    padding-left: 1px;
-    border-bottom-right-radius: 5px;
+    height: 25px;
+    border-end-end-radius: 5px;
     border-top-right-radius: 5px;
-    height: 11px;
-  }
+}
 
-  
-input:focus {
+.modal-wrapper input:focus {
     border-color: #28a745; /* Green border color when focused */
     box-shadow: 0 0 5px #28a745; /* Optional glow effect */
-  }
+}
+
+.close-btn {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    font-size: 35px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
