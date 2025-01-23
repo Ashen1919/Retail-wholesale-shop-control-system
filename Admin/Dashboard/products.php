@@ -9,28 +9,21 @@ $result = mysqli_query($conn, $sql);
 $auto_sql = "SELECT product_id FROM products ORDER BY product_id DESC LIMIT 1";
 $result_auto = mysqli_query($conn, $auto_sql);
 
-if ($result_auto->num_rows > 0) {
+if (mysqli_num_rows($result_auto) > 0) {
   $rows = $result_auto->fetch_assoc();
   $lastid = $rows['product_id'];
   $num = (int) substr($lastid, 2);
-  $new_id = 'p-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+  $new_id = 'P-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
 } else {
   $new_id = 'P-00001';
 }
 
 //add a product
 if (isset($_POST['add_product_btn'])) {
-  $p_name = $_POST['namw'];
+  $p_name = $_POST['name'];
   $p_category = $_POST['category'];
   $p_quantity = $_POST['quantity'];
   $p_supplier = $_POST['supplier'];
-
-  $image_name = $_FILES['productImage']['name'];
-  $tmp = explode(".", $image_name);
-  $newFileName = round(microtime(true)) . '.' . end($tmp);
-  $uploadPath = "../Assets/images/products/" . $newFileName;
-  move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath);
-
   $p_purPrice = $_POST['purPrice'];
   $p_retPrice = $_POST['retPrice'];
   $p_retProfit = $_POST['retProfit'];
@@ -38,12 +31,24 @@ if (isset($_POST['add_product_btn'])) {
   $p_whoProfit = $_POST['whoProfit'];
   $p_description = $_POST['categoryDescription'];
 
-  $add_sql = "INSERT INTO products(product_id, product_name, product_category, quantity, supplier, image, description, purchased_price, retail_price, retail_profit, whole_price, whole_profit) 
+  $image_name = $_FILES['productImage']['name'];
+  $tmp = explode(".", $image_name);
+  $newFileName = round(microtime(true)) . '.' . end($tmp);
+  $uploadPath = "../Assets/images/products/" . $newFileName;
+  
+  if (move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath)) {
+    $add_sql = "INSERT INTO products(product_id, product_name, product_category, quantity, supplier, image, description, purchased_price, retail_price, retail_profit, whole_price, whole_profit) 
               VALUES ('$new_id', '$p_name', '$p_category', '$p_quantity', '$p_supplier', '$newFileName', '$p_description', '$p_purPrice', '$p_retPrice', '$p_retProfit', '$p_whoPrice', '$p_whoProfit') ";
-  $data = mysqli_query($conn, $add_sql);
+    $data = mysqli_query($conn, $add_sql);
 
-  if($data){
-    header("location:products.php");
+    if ($data) {
+      header("location:products.php");
+      exit();
+    }else{
+      echo "Some error occured";
+    }
+  }else{
+    echo "Error!";
   }
 }
 ?>

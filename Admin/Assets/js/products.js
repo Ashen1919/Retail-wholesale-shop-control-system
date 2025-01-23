@@ -1,17 +1,3 @@
-document
-  .getElementById("addPromoForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    addPromo();
-  });
-
-document
-  .getElementById("updatePromoForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    updatePromo();
-  });
-
 function openModal(modalId) {
   document.getElementById(modalId).style.display = "block";
 }
