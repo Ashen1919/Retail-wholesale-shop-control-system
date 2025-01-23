@@ -32,14 +32,14 @@
 
             <div class="password-section">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-                <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
+                <input type="password" id="registerPassword" placeholder="Enter your password" required>
+                <i id="registerTogglePassword" class="fas fa-eye-slash toggle-icon"></i>
             </div>
             <div class="button">
                 <button type="submit">Sign Up</button>
             </div>
             <div class="login-link">
-                <p>Do you have an account? <a href="login.php">Login Here</a></p>
+                <p>Do you have an account? <a href="#" id="openLoginModal">Login Here</a></p>
             </div>
         </form>
     </div>
