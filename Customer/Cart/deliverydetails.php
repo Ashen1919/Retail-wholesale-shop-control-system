@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Sandaru Food Mart</title>
-
-    <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
         
     <!-- CSS Files -->
     <link href="../Assets/css/cart_style.css" rel="stylesheet">
@@ -140,17 +132,17 @@
                 <p>Order Delivery</p>
             </div>
             <a href="#" class="track-button">
-                Track Your Order
+                <h4 style="font-weight:600; margin-bottom:10px;">Track Your Order</h4>
                 <img src="..\Assets\images\cart images\truck-d.png" alt="Delivery Icon" height="35">
             </a>
         </div>
     </div>
-
-    <script src="../Assets/js/script.js"></script>
     
+    <script src="../Assets/js/script.js"></script>
 
- 
-
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
+    
 
 </body>
 </html>
