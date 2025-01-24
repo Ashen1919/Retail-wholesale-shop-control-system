@@ -106,8 +106,6 @@
     </header>
     <!--End of header-->
 
-    C:\xampp\htdocs\Retail-wholesale-shop-control-system\Customer\Cart\cartview.php
-
 
     <script src="../Assets/js/script.js"></script>
 
