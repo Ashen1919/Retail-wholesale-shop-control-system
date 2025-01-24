@@ -13,7 +13,6 @@
         rel="apple-touch-icon">
     
     <!-- CSS Files -->
-    <!-- <link href="../Assets/css/cart_style.css" rel="stylesheet"> -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -166,8 +165,6 @@
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
-    <!-- <script src="../Assets/js/script.js"></script> -->
-
     <div class="container">
         <div class="cart-items">
             <div class="cart-header">
@@ -211,9 +208,10 @@
             <button class="checkout-btn">Proceed to Checkout</button>
             <br/>
             <button class="shopping-btn">Keep Shopping</button>
-        </div>
+            </div>
     </div>
 
+<!-- js files -->
     <script>
         const updateQuantity = (change, index) => {
             const quantityInput = document.getElementById(`quantity-${index}`);
