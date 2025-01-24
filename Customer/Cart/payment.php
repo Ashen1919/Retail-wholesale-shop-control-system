@@ -89,8 +89,6 @@
     </script>
 
    
-   <!-- <script src="../Assets/js/checkout.js"></script> -->
-
 
 
 
