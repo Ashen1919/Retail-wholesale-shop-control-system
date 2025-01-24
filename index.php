@@ -17,9 +17,14 @@
     <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
     <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/Register.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/Login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
@@ -42,7 +47,7 @@
             </div>
             <div class="searchBar">
                 <form action="" method="get" class="search-form">
-                    <input type="search" name="search" id="search" placeholder="Search Here">
+                    <input type="search" name="search" id="main-search" placeholder="Search Here">
                     <button type="submit" class="search-button">
                         <i class="bi bi-search"></i>
                     </button>
@@ -67,7 +72,7 @@
                 <ul>
                     <div class="mobile-searchBar">
                         <form action="" method="get" class="search-form">
-                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <input type="search" name="search" id="mobile-search" placeholder="Search Here">
                             <button type="submit" class="search-button">
                                 <i class="bi bi-search"></i>
                             </button>
@@ -89,7 +94,7 @@
                     <div class="right-side-mobile-icons">
                         <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                        <a class="profile" ><i class="bi bi-person-circle "></i></a>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -99,7 +104,7 @@
             <div class="right-side-icons">
                 <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                <a class="profile" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -683,9 +688,15 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    
+
     <script src="./Customer/Assets/js/script.js"></script>
     <script src="./Customer/Assets/js/offer.js"></script>
+    <script src="./Customer/Assets/js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <?php include('./Customer/Register_Modal/register-modal.php'); ?>
+    <?php include('./Customer/Login_Modal/login-modal.php'); ?>
 
 </body>
 

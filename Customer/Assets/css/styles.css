@@ -692,6 +692,7 @@ Nav Bar
 .right-side-icons .profile {
   color: #000000;
   transition-duration: 500ms;
+  cursor: pointer;
 }
 .right-side-icons .profile:hover {
   color: #0056b3;

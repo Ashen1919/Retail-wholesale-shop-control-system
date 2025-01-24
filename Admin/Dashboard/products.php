@@ -1,3 +1,58 @@
+<?php
+include('db_con.php');
+
+//fetch categories
+$sql = "SELECT * FROM categories";
+$result = mysqli_query($conn, $sql);
+
+//generate auto-generated ID
+$auto_sql = "SELECT product_id FROM products ORDER BY product_id DESC LIMIT 1";
+$result_auto = mysqli_query($conn, $auto_sql);
+
+if (mysqli_num_rows($result_auto) > 0) {
+  $rows = $result_auto->fetch_assoc();
+  $lastid = $rows['product_id'];
+  $num = (int) substr($lastid, 2);
+  $new_id = 'P-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+} else {
+  $new_id = 'P-00001';
+}
+
+//add a product
+if (isset($_POST['add_product_btn'])) {
+  $p_name = $_POST['name'];
+  $p_category = $_POST['category'];
+  $p_quantity = $_POST['quantity'];
+  $p_supplier = $_POST['supplier'];
+  $p_purPrice = $_POST['purPrice'];
+  $p_retPrice = $_POST['retPrice'];
+  $p_retProfit = $_POST['retProfit'];
+  $p_whoPrice = $_POST['whoPrice'];
+  $p_whoProfit = $_POST['whoProfit'];
+  $p_description = $_POST['categoryDescription'];
+
+  $image_name = $_FILES['productImage']['name'];
+  $tmp = explode(".", $image_name);
+  $newFileName = round(microtime(true)) . '.' . end($tmp);
+  $uploadPath = "../Assets/images/products/" . $newFileName;
+  
+  if (move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath)) {
+    $add_sql = "INSERT INTO products(product_id, product_name, product_category, quantity, supplier, image, description, purchased_price, retail_price, retail_profit, whole_price, whole_profit) 
+              VALUES ('$new_id', '$p_name', '$p_category', '$p_quantity', '$p_supplier', '$newFileName', '$p_description', '$p_purPrice', '$p_retPrice', '$p_retProfit', '$p_whoPrice', '$p_whoProfit') ";
+    $data = mysqli_query($conn, $add_sql);
+
+    if ($data) {
+      header("location:products.php");
+      exit();
+    }else{
+      echo "Some error occured";
+    }
+  }else{
+    echo "Error!";
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +151,7 @@
           <h2 style="color: white; margin-bottom: 20px">Products</h2>
         </div>
         <div class="button-section">
-          <button class="addbtn" onclick="openModal('addPromoModal')">
+          <button class="addbtn" name="add_product_btn" onclick="openModal('addPromoModal')">
             <i class="bi bi-plus fs-3"></i>
             Add Product
           </button>
@@ -107,11 +162,13 @@
                 <i class="bi bi-chevron-down"></i>
               </button>
               <div id="myDropdown" class="dropdown-content">
-                <p>Grocery</p>
-                <p>Vegetables</p>
-                <p>Fruits</p>
-                <p>Household</p>
-                <p>Beverages</p>
+                <?php
+                while ($row = mysqli_fetch_assoc($result)) {
+                  ?>
+                  <p><?php echo $row['name']; ?></p>
+                  <?php
+                }
+                ?>
               </div>
             </div>
           </div>
@@ -369,193 +426,7 @@
         </div>
         <div class="products-content">
           <div class="product-img">
-            <h4>Nadu 5kg</h4>
-            <img src="../Assets/images/products/samba.jpg" alt="" />
-          </div>
-          <div class="general-details">
-            <h5 class="general-topic">General Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Product ID :</p>
-              <p style="opacity: 70%">p001</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Description:</p>
-              <p style="opacity: 70%">
-                Samba rice is a premium, short-grain variety known for its
-                unique aroma and slightly sticky texture when cooked, making
-                it ideal for dishes like biryani and fried rice.
-              </p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Product Category :</p>
-              <p style="opacity: 70%">Grocery</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Quantity :</p>
-              <p style="opacity: 70%">100</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Supplier :</p>
-              <p style="opacity: 70%">Araliya</p>
-            </div>
-          </div>
-          <div class="price-details">
-            <h5 class="general-topic">Price Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Purchased Price :</p>
-              <p style="opacity: 70%">1,200</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Price :</p>
-              <p style="opacity: 70%">1,500</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Profit :</p>
-              <p style="opacity: 70%">300</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Price :</p>
-              <p style="opacity: 70%">1,350</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Profit :</p>
-              <p style="opacity: 70%">150</p>
-            </div>
-            <div class="action">
-              <button onclick="openModal('updatePromoModal')" class="edit">
-                <i class="bi bi-pencil-square"></i>
-              </button>
-              <button class="delete"><i class="bi bi-trash-fill"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <div class="product-img">
-            <h4>Dhal 5kg</h4>
-            <img src="../Assets/images/products/samba.jpg" alt="" />
-          </div>
-          <div class="general-details">
-            <h5 class="general-topic">General Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Product ID :</p>
-              <p style="opacity: 70%">p001</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Description:</p>
-              <p style="opacity: 70%">
-                Samba rice is a premium, short-grain variety known for its
-                unique aroma and slightly sticky texture when cooked, making
-                it ideal for dishes like biryani and fried rice.
-              </p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Product Category :</p>
-              <p style="opacity: 70%">Grocery</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Quantity :</p>
-              <p style="opacity: 70%">100</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Supplier :</p>
-              <p style="opacity: 70%">Araliya</p>
-            </div>
-          </div>
-          <div class="price-details">
-            <h5 class="general-topic">Price Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Purchased Price :</p>
-              <p style="opacity: 70%">1,200</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Price :</p>
-              <p style="opacity: 70%">1,500</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Profit :</p>
-              <p style="opacity: 70%">300</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Price :</p>
-              <p style="opacity: 70%">1,350</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Profit :</p>
-              <p style="opacity: 70%">150</p>
-            </div>
-            <div class="action">
-              <button onclick="openModal('updatePromoModal')" class="edit">
-                <i class="bi bi-pencil-square"></i>
-              </button>
-              <button class="delete"><i class="bi bi-trash-fill"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <div class="product-img">
-            <h4>Sugar 5kg</h4>
-            <img src="../Assets/images/products/samba.jpg" alt="" />
-          </div>
-          <div class="general-details">
-            <h5 class="general-topic">General Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Product ID :</p>
-              <p style="opacity: 70%">p001</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Description:</p>
-              <p style="opacity: 70%">
-                Samba rice is a premium, short-grain variety known for its
-                unique aroma and slightly sticky texture when cooked, making
-                it ideal for dishes like biryani and fried rice.
-              </p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Product Category :</p>
-              <p style="opacity: 70%">Grocery</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Quantity :</p>
-              <p style="opacity: 70%">100</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Supplier :</p>
-              <p style="opacity: 70%">Araliya</p>
-            </div>
-          </div>
-          <div class="price-details">
-            <h5 class="general-topic">Price Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Purchased Price :</p>
-              <p style="opacity: 70%">1,200</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Price :</p>
-              <p style="opacity: 70%">1,500</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Profit :</p>
-              <p style="opacity: 70%">300</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Price :</p>
-              <p style="opacity: 70%">1,350</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Profit :</p>
-              <p style="opacity: 70%">150</p>
-            </div>
-            <div class="action">
-              <button onclick="openModal('updatePromoModal')" class="edit">
-                <i class="bi bi-pencil-square"></i>
-              </button>
-              <button class="delete"><i class="bi bi-trash-fill"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <div class="product-img">
-            <h4>Miris 5kg</h4>
+            <h4>Samba 5kg</h4>
             <img src="../Assets/images/products/samba.jpg" alt="" />
           </div>
           <div class="general-details">
@@ -865,7 +736,7 @@
         </div>
         <div class="products-content">
           <div class="product-img">
-            <h4>Nadu 5kg</h4>
+            <h4>Samba 5kg</h4>
             <img src="../Assets/images/products/samba.jpg" alt="" />
           </div>
           <div class="general-details">
@@ -927,131 +798,7 @@
         </div>
         <div class="products-content">
           <div class="product-img">
-            <h4>Dhal 5kg</h4>
-            <img src="../Assets/images/products/samba.jpg" alt="" />
-          </div>
-          <div class="general-details">
-            <h5 class="general-topic">General Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Product ID :</p>
-              <p style="opacity: 70%">p001</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Description:</p>
-              <p style="opacity: 70%">
-                Samba rice is a premium, short-grain variety known for its
-                unique aroma and slightly sticky texture when cooked, making
-                it ideal for dishes like biryani and fried rice.
-              </p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Product Category :</p>
-              <p style="opacity: 70%">Grocery</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Quantity :</p>
-              <p style="opacity: 70%">100</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Supplier :</p>
-              <p style="opacity: 70%">Araliya</p>
-            </div>
-          </div>
-          <div class="price-details">
-            <h5 class="general-topic">Price Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Purchased Price :</p>
-              <p style="opacity: 70%">1,200</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Price :</p>
-              <p style="opacity: 70%">1,500</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Profit :</p>
-              <p style="opacity: 70%">300</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Price :</p>
-              <p style="opacity: 70%">1,350</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Profit :</p>
-              <p style="opacity: 70%">150</p>
-            </div>
-            <div class="action">
-              <button onclick="openModal('updatePromoModal')" class="edit">
-                <i class="bi bi-pencil-square"></i>
-              </button>
-              <button class="delete"><i class="bi bi-trash-fill"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <div class="product-img">
-            <h4>Sugar 5kg</h4>
-            <img src="../Assets/images/products/samba.jpg" alt="" />
-          </div>
-          <div class="general-details">
-            <h5 class="general-topic">General Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Product ID :</p>
-              <p style="opacity: 70%">p001</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Description:</p>
-              <p style="opacity: 70%">
-                Samba rice is a premium, short-grain variety known for its
-                unique aroma and slightly sticky texture when cooked, making
-                it ideal for dishes like biryani and fried rice.
-              </p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Product Category :</p>
-              <p style="opacity: 70%">Grocery</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Quantity :</p>
-              <p style="opacity: 70%">100</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Supplier :</p>
-              <p style="opacity: 70%">Araliya</p>
-            </div>
-          </div>
-          <div class="price-details">
-            <h5 class="general-topic">Price Details</h5>
-            <div class="id">
-              <p style="font-weight: 700">Purchased Price :</p>
-              <p style="opacity: 70%">1,200</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Price :</p>
-              <p style="opacity: 70%">1,500</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Retail Profit :</p>
-              <p style="opacity: 70%">300</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Price :</p>
-              <p style="opacity: 70%">1,350</p>
-            </div>
-            <div class="id">
-              <p style="font-weight: 700">Wholesale Profit :</p>
-              <p style="opacity: 70%">150</p>
-            </div>
-            <div class="action">
-              <button onclick="openModal('updatePromoModal')" class="edit">
-                <i class="bi bi-pencil-square"></i>
-              </button>
-              <button class="delete"><i class="bi bi-trash-fill"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="products-content">
-          <div class="product-img">
-            <h4>Miris 5kg</h4>
+            <h4>Samba 5kg</h4>
             <img src="../Assets/images/products/samba.jpg" alt="" />
           </div>
           <div class="general-details">
@@ -1112,23 +859,23 @@
           </div>
         </div>
         <div class="pagination-container">
-        <div class="pagination">
-          <a href="#">
-            <button class="control" id="prev" title="Previous page">
-              < Prev </button>
-          </a>
-          <div class="pageNumbers">
-            <!--Page Numbers-->
+          <div class="pagination">
+            <a href="#">
+              <button class="control" id="prev" title="Previous page">
+                < Prev </button>
+            </a>
+            <div class="pageNumbers">
+              <!--Page Numbers-->
+            </div>
+            <a href="#">
+              <button class="control" id="next" title="Next page">
+                Next >
+              </button>
+            </a>
           </div>
-          <a href="#">
-            <button class="control" id="next" title="Next page">
-              Next >
-            </button>
-          </a>
         </div>
       </div>
-      </div>
-      
+
     </div>
     <!--End of right side-->
   </div>
@@ -1139,24 +886,26 @@
     <div class="modal-content">
       <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
       <h3>Add Product</h3>
-      <form id="addPromoForm">
+      <form id="addPromoForm" action="" method="post" enctype="multipart/form-data">
         <div class="full-row">
           <div class="head-row">
             <div class="left-row">
               <label for="proID">Product ID:</label>
-              <input type="text" id="proID" name="proID" required />
+              <input type="text" id="proID" name="proID" value="<?php echo $new_id; ?>" required readonly />
 
               <label for="name">Product Name:</label>
               <input type="text" id="name" name="name" required />
 
               <label style="margin-top: 3px" for="category">Product Category:</label>
               <select name="category" id="Category" required>
+                <option value="" disabled selected>Select a category</option>
                 <option value="grocery">Grocery</option>
-                <option value="vegetable">Vegetables</option>
+                <option value="vegetables">Vegetables</option>
                 <option value="fruits">Fruits</option>
-                <option value="household">Household</option>
                 <option value="beverages">Beverages</option>
+                <option value="household">Household</option>
               </select>
+
 
               <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
               <input type="number" id="quantity" name="quantity" required />
@@ -1164,9 +913,8 @@
               <label for="supplier">Supplier:</label>
               <input type="text" id="supplier" name="supplier" required />
 
-              <label for="categoryImage">Image:</label>
-              <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)"
-                required />
+              <label for="productImage">Image:</label>
+              <input type="file" id="productImage" name="productImage" accept="image/*" required />
             </div>
             <div class="right-row">
               <label for="purPrice">Purchased Price:</label>
@@ -1189,7 +937,7 @@
             <label for="categoryDescription">Description:</label>
             <textarea id="categoryDescription" name="categoryDescription" required></textarea>
 
-            <button class="addPro" type="submit">Add Product</button>
+            <button class="addPro" style="justify-content:center;" type="submit">Add Product</button>
           </div>
         </div>
       </form>
@@ -1251,7 +999,7 @@
             <label for="categoryDescription">Description:</label>
             <textarea id="categoryDescription" name="categoryDescription" required></textarea>
 
-            <button class="addPro" type="submit">Add Product</button>
+            <button class="addPro" style="justify-content:center;" type="submit">Update Product</button>
           </div>
         </div>
       </form>

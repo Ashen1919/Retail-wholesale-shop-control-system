@@ -1,4 +1,5 @@
 <?php
+
 include("db_con.php");
 
 //Add a category
@@ -30,6 +31,17 @@ if (isset($_POST['add_btn'])) {
 $sql_display = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql_display);
 
+//delete category
+if(isset($_GET['id'])){
+    $c_id = $_GET['id'];
+
+    $del_sql = "DELETE FROM categories WHERE id = '$c_id'";
+    $data = mysqli_query($conn, $del_sql);
+
+    if($data){
+        header("location:categories.php");
+    }
+}
 ?>
 
 
@@ -157,23 +169,24 @@ $result = mysqli_query($conn, $sql_display);
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                            while($row = mysqli_fetch_assoc($result))
-                        {
-                        ?>
-                        <tr>
-                            <td> <?php echo $row['name']; ?> </td>
-                            <td> <?php echo $row['description']; ?> </td>
-                            <td><img src="../Assets/images/categories/<?php echo $row['image']; ?>" alt="Category Image"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <?php 
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                            <tr>
+                                <td> <?php echo $row['name']; ?> </td>
+                                <td> <?php echo $row['description']; ?> </td>
+                                <td><img src="../Assets/images/categories/<?php echo $row['image']; ?>"
+                                        alt="Category Image"></td>
+                                <td>
+                                    <div class="action">
+                                        <a href="update_category.php?id=<?php echo $row['id']; ?>">
+                                            <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                        </a>
+                                        <a onclick="confirm ('Are you sure, Do you want to delete this category? ')" href="categories.php?id=<?php echo $row['id'] ?>"><button class="delete"><i class="bi bi-trash-fill"></i></button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
                         }
                         ?>
                     </tbody>
@@ -221,29 +234,8 @@ $result = mysqli_query($conn, $sql_display);
         </div>
     </div>
 
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Category</h3>
-            <form id="addPromoForm" action="categories.php" method="post" enctype="multipart/form-data">
-
-                <label for="name">Category Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="categoryDescription">Description:</label>
-                <textarea id="categoryDescription" name="categoryDescription" required></textarea>
-
-                <label for="categoryImage">Image:</label>
-                <input type="file" id="categoryImage" name="categoryImage" accept="image/*" required>
-
-                <button type="submit" name="update_btn">Update Category</button>
-            </form>
-        </div>
-    </div>
-
     <script src="../Assets/js/script.js"></script>
-    <script src="../Assets/js/promotion.js"></script>
+    <script src="../Assets/js/category.js"></script>
 
 </body>
 
