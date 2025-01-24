@@ -158,6 +158,9 @@
             margin-top: 20px;
             width: 100%;
         }
+        .shopping-btn:hover {
+            background:rgb(58, 237, 97);
+        }
 
     </style>
 </head>
@@ -208,7 +211,7 @@
             <button class="checkout-btn">Proceed to Checkout</button>
             <br/>
             <button class="shopping-btn">Keep Shopping</button>
-            </div>
+        </div>
     </div>
 
 <!-- js files -->
