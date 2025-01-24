@@ -5,6 +5,9 @@ include('db_con.php');
 $sql = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql);
 
+$sql_name = "SELECT name FROM categories";
+$result_name = mysqli_query($conn, $sql_name);
+
 //generate auto-generated ID
 $auto_sql = "SELECT product_id FROM products ORDER BY product_id DESC LIMIT 1";
 $result_auto = mysqli_query($conn, $auto_sql);
@@ -56,6 +59,18 @@ if (isset($_POST['add_product_btn'])) {
 //fetch all products
 $sql_pro = "SELECT * FROM products";
 $all_pro = mysqli_query($conn, $sql_pro);
+
+//delete product
+if(isset($_GET['id'])){
+  $p_id = $_GET['id'];
+
+  $del_sql = "DELETE FROM products WHERE id = '$p_id'";
+  $data_del = mysqli_query($conn, $del_sql);
+
+  if($data_del){
+      header("location:products.php");
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -198,7 +213,7 @@ $all_pro = mysqli_query($conn, $sql_pro);
               <div class="id">
                 <p style="font-weight: 700">Description:</p>
                 <p style="opacity: 70%">
-                <?php echo $row['description']; ?>
+                  <?php echo $row['description']; ?>
                 </p>
               </div>
               <div class="id">
@@ -237,14 +252,16 @@ $all_pro = mysqli_query($conn, $sql_pro);
                 <p style="opacity: 70%"><?php echo $row['whole_profit']; ?></p>
               </div>
               <div class="action">
-                <button onclick="openModal('updatePromoModal')" class="edit">
-                  <i class="bi bi-pencil-square"></i>
-                </button>
-                <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                <a href="update_product.php?id=<?php echo $row['id']; ?>">
+                  <button class="edit">
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+                </a>
+                <a onclick="confirm ('Are you sure, Do you want to delete this category? ')" href="products.php?id=<?php echo $row['id'] ?>"><button class="delete"><i class="bi bi-trash-fill"></i></button></a>
               </div>
             </div>
           </div>
-        <?php
+          <?php
         }
         ?>
         <div class="pagination-container">
@@ -288,13 +305,14 @@ $all_pro = mysqli_query($conn, $sql_pro);
               <label style="margin-top: 3px" for="category">Product Category:</label>
               <select name="category" id="Category" required>
                 <option value="" disabled selected>Select a category</option>
-                <option value="grocery">Grocery</option>
-                <option value="vegetables">Vegetables</option>
-                <option value="fruits">Fruits</option>
-                <option value="beverages">Beverages</option>
-                <option value="household">Household</option>
+                <?php 
+                while($row = mysqli_fetch_assoc($result_name)){
+                ?>
+                  <option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
+                <?php 
+                }
+                ?>
               </select>
-
 
               <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
               <input type="number" id="quantity" name="quantity" required />
@@ -328,68 +346,6 @@ $all_pro = mysqli_query($conn, $sql_pro);
 
             <button class="addPro" name="add_product_btn" style="justify-content:center;" type="submit">Add
               Product</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Update Promo Modal -->
-  <div id="updatePromoModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-      <h3>Update Product</h3>
-      <form id="addPromoForm">
-        <div class="full-row">
-          <div class="head-row">
-            <div class="left-row">
-              <label for="proID">Product ID:</label>
-              <input type="text" id="proID" name="proID" required />
-
-              <label for="name">Product Name:</label>
-              <input type="text" id="name" name="name" required />
-
-              <label style="margin-top: 3px" for="category">Product Category:</label>
-              <select name="category" id="Category" required>
-                <option value="grocery">Grocery</option>
-                <option value="vegetable">Vegetables</option>
-                <option value="fruits">Fruits</option>
-                <option value="household">Household</option>
-                <option value="beverages">Beverages</option>
-              </select>
-
-              <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
-              <input type="number" id="quantity" name="quantity" required />
-
-              <label for="supplier">Supplier:</label>
-              <input type="text" id="supplier" name="supplier" required />
-
-              <label for="categoryImage">Image:</label>
-              <input type="file" id="categoryImage" name="categoryImage" accept="image/*" onchange="previewImage(event)"
-                required />
-            </div>
-            <div class="right-row">
-              <label for="purPrice">Purchased Price:</label>
-              <input type="text" id="purPrice" name="purPrice" required />
-
-              <label for="retPrice">Retail Price:</label>
-              <input type="text" id="retPrice" name="retPrice" required />
-
-              <label for="retProfit">Retail Profit:</label>
-              <input type="text" id="retProfit" name="retProfit" required />
-
-              <label for="whoPrice">Wholesale Price:</label>
-              <input type="text" id="whoPrice" name="whoPrice" required />
-
-              <label for="whoProfit">Wholesale Profit:</label>
-              <input type="text" id="whoProfit" name="whoProfit" required />
-            </div>
-          </div>
-          <div class="bottom-row">
-            <label for="categoryDescription">Description:</label>
-            <textarea id="categoryDescription" name="categoryDescription" required></textarea>
-
-            <button class="addPro" style="justify-content:center;" type="submit">Update Product</button>
           </div>
         </div>
       </form>
