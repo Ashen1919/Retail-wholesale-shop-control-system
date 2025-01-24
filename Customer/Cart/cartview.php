@@ -119,7 +119,7 @@
         .remove-btn {
             color: red;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 2em;
         }
 
         .order-summary h3 {

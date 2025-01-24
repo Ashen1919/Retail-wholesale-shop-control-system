@@ -98,15 +98,13 @@
             </nav>
             <div class="right-side-icons">
                 <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
-                <a class="wishlist" href="../Cart/cartview.php"><i class="bi bi-heart  "></i></i></a>
+                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
                 <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
             </div>
         </div>
         <!--End of Nav Bar-->
     </header>
     <!--End of header-->
-
-    C:\xampp\htdocs\Retail-wholesale-shop-control-system\Customer\Cart\cartview.php
 
 
     <script src="../Assets/js/script.js"></script>
