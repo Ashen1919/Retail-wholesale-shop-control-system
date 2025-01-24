@@ -208,7 +208,7 @@
             <button class="checkout-btn">Proceed to Checkout</button>
             <br/>
             <button class="shopping-btn">Keep Shopping</button>
-            </div>
+        </div>
     </div>
 
 <!-- js files -->

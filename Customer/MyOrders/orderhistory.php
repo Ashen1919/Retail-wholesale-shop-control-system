@@ -13,10 +13,11 @@
         href="../Assets/images/logo.png"
         rel="apple-touch-icon">
         
-    <!-- CSS Files -->
-    <!-- <link href="../Assets/css/cart_style.css" rel="stylesheet"> -->
+   
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <!-- CSS Files -->
     <style>
         body {
             background-color: #f8f9fa;
@@ -52,7 +53,47 @@
             justify-content: center;
             margin-top: 30px;
         }
-        
+        .styled-link {
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            padding: 5px 25px;
+            background: linear-gradient(135deg, #2196f3, rgb(117, 184, 255), #007bff);
+            border-radius: 50px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+}
+
+.styled-link i {
+  margin-right: 8px;
+  font-size: 22px;
+}
+
+.styled-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(45deg);
+  transition: left 0.4s ease;
+}
+.styled-link:hover::before {
+  left: 100%;
+}
+
+.styled-link:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #007bff, #75b8ff, #2196f3);
+  color: rgb(235, 226, 226);
+}
     </style>
 </head>
 <body>
