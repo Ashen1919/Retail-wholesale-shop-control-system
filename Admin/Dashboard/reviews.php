@@ -1,10 +1,29 @@
-<?php 
+<?php
 //Databas connection
 include('db_con.php');
 
 //Fetch All Feedbacks
-$sql_feed = "SELECT * FROM reviews ORDER BY id DESC";
+$sql_feed = "SELECT * FROM reviews ORDER BY review_id DESC";
 $result_feed = mysqli_query($conn, $sql_feed);
+
+//Review status update
+if (isset($_POST['accept'])) {
+    $review_id = $_POST['review_id'];
+    $sql_update = "UPDATE reviews SET status = 'Accepted' WHERE review_id = '$review_id'";
+    if (mysqli_query($conn, $sql_update)) {
+        header("location:reviews.php");
+        exit();
+    }
+}
+
+if (isset($_POST['reject'])) {
+    $review_id = $_POST['review_id'];
+    $sql_update = "UPDATE reviews SET status = 'Rejected' WHERE review_id = '$review_id'";
+    if (mysqli_query($conn, $sql_update)) {
+        header("location:reviews.php");
+        exit();
+    }
+}
 
 ?>
 
@@ -126,6 +145,7 @@ $result_feed = mysqli_query($conn, $sql_feed);
                     <table>
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Occupation</th>
                                 <th>Ratings</th>
@@ -136,26 +156,32 @@ $result_feed = mysqli_query($conn, $sql_feed);
                             </tr>
                         </thead>
                         <tbody>
-                            <?php 
-                                while($row =  mysqli_fetch_assoc($result_feed)){
-                            ?>
-                            <tr>
-                                <td><?php echo $row['name'] ?></td>
-                                <td><?php echo $row['occupation'] ?></td>
-                                <td><?php echo $row['rating'] ?></td>
-                                <td><?php echo $row['feedback'] ?></td>
-                                <td><?php echo $row['status'] ?></td>
-                                <td style="padding:6px;"><img src="../../Customer/Assets/images/feedback/<?php echo $row['image'] ?>" alt="User Image" style="width:60px; height:60px;"></td>
-                                <td>
-                                    <div class="action">
-                                        <button  class="edit">Accept</button>
-                                        <button class="delete">Reject</i></button>
-                                    </div>
-                                </td>
-                            </tr>
                             <?php
-                                }
+                            while ($row = mysqli_fetch_assoc($result_feed)) {
                                 ?>
+                                <tr>
+                                    <td><?php echo $row['review_id'] ?></td>
+                                    <td><?php echo $row['name'] ?></td>
+                                    <td><?php echo $row['occupation'] ?></td>
+                                    <td><?php echo $row['rating'] ?></td>
+                                    <td><?php echo $row['feedback'] ?></td>
+                                    <td><?php echo $row['status'] ?></td>
+                                    <td style="padding:6px;"><img
+                                            src="../../Customer/Assets/images/feedback/<?php echo $row['image'] ?>"
+                                            alt="User Image" style="width:60px; height:60px;"></td>
+                                    <td>
+                                        <div class="action">
+                                            <form action="reviews.php" method="post">
+                                                <input type="hidden" name="review_id" value="<?php echo $row['review_id']; ?>">
+                                                <button class="edit" name="accept">Accept</button>
+                                                <button class="delete" name="reject">Reject</i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
