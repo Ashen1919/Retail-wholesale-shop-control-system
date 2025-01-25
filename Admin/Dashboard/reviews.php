@@ -1,3 +1,13 @@
+<?php 
+//Databas connection
+include('db_con.php');
+
+//Fetch All Feedbacks
+$sql_feed = "SELECT * FROM reviews ORDER BY id DESC";
+$result_feed = mysqli_query($conn, $sql_feed);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,6 +131,7 @@
                                 <th>Ratings</th>
                                 <th>Feedback</th>
                                 <th>Status</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -132,6 +143,7 @@
                                 <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
                                 efficiently, and tracking was accurate.</td>
                                 <td>Pending</td>
+                                <td style="padding:6px;"><img src="../Assets/images/profile_default.jpg" alt="User Image" style="width:60px; height:60px;"></td>
                                 <td>
                                     <div class="action">
                                         <button  class="edit">Accept</button>
