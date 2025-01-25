@@ -65,6 +65,10 @@ if (isset($_POST['submit'])) {
         </script>';
     }
 }
+
+//Fetch all reviews
+$sql_rev = "SELECT * FROM reviews WHERE status = 'Accepted'";
+$result = mysqli_query($conn, $sql_rev);
 ?>
 
 <!DOCTYPE html>
@@ -162,97 +166,39 @@ if (isset($_POST['submit'])) {
         <h3 class="top">User Feedbacks</h3>
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rating = intval($row['rating']);
+                ?>
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="rating">
+                        <?php
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($i <= $rating) {
+                                echo '⭐';
+                            } else {
+                                echo '☆';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="comment">
+                        <p><?php echo $row['feedback']; ?></p>
+                    </div>
+                    <div class="image-feedback">
+                        <img src="../Assets/images/feedback/<?php echo $row['image']; ?>" alt="Person">
+                    </div>
+                    <div class="name">
+                        <h5><?php echo $row['name']; ?></h5>
+                    </div>
+                    <div class="job">
+                        <p><?php echo $row['occupation']; ?></p>
+                    </div>
                 </div>
-                <div class="comment">
-                    <p>The shop has a great variety of products, excellent customer service, and fast delivery. Highly
-                        recommended for online shopping!</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/951.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Jane Smith</h5>
-                </div>
-                <div class="job">
-                    <p>Software Engineer</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>I appreciate the friendly staff and the organized store layout. Prices are fair, and I’ll
-                        definitely shop here again.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/3546.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Jacob Oram</h5>
-                </div>
-                <div class="job">
-                    <p>Civil Engineer</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>Delivery was quick, and the product quality exceeded my expectations. The online system is
-                        user-friendly and hassle-free.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/16320.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Micheal Clark</h5>
-                </div>
-                <div class="job">
-                    <p>Doctor</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>Great in-store experience! Staff were helpful, and checkout was quick. I found everything I
-                        needed without any issues.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/18778.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Harry Fernando</h5>
-                </div>
-                <div class="job">
-                    <p>Businessman</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                        efficiently, and tracking was accurate.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/56066.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Ann Steven</h5>
-                </div>
-                <div class="job">
-                    <p>Teacher</p>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -268,7 +214,8 @@ if (isset($_POST['submit'])) {
             <form method="post" enctype="multipart/form-data">
                 <div class="details">
                     <div class="names-details">
-                        <input type="text" name="review_id" value="<?php echo $new_id; ?>" style="display:none;" required >
+                        <input type="text" name="review_id" value="<?php echo $new_id; ?>" style="display:none;"
+                            required>
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" placeholder="Your Name">
                     </div>
