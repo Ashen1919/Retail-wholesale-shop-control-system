@@ -1,3 +1,12 @@
+<?php
+//Database connection
+include('db_con.php');
+
+//Fetch all customer's details
+$sql_cus = "SELECT * FROM customers";
+$result_cus = mysqli_query($conn, $sql_cus);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,23 +129,30 @@
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>ashengimhana58@gmail.com</td>
-                                <td>Ashen</td>
-                                <td>Dissanayaka</td>
-                                <td>0764426675</td>
-                                <td>
-                                    <div class="action">
-                                        <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                                class="bi bi-pencil-square"></i></button>
-                                        <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result_cus)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $row['email'] ?></td>
+                                    <td><?php echo $row['first_name'] ?></td>
+                                    <td><?php echo $row['last_name'] ?></td>
+                                    <td><?php echo $row['phone_number'] ?></td>
+                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>" alt="User Image" style="width:50px; height:50px;"></td>
+                                    <td>
+                                        <div class="action">
+                                            <button class="edit"><i class="bi bi-pencil-square"></i></button>
+                                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -179,7 +195,7 @@
             <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
             <h3>Update Category</h3>
             <form id="addPromoForm">
-            <label for="catID">Email:</label>
+                <label for="catID">Email:</label>
                 <input type="text" id="catID" name="catID" required>
 
                 <label for="name">First Name:</label>
