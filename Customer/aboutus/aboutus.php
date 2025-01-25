@@ -1,3 +1,46 @@
+<?php
+//DB connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Add a review
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $occupation = $_POST['occupation'];
+    $rating = $_POST['rating'];
+    $feedback = $_POST['feedback'];
+    $status = 'pending';
+
+    $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status')";
+    $result_add = mysqli_query($conn, $add_sql);
+    
+    if ($result_add) {
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Review has been submitted.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    } else {
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +64,7 @@
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
+    <?php if(isset($message)) echo $message; ?>
 
     <!--Image section-->
     <div class="image-section">
@@ -194,37 +238,38 @@
             <div class="review-image">
                 <img src="../Assets/images/review.png" alt="Review Image">
             </div>
-            <form action="" method="post">
+            <form method="post">
                 <div class="details">
                     <div class="names-details">
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" placeholder="Your Name">
                     </div>
                     <div class="names-details">
-                        <label for="name">Occupation:</label>
-                        <input type="text" name="name" id="name" placeholder="Your occupation">
+                        <label for="occupation">Occupation:</label>
+                        <input type="text" name="occupation" id="occupation" placeholder="Your occupation">
                     </div>
 
                 </div>
                 <div class="rate">
                     <label for="name">Rating:</label>
                     <select name="rating" id="rating">
-                        <option value="rating">1</option>
-                        <option value="rating">2</option>
-                        <option value="rating">3</option>
-                        <option value="rating">4</option>
-                        <option value="rating">5</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
                 <div class="feedback">
                     <label for="name">Your Feedback:</label>
                     <textarea name="feedback" id="feedback" placeholder="Your Feedback"></textarea>
                 </div>
-                <input type="submit" value="Submit">
+                <input type="submit" name="submit" value="Submit">
             </form>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         new Swiper('.swiper', {

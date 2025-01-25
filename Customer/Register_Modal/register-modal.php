@@ -7,10 +7,14 @@ if(isset($_POST['register_btn'])){
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $phone_number = $_POST['phone_number'];
+
     $password = $_POST['password'];
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $image = 'profile_default.jpg';
     $userType = 'user';
 
-    $add_sql = "INSERT INTO customers (email, first_name, last_name, phone_number, password, userType) VALUES ('$email', '$first_name', '$last_name', '$phone_number', '$password', '$userType')";
+    $add_sql = "INSERT INTO customers (email, first_name, last_name, phone_number, password, image, userType) VALUES ('$email', '$first_name', '$last_name', '$phone_number', '$hashed_password', '$image', '$userType')";
     $data = mysqli_query($conn, $add_sql);
 
     if($data){
@@ -50,11 +54,11 @@ if(isset($_POST['register_btn'])){
 
             <div class="password-section">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 <i id="togglePassword" class="fas fa-eye-slash toggle-icon"></i>
             </div>
             <div class="button">
-                <button type="submit">Sign Up</button>
+                <button type="submit" name="register_btn" >Sign Up</button>
             </div>
             <div class="login-link">
                 <p>Do you have an account? <a href="login.php">Login Here</a></p>
