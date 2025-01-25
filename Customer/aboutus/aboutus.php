@@ -2,8 +2,22 @@
 //DB connection
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
+//Auto generate review ID
+$sql_feed = "SELECT review_id FROM reviews ORDER BY review_id DESC LIMIT 1";
+$result_feed = mysqli_query($conn, $sql_feed);
+
+if (mysqli_num_rows($result_feed) > 0) {
+    $rows = $result_feed->fetch_assoc();
+    $lastid = $rows['review_id'];
+    $num = (int) substr($lastid, 2);
+    $new_id = 'R-' . str_pad($num + 1, 4, '0', STR_PAD_LEFT);
+} else {
+    $new_id = 'R-0001';
+}
+
 //Add a review
 if (isset($_POST['submit'])) {
+    $r_id = $_POST['review_id'];
     $name = $_POST['name'];
     $occupation = $_POST['occupation'];
     $rating = $_POST['rating'];
@@ -18,10 +32,10 @@ if (isset($_POST['submit'])) {
     $move_image = move_uploaded_file($_FILES['cus-images']["tmp_name"], $uploadPath);
 
     if ($move_image) {
-        $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status, image) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status', '$newFileName')";
+        $add_sql = "INSERT INTO reviews(review_id ,name, occupation, rating, feedback, status, image) VALUES ('$r_id' ,'$name', '$occupation', '$rating', '$feedback', '$status', '$newFileName')";
         $result_add = mysqli_query($conn, $add_sql);
-    } else{
-        $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status, image) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status', '$def_image')";
+    } else {
+        $add_sql = "INSERT INTO reviews(review_id ,name, occupation, rating, feedback, status, image) VALUES ('$r_id' ,'$name', '$occupation', '$rating', '$feedback', '$status', '$def_image')";
         $result_add = mysqli_query($conn, $add_sql);
     }
 
@@ -254,6 +268,7 @@ if (isset($_POST['submit'])) {
             <form method="post" enctype="multipart/form-data">
                 <div class="details">
                     <div class="names-details">
+                        <input type="text" name="review_id" value="<?php echo $new_id; ?>" style="display:none;" required >
                         <label for="name">Name:</label>
                         <input type="text" name="name" id="name" placeholder="Your Name">
                     </div>
