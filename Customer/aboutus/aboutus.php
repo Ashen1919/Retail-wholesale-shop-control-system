@@ -10,9 +10,21 @@ if (isset($_POST['submit'])) {
     $feedback = $_POST['feedback'];
     $status = 'pending';
 
-    $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status')";
-    $result_add = mysqli_query($conn, $add_sql);
-    
+    $def_image = 'profile_default.jpg';
+    $image_name = $_FILES['cus-images']['name'];
+    $tmp = explode(".", $image_name);
+    $newFileName = round(microtime(true)) . '.' . end($tmp);
+    $uploadPath = "../Assets/images/feedback/" . $newFileName;
+    $move_image = move_uploaded_file($_FILES['cus-images']["tmp_name"], $uploadPath);
+
+    if ($move_image) {
+        $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status, image) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status', '$newFileName')";
+        $result_add = mysqli_query($conn, $add_sql);
+    } else{
+        $add_sql = "INSERT INTO reviews(name, occupation, rating, feedback, status, image) VALUES ('$name', '$occupation', '$rating', '$feedback', '$status', '$def_image')";
+        $result_add = mysqli_query($conn, $add_sql);
+    }
+
     if ($result_add) {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
@@ -64,7 +76,8 @@ if (isset($_POST['submit'])) {
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
-    <?php if(isset($message)) echo $message; ?>
+    <?php if (isset($message))
+        echo $message; ?>
 
     <!--Image section-->
     <div class="image-section">
@@ -238,7 +251,7 @@ if (isset($_POST['submit'])) {
             <div class="review-image">
                 <img src="../Assets/images/review.png" alt="Review Image">
             </div>
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="details">
                     <div class="names-details">
                         <label for="name">Name:</label>
@@ -263,6 +276,10 @@ if (isset($_POST['submit'])) {
                 <div class="feedback">
                     <label for="name">Your Feedback:</label>
                     <textarea name="feedback" id="feedback" placeholder="Your Feedback"></textarea>
+                </div>
+                <div class="cus-image" onclick="document.getElementById('cus-images').click()">
+                    <img src="../Assets/images/feedback/add_image.jpg" alt="Add an image">
+                    <input type="file" name="cus-images" id="cus-images" style="display: none;">
                 </div>
                 <input type="submit" name="submit" value="Submit">
             </form>
