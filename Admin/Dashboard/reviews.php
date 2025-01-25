@@ -136,14 +136,16 @@ $result_feed = mysqli_query($conn, $sql_feed);
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                while($row =  mysqli_fetch_assoc($result_feed)){
+                            ?>
                             <tr>
-                                <td>Ashen Gimhana</td>
-                                <td>Software Engineer</td>
-                                <td>5</td>
-                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                                efficiently, and tracking was accurate.</td>
-                                <td>Pending</td>
-                                <td style="padding:6px;"><img src="../Assets/images/profile_default.jpg" alt="User Image" style="width:60px; height:60px;"></td>
+                                <td><?php echo $row['name'] ?></td>
+                                <td><?php echo $row['occupation'] ?></td>
+                                <td><?php echo $row['rating'] ?></td>
+                                <td><?php echo $row['feedback'] ?></td>
+                                <td><?php echo $row['status'] ?></td>
+                                <td style="padding:6px;"><img src="../../Customer/Assets/images/feedback/<?php echo $row['image'] ?>" alt="User Image" style="width:60px; height:60px;"></td>
                                 <td>
                                     <div class="action">
                                         <button  class="edit">Accept</button>
@@ -151,6 +153,9 @@ $result_feed = mysqli_query($conn, $sql_feed);
                                     </div>
                                 </td>
                             </tr>
+                            <?php
+                                }
+                                ?>
                         </tbody>
                     </table>
                 </div>
