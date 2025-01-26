@@ -2,16 +2,76 @@
 //Database connection
 include('db_con.php');
 
-//Add a customer
-if(isset($_POST['submit'])){
+//Update customer's status
+if(isset($_POST['edit'])){
     $email = $_POST['email'];
+    $sql_upd = "UPDATE customers SET status = 'active' WHERE email = '$email'";
+    $res_upd = mysqli_query($conn, $sql_upd);
+
+    if($res_upd){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Customer status is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+
+if(isset($_POST['delete'])){
     $email = $_POST['email'];
-    $email = $_POST['email'];
+    $sql_upd = "UPDATE customers SET status = 'disabled' WHERE email = '$email'";
+    $res_upd = mysqli_query($conn, $sql_upd);
+
+    if($res_upd){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Customer status is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
 }
 
 //Fetch all customer's details
 $sql_cus = "SELECT * FROM customers";
 $result_cus = mysqli_query($conn, $sql_cus);
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +95,7 @@ $result_cus = mysqli_query($conn, $sql_cus);
 </head>
 
 <body>
+    <?php if (isset($message)) echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -150,12 +211,16 @@ $result_cus = mysqli_query($conn, $sql_cus);
                                     <td><?php echo $row['first_name'] ?></td>
                                     <td><?php echo $row['last_name'] ?></td>
                                     <td><?php echo $row['phone_number'] ?></td>
-                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>" alt="User Image" style="width:50px; height:50px;"></td>
+                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>"
+                                            alt="User Image" style="width:50px; height:50px;"></td>
                                     <td><?php echo $row['status'] ?></td>
                                     <td>
                                         <div class="action">
-                                            <button class="edit">Active</button>
-                                            <button class="delete">Disable</button>
+                                            <form action="" method="post">
+                                                <input type="text" name="email" value="<?php echo $row['email'] ?>" style="display:none;" >
+                                                <button class="edit" name="edit">Active</button>
+                                                <button class="delete" name="delete" >Disable</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -171,6 +236,7 @@ $result_cus = mysqli_query($conn, $sql_cus);
     </div>
     <!--End of main body-->
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/promotion.js"></script>
     <script src="../Assets/js/script.js"></script>
 

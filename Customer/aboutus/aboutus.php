@@ -94,8 +94,7 @@ $result = mysqli_query($conn, $sql_rev);
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
-    <?php if (isset($message))
-        echo $message; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <!--Image section-->
     <div class="image-section">
