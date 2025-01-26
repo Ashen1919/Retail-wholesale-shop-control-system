@@ -32,14 +32,14 @@ if (isset($_POST['update_btn'])) {
         $uploadPath = "../Assets/images/products/" . $newFileName;
         move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath);
 
-        $update_sql = "UPDATE products SET product_id = '$pd_id', product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', image = '$newFileName', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE id = '$p_id'";
+        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', image = '$newFileName', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
             header("location:products.php");
         }
     } else {
-        $update_sql = "UPDATE products SET product_id = '$pd_id', product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE id = '$p_id'";
+        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
@@ -47,7 +47,6 @@ if (isset($_POST['update_btn'])) {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
