@@ -2,6 +2,13 @@
 //Database connection
 include('db_con.php');
 
+//Add a customer
+if(isset($_POST['submit'])){
+    $email = $_POST['email'];
+    $email = $_POST['email'];
+    $email = $_POST['email'];
+}
+
 //Fetch all customer's details
 $sql_cus = "SELECT * FROM customers";
 $result_cus = mysqli_query($conn, $sql_cus);
@@ -130,6 +137,7 @@ $result_cus = mysqli_query($conn, $sql_cus);
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
                                 <th>Image</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -143,10 +151,11 @@ $result_cus = mysqli_query($conn, $sql_cus);
                                     <td><?php echo $row['last_name'] ?></td>
                                     <td><?php echo $row['phone_number'] ?></td>
                                     <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>" alt="User Image" style="width:50px; height:50px;"></td>
+                                    <td><?php echo $row['status'] ?></td>
                                     <td>
                                         <div class="action">
-                                            <button class="edit"><i class="bi bi-pencil-square"></i></button>
-                                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                            <button class="edit">Active</button>
+                                            <button class="delete">Disable</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -156,61 +165,11 @@ $result_cus = mysqli_query($conn, $sql_cus);
                         </tbody>
                     </table>
                 </div>
-                <button onclick="openModal('addPromoModal')">
-                    <i class="bi bi-plus fs-3"></i>
-                    Add Customer
-                </button>
             </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
-
-    <!-- Add Promo Modal -->
-    <div id="addPromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
-            <h3>Add Customer</h3>
-            <form id="addPromoForm">
-                <label for="catID">Email:</label>
-                <input type="text" id="catID" name="catID" required>
-
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Last Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Phone Number:</label>
-                <input type="text" id="name" name="name" required>
-
-                <button type="submit">Add Category</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Category</h3>
-            <form id="addPromoForm">
-                <label for="catID">Email:</label>
-                <input type="text" id="catID" name="catID" required>
-
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Last Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Phone Number:</label>
-                <input type="text" id="name" name="name" required>
-
-                <button type="submit">Update Category</button>
-            </form>
-        </div>
-    </div>
 
     <script src="../Assets/js/promotion.js"></script>
     <script src="../Assets/js/script.js"></script>
