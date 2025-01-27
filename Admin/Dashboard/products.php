@@ -352,6 +352,8 @@ if(isset($_GET['id'])){
     </div>
   </div>
 
+  <!--Sweet alert js import-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../Assets/js/products.js"></script>
   <script>
     // Pagination Script

@@ -239,6 +239,8 @@ if (isset($_POST['update_btn'])) {
                 </div>
             </div>
         </div>
+        <!--Sweet alert js import-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
