@@ -47,7 +47,7 @@ table td img{
     width: 70px;
     height: auto;
 }
-table tbody tr .action{
+table tbody tr .action form{
     display: flex;
     gap: 10px;
     margin-top: -10px;
