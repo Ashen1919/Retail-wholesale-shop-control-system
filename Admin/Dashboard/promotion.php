@@ -1,3 +1,64 @@
+<?php
+//Database connection
+include('db_con.php');
+
+//generate auto-generated ID
+$auto_sql = "SELECT promo_id FROM promotions ORDER BY promo_id DESC LIMIT 1";
+$result_auto = mysqli_query($conn, $auto_sql);
+
+if (mysqli_num_rows($result_auto) > 0) {
+    $rows = $result_auto->fetch_assoc();
+    $lastid = $rows['promoId'];
+    $num = (int) substr($lastid, 2);
+    $new_id = 'PR-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+} else {
+    $new_id = 'PR-00001';
+}
+
+//Add a promotion
+if (isset($_POST['submit'])) {
+    $promo_id = $_POST['promoId'];
+    $promo_title = $_POST['promoTitle'];
+    $description = $_POST['promoDescription'];
+
+    $image_name = $_FILES['promoImage']['name'];
+    $tmp = explode(".", $image_name);
+    $newFileName = round(microtime(true)) . '.' . end($tmp);
+    $uploadPath = "../Assets/images/promotions/" . $newFileName;
+
+    if (move_uploaded_file($_FILES['promoImage']['tmp_name'], $uploadPath)) {
+        $add_sql = "INSERT INTO promotions(promo_id, promo_title, description, image) VALUES ('$promo_id', '$promo_title', '$description', '$$newFileName',)";
+        $data = mysqli_query($conn, $add_sql);
+
+        if ($data) {
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Promotions is being added",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+        }else{
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,10 +188,12 @@
                             <td>p001</td>
                             <td>Summer Sale</td>
                             <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
+                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50">
+                            </td>
                             <td>
                                 <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
+                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
+                                            class="bi bi-pencil-square"></i></button>
                                     <button class="delete"><i class="bi bi-trash-fill"></i></button>
                                 </div>
                             </td>
@@ -153,20 +216,21 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Promo</h3>
-            <form id="addPromoForm" method="post" enctype="multipart/form-data" >
+            <form id="addPromoForm" method="post" action="" enctype="multipart/form-data">
                 <label for="promoId">Promo ID:</label>
-                <input type="text" id="promoId" name="promoId" disabled>
+                <input type="text" id="promoId" name="promoId" value="<?php echo $new_id ?>" required readonly>
 
                 <label for="promoTitle">Title:</label>
                 <input type="text" id="promoTitle" name="promoTitle" required>
-                
+
                 <label for="promoDescription">Description:</label>
                 <textarea id="promoDescription" name="promoDescription" required></textarea>
-                
+
                 <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
-                
-                <button type="submit" name="submit" >Add Promo</button>
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)"
+                    required>
+
+                <button type="submit" name="submit">Add Promo</button>
             </form>
         </div>
     </div>
@@ -182,17 +246,18 @@
 
                 <label for="promoTitle">Title:</label>
                 <input type="text" id="promoTitle" name="promoTitle" required>
-                
+
                 <label for="promoDescription">Description:</label>
                 <textarea id="promoDescription" name="promoDescription" required></textarea>
-                
+
                 <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="upreviewImage(event)" required>
-                
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="upreviewImage(event)"
+                    required>
+
                 <div id="u_imagePreviewContainer" style="display: none;">
-                    <img id="u_imagePreview" src="" alt="Image Preview"/>
+                    <img id="u_imagePreview" src="" alt="Image Preview" />
                 </div>
-                
+
                 <button type="submit">Update Promo</button>
             </form>
         </div>
