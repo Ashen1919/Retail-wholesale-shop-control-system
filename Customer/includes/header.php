@@ -87,8 +87,8 @@
                     </li>
                     <li><a href="#contact">Contact us</a></li>
                     <div class="right-side-mobile-icons">
-                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
-                        <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
+                        <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart"></i></i></a>
                         <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
                     </div>
                 </ul>
