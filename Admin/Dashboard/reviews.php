@@ -25,6 +25,7 @@ if (isset($_POST['reject'])) {
     }
 }
 
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>

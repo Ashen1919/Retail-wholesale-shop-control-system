@@ -71,6 +71,8 @@ if(isset($_GET['id'])){
       header("location:products.php");
   }
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
