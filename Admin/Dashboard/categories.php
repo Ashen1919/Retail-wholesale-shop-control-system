@@ -95,6 +95,8 @@ if (isset($_GET['id'])) {
         </script>';
     }
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>

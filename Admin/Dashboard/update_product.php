@@ -47,6 +47,8 @@ if (isset($_POST['update_btn'])) {
         }
     }
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
