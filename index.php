@@ -103,7 +103,7 @@
                 </div>
             </nav>
             <div class="right-side-icons">
-                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
                 <a class="profile" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
             </div>
