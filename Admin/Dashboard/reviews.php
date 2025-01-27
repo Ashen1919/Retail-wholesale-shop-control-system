@@ -191,6 +191,8 @@ if (isset($_POST['reject'])) {
     </div>
     <!--End of main body-->
 
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>

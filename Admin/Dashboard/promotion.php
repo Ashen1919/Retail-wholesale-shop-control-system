@@ -135,102 +135,6 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -249,7 +153,7 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Promo</h3>
-            <form id="addPromoForm">
+            <form id="addPromoForm" method="post" enctype="multipart/form-data" >
                 <label for="promoId">Promo ID:</label>
                 <input type="text" id="promoId" name="promoId" disabled>
 
@@ -262,11 +166,7 @@
                 <label for="promoImage">Image:</label>
                 <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
                 
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
-                </div>
-                
-                <button type="submit">Add Promo</button>
+                <button type="submit" name="submit" >Add Promo</button>
             </form>
         </div>
     </div>
@@ -298,6 +198,8 @@
         </div>
     </div>
 
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/promotion.js"></script>
 
