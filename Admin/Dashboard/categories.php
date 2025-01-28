@@ -120,8 +120,7 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <?php if (isset($message))
-        echo $message; ?>
+    <?php if (isset($message)) echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
