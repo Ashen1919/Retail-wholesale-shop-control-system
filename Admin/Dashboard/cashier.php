@@ -139,12 +139,27 @@
     </div>
     <!--End of main body-->
 
-    <!-- Update Admin Modal -->
+    <!-- Add cashier -->
     <div id="AddCashier" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('AddCashier')">&times;</span>
             <h3>Add Cashier</h3>
             <form id="AddCashier" class="updateForm">
+              
+                
+            <div class="success" id="success"
+                    style="display: <?php echo (isset($message) && $message == 'success') ? 'block' : 'none'; ?>;">
+                    <span class="close_popup" onclick="closeModal('success')">&times;</span>
+                    <p>Cashier Added Successfully!</p>
+                </div>
+
+                <div class="fail" id="fail"
+                    style="display: <?php echo (isset($message) && $message == 'fail') ? 'block' : 'none'; ?>;">
+                    <span class="close_popup" onclick="closeModal('fail')">&times;</span>
+                    <p>Failed to add cashier!</p>
+                </div>
+
+
                 <div class="box">
                     <label for="first-name">First Name</label>
                     <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+"
@@ -161,9 +176,9 @@
                         title="Enter a valid NIC (e.g., 123456789V or 200012345678)">
                 </div>
                 <div class="box">
-                    <label for="dob">Phone Number</label>
-                    <input type="date" id="dob" name="dob" pattern="\d{4}-\d{2}-\d{2}"
-                        title="Enter a valid date (e.g., 1990-12-31)">
+                    <label for="num">Phone Number</label>
+                    <input type="text" id="num" name="num" maxlength="10" pattern="[0-9]{10}"
+                        title="Enter a valid NIC (e.g., 0712345678)">
                 </div>
                 <div class="box">
                     <label for="email">Email</label>
