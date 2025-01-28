@@ -111,7 +111,6 @@ table tbody tr .action .delete:hover{
     background-color: rgba(0, 0, 0, 0.5); 
     transition: opacity 0.3s ease;
 }
-
 .modal-content {
     background-color: #fff;
     padding: 20px;
@@ -190,4 +189,52 @@ label {
 textarea {
     resize: vertical;
     height: 100px;
+}
+
+.success{
+    width: 100%;
+    height: 5vh;
+    background-color:rgba(0, 255, 94, 0.638);
+    border: 3px solid rgba(1, 86, 32, 0.638);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    position: relative;
+    display: none;
+}
+.success p{
+    display: flex;
+    align-items: center;
+    padding: 3px 8px;
+    color: black;
+}
+.close_popup {
+    color: #000000df;
+    font-size: 20px;
+    font-weight: bold;
+    position: absolute;
+    top: -1px;
+    right: 4px;
+    cursor: pointer;
+}
+
+.close_popup:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.fail{
+    width: 100%;
+    height: 5vh;
+    background-color:rgba(255, 25, 0, 0.638);
+    border: 3px solid rgba(86, 1, 1, 0.638);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    position: relative;
+    display: none;
+}
+.fail p{
+    display: flex;
+    align-items: center;
+    padding: 3px 8px;
+    color: black;
 }

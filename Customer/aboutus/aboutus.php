@@ -1,3 +1,76 @@
+<?php
+//DB connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Auto generate review ID
+$sql_feed = "SELECT review_id FROM reviews ORDER BY review_id DESC LIMIT 1";
+$result_feed = mysqli_query($conn, $sql_feed);
+
+if (mysqli_num_rows($result_feed) > 0) {
+    $rows = $result_feed->fetch_assoc();
+    $lastid = $rows['review_id'];
+    $num = (int) substr($lastid, 2);
+    $new_id = 'R-' . str_pad($num + 1, 4, '0', STR_PAD_LEFT);
+} else {
+    $new_id = 'R-0001';
+}
+
+//Add a review
+if (isset($_POST['submit'])) {
+    $r_id = $_POST['review_id'];
+    $name = $_POST['name'];
+    $occupation = $_POST['occupation'];
+    $rating = $_POST['rating'];
+    $feedback = $_POST['feedback'];
+    $status = 'pending';
+
+    $def_image = 'profile_default.jpg';
+    $image_name = $_FILES['cus-images']['name'];
+    $tmp = explode(".", $image_name);
+    $newFileName = round(microtime(true)) . '.' . end($tmp);
+    $uploadPath = "../Assets/images/feedback/" . $newFileName;
+    $move_image = move_uploaded_file($_FILES['cus-images']["tmp_name"], $uploadPath);
+
+    if ($move_image) {
+        $add_sql = "INSERT INTO reviews(review_id ,name, occupation, rating, feedback, status, image) VALUES ('$r_id' ,'$name', '$occupation', '$rating', '$feedback', '$status', '$newFileName')";
+        $result_add = mysqli_query($conn, $add_sql);
+    } else {
+        $add_sql = "INSERT INTO reviews(review_id ,name, occupation, rating, feedback, status, image) VALUES ('$r_id' ,'$name', '$occupation', '$rating', '$feedback', '$status', '$def_image')";
+        $result_add = mysqli_query($conn, $add_sql);
+    }
+
+    if ($result_add) {
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Review has been submitted.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    } else {
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+
+//Fetch all reviews
+$sql_rev = "SELECT * FROM reviews WHERE status = 'Accepted'";
+$result = mysqli_query($conn, $sql_rev);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +94,7 @@
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <!--Image section-->
     <div class="image-section">
@@ -91,97 +165,39 @@
         <h3 class="top">User Feedbacks</h3>
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
-            <!-- Slides -->
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                $rating = intval($row['rating']);
+                ?>
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="rating">
+                        <?php
+                        for ($i = 1; $i <= 5; $i++) {
+                            if ($i <= $rating) {
+                                echo '⭐';
+                            } else {
+                                echo '☆';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="comment">
+                        <p><?php echo $row['feedback']; ?></p>
+                    </div>
+                    <div class="image-feedback">
+                        <img src="../Assets/images/feedback/<?php echo $row['image']; ?>" alt="Person">
+                    </div>
+                    <div class="name">
+                        <h5><?php echo $row['name']; ?></h5>
+                    </div>
+                    <div class="job">
+                        <p><?php echo $row['occupation']; ?></p>
+                    </div>
                 </div>
-                <div class="comment">
-                    <p>The shop has a great variety of products, excellent customer service, and fast delivery. Highly
-                        recommended for online shopping!</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/951.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Jane Smith</h5>
-                </div>
-                <div class="job">
-                    <p>Software Engineer</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>I appreciate the friendly staff and the organized store layout. Prices are fair, and I’ll
-                        definitely shop here again.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/3546.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Jacob Oram</h5>
-                </div>
-                <div class="job">
-                    <p>Civil Engineer</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>Delivery was quick, and the product quality exceeded my expectations. The online system is
-                        user-friendly and hassle-free.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/16320.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Micheal Clark</h5>
-                </div>
-                <div class="job">
-                    <p>Doctor</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>Great in-store experience! Staff were helpful, and checkout was quick. I found everything I
-                        needed without any issues.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/18778.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Harry Fernando</h5>
-                </div>
-                <div class="job">
-                    <p>Businessman</p>
-                </div>
-            </div>
-            <div class="swiper-slide">
-                <div class="rating">
-                    ⭐⭐⭐⭐⭐
-                </div>
-                <div class="comment">
-                    <p>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                        efficiently, and tracking was accurate.</p>
-                </div>
-                <div class="image-feedback">
-                    <img src="../Assets/images/feedback/56066.jpg" alt="Person">
-                </div>
-                <div class="name">
-                    <h5>Ann Steven</h5>
-                </div>
-                <div class="job">
-                    <p>Teacher</p>
-                </div>
-            </div>
+                <?php
+            }
+            ?>
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -194,37 +210,44 @@
             <div class="review-image">
                 <img src="../Assets/images/review.png" alt="Review Image">
             </div>
-            <form action="" method="post">
+            <form method="post" enctype="multipart/form-data">
                 <div class="details">
                     <div class="names-details">
+                        <input type="text" name="review_id" value="<?php echo $new_id; ?>" style="display:none;"
+                            required>
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <input type="text" name="name" id="name" placeholder="Your Name" required >
                     </div>
                     <div class="names-details">
-                        <label for="name">Occupation:</label>
-                        <input type="text" name="name" id="name" placeholder="Your occupation">
+                        <label for="occupation">Occupation:</label>
+                        <input type="text" name="occupation" id="occupation" placeholder="Your occupation" required >
                     </div>
 
                 </div>
                 <div class="rate">
                     <label for="name">Rating:</label>
-                    <select name="rating" id="rating">
-                        <option value="rating">1</option>
-                        <option value="rating">2</option>
-                        <option value="rating">3</option>
-                        <option value="rating">4</option>
-                        <option value="rating">5</option>
+                    <select name="rating" id="rating" required >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
                 </div>
                 <div class="feedback">
                     <label for="name">Your Feedback:</label>
-                    <textarea name="feedback" id="feedback" placeholder="Your Feedback"></textarea>
+                    <textarea name="feedback" id="feedback" placeholder="Your Feedback" required ></textarea>
                 </div>
-                <input type="submit" value="Submit">
+                <div class="cus-image" onclick="document.getElementById('cus-images').click()">
+                    <img src="../Assets/images/feedback/add_image.jpg" alt="Add an image">
+                    <input type="file" name="cus-images" id="cus-images" style="display: none;">
+                </div>
+                <input type="submit" name="submit" value="Submit">
             </form>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         new Swiper('.swiper', {

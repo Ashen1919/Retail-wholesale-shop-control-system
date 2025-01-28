@@ -1,3 +1,12 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all promotions
+$sql_promo = "SELECT * FROM promotions ORDER BY id DESC";
+$data_promo = mysqli_query($conn, $sql_promo);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +26,16 @@
     <link href="./Customer/Assets/css/hero.css" rel="stylesheet">
     <link href="./Customer/Assets/css/footer.css" rel="stylesheet">
     <link href="./Customer/Assets/css/logo_promos.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/Register.css" rel="stylesheet">
+    <link href="./Customer/Assets/css/Login.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
+
 
 <body>
     <!--Preloader-->
@@ -42,7 +57,7 @@
             </div>
             <div class="searchBar">
                 <form action="" method="get" class="search-form">
-                    <input type="search" name="search" id="search" placeholder="Search Here">
+                    <input type="search" name="search" id="main-search" placeholder="Search Here">
                     <button type="submit" class="search-button">
                         <i class="bi bi-search"></i>
                     </button>
@@ -67,7 +82,7 @@
                 <ul>
                     <div class="mobile-searchBar">
                         <form action="" method="get" class="search-form">
-                            <input type="search" name="search" id="search" placeholder="Search Here">
+                            <input type="search" name="search" id="mobile-search" placeholder="Search Here">
                             <button type="submit" class="search-button">
                                 <i class="bi bi-search"></i>
                             </button>
@@ -89,7 +104,7 @@
                     <div class="right-side-mobile-icons">
                         <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                        <a class="profile" ><i class="bi bi-person-circle "></i></a>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -97,9 +112,9 @@
                 </div>
             </nav>
             <div class="right-side-icons">
-                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                <a class="profile" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -449,36 +464,17 @@
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
             <!--Slide 01-->
+            <?php 
+                while($row = mysqli_fetch_assoc($data_promo)){
+            ?>
             <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
+                <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
+                <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
+                <p class="text"><?php echo $row['description']; ?></p>
             </div>
-            <!--Slide 02-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-            <!--Slide 03-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Black Friday.jpeg" alt="offer image">
-                <h2 class="topic">Black Friday</h2>
-                <p class="text">Exclusive discounts on Groceries for Black Friday!</p>
-            </div>
-            <!--Slide 04-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
-            </div>
-            <!--Slide 05-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-
+            <?php
+                }
+            ?>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>
@@ -683,9 +679,15 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
+    
+
     <script src="./Customer/Assets/js/script.js"></script>
     <script src="./Customer/Assets/js/offer.js"></script>
+    <script src="./Customer/Assets/js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <?php include('./Customer/Register_Modal/register-modal.php'); ?>
+    <?php include('./Customer/Login_Modal/login-modal.php'); ?>
 
 </body>
 

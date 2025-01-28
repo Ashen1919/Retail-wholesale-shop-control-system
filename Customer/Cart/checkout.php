@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Sandaru Food Mart</title>
+    <!-- Favicons -->
+    <link
+        href="../Assets/images/logo.png"
+        rel="icon">
+    <link
+        href="../Assets/images/logo.png"
+        rel="apple-touch-icon">
+        
     <!-- CSS Files -->
     <link href="../Assets/css/checkout.css" rel="stylesheet">
     
@@ -23,12 +31,12 @@
                 <div class="method-item active">
                     <img src="..\Assets\images\cart images\card.png" alt="Credit/Debit Card" class="method-icon">
                     <h3>Credit/Debit Card</h3>
-                    <p>Credit/Debit Card</p>
+                    <a href="..\Cart\payment.php"><p>Credit/Debit Card</p></a>
                 </div>
                 <div class="method-item">
                     <img src="..\Assets\images\cart images\cashondelivery.png" alt="Cash on Delivery" class="method-icon">
                     <h3>Cash on Delivery</h3>
-                    <p>Cash on Delivery</p>
+                    <a href="..\Cart\deliverydetails.php"><p>Cash on Delivery</p></a>
                 </div>
             </div>
         </div>

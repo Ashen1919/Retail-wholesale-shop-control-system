@@ -1,27 +1,61 @@
 <?php
-//Databas connection
 include('db_con.php');
 
-//Fetch All Feedbacks
-$sql_feed = "SELECT * FROM reviews ORDER BY review_id DESC";
-$result_feed = mysqli_query($conn, $sql_feed);
+// Fetch category data
+$c_id = $_GET['id'];
+$get_sql = "SELECT * FROM categories WHERE id = '$c_id'";
+$query = mysqli_query($conn, $get_sql);
+$row = mysqli_fetch_assoc($query);
 
-//Review status update
-if (isset($_POST['accept'])) {
-    $review_id = $_POST['review_id'];
-    $sql_update = "UPDATE reviews SET status = 'Accepted' WHERE review_id = '$review_id'";
-    if (mysqli_query($conn, $sql_update)) {
-        header("location:reviews.php");
-        exit();
-    }
-}
+// Update category
+if (isset($_POST['update_btn'])) {
+    $c_name = $_POST['name'];
+    $c_description = $_POST['categoryDescription'];
 
-if (isset($_POST['reject'])) {
-    $review_id = $_POST['review_id'];
-    $sql_update = "UPDATE reviews SET status = 'Rejected' WHERE review_id = '$review_id'";
-    if (mysqli_query($conn, $sql_update)) {
-        header("location:reviews.php");
-        exit();
+    $image_name = $_FILES['categoryImage']['name'];
+
+    if ($image_name) {
+        $tmp = explode(".", $image_name);
+        $newFileName = round(microtime(true)) . '.' . end($tmp);
+        $uploadPath = "../Assets/images/categories/" . $newFileName;
+        move_uploaded_file($_FILES['categoryImage']["tmp_name"], $uploadPath);
+
+        $update_sql = "UPDATE categories SET name = '$c_name', description = '$c_description', image = '$newFileName' WHERE id = '$c_id'";
+        $data = mysqli_query($conn, $update_sql);
+
+        if ($data) {
+            header("location:categories.php");
+        }
+    } else {
+        $update_sql = "UPDATE categories SET name = '$c_name', description = '$c_description' WHERE id = '$c_id'";
+        $data = mysqli_query($conn, $update_sql);
+
+        if ($data) {
+            header("location:categories.php");
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Category is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            </script>';
+        } else {
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+        }
     }
 }
 
@@ -42,13 +76,15 @@ mysqli_close($conn);
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/reviews.css" rel="stylesheet">
+    <link href="../Assets/css/categorie.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -139,63 +175,34 @@ mysqli_close($conn);
         <!--End of left side-->
 
         <!--Right side-->
-        <div class="right-side">
-            <h2 style="color: white; margin-bottom: 20px">Reviews</h2>
-            <div class="customer-content">
-                <div class="category-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Occupation</th>
-                                <th>Ratings</th>
-                                <th>Feedback</th>
-                                <th>Status</th>
-                                <th>Image</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_assoc($result_feed)) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $row['review_id'] ?></td>
-                                    <td><?php echo $row['name'] ?></td>
-                                    <td><?php echo $row['occupation'] ?></td>
-                                    <td><?php echo $row['rating'] ?></td>
-                                    <td><?php echo $row['feedback'] ?></td>
-                                    <td><?php echo $row['status'] ?></td>
-                                    <td style="padding:6px;"><img
-                                            src="../../Customer/Assets/images/feedback/<?php echo $row['image'] ?>"
-                                            alt="User Image" style="width:60px; height:60px;"></td>
-                                    <td>
-                                        <div class="action">
-                                            <form action="reviews.php" method="post">
-                                                <input type="hidden" name="review_id" value="<?php echo $row['review_id']; ?>">
-                                                <button class="edit" name="accept">Accept</button>
-                                                <button class="delete" name="reject">Reject</i></button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+        <div class="right-side-category">
+            <h2 style="color:white; margin-bottom:20px;">Update Category</h2>
+            <!-- Update Promo Modal -->
+            <div id="updatePromoModal" class="modal_update">
+                <div class="modal-content">
+                    <form id="addPromoForm" action="" method="post" enctype="multipart/form-data">
+
+                        <label for="name">Category Name:</label>
+                        <input type="text" id="name" name="name" value="<?php echo $row['name'] ?>" required>
+
+                        <label for="categoryDescription">Description:</label>
+                        <textarea id="categoryDescription"
+                            name="categoryDescription"><?php echo htmlspecialchars($row['description']); ?></textarea>
+
+                        <label for="categoryImage">Image:</label>
+                        <input type="file" id="categoryImage" name="categoryImage" accept="image/*">
+
+                        <img src="../Assets/images/categories/<?php echo $row['image'] ?>" alt="Category image"
+                            style="width:70px;">
+
+                        <button type="submit" style="justify-content:center;" name="update_btn">Update Category</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <!--End of right side-->
-    </div>
-    <!--End of main body-->
 
-    <!--Sweet alert js import-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../Assets/js/script.js"></script>
-
+        <!--Sweet alert js import-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Sandaru Food Mart</title>
+    <!-- Favicons -->
+    <link
+        href="../Assets/images/logo.png"
+        rel="icon">
+    <link
+        href="../Assets/images/logo.png"
+        rel="apple-touch-icon">
     
     <!-- CSS Files -->
-    <!-- <link href="../Assets/css/cart_style.css" rel="stylesheet"> -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -112,7 +118,7 @@
         .remove-btn {
             color: red;
             cursor: pointer;
-            font-size: 0.9em;
+            font-size: 2em;
         }
 
         .order-summary h3 {
@@ -152,14 +158,15 @@
             margin-top: 20px;
             width: 100%;
         }
+        .shopping-btn:hover {
+            background:rgb(58, 237, 97);
+        }
 
     </style>
 </head>
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
-
-    <!-- <script src="../Assets/js/script.js"></script> -->
 
     <div class="container">
         <div class="cart-items">
@@ -207,6 +214,7 @@
         </div>
     </div>
 
+<!-- js files -->
     <script>
         const updateQuantity = (change, index) => {
             const quantityInput = document.getElementById(`quantity-${index}`);
