@@ -3,16 +3,16 @@
 include('db_con.php');
 
 //generate auto-generated ID
-$auto_sql = "SELECT promo_id FROM promotions ORDER BY promo_id DESC LIMIT 1";
+$auto_sql = "SELECT promo_id FROM promotions ORDER BY id DESC LIMIT 1";
 $result_auto = mysqli_query($conn, $auto_sql);
 
 if (mysqli_num_rows($result_auto) > 0) {
     $rows = $result_auto->fetch_assoc();
-    $lastid = $rows['promoId'];
+    $lastid = $rows['promo_id'];
     $num = (int) substr($lastid, 2);
-    $new_id = 'PR-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+    $new_id = 'O-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
 } else {
-    $new_id = 'PR-00001';
+    $new_id = 'O-00001';
 }
 
 //Add a promotion
@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $uploadPath = "../Assets/images/promotions/" . $newFileName;
 
     if (move_uploaded_file($_FILES['promoImage']['tmp_name'], $uploadPath)) {
-        $add_sql = "INSERT INTO promotions(promo_id, promo_title, description, image) VALUES ('$promo_id', '$promo_title', '$description', '$$newFileName',)";
+        $add_sql = "INSERT INTO promotions(promo_id, promo_title, description, image) VALUES ('$promo_id', '$promo_title', '$description', '$newFileName')";
         $data = mysqli_query($conn, $add_sql);
 
         if ($data) {
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
                 });
             });
         </script>';
-        }else{
+        } else {
             $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -57,6 +57,12 @@ if (isset($_POST['submit'])) {
         }
     }
 }
+
+//Fetch all promotions
+$sql_all_prmo = "SELECT * FROM promotions";
+$result_promo = mysqli_query($conn, $sql_all_prmo);
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -80,6 +86,8 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -184,20 +192,25 @@ if (isset($_POST['submit'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50">
-                            </td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result_promo)) {
+                            ?>
+                            <tr>
+                                <td><?php echo $row['promo_id'] ?></td>
+                                <td><?php echo $row['promo_title'] ?></td>
+                                <td><?php echo $row['description'] ?></td>
+                                <td><img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Promo Image" width="50">
+                                </td>
+                                <td>
+                                    <div class="action">
+                                        <a href="update_promo.php?id=<?php echo $row['id'] ?>"><button class="edit"><i class="bi bi-pencil-square"></i></button></a>
+                                        <a href="?id=<?php echo $row['id'] ?>"></a><button class="delete"><i class="bi bi-trash-fill"></i></button></>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -218,7 +231,7 @@ if (isset($_POST['submit'])) {
             <h3>Add Promo</h3>
             <form id="addPromoForm" method="post" action="" enctype="multipart/form-data">
                 <label for="promoId">Promo ID:</label>
-                <input type="text" id="promoId" name="promoId" value="<?php echo $new_id ?>" required readonly>
+                <input type="text" id="promoId" name="promoId" value="<?php echo $new_id; ?>" required readonly>
 
                 <label for="promoTitle">Title:</label>
                 <input type="text" id="promoTitle" name="promoTitle" required>
