@@ -31,7 +31,7 @@ if (isset($_POST['register_btn'])) {
     
         $image = 'profile_default.jpg';
         $status = 'active';
-        $userType = 'user';
+        $userType = 'retail';
     
         $add_sql = "INSERT INTO customers (email, first_name, last_name, phone_number, password, image, status, userType) VALUES ('$email', '$first_name', '$last_name', '$phone_number', '$hashed_password', '$image', '$status', '$userType')";
         $data = mysqli_query($conn, $add_sql);
