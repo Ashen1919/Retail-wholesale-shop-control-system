@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
         $data = mysqli_query($conn, $add_sql);
 
         if ($data) {
+            header("location:promotion.php");
             $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -62,6 +63,41 @@ if (isset($_POST['submit'])) {
 $sql_all_prmo = "SELECT * FROM promotions";
 $result_promo = mysqli_query($conn, $sql_all_prmo);
 
+//Delete promotion
+if (isset($_GET['id'])) {
+    $pr_id = $_GET['id'];
+
+    $delete_sql = "DELETE FROM promotions WHERE id = '$pr_id'";
+    $del_data = mysqli_query($conn, $delete_sql);
+
+    if ($del_data) {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Promotion is being deleted",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
+    } else {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops! Something went wrong.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
+    }
+}
+
+//Close connection
 mysqli_close($conn);
 ?>
 
@@ -199,12 +235,16 @@ mysqli_close($conn);
                                 <td><?php echo $row['promo_id'] ?></td>
                                 <td><?php echo $row['promo_title'] ?></td>
                                 <td><?php echo $row['description'] ?></td>
-                                <td><img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Promo Image" width="50">
+                                <td><img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Promo Image"
+                                        width="50">
                                 </td>
                                 <td>
                                     <div class="action">
-                                        <a href="update_promo.php?id=<?php echo $row['id'] ?>"><button class="edit"><i class="bi bi-pencil-square"></i></button></a>
-                                        <a href="?id=<?php echo $row['id'] ?>"></a><button class="delete"><i class="bi bi-trash-fill"></i></button></>
+                                        <a href="update_promo.php?id=<?php echo $row['id'] ?>"><button class="edit"><i
+                                                    class="bi bi-pencil-square"></i></button></a>
+                                        <a onclick="confirm ('Are you sure, Do you want to delete this promotion? ')"
+                                            href="promotion.php?id=<?php echo $row['id'] ?>"><button name="delete"
+                                                class="delete"><i class="bi bi-trash-fill"></i></button></a>
                                     </div>
                                 </td>
                             </tr>
@@ -244,34 +284,6 @@ mysqli_close($conn);
                     required>
 
                 <button type="submit" name="submit">Add Promo</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Promo</h3>
-            <form id="updatePromoForm">
-                <label for="promoId">Promo ID:</label>
-                <input type="text" id="promoId" name="promoId" disabled>
-
-                <label for="promoTitle">Title:</label>
-                <input type="text" id="promoTitle" name="promoTitle" required>
-
-                <label for="promoDescription">Description:</label>
-                <textarea id="promoDescription" name="promoDescription" required></textarea>
-
-                <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="upreviewImage(event)"
-                    required>
-
-                <div id="u_imagePreviewContainer" style="display: none;">
-                    <img id="u_imagePreview" src="" alt="Image Preview" />
-                </div>
-
-                <button type="submit">Update Promo</button>
             </form>
         </div>
     </div>
