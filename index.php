@@ -1,3 +1,12 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all promotions
+$sql_promo = "SELECT * FROM promotions ORDER BY id DESC";
+$data_promo = mysqli_query($conn, $sql_promo);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -455,36 +464,17 @@
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
             <!--Slide 01-->
+            <?php 
+                while($row = mysqli_fetch_assoc($data_promo)){
+            ?>
             <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
+                <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
+                <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
+                <p class="text"><?php echo $row['description']; ?></p>
             </div>
-            <!--Slide 02-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-            <!--Slide 03-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Black Friday.jpeg" alt="offer image">
-                <h2 class="topic">Black Friday</h2>
-                <p class="text">Exclusive discounts on Groceries for Black Friday!</p>
-            </div>
-            <!--Slide 04-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
-            </div>
-            <!--Slide 05-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-
+            <?php
+                }
+            ?>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>

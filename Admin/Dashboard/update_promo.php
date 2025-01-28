@@ -3,41 +3,41 @@ include('db_con.php');
 
 // Fetch category data
 $c_id = $_GET['id'];
-$get_sql = "SELECT * FROM categories WHERE id = '$c_id'";
+$get_sql = "SELECT * FROM promotions WHERE id = '$c_id'";
 $query = mysqli_query($conn, $get_sql);
 $row = mysqli_fetch_assoc($query);
 
 // Update category
 if (isset($_POST['update_btn'])) {
-    $c_name = $_POST['name'];
-    $c_description = $_POST['categoryDescription'];
+    $c_name = $_POST['promoTitle'];
+    $c_description = $_POST['promoDescription'];
 
-    $image_name = $_FILES['categoryImage']['name'];
+    $image_name = $_FILES['promoImage']['name'];
 
     if ($image_name) {
         $tmp = explode(".", $image_name);
         $newFileName = round(microtime(true)) . '.' . end($tmp);
-        $uploadPath = "../Assets/images/categories/" . $newFileName;
-        move_uploaded_file($_FILES['categoryImage']["tmp_name"], $uploadPath);
+        $uploadPath = "../Assets/images/promotions/" . $newFileName;
+        move_uploaded_file($_FILES['promoImage']["tmp_name"], $uploadPath);
 
-        $update_sql = "UPDATE categories SET name = '$c_name', description = '$c_description', image = '$newFileName' WHERE id = '$c_id'";
+        $update_sql = "UPDATE promotions SET promo_title = '$c_name', description = '$c_description', image = '$newFileName' WHERE id = '$c_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
-            header("location:categories.php");
+            header("location:promotion.php");
         }
     } else {
-        $update_sql = "UPDATE categories SET name = '$c_name', description = '$c_description' WHERE id = '$c_id'";
+        $update_sql = "UPDATE promotions SET promo_title = '$c_name', description = '$c_description' WHERE id = '$c_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
-            header("location:categories.php");
+            header("location:promotion.php");
             $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Category is being updated",
+                    title: "Promotion is being updated",
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -176,26 +176,28 @@ mysqli_close($conn);
 
         <!--Right side-->
         <div class="right-side-category">
-            <h2 style="color:white; margin-bottom:20px;">Update Category</h2>
+            <h2 style="color:white; margin-bottom:20px;">Update Promotion</h2>
             <!-- Update Promo Modal -->
             <div id="updatePromoModal" class="modal_update">
                 <div class="modal-content">
                     <form id="addPromoForm" action="" method="post" enctype="multipart/form-data">
 
-                        <label for="name">Category Name:</label>
-                        <input type="text" id="name" name="name" value="<?php echo $row['name'] ?>" required>
+                        <label for="promoId">Promo ID:</label>
+                        <input type="text" id="promoId" name="promoId" value="<?php echo $row['promo_id']; ?>" required readonly>
 
-                        <label for="categoryDescription">Description:</label>
-                        <textarea id="categoryDescription"
-                            name="categoryDescription"><?php echo htmlspecialchars($row['description']); ?></textarea>
+                        <label for="promoTitle">Title:</label>
+                        <input type="text" id="promoTitle" name="promoTitle" value="<?php echo $row['promo_title']; ?>" required>
 
-                        <label for="categoryImage">Image:</label>
-                        <input type="file" id="categoryImage" name="categoryImage" accept="image/*">
+                        <label for="promoDescription">Description:</label>
+                        <textarea id="promoDescription" name="promoDescription" required><?php echo $row['description']; ?></textarea>
 
-                        <img src="../Assets/images/categories/<?php echo $row['image'] ?>" alt="Category image"
+                        <label for="promoImage">Image:</label>
+                        <input type="file" id="promoImage" name="promoImage" accept="image/*">
+
+                        <img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Category image"
                             style="width:70px;">
 
-                        <button type="submit" style="justify-content:center;" name="update_btn">Update Category</button>
+                        <button type="submit" style="justify-content:center;" name="update_btn">Update Promotion</button>
                     </form>
                 </div>
             </div>
