@@ -44,10 +44,6 @@ $result = mysqli_query($conn, $sql);
 
 
 <body>
-    <!--Preloader-->
-
-    <!--End of Preloader-->
-
     <!-- Include Header -->
     <header class="header-wrapper">
 
