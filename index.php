@@ -10,7 +10,7 @@ $data_promo = mysqli_query($conn, $sql_promo);
 $sql = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql);
 
-
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
