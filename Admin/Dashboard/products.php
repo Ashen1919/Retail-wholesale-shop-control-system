@@ -26,6 +26,7 @@ if (isset($_POST['add_product_btn'])) {
   $p_id = $_POST['proID'];
   $p_name = $_POST['name'];
   $p_category = $_POST['category'];
+  $p_units = $_POST['units'];
   $p_quantity = $_POST['quantity'];
   $p_supplier = $_POST['supplier'];
   $p_purPrice = $_POST['purPrice'];
@@ -41,8 +42,8 @@ if (isset($_POST['add_product_btn'])) {
   $uploadPath = "../Assets/images/products/" . $newFileName;
 
   if (move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath)) {
-    $add_sql = "INSERT INTO products(product_id, product_name, product_category, quantity, supplier, image, description, purchased_price, retail_price, retail_profit, whole_price, whole_profit) 
-              VALUES ('$p_id', '$p_name', '$p_category', '$p_quantity', '$p_supplier', '$newFileName', '$p_description', '$p_purPrice', '$p_retPrice', '$p_retProfit', '$p_whoPrice', '$p_whoProfit') ";
+    $add_sql = "INSERT INTO products(product_id, product_name, product_category, units, quantity, supplier, image, description, purchased_price, retail_price, retail_profit, whole_price, whole_profit) 
+              VALUES ('$p_id', '$p_name', '$p_category', '$p_units', '$p_quantity', '$p_supplier', '$newFileName', '$p_description', '$p_purPrice', '$p_retPrice', '$p_retProfit', '$p_whoPrice', '$p_whoProfit') ";
     $data = mysqli_query($conn, $add_sql);
 
     if ($data) {
@@ -223,6 +224,10 @@ mysqli_close($conn);
                 <p style="opacity: 70%"><?php echo $row['product_category']; ?></p>
               </div>
               <div class="id">
+                <p style="font-weight: 700">Units :</p>
+                <p style="opacity: 70%"><?php echo $row['units']; ?></p>
+              </div>
+              <div class="id">
                 <p style="font-weight: 700">Quantity :</p>
                 <p style="opacity: 70%"><?php echo $row['quantity']; ?></p>
               </div>
@@ -315,6 +320,9 @@ mysqli_close($conn);
                 }
                 ?>
               </select>
+
+              <label style="margin-top: 9px" for="units"> Units:</label>
+              <input type="number" id="units" name="units" required />
 
               <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
               <input type="number" id="quantity" name="quantity" required />
