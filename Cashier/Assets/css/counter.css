@@ -13,6 +13,7 @@ body {
 .header-section{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -21,7 +22,7 @@ body {
 .header-section select {
     padding: 5px;
     border: 1px solid #ccc;
-    width: 200px;
+    width: 180px;
 }
 
 .header-section button {
@@ -45,7 +46,11 @@ body {
 .input-section{
     display: flex;
     margin-bottom: 10px;
-    gap: 25px;
+    justify-content: space-between;
+}
+
+.input-section div{
+    width: min-content;
 }
 
 .secondary-header input[type="text"], 
@@ -53,13 +58,69 @@ body {
 .secondary-header select {
     padding: 5px;
     border: 1px solid #ccc;
-    width: 180px;
+    width: 250px;
 }
 
-.secondary-header-btn{
+#productIDDropdown {
+    position: absolute;
+    z-index: 10;
+    width: 180px; 
+    max-height: 150px;
+    overflow-y: auto; 
+    box-sizing: border-box;
+}
+
+#customerDropdown {
+    position: absolute;
+    z-index: 10;
+    width: 180px; 
+    max-height: 150px;
+    overflow-y: auto; 
+    box-sizing: border-box;
+}
+
+.secondary-header-btm {
     display: flex;
     justify-content: center;
     gap: 40px;
+}
+
+.radio {
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #c5c5c5;
+    padding: 4px;
+    border-radius: 15px;
+}
+
+.radio input[type="radio"]{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    margin-bottom: -4px;
+}
+
+.radio input[type="radio"]:checked::before {    
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.radio input[type="radio"]:checked + span {
+    color: rgb(255, 0, 0);
+    font-weight: bolder;
 }
 
 .secondary-header button {
@@ -290,3 +351,37 @@ table tbody tr .action .delete:hover{
 .print-btn:hover{
     background-color: #212529;
 }
+
+button {
+    border: none;
+}
+
+/* Edit button */
+button i.bi-pencil {
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    padding: 2px 10px;
+}
+
+button:hover i.bi-pencil {
+    background-color: #0059b8;
+}
+
+/* Delete button */
+button i.bi-trash {
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff0000;
+    color: white;
+    padding: 2px 10px;
+    margin-left: 10px;
+}
+
+button:hover i.bi-trash {
+    background-color: #b40000;
+}
+  
