@@ -662,9 +662,6 @@ mysqli_close($conn);
     <script src="./Customer/Assets/js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <?php include('./Customer/Register_Modal/register-modal.php'); ?>
-    <?php include('./Customer/Login_Modal/login-modal.php'); ?>
-
 </body>
 
 </html>
