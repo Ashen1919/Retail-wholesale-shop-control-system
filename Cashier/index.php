@@ -38,5 +38,6 @@
         <div class="content"></div>
     </div>
     <script src="./Assets/js/index.js"></script>
+    <script src="./Assets/js/counter.js"></script>
 </body>
 </html>
