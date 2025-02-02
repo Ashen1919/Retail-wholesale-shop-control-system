@@ -13,6 +13,7 @@
     <!-- Css Stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="./Assets/css/counter.css" rel="stylesheet">
+    <link href="./Assets/css/registerCustomer.css" rel="stylesheet">
 </head>
 
 <body>
@@ -21,59 +22,65 @@
         <div class="header-section">
             <div>
                 <label for="bill-number">Bill Number : </label>
-                <select>
-                    <option></option>
+                <select id="billNumber">
+                    <option value="" disabled selected></option>
                 </select>
             </div>
             <div>
-            <label for="customer">Customer : </label>
-                <input type="text">
-                <button>Search</button>
+                <label for="customer">Customer : </label>
+                <input type="text" id="customer" oninput="searchCustomer()" autocomplete="off">
+                <select id="customerDropdown" size="5" style="display:none;" onclick="selectCustomer()">
+                </select>
+            </div>
+            <div class="radio">
+                <label>
+                    <input id="retail" value="retail" type="radio" name="type" onclick="updatePrice()">
+                    <span>Retail</span>
+                </label>
+                <label>
+                    <input id="wholesale" value="wholesale" type="radio" name="type" onclick="updatePrice()">
+                    <span>Wholesale</span>
+                </label>
             </div>
             <div>
                 <label for="date">Date : </label>
-                <input type="text" disabled>
+                <input type="text" id="orderDate" disabled>
             </div>
             <div>
                 <label for="time">Time : </label>
-                <input type="text" disabled>
+                <input type="text" id="orderTime" disabled>
             </div>
         </div>
 
         <div class="secondary-header">
             <div class="input-section">
                 <div>
-                    <label for="product ID/barcode">Product ID/Barcode</label>
-                    <input type="text">
+                    <label for="productID">Product ID/Barcode</label>
+                    <input type="text" id="productID" oninput="searchProduct()"> <!-- Now allows typing to search -->
+                    <select id="productIDDropdown" size="5" style="display:none;" onchange="selectProduct()">
+                        <!-- Options will be dynamically populated from the database -->
+                    </select>
                 </div>
                 <div>
-                    <label for="name of item">Name of item</label>
-                    <input type="text" disabled>
+                    <label for="name">Name of item</label>
+                    <input type="text" id="name" readonly>
                 </div>
                 <div>
                     <label for="quantity">Quantity</label>
-                    <input type="number">
-                </div>
-                <div> 
-                    <label for="selling price">Selling Price</label>   
-                    <input type="number" disabled>
+                    <input type="number" id="quantity">
                 </div>
                 <div>
-                    <label for="discount">Discount</label>
-                    <input type="number">
-                </div>
-                <div>
-                    <label for="our price">Our Price</label>
-                    <input type="number"disabled>
+                    <label for="sellingPrice">Unit Price</label>   
+                    <input type="number" id="sellingPrice" readonly>
                 </div>
                 <div>
                     <label for="amount">Amount</label>
-                    <input type="number" disabled>
+                    <input type="number" id="amount" readonly>
                 </div>
             </div>
-            <div class="secondary-header-btn">
-                <button class="clear-btn">Clear</button>
-                <button class="add-btn">Add</button>
+            <div class="secondary-header-btm">
+                <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+                <button type="button" class="add-btn" onclick="addRow()">Add</button>
             </div>
         </div>
 
@@ -85,255 +92,13 @@
                         <th>No</th>
                         <th>Product ID</th>
                         <th>Name</th>
-                        <th>Unit</th>
-                        <th>Selling Price</th>
-                        <th>Discount</th>
-                        <th>Our Price</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
                         <th>Amount</th>
-                        <th>Action</th>
+                        <th style="width: 110px;">Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>PRD001</td>
-                        <td>Chocolate Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.00</td>
-                        <td>10%</td>
-                        <td>$2.70</td>
-                        <td>50</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>PRD002</td>
-                        <td>Vanilla Cupcake</td>
-                        <td>Piece</td>
-                        <td>$2.50</td>
-                        <td>5%</td>
-                        <td>$2.38</td>
-                        <td>100</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>PRD003</td>
-                        <td>Red Velvet Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.50</td>
-                        <td>15%</td>
-                        <td>$2.98</td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>PRD004</td>
-                        <td>Lemon Cupcake</td>
-                        <td>Piece</td>
-                        <td>$2.75</td>
-                        <td>0%</td>
-                        <td>$2.75</td>
-                        <td>80</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>PRD005</td>
-                        <td>Strawberry Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.25</td>
-                        <td>20%</td>
-                        <td>$2.60</td>
-                        <td>60</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>PRD006</td>
-                        <td>Carrot Cupcake</td>
-                        <td>Piece</td>
-                        <td>$2.80</td>
-                        <td>5%</td>
-                        <td>$2.66</td>
-                        <td>40</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>PRD007</td>
-                        <td>Peanut Butter Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.40</td>
-                        <td>10%</td>
-                        <td>$3.06</td>
-                        <td>35</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>PRD008</td>
-                        <td>Coconut Cupcake</td>
-                        <td>Piece</td>
-                        <td>$2.90</td>
-                        <td>12%</td>
-                        <td>$2.55</td>
-                        <td>25</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>PRD009</td>
-                        <td>Banana Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.10</td>
-                        <td>8%</td>
-                        <td>$2.85</td>
-                        <td>45</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>PRD010</td>
-                        <td>Almond Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.60</td>
-                        <td>15%</td>
-                        <td>$3.06</td>
-                        <td>20</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>                    
-                        <td>11</td>
-                        <td>PRD011</td>
-                        <td>Coffee Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.50</td>
-                        <td>10%</td>
-                        <td>$3.15</td>
-                        <td>75</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>PRD012</td>
-                        <td>Blueberry Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.75</td>
-                        <td>20%</td>
-                        <td>$3.00</td>
-                        <td>50</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>PRD013</td>
-                        <td>Matcha Cupcake</td>
-                        <td>Piece</td>
-                        <td>$4.00</td>
-                        <td>25%</td>
-                        <td>$3.00</td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>PRD014</td>
-                        <td>Mocha Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.45</td>
-                        <td>10%</td>
-                        <td>$3.10</td>
-                        <td>60</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>PRD015</td>
-                        <td>Mint Chocolate Cupcake</td>
-                        <td>Piece</td>
-                        <td>$3.25</td>
-                        <td>5%</td>
-                        <td>$3.09</td>
-                        <td>55</td>
-                        <td>
-                            <div class="action">
-                                <button class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                            </div>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
                 </tbody>
             </table>
         </div>
@@ -342,11 +107,11 @@
             <div class="four-btns">
                 <div class="upper-btns">
                     <button class="continue-btn">Continue</button>
-                    <button class="new-btn">New</button>
+                    <button onclick="newBill()" class="new-btn">New</button>
                 </div>
                 <div class="lower-btns"> 
-                    <button class="register-btn">Register</button>
-                    <button class="reset-btn">Reset</button>
+                    <button onclick="openModal('registerCustomerModal')" class="register-btn">Register</button>
+                    <button onclick="resetPage()" class="reset-btn">Reset</button>
                 </div>
             </div>
             <div class="lending-section">
@@ -377,5 +142,43 @@
             </div>
         </div>
     </div>
+
+    <!-- Register New Customer Modal-->
+    <div id="registerCustomerModal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('registerCustomerModal')"><i class="bi bi-x"></i></button>
+            <h2>Register Customer</h2>
+            <form id="registerCustomerForm" action="path_to_php_script.php" method="POST" onsubmit="submitCustomerForm(event)">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="type">Customer Type:</label>
+                <div class="radio_type">
+                    <label for="type">
+                        <input type="radio" id="retail-c" name="type">
+                        Retail
+                    </label>
+                    <label for="type">
+                        <input type="radio" id="wholesale-c" name="type">
+                        Wholesale
+                    </label>
+                </div>
+                
+                <button type="submit">Add Customer</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="./Assets/js/counter.js"></script>
+
 </body>
 </html>

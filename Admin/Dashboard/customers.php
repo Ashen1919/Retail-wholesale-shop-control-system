@@ -199,6 +199,7 @@ mysqli_close($conn);
                                 <th>Phone Number</th>
                                 <th>Image</th>
                                 <th>Status</th>
+                                <th>User type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -214,6 +215,7 @@ mysqli_close($conn);
                                     <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>"
                                             alt="User Image" style="width:50px; height:50px;"></td>
                                     <td><?php echo $row['status'] ?></td>
+                                    <td><?php echo $row['userType'] ?></td>
                                     <td>
                                         <div class="action">
                                             <form action="" method="post">
