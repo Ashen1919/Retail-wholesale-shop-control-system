@@ -18,12 +18,42 @@ if (isset($_POST['add_btn'])) {
         $data = mysqli_query($conn, $sql);
 
         if ($data) {
-            $message = "success";
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Category is being added",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
         } else {
-            $message = "fail";
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
         }
     } else {
-        $message = "fail";
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
     }
 }
 
@@ -32,16 +62,41 @@ $sql_display = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql_display);
 
 //delete category
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $c_id = $_GET['id'];
 
     $del_sql = "DELETE FROM categories WHERE id = '$c_id'";
     $data = mysqli_query($conn, $del_sql);
 
-    if($data){
+    if ($data) {
         header("location:categories.php");
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Category is being deleted",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
     }
 }
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +120,7 @@ if(isset($_GET['id'])){
 </head>
 
 <body>
+    <?php if (isset($message)) echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -181,7 +237,9 @@ if(isset($_GET['id'])){
                                         <a href="update_category.php?id=<?php echo $row['id']; ?>">
                                             <button class="edit"><i class="bi bi-pencil-square"></i></button>
                                         </a>
-                                        <a onclick="confirm ('Are you sure, Do you want to delete this category? ')" href="categories.php?id=<?php echo $row['id'] ?>"><button class="delete"><i class="bi bi-trash-fill"></i></button></a>
+                                        <a onclick="confirm ('Are you sure, Do you want to delete this category? ')"
+                                            href="categories.php?id=<?php echo $row['id'] ?>"><button class="delete"><i
+                                                    class="bi bi-trash-fill"></i></button></a>
                                     </div>
                                 </td>
                             </tr>
@@ -233,6 +291,8 @@ if(isset($_GET['id'])){
         </div>
     </div>
 
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/category.js"></script>
 

@@ -2,9 +2,76 @@
 //Database connection
 include('db_con.php');
 
+//Update customer's status
+if(isset($_POST['edit'])){
+    $email = $_POST['email'];
+    $sql_upd = "UPDATE customers SET status = 'active' WHERE email = '$email'";
+    $res_upd = mysqli_query($conn, $sql_upd);
+
+    if($res_upd){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Customer status is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+
+if(isset($_POST['delete'])){
+    $email = $_POST['email'];
+    $sql_upd = "UPDATE customers SET status = 'disabled' WHERE email = '$email'";
+    $res_upd = mysqli_query($conn, $sql_upd);
+
+    if($res_upd){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Customer status is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+
 //Fetch all customer's details
 $sql_cus = "SELECT * FROM customers";
 $result_cus = mysqli_query($conn, $sql_cus);
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +95,7 @@ $result_cus = mysqli_query($conn, $sql_cus);
 </head>
 
 <body>
+    <?php if (isset($message)) echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -130,6 +198,8 @@ $result_cus = mysqli_query($conn, $sql_cus);
                                 <th>Last Name</th>
                                 <th>Phone Number</th>
                                 <th>Image</th>
+                                <th>Status</th>
+                                <th>User type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -142,11 +212,17 @@ $result_cus = mysqli_query($conn, $sql_cus);
                                     <td><?php echo $row['first_name'] ?></td>
                                     <td><?php echo $row['last_name'] ?></td>
                                     <td><?php echo $row['phone_number'] ?></td>
-                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>" alt="User Image" style="width:50px; height:50px;"></td>
+                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>"
+                                            alt="User Image" style="width:50px; height:50px;"></td>
+                                    <td><?php echo $row['status'] ?></td>
+                                    <td><?php echo $row['userType'] ?></td>
                                     <td>
                                         <div class="action">
-                                            <button class="edit"><i class="bi bi-pencil-square"></i></button>
-                                            <button class="delete"><i class="bi bi-trash-fill"></i></button>
+                                            <form action="" method="post">
+                                                <input type="text" name="email" value="<?php echo $row['email'] ?>" style="display:none;" >
+                                                <button class="edit" name="edit">Active</button>
+                                                <button class="delete" name="delete" >Disable</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -156,62 +232,13 @@ $result_cus = mysqli_query($conn, $sql_cus);
                         </tbody>
                     </table>
                 </div>
-                <button onclick="openModal('addPromoModal')">
-                    <i class="bi bi-plus fs-3"></i>
-                    Add Customer
-                </button>
             </div>
         </div>
         <!--End of right side-->
     </div>
     <!--End of main body-->
 
-    <!-- Add Promo Modal -->
-    <div id="addPromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
-            <h3>Add Customer</h3>
-            <form id="addPromoForm">
-                <label for="catID">Email:</label>
-                <input type="text" id="catID" name="catID" required>
-
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Last Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Phone Number:</label>
-                <input type="text" id="name" name="name" required>
-
-                <button type="submit">Add Category</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Category</h3>
-            <form id="addPromoForm">
-                <label for="catID">Email:</label>
-                <input type="text" id="catID" name="catID" required>
-
-                <label for="name">First Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Last Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="name">Phone Number:</label>
-                <input type="text" id="name" name="name" required>
-
-                <button type="submit">Update Category</button>
-            </form>
-        </div>
-    </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/promotion.js"></script>
     <script src="../Assets/js/script.js"></script>
 

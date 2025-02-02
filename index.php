@@ -1,3 +1,18 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all promotions
+$sql_promo = "SELECT * FROM promotions ORDER BY id DESC";
+$data_promo = mysqli_query($conn, $sql_promo);
+
+//Fetch all categories
+$sql = "SELECT * FROM categories";
+$result = mysqli_query($conn, $sql);
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,10 +44,6 @@
 
 
 <body>
-    <!--Preloader-->
-
-    <!--End of Preloader-->
-
     <!-- Include Header -->
     <header class="header-wrapper">
 
@@ -103,7 +114,7 @@
                 </div>
             </nav>
             <div class="right-side-icons">
-                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
                 <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
             </div>
@@ -205,54 +216,28 @@
     <!--Category Section-->
 
     <div class="category-section" id="categories">
-        <div class="category-header">
-            <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
-        </div>
+    <div class="category-header">
+        <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
+    </div>
 
-        <div class="category-grid">
+    <div class="category-grid">
+        <?php 
+        while($row = mysqli_fetch_assoc($result)) {
+            // Get the category name and convert it to the correct filename format
+            $category_page = $row['name'] . '.php';
+        ?>
             <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/grocery.png" alt="Grocery" class="category-image">
+                <img src="./Admin/Assets/images/categories/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" class="category-image">
                 <div class="category-name">
-                    <a href="./Customer/Categories/Grocery.php" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> Grocery
+                    <a href="./Customer/Categories/<?php echo $category_page; ?>" class="styled-link">
+                        <i class="bi bi-basket2-fill"></i> <?php echo $row['name']; ?>
                     </a>
                 </div>
             </div>
-            <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/vegetables.jpg" alt="Vegetables"
-                    class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/Vegetables.php" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> Vegetables
-                    </a>
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/fruit.jpg" alt="Fruits" class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/Fruits.php" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> Fruits
-                    </a>
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/beverages.jpg" alt="Beverages"
-                    class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/Beverages.php" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> Beverages
-                    </a>
-                </div>
-            </div>
-            <div class="category-item">
-                <img src="./Customer/Assets/images/shop by category/household.jpg" alt="Household"
-                    class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/Household.php" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> Household
-                    </a>
-                </div>
-            </div>
+        <?php
+        }
+        ?>
+            
         </div>
 
     </div>
@@ -455,36 +440,17 @@
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
             <!--Slide 01-->
+            <?php 
+                while($row = mysqli_fetch_assoc($data_promo)){
+            ?>
             <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
+                <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
+                <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
+                <p class="text"><?php echo $row['description']; ?></p>
             </div>
-            <!--Slide 02-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-            <!--Slide 03-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Black Friday.jpeg" alt="offer image">
-                <h2 class="topic">Black Friday</h2>
-                <p class="text">Exclusive discounts on Groceries for Black Friday!</p>
-            </div>
-            <!--Slide 04-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Summer Sale.png" alt="offer image">
-                <h2 class="topic">Summer Sale</h2>
-                <p class="text">Enjoy up to 50% off on select items during our Summer Sale!</p>
-            </div>
-            <!--Slide 05-->
-            <div class="swiper-slide">
-                <img src="./Customer/Assets/images/offers/Winter Discount.jpeg" alt="offer image">
-                <h2 class="topic">Winter Discount</h2>
-                <p class="text">Get 30% off on all products this winter season!</p>
-            </div>
-
+            <?php
+                }
+            ?>
         </div>
         <div class="swiper-pagination"></div>
         <div class="swiper-button-prev"></div>

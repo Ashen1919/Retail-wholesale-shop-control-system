@@ -94,8 +94,7 @@ $result = mysqli_query($conn, $sql_rev);
 <body>
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
-    <?php if (isset($message))
-        echo $message; ?>
+    <?php if (isset($message)) echo $message; ?>
 
     <!--Image section-->
     <div class="image-section">
@@ -217,17 +216,17 @@ $result = mysqli_query($conn, $sql_rev);
                         <input type="text" name="review_id" value="<?php echo $new_id; ?>" style="display:none;"
                             required>
                         <label for="name">Name:</label>
-                        <input type="text" name="name" id="name" placeholder="Your Name">
+                        <input type="text" name="name" id="name" placeholder="Your Name" required >
                     </div>
                     <div class="names-details">
                         <label for="occupation">Occupation:</label>
-                        <input type="text" name="occupation" id="occupation" placeholder="Your occupation">
+                        <input type="text" name="occupation" id="occupation" placeholder="Your occupation" required >
                     </div>
 
                 </div>
                 <div class="rate">
                     <label for="name">Rating:</label>
-                    <select name="rating" id="rating">
+                    <select name="rating" id="rating" required >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -237,7 +236,7 @@ $result = mysqli_query($conn, $sql_rev);
                 </div>
                 <div class="feedback">
                     <label for="name">Your Feedback:</label>
-                    <textarea name="feedback" id="feedback" placeholder="Your Feedback"></textarea>
+                    <textarea name="feedback" id="feedback" placeholder="Your Feedback" required ></textarea>
                 </div>
                 <div class="cus-image" onclick="document.getElementById('cus-images').click()">
                     <img src="../Assets/images/feedback/add_image.jpg" alt="Add an image">

@@ -32,10 +32,34 @@ if (isset($_POST['update_btn'])) {
 
         if ($data) {
             header("location:categories.php");
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Category is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            </script>';
+        } else {
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
         }
     }
 }
 
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +83,8 @@ if (isset($_POST['update_btn'])) {
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -174,6 +200,9 @@ if (isset($_POST['update_btn'])) {
                 </div>
             </div>
         </div>
+
+        <!--Sweet alert js import-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
