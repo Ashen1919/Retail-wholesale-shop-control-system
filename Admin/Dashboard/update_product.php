@@ -15,6 +15,7 @@ if (isset($_POST['update_btn'])) {
     $pd_id = $_POST['proID'];
     $p_name = $_POST['name'];
     $p_category = $_POST['category'];
+    $p_units = $_POST['units'];
     $p_quantity = $_POST['quantity'];
     $p_supplier = $_POST['supplier'];
     $p_purPrice = $_POST['purPrice'];
@@ -32,14 +33,14 @@ if (isset($_POST['update_btn'])) {
         $uploadPath = "../Assets/images/products/" . $newFileName;
         move_uploaded_file($_FILES['productImage']["tmp_name"], $uploadPath);
 
-        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', image = '$newFileName', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
+        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', units = '$p_units', quantity = '$p_quantity', supplier = '$p_supplier', image = '$newFileName', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
             header("location:products.php");
         }
     } else {
-        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', quantity = '$p_quantity', supplier = '$p_supplier', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
+        $update_sql = "UPDATE products SET product_name = '$p_name', product_category = '$p_category', units = '$p_units', quantity = '$p_quantity', supplier = '$p_supplier', description = '$p_description', purchased_price = '$p_purPrice', retail_price = '$p_retPrice', retail_profit = '$p_retProfit', whole_price = '$p_whoPrice', whole_profit = '$p_whoProfit' WHERE product_id = '$pd_id'";
         $data = mysqli_query($conn, $update_sql);
 
         if ($data) {
@@ -192,6 +193,10 @@ mysqli_close($conn);
                                         }
                                         ?>
                                     </select>
+
+                                    <label style="margin-top: 9px" for="units">Units:</label>
+                                    <input type="text" id="units" name="units"
+                                        value="<?php echo $row['units']; ?>" />
 
                                     <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
                                     <input type="text" id="quantity" name="quantity"
