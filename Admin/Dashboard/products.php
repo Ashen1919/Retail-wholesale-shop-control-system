@@ -322,7 +322,7 @@ mysqli_close($conn);
               </select>
 
               <label style="margin-top: 9px" for="units"> Units:</label>
-              <input type="number" id="units" name="units" required />
+              <input type="text" id="units" name="units" required />
 
               <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
               <input type="number" id="quantity" name="quantity" required />
