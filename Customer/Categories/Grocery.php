@@ -1,3 +1,11 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+$sql = "SELECT * FROM products WHERE product_category = 'Grocery'";
+$result = mysqli_query($conn, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,25 +61,38 @@
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
                     <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Samba">
                 </div>
                 <div class="product-details">
-                    <h3>Rice Samba Bulk</h3>
-                    <p class="price">Rs. 240.00</p>
-                    <p class="weight">(1kg)</p>
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
+              <?php
+            }
+
+            ?>
+
+            <!-- Product Card 1 -->
+
+            
 
             
 
             <!-- Product Card 2 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
                     <img src="../Assets/images/Grocery_Page/eggs.jpg" alt="Pack of 10 Eggs">
                 </div>
@@ -82,10 +103,10 @@
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Product Card 3 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
                     <img src="../Assets/images/Grocery_Page/white-sugar.jpg" alt="White Sugar">
                 </div>
@@ -96,10 +117,10 @@
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Product Card 4 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
                 <img src="../Assets/images/Grocery_Page/dhal.jpg" alt="Catch Canned Fish">
                 </div>
@@ -110,10 +131,10 @@
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Product Card 5 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
                 <img src="../Assets/images/Grocery_Page/canned-fish.jpg" alt="Catch Canned Fish">
                 </div>
@@ -124,10 +145,10 @@
                     <button class="add-to-cart">Add to Cart
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Product Card 6 -->
-            <div class="product-card">
+            <!-- <div class="product-card">
                 <div class="product-image">
                     <img src="../Assets/images/Grocery_Page/noodles.jpg" alt="White Sugar">
                 </div>
@@ -138,7 +159,7 @@
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
-            </div>
+            </div> -->
 
             
         </div>
