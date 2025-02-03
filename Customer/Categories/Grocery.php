@@ -2,6 +2,7 @@
 //Database connection
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
+//Fetch all grocery category products
 $sql = "SELECT * FROM products WHERE product_category = 'Grocery'";
 $result = mysqli_query($conn, $sql);
 
@@ -70,7 +71,7 @@ $result = mysqli_query($conn, $sql);
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Samba">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
                     <h3><?php echo $row['product_name'] ?></h3>
