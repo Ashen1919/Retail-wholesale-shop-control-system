@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+session_start();
+
+error_reporting(0);
 //Database connection
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
@@ -106,9 +110,27 @@ mysqli_close($conn);
                     </li>
                     <li><a href="#contact">Contact us</a></li>
                     <div class="right-side-mobile-icons">
-                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                        <a class="profile" href="./Customer/login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
+                        <?php
+                        if ($_SESSION['user_email']) {
+                            ?>
+                            <div class="dropdown">
+                                <img src="./Customer/Assets/images/shopping cart.png" alt=""
+                                    style="width:50px; height:50px;">
+                                <div class="links">
+                                    <a href="">Settings</a>
+                                    <a href="">Logout</a>
+                                </div>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <a class="profile" href="./Customer/login_signup_page/login_signup_page.php"
+                                id="openModalBtn"><i class="bi bi-person-circle "></i></a>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -118,7 +140,25 @@ mysqli_close($conn);
             <div class="right-side-icons">
                 <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
+                <?php
+                if ($_SESSION['user_email']) {
+                    ?>
+                    <div class="dropdown">
+                        <img src="./Customer/Assets/images/shopping cart.png" alt="" style="width:50px; height:50px;">
+                        <div class="links">
+                            <a href="">Settings</a>
+                            <a href="./Customer/logout.php">Logout</a>
+                        </div>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i
+                            class="bi bi-person-circle "></i></a>
+                    <?php
+                }
+                ?>
+
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -218,28 +258,29 @@ mysqli_close($conn);
     <!--Category Section-->
 
     <div class="category-section" id="categories">
-    <div class="category-header">
-        <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
-    </div>
+        <div class="category-header">
+            <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
+        </div>
 
-    <div class="category-grid">
-        <?php 
-        while($row = mysqli_fetch_assoc($result)) {
-            // Get the category name and convert it to the correct filename format
-            $category_page = $row['name'] . '.php';
-        ?>
-            <div class="category-item">
-                <img src="./Admin/Assets/images/categories/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/<?php echo $category_page; ?>" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> <?php echo $row['name']; ?>
-                    </a>
+        <div class="category-grid">
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Get the category name and convert it to the correct filename format
+                $category_page = $row['name'] . '.php';
+                ?>
+                <div class="category-item">
+                    <img src="./Admin/Assets/images/categories/<?php echo $row['image']; ?>"
+                        alt="<?php echo $row['name']; ?>" class="category-image">
+                    <div class="category-name">
+                        <a href="./Customer/Categories/<?php echo $category_page; ?>" class="styled-link">
+                            <i class="bi bi-basket2-fill"></i> <?php echo $row['name']; ?>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        <?php
-        }
-        ?>
-            
+                <?php
+            }
+            ?>
+
         </div>
 
     </div>
@@ -442,16 +483,16 @@ mysqli_close($conn);
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
             <!--Slide 01-->
-            <?php 
-                while($row = mysqli_fetch_assoc($data_promo)){
-            ?>
-            <div class="swiper-slide">
-                <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
-                <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
-                <p class="text"><?php echo $row['description']; ?></p>
-            </div>
             <?php
-                }
+            while ($row = mysqli_fetch_assoc($data_promo)) {
+                ?>
+                <div class="swiper-slide">
+                    <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
+                    <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
+                    <p class="text"><?php echo $row['description']; ?></p>
+                </div>
+                <?php
+            }
             ?>
         </div>
         <div class="swiper-pagination"></div>
@@ -657,7 +698,7 @@ mysqli_close($conn);
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    
+
 
     <script src="./Customer/Assets/js/script.js"></script>
     <script src="./Customer/Assets/js/offer.js"></script>

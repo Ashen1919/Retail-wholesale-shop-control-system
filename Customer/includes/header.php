@@ -89,7 +89,7 @@
                     <div class="right-side-mobile-icons">
                         <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart"></i></i></a>
-                        <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                        <a class="profile" href="../login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -97,9 +97,9 @@
                 </div>
             </nav>
             <div class="right-side-icons">
-                <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href=""><i class="bi bi-person-circle "></i></a>
+                <a class="profile" href="../login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
             </div>
         </div>
         <!--End of Nav Bar-->
