@@ -1,3 +1,13 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all beverages category products
+$sql = "SELECT * FROM products WHERE product_category = 'Beverages'";
+$result = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,94 +62,28 @@
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/necto.jpg" alt="Pack of 10 Eggs">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Elephant House Necto </h3>
-                    <p class="price">Rs. 320.00</p>
-                    <p class="weight">(1.5l)</p>
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/viva.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Viva Malted Food Drink</h3>
-                    <p class="price">Rs. 600.00</p>
-                    <p class="weight">(795g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/milo.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Milo RTD Tetra Pack</h3>
-                    <p class="price">Rs. 130.00</p>
-                    <p class="weight">(180ml)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/pepsi.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Pepsi</h3>
-                    <p class="price">Rs. 320.00</p>
-                    <p class="weight">(1.5l)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/orange.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Elephant House Orange </h3>
-                    <p class="price">Rs. 300.00</p>
-                    <p class="weight">(1.5l)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/kist.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Kist Mango Nectar </h3>
-                    <p class="price">Rs. 440.00</p>
-                    <p class="weight">(1l)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-
+            ?>
         </div>
     </main>
     <!-- Include Footer -->

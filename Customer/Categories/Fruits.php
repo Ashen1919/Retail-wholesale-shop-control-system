@@ -1,3 +1,13 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all fruits category products
+$sql = "SELECT * FROM products WHERE product_category = 'Fruits'";
+$result = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,92 +62,28 @@
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Fruits_Page/melon.jpg" alt="Pack of 10 Eggs">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Sweet Melon </h3>
-                    <p class="price">Rs. 440.00</p>
-                    <p class="weight">(2kg)</p>
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-            
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Fruits_Page/plantain.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Sour Plantain</h3>
-                    <p class="price">Rs. 100.00</p>
-                    <p class="weight">(500g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Fruits_Page/guava.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Guava</h3>
-                    <p class="price">Rs. 680.00</p>
-                    <p class="weight">(1kg)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Fruits_Page/pineapple.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Pineapple </h3>
-                    <p class="price">Rs. 600.00</p>
-                    <p class="weight">(1.25kg)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Fruits_Page/papaw.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Papaw - Red Lady</h3>
-                    <p class="price">Rs. 350.00</p>
-                    <p class="weight">(1.25kg)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Fruits_Page/grapes.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Imported Red Grapes </h3>
-                    <p class="price">Rs. 1180.00</p>
-                    <p class="weight">(500g)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
+            ?>
 
             
         </div>

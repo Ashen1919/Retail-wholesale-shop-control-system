@@ -1,3 +1,13 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all household category products
+$sql = "SELECT * FROM products WHERE product_category = 'Household'";
+$result = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,94 +62,28 @@
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Household_Page/diva.jpg" alt="Pack of 10 Eggs">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Diva Colour Guard Liquid   </h3>
-                    <p class="price">Rs. 609.00</p>
-                    <p class="weight">(1l)</p>
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
                     <button class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-            
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/surf.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Surf Excel Matic Top Load</h3>
-                    <p class="price">Rs. 476.00</p>
-                    <p class="weight">(1kg)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/lifeboy.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Lifebuoy Active Total Soap</h3>
-                    <p class="price">Rs. 127.00</p>
-                    <p class="weight">(100g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Household_Page/lysol.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Lysol Floral Disinfectant </h3>
-                    <p class="price">Rs. 425.00</p>
-                    <p class="weight">(500ml)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Household_Page/vim.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Vim Liquid Dishwash </h3>
-                    <p class="price">Rs. 425.00</p>
-                    <p class="weight">(500ml)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/mortein.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Mortein Fast Killer </h3>
-                    <p class="price">Rs. 1147.00</p>
-                    <p class="weight">(400ml)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            
+            ?>
         </div>
     </main>
     <!-- Include Footer -->
