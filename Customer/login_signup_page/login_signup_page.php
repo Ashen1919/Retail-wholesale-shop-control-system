@@ -92,14 +92,36 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['user_email'] = $login_email;
             $_SESSION['user_type'] = $user['userType'];
             header("location:../../index.php");
-            exit();
+        }else{
+            $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops! Email or Password is incorrect",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
         }
         if($verify_password && $admin){
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_type'] = $user['userType'];
             $_SESSION['user_email'] = $login_email;
             header("location:../../Admin/Dashboard/index.php");
-            exit();
+        }else{
+            $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops! Email or Password is incorrect",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
         }
     }else{
         $message = '<script>
@@ -107,7 +129,7 @@ if (isset($_POST['login_btn'])) {
                 Swal.fire({
                     position: "top-end",
                     icon: "error",
-                    title: "Oops! Email or Password is incorrect",
+                    title: "Oops! user not found",
                     showConfirmButton: false,
                     timer: 1500
                 });

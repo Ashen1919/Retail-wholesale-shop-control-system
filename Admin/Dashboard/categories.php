@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
@@ -93,7 +93,7 @@ if (isset($_GET['id'])) {
                 });
             });
         </script>';
-    }else{
+    } else {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -132,7 +132,8 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <?php if (isset($message)) echo $message; ?>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -147,9 +148,11 @@ mysqli_close($conn);
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>

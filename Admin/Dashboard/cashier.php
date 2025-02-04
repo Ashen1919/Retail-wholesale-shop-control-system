@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
@@ -49,9 +49,11 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -159,9 +161,9 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
             <span class="close" onclick="closeModal('AddCashier')">&times;</span>
             <h3>Add Cashier</h3>
             <form id="AddCashier" class="updateForm">
-              
-                
-            <div class="success" id="success"
+
+
+                <div class="success" id="success"
                     style="display: <?php echo (isset($message) && $message == 'success') ? 'block' : 'none'; ?>;">
                     <span class="close_popup" onclick="closeModal('success')">&times;</span>
                     <p>Cashier Added Successfully!</p>

@@ -33,6 +33,8 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
 
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -264,6 +266,7 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
     <script src="../Assets/js/bar-chart.js"></script>
     <script src="../Assets/js/pie-charts.js"></script>
     <script src="../Assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

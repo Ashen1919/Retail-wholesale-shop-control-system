@@ -44,6 +44,8 @@ mysqli_close($conn);
 
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!-- Include Header -->
     <header class="header-wrapper">
 
@@ -661,6 +663,7 @@ mysqli_close($conn);
     <script src="./Customer/Assets/js/offer.js"></script>
     <script src="./Customer/Assets/js/modal.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 

@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
@@ -47,9 +47,11 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -124,7 +126,7 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
 
         <!--Right side-->
         <div class="right-side">
-        <h2 style="color: white; margin-bottom: 20px">Contact</h2>
+            <h2 style="color: white; margin-bottom: 20px">Contact</h2>
             <div class="customer-content">
                 <div class="category-table">
                     <table>
@@ -141,8 +143,9 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                                 <td>Ashen Gimhana</td>
                                 <td>ashendissanayaka0@gmail.com</td>
                                 <td>About payment problem</td>
-                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                                efficiently, and tracking was accurate.</td>
+                                <td>The inventory is well-stocked, and customer support was responsive. Online orders
+                                    are processed
+                                    efficiently, and tracking was accurate.</td>
                             </tr>
                         </tbody>
                     </table>
