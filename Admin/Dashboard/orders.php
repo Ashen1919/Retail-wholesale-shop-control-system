@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
@@ -47,9 +47,11 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>

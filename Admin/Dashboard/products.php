@@ -4,12 +4,12 @@
 session_start();
 
 if (!isset($_SESSION['user_email'])) {
-    header("location:../../Customer/login_signup_page/login_signup_page.php");
-    exit();
+  header("location:../../Customer/login_signup_page/login_signup_page.php");
+  exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
-    header("location:../../Customer/login_signup_page/login_signup_page.php");
-    exit();
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+  header("location:../../Customer/login_signup_page/login_signup_page.php");
+  exit();
 }
 include('db_con.php');
 
@@ -74,14 +74,14 @@ $sql_pro = "SELECT * FROM products";
 $all_pro = mysqli_query($conn, $sql_pro);
 
 //delete product
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
   $p_id = $_GET['id'];
 
   $del_sql = "DELETE FROM products WHERE id = '$p_id'";
   $data_del = mysqli_query($conn, $del_sql);
 
-  if($data_del){
-      header("location:products.php");
+  if ($data_del) {
+    header("location:products.php");
   }
 }
 
@@ -122,9 +122,11 @@ mysqli_close($conn);
         <p>Admin</p>
       </div>
       <div class="log-out">
-        <button class="logout-button">
-          <i class="bi bi-box-arrow-right"></i> Logout
-        </button>
+        <a href="../logout.php" style="text-decoration:none;">
+          <button class="logout-button">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </a>
       </div>
     </div>
   </div>
@@ -276,7 +278,9 @@ mysqli_close($conn);
                     <i class="bi bi-pencil-square"></i>
                   </button>
                 </a>
-                <a onclick="confirm ('Are you sure, Do you want to delete this category? ')" href="products.php?id=<?php echo $row['id'] ?>"><button class="delete"><i class="bi bi-trash-fill"></i></button></a>
+                <a onclick="confirm ('Are you sure, Do you want to delete this category? ')"
+                  href="products.php?id=<?php echo $row['id'] ?>"><button class="delete"><i
+                      class="bi bi-trash-fill"></i></button></a>
               </div>
             </div>
           </div>
@@ -324,11 +328,11 @@ mysqli_close($conn);
               <label style="margin-top: 3px" for="category">Product Category:</label>
               <select name="category" id="Category" required>
                 <option value="" disabled selected>Select a category</option>
-                <?php 
-                while($row = mysqli_fetch_assoc($result_name)){
-                ?>
+                <?php
+                while ($row = mysqli_fetch_assoc($result_name)) {
+                  ?>
                   <option value="<?php echo $row['name']; ?>"><?php echo $row['name']; ?></option>
-                <?php 
+                <?php
                 }
                 ?>
               </select>
