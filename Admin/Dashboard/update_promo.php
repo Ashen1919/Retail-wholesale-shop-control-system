@@ -1,4 +1,16 @@
 <?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
 include('db_con.php');
 
 // Fetch category data
@@ -99,9 +111,11 @@ mysqli_close($conn);
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -183,13 +197,16 @@ mysqli_close($conn);
                     <form id="addPromoForm" action="" method="post" enctype="multipart/form-data">
 
                         <label for="promoId">Promo ID:</label>
-                        <input type="text" id="promoId" name="promoId" value="<?php echo $row['promo_id']; ?>" required readonly>
+                        <input type="text" id="promoId" name="promoId" value="<?php echo $row['promo_id']; ?>" required
+                            readonly>
 
                         <label for="promoTitle">Title:</label>
-                        <input type="text" id="promoTitle" name="promoTitle" value="<?php echo $row['promo_title']; ?>" required>
+                        <input type="text" id="promoTitle" name="promoTitle" value="<?php echo $row['promo_title']; ?>"
+                            required>
 
                         <label for="promoDescription">Description:</label>
-                        <textarea id="promoDescription" name="promoDescription" required><?php echo $row['description']; ?></textarea>
+                        <textarea id="promoDescription" name="promoDescription"
+                            required><?php echo $row['description']; ?></textarea>
 
                         <label for="promoImage">Image:</label>
                         <input type="file" id="promoImage" name="promoImage" accept="image/*">
@@ -197,7 +214,8 @@ mysqli_close($conn);
                         <img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Category image"
                             style="width:70px;">
 
-                        <button type="submit" style="justify-content:center;" name="update_btn">Update Promotion</button>
+                        <button type="submit" style="justify-content:center;" name="update_btn">Update
+                            Promotion</button>
                     </form>
                 </div>
             </div>

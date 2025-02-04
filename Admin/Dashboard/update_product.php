@@ -1,4 +1,16 @@
 <?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
 include('db_con.php');
 
 $sql_name = "SELECT name FROM categories";
@@ -87,9 +99,11 @@ mysqli_close($conn);
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -181,7 +195,7 @@ mysqli_close($conn);
                                         value="<?php echo $row['product_name']; ?>" />
 
                                     <label style="margin-top: 3px" for="category">Product Category:</label>
-                                    <select name="category" id="Category" >
+                                    <select name="category" id="Category">
                                         <option value="" disabled selected><?php echo $row['product_category']; ?>
                                         </option>
                                         <?php
@@ -195,8 +209,7 @@ mysqli_close($conn);
                                     </select>
 
                                     <label style="margin-top: 9px" for="units">Units:</label>
-                                    <input type="text" id="units" name="units"
-                                        value="<?php echo $row['units']; ?>" />
+                                    <input type="text" id="units" name="units" value="<?php echo $row['units']; ?>" />
 
                                     <label style="margin-top: 9px" for="quantity">Product Quantity:</label>
                                     <input type="text" id="quantity" name="quantity"

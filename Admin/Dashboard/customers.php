@@ -1,14 +1,26 @@
 <?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
 //Database connection
 include('db_con.php');
 
 //Update customer's status
-if(isset($_POST['edit'])){
+if (isset($_POST['edit'])) {
     $email = $_POST['email'];
     $sql_upd = "UPDATE customers SET status = 'active' WHERE email = '$email'";
     $res_upd = mysqli_query($conn, $sql_upd);
 
-    if($res_upd){
+    if ($res_upd) {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -20,7 +32,7 @@ if(isset($_POST['edit'])){
                 });
             });
         </script>';
-    }else{
+    } else {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -35,12 +47,12 @@ if(isset($_POST['edit'])){
     }
 }
 
-if(isset($_POST['delete'])){
+if (isset($_POST['delete'])) {
     $email = $_POST['email'];
     $sql_upd = "UPDATE customers SET status = 'disabled' WHERE email = '$email'";
     $res_upd = mysqli_query($conn, $sql_upd);
 
-    if($res_upd){
+    if ($res_upd) {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -52,7 +64,7 @@ if(isset($_POST['delete'])){
                 });
             });
         </script>';
-    }else{
+    } else {
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -95,7 +107,8 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <?php if (isset($message)) echo $message; ?>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -110,9 +123,11 @@ mysqli_close($conn);
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -219,9 +234,10 @@ mysqli_close($conn);
                                     <td>
                                         <div class="action">
                                             <form action="" method="post">
-                                                <input type="text" name="email" value="<?php echo $row['email'] ?>" style="display:none;" >
+                                                <input type="text" name="email" value="<?php echo $row['email'] ?>"
+                                                    style="display:none;">
                                                 <button class="edit" name="edit">Active</button>
-                                                <button class="delete" name="delete" >Disable</button>
+                                                <button class="delete" name="delete">Disable</button>
                                             </form>
                                         </div>
                                     </td>

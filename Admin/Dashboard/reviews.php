@@ -1,4 +1,16 @@
 <?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
 //Databas connection
 include('db_con.php');
 
@@ -63,9 +75,11 @@ mysqli_close($conn);
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -173,7 +187,8 @@ mysqli_close($conn);
                                     <td>
                                         <div class="action">
                                             <form action="reviews.php" method="post">
-                                                <input type="hidden" name="review_id" value="<?php echo $row['review_id']; ?>">
+                                                <input type="hidden" name="review_id"
+                                                    value="<?php echo $row['review_id']; ?>">
                                                 <button class="edit" name="accept">Accept</button>
                                                 <button class="delete" name="reject">Reject</i></button>
                                             </form>

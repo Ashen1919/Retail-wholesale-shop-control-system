@@ -13,8 +13,33 @@ body {
     justify-content: center;
     flex-direction: column;
     height: 100vh;
+    position: relative;
 }
 
+.back-btn{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.back-btn i{
+    margin-bottom: 3px;
+}
+.back-btn a{
+    text-decoration: none;
+}
+.back-btn button{
+    padding: 5px;
+    justify-content: center;
+    background-color: #000000d7;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #000000d7;
+}
 
 .container {
     background-color: #fff;

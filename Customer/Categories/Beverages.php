@@ -1,3 +1,30 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all beverages category products
+$sql = "SELECT * FROM products WHERE product_category = 'Beverages'";
+
+// Handle sorting
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+switch($sort) {
+    case 'price-low':
+        $sql .= " ORDER BY retail_price ASC";
+        break;
+    case 'price-high':
+        $sql .= " ORDER BY retail_price DESC";
+        break;
+    case 'best-sellers':
+        $sql .= " ORDER BY quantity DESC";
+        break;
+    default:
+        $sql .= " ORDER BY id DESC"; // newest first
+}
+
+$result = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,103 +70,37 @@
 
         <div class="sort-section">
             <label for="sort">Sort by:</label>
-            <select name="sort" id="sort">
-                <option value="best-sellers">Best Sellers</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="newest">Newest First</option>
+            <select name="sort" id="sort" onchange="window.location.href='?sort='+this.value">
+                <option value="best-sellers"<?php echo $sort == 'best-sellers' ? 'selected' : ''; ?>>Best Sellers</option>
+                <option value="price-low"<?php echo $sort == 'price-low' ? 'selected' : ''; ?>>Price: Low to High</option>
+                <option value="price-high"<?php echo $sort == 'price-high' ? 'selected' : ''; ?>>Price: High to Low</option>
+                <option value="newest"<?php echo $sort == 'newest' ? 'selected' : ''; ?>>Newest First</option>
             </select>
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/necto.jpg" alt="Pack of 10 Eggs">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Elephant House Necto </h3>
-                    <p class="price">Rs. 320.00</p>
-                    <p class="weight">(1.5l)</p>
-                    <button class="add-to-cart"> Add to Cart
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
+                    <button onclick="location.href='../Cart/productview.php';" class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/viva.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Viva Malted Food Drink</h3>
-                    <p class="price">Rs. 600.00</p>
-                    <p class="weight">(795g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/milo.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Milo RTD Tetra Pack</h3>
-                    <p class="price">Rs. 130.00</p>
-                    <p class="weight">(180ml)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/pepsi.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Pepsi</h3>
-                    <p class="price">Rs. 320.00</p>
-                    <p class="weight">(1.5l)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/orange.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Elephant House Orange </h3>
-                    <p class="price">Rs. 300.00</p>
-                    <p class="weight">(1.5l)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Beverages_Page/kist.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Kist Mango Nectar </h3>
-                    <p class="price">Rs. 440.00</p>
-                    <p class="weight">(1l)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-
+            ?>
         </div>
     </main>
     <!-- Include Footer -->
