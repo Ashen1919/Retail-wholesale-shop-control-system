@@ -4,6 +4,23 @@ $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
 //Fetch all beverages category products
 $sql = "SELECT * FROM products WHERE product_category = 'Beverages'";
+
+// Handle sorting
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+switch($sort) {
+    case 'price-low':
+        $sql .= " ORDER BY retail_price ASC";
+        break;
+    case 'price-high':
+        $sql .= " ORDER BY retail_price DESC";
+        break;
+    case 'best-sellers':
+        $sql .= " ORDER BY quantity DESC";
+        break;
+    default:
+        $sql .= " ORDER BY id DESC"; // newest first
+}
+
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -53,11 +70,11 @@ $result = mysqli_query($conn, $sql);
 
         <div class="sort-section">
             <label for="sort">Sort by:</label>
-            <select name="sort" id="sort">
-                <option value="best-sellers">Best Sellers</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="newest">Newest First</option>
+            <select name="sort" id="sort" onchange="window.location.href='?sort='+this.value">
+                <option value="best-sellers"<?php echo $sort == 'best-sellers' ? 'selected' : ''; ?>>Best Sellers</option>
+                <option value="price-low"<?php echo $sort == 'price-low' ? 'selected' : ''; ?>>Price: Low to High</option>
+                <option value="price-high"<?php echo $sort == 'price-high' ? 'selected' : ''; ?>>Price: High to Low</option>
+                <option value="newest"<?php echo $sort == 'newest' ? 'selected' : ''; ?>>Newest First</option>
             </select>
         </div>
 
@@ -76,7 +93,7 @@ $result = mysqli_query($conn, $sql);
                     <h3><?php echo $row['product_name'] ?></h3>
                     <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
                     <p class="weight">(<?php echo $row['units'] ?>)</p>
-                    <button class="add-to-cart"> Add to Cart
+                    <button onclick="location.href='../Cart/productview.php';" class="add-to-cart"> Add to Cart
                     </button>
                 </div>
             </div>
