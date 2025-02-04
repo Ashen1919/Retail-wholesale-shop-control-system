@@ -1,14 +1,15 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "your_database_name";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+//check loged in 
+session_start();
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
 }
 
 // Add Cashier
