@@ -86,14 +86,17 @@ if (isset($_POST['login_btn'])) {
         $customer = $user['userType'] == "user";
         $admin = $user['userType'] == "admin";
         $cashier = $user['userType'] == "cashier";
+
         if($verify_password && $customer){
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_email'] = $login_email;
+            $_SESSION['user_type'] = $user['userType'];
             header("location:../../index.php");
             exit();
         }
         if($verify_password && $admin){
             $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_type'] = $user['userType'];
             $_SESSION['user_email'] = $login_email;
             header("location:../../Admin/Dashboard/index.php");
             exit();
