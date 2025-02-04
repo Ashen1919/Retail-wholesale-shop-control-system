@@ -4,6 +4,11 @@ session_start();
 
 if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
 }
 ?>
 
