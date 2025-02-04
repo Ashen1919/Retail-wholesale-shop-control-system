@@ -1,8 +1,21 @@
 <?php
 
-//check loged in 
 session_start();
 
+// Database Connection
+$servername = "localhost"; // or your server name
+$username = "root";         // default username in XAMPP
+$password = "";             // default password is empty
+$dbname = "sandaru1_retail_shop"; // replace with your actual DB name
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check Connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+//check loged in 
 if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
@@ -62,7 +75,8 @@ if (isset($_GET['delete_cashier'])) {
 
 // Read Cashiers
 $sql = "SELECT * FROM Cashier";
-$result = $conn->query($sql);
+$result = $conn->query($sql);  // This is where the error occurs
+
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
