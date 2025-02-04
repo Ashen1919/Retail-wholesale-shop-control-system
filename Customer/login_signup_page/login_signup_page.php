@@ -38,7 +38,7 @@ if (isset($_POST['sign_btn'])) {
         $def_userType = 'user';
 
         //Insert a new user
-        $create_user_sql = "INSERT INTO customers(email, first_name, last_name, phone_number, password, image, status, customerType, userType) VALUES ('$email', '$first_name', '$last_name', '$phone', '$hashed_password', '$def_profile_img', '$def_status', '$def_cusType', '$$def_userType')";
+        $create_user_sql = "INSERT INTO customers(email, first_name, last_name, phone_number, password, image, status, customerType, userType) VALUES ('$email', '$first_name', '$last_name', '$phone', '$hashed_password', '$def_profile_img', '$def_status', '$def_cusType', '$def_userType')";
         $res_user = mysqli_query($conn, $create_user_sql);
 
         if ($res_user) {
@@ -110,6 +110,24 @@ if (isset($_POST['login_btn'])) {
             $_SESSION['user_type'] = $user['userType'];
             $_SESSION['user_email'] = $login_email;
             header("location:../../Admin/Dashboard/index.php");
+        }else{
+            $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops! Email or Password is incorrect",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
+        }
+        if($verify_password && $cashier){
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['user_email'] = $login_email;
+            $_SESSION['user_type'] = $user['userType'];
+            header("location:../../Cashier/index.php");
         }else{
             $message = '<script>
                 document.addEventListener("DOMContentLoaded", function() {
