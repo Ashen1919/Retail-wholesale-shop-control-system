@@ -80,7 +80,7 @@ if (isset($_POST['delete'])) {
 }
 
 //Fetch all customer's details
-$sql_cus = "SELECT * FROM customers";
+$sql_cus = "SELECT * FROM customers WHERE userType = 'user'";
 $result_cus = mysqli_query($conn, $sql_cus);
 
 mysqli_close($conn);
