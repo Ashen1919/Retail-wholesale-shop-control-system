@@ -11,28 +11,38 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-//Database connection
 include('db_con.php');
 
-//Update customer's status
-if (isset($_POST['edit'])) {
-    $email = $_POST['email'];
-    $sql_upd = "UPDATE customers SET status = 'active' WHERE email = '$email'";
-    $res_upd = mysqli_query($conn, $sql_upd);
+// Fetch category data
+$c_id = $_GET['id'];
+$get_sql = "SELECT * FROM customers WHERE id = '$c_id'";
+$query = mysqli_query($conn, $get_sql);
+$row = mysqli_fetch_assoc($query);
 
-    if ($res_upd) {
+// Update category
+if(isset($_POST['submit'])){
+    $fName = $_POST['first-name'];
+    $lName = $_POST['last-name'];
+    $email = $_POST['email'];
+    $phone = $_POST['num'];
+
+    $upd_sql = "UPDATE customers SET first_name = '".$fName."', last_name = '".$lName."', email = '".$email."', phone_number = '".$phone."' WHERE id = '$c_id'";
+    $upd_res = mysqli_query($conn, $upd_sql);
+
+    if($upd_res){
+        header("location:cashier.php");
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Customer status is being updated",
+                    title: "Cashier adding successful",
                     showConfirmButton: false,
                     timer: 1500
                 });
             });
         </script>';
-    } else {
+    }else{
         $message = '<script>
             document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
@@ -46,42 +56,6 @@ if (isset($_POST['edit'])) {
         </script>';
     }
 }
-
-if (isset($_POST['delete'])) {
-    $email = $_POST['email'];
-    $sql_upd = "UPDATE customers SET status = 'disabled' WHERE email = '$email'";
-    $res_upd = mysqli_query($conn, $sql_upd);
-
-    if ($res_upd) {
-        $message = '<script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Customer status is being updated",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            });
-        </script>';
-    } else {
-        $message = '<script>
-            document.addEventListener("DOMContentLoaded", function() {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "error",
-                    title: "Oops! Something went wrong.",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            });
-        </script>';
-    }
-}
-
-//Fetch all customer's details
-$sql_cus = "SELECT * FROM customers WHERE userType = 'user'";
-$result_cus = mysqli_query($conn, $sql_cus);
 
 mysqli_close($conn);
 ?>
@@ -100,7 +74,7 @@ mysqli_close($conn);
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/style.css" rel="stylesheet">
-    <link href="../Assets/css/customer.css" rel="stylesheet">
+    <link href="../Assets/css/cashier.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
@@ -201,63 +175,42 @@ mysqli_close($conn);
         <!--End of left side-->
 
         <!--Right side-->
-        <div class="right-side">
-            <div class="customer-content">
-                <h2 style="color:white; margin-bottom:20px;">Customer Management </h2>
-                <div class="category-table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Email</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone Number</th>
-                                <th>Image</th>
-                                <th>Status</th>
-                                <th>Customer type</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            while ($row = mysqli_fetch_assoc($result_cus)) {
-                                ?>
-                                <tr>
-                                    <td><?php echo $row['email'] ?></td>
-                                    <td><?php echo $row['first_name'] ?></td>
-                                    <td><?php echo $row['last_name'] ?></td>
-                                    <td><?php echo $row['phone_number'] ?></td>
-                                    <td><img src="../../Customer/Assets/images/customers/<?php echo $row['image'] ?>"
-                                            alt="User Image" style="width:50px; height:50px;"></td>
-                                    <td><?php echo $row['status'] ?></td>
-                                    <td><?php echo $row['customerType'] ?></td>
-                                    <td>
-                                        <div class="action">
-                                            <form action="" method="post">
-                                                <input type="text" name="email" value="<?php echo $row['email'] ?>"
-                                                    style="display:none;">
-                                                <button class="edit" name="edit">Active</button>
-                                                <button class="delete" name="delete">Disable</button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <?php
-                            }
-                            ?>
-                        </tbody>
-                    </table>
+        <div class="right-side-cashier">
+            <h2 style="color:white; margin-bottom:20px;">Update Cashier</h2>
+            <!-- Update Promo Modal -->
+            <div  class="modal_update">
+                <div class="modal-content">
+                    <form id="AddCashier" class="updateForm" method="post" action="">
+
+                        <div class="box">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+"
+                                title="Only alphabetic characters are allowed." value="<?php echo $row['first_name']; ?>" >
+                        </div>
+                        <div class="box">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" pattern="[A-Za-z]+"
+                                title="Only alphabetic characters are allowed." value="<?php echo $row['last_name']; ?>">
+                        </div>
+                        <div class="box">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@example\.com"
+                                title="Email must be in the format user@example.com" value="<?php echo $row['email']; ?>">
+                        </div>
+                        <div class="box">
+                            <label for="num">Phone Number</label>
+                            <input type="text" id="num" name="num" maxlength="10" pattern="[0-9]{10}"
+                                title="Enter a valid NIC (e.g., 0712345678)" value="<?php echo $row['phone_number']; ?>">
+                        </div>
+
+                        <button type="submit" name="submit">Update Cashier</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <!--End of right side-->
-    </div>
-    <!--End of main body-->
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../Assets/js/promotion.js"></script>
-    <script src="../Assets/js/script.js"></script>
-
+        <!--Sweet alert js import-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
