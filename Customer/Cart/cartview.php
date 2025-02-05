@@ -233,5 +233,8 @@
         };
     </script>
 
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
+
 </body>
 </html>
