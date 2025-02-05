@@ -26,6 +26,16 @@
       overflow: hidden;
   }
   
+  .right-side-cashier{
+    width: 80%;
+    background-color: #111827;
+    padding: 10px;
+    height: 100vh;
+    right: 0;
+    margin-left: 20%;
+    margin-top: 65px;
+    overflow-y: hidden;
+}
   
   table th, table td {
     border: 1px solid #d7dcdf;
@@ -92,6 +102,15 @@ table tbody tr:hover{
     background-color: rgba(0, 0, 0, 0.4); 
     padding-top: 50px;
 }
+.modal_update {
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    padding-top: 50px;
+}
 
 .modal-content {
     left: 11%;
@@ -155,6 +174,7 @@ table tbody tr:hover{
 .box input[type="tel"],
 .box input[type="number"],
 .box input[type="date"],
+.box input[type="password"],
 .box textarea {
     border: none; 
     outline: none; 
