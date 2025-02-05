@@ -140,6 +140,7 @@
     
     <script src="../Assets/js/script.js"></script>
 
+    
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
     
