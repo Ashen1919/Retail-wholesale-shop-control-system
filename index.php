@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+session_start();
+
+error_reporting(0);
 //Database connection
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
@@ -9,6 +13,49 @@ $data_promo = mysqli_query($conn, $sql_promo);
 //Fetch all categories
 $sql = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql);
+
+//fetch user details
+$email = $_SESSION['user_email'];
+$sql_user = "SELECT * FROM customers WHERE email = '".$email."'";
+$res_user = mysqli_query($conn, $sql_user);
+$row_user = mysqli_fetch_assoc($res_user);
+
+//Send contact information
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    $sql_con = "INSERT INTO contact(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+    $res_con = mysqli_query($conn, $sql_con);
+
+    if($res_con){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Information has been submitted.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
 
 mysqli_close($conn);
 ?>
@@ -68,7 +115,7 @@ mysqli_close($conn);
                 </form>
             </div>
             <div class="social-icon">
-                <a href="./Admin/Dashboard/index.php"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
             </div>
@@ -106,9 +153,27 @@ mysqli_close($conn);
                     </li>
                     <li><a href="#contact">Contact us</a></li>
                     <div class="right-side-mobile-icons">
-                        <a class="cart" href=""><i class="bi bi-cart4 "></i></a>
+                        <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                        <a class="profile" href="./Customer/login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
+                        <?php
+                        if ($_SESSION['user_email']) {
+                            ?>
+                            <div class="dropdown">
+                                <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image"
+                                    style="width:50px; height:50px;">
+                                <div class="links">
+                                    <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
+                                    <a href="./Customer/logout.php">Logout</a>
+                                </div>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <a class="profile" href="./Customer/login_signup_page/login_signup_page.php"
+                                id="openModalBtn"><i class="bi bi-person-circle "></i></a>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -118,7 +183,25 @@ mysqli_close($conn);
             <div class="right-side-icons">
                 <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i class="bi bi-person-circle "></i></a>
+                <?php
+                if ($_SESSION['user_email']) {
+                    ?>
+                    <div class="dropdown">
+                        <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image" style="width:50px; height:50px;">
+                        <div class="links">
+                            <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
+                            <a href="./Customer/logout.php">Logout</a>
+                        </div>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i
+                            class="bi bi-person-circle "></i></a>
+                    <?php
+                }
+                ?>
+
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -218,28 +301,29 @@ mysqli_close($conn);
     <!--Category Section-->
 
     <div class="category-section" id="categories">
-    <div class="category-header">
-        <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
-    </div>
+        <div class="category-header">
+            <h2 style="text-align: center; font-family: poppins;">Shop by Category</h2>
+        </div>
 
-    <div class="category-grid">
-        <?php 
-        while($row = mysqli_fetch_assoc($result)) {
-            // Get the category name and convert it to the correct filename format
-            $category_page = $row['name'] . '.php';
-        ?>
-            <div class="category-item">
-                <img src="./Admin/Assets/images/categories/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" class="category-image">
-                <div class="category-name">
-                    <a href="./Customer/Categories/<?php echo $category_page; ?>" class="styled-link">
-                        <i class="bi bi-basket2-fill"></i> <?php echo $row['name']; ?>
-                    </a>
+        <div class="category-grid">
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Get the category name and convert it to the correct filename format
+                $category_page = $row['name'] . '.php';
+                ?>
+                <div class="category-item">
+                    <img src="./Admin/Assets/images/categories/<?php echo $row['image']; ?>"
+                        alt="<?php echo $row['name']; ?>" class="category-image">
+                    <div class="category-name">
+                        <a href="./Customer/Categories/<?php echo $category_page; ?>" class="styled-link">
+                            <i class="bi bi-basket2-fill"></i> <?php echo $row['name']; ?>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        <?php
-        }
-        ?>
-            
+                <?php
+            }
+            ?>
+
         </div>
 
     </div>
@@ -442,16 +526,16 @@ mysqli_close($conn);
     <div class="swiper">
         <div class="swiper-wrapper card-wrper">
             <!--Slide 01-->
-            <?php 
-                while($row = mysqli_fetch_assoc($data_promo)){
-            ?>
-            <div class="swiper-slide">
-                <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
-                <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
-                <p class="text"><?php echo $row['description']; ?></p>
-            </div>
             <?php
-                }
+            while ($row = mysqli_fetch_assoc($data_promo)) {
+                ?>
+                <div class="swiper-slide">
+                    <img src="./Admin/Assets/images/promotions/<?php echo $row['image']; ?>" alt="offer image">
+                    <h2 class="topic"><?php echo $row['promo_title']; ?></h2>
+                    <p class="text"><?php echo $row['description']; ?></p>
+                </div>
+                <?php
+            }
             ?>
         </div>
         <div class="swiper-pagination"></div>
@@ -520,31 +604,31 @@ mysqli_close($conn);
                 </div><!-- End Google Maps -->
 
                 <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="" method="post" class="php-email-form" data-aos="fade-up"
                         data-aos-delay="400">
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
 
                             <div class="col-md-6 ">
                                 <input type="email" class="form-control" name="email" placeholder="Your Email"
-                                    required="">
+                                    required>
                             </div>
 
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                    required="">
+                                    required>
                             </div>
 
                             <div class="col-md-12">
                                 <textarea class="form-control" name="message" rows="6" placeholder="Message"
-                                    required=""></textarea>
+                                    required></textarea>
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button type="submit">Send Message</button>
+                                <button type="submit" name="submit" >Send Message</button>
                             </div>
 
                         </div>
@@ -657,7 +741,7 @@ mysqli_close($conn);
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-    
+
 
     <script src="./Customer/Assets/js/script.js"></script>
     <script src="./Customer/Assets/js/offer.js"></script>

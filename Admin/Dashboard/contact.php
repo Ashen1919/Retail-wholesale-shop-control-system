@@ -10,6 +10,13 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
+
+//database connection
+include('db_con.php');
+
+//fetch all contact information
+$sql_contact = "SELECT * FROM contact ORDER BY id DESC";
+$result = mysqli_query($conn, $sql_contact);
 ?>
 
 <!DOCTYPE html>
@@ -139,14 +146,18 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                while( $row = mysqli_fetch_assoc($result)){
+                            ?>
                             <tr>
-                                <td>Ashen Gimhana</td>
-                                <td>ashendissanayaka0@gmail.com</td>
-                                <td>About payment problem</td>
-                                <td>The inventory is well-stocked, and customer support was responsive. Online orders
-                                    are processed
-                                    efficiently, and tracking was accurate.</td>
+                                <td><?php echo $row['name']; ?></td>
+                                <td><?php echo $row['email']; ?>@gmail.com</td>
+                                <td><?php echo $row['subject']; ?></td>
+                                <td><?php echo $row['message']; ?></td>
                             </tr>
+                            <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
