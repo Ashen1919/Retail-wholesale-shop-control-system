@@ -116,7 +116,7 @@ mysqli_close($conn);
                             <?php
                         } else {
                             ?>
-                            <a class="profile" href="./Customer/login_signup_page/login_signup_page.php"
+                            <a class="profile" href="../login_signup_page/login_signup_page.php"
                                 id="openModalBtn"><i class="bi bi-person-circle "></i></a>
                             <?php
                         }
@@ -144,7 +144,7 @@ mysqli_close($conn);
                     <?php
                 } else {
                     ?>
-                    <a class="profile" href="./Customer/login_signup_page/login_signup_page.php" id="openModalBtn"><i
+                    <a class="profile" href="../login_signup_page/login_signup_page.php" id="openModalBtn"><i
                             class="bi bi-person-circle "></i></a>
                     <?php
                 }
