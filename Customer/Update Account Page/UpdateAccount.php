@@ -20,11 +20,12 @@
 
 <body>
 
-    <div class="form-container">
-
-        <h1>Update Cashier</h1>
-        <form id="registerForm" action="process_register.php" method="POST">
-
+<div class="form-container" id="form-container">
+        <span class="close" onclick="closeModal('form-container')">&times;</span>
+        
+        <form action="process_register.php" method="POST">
+            
+        <h1>Update Account</h1>
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" name="first_name" required>
 

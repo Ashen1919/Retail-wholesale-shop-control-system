@@ -1,101 +1,3 @@
-<?php
-
-session_start();
-
-// Database Connection
-$servername = "localhost"; // or your server name
-$username = "root";         // default username in XAMPP
-$password = "";             // default password is empty
-$dbname = "sandaru1_retail_shop"; // replace with your actual DB name
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check Connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-//check loged in 
-if (!isset($_SESSION['user_email'])) {
-    header("location:../../Customer/login_signup_page/login_signup_page.php");
-    exit();
-}
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
-    header("location:../../Customer/login_signup_page/login_signup_page.php");
-    exit();
-}
-
-// Add Cashier
-if (isset($_POST['add_cashier'])) {
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $nic = $_POST['nic'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-
-    $sql = "INSERT INTO Cashier (FirstName, LastName, NIC, PhoneNumber, Email) VALUES ('$firstName', '$lastName', '$nic', '$phone', '$email')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Cashier added successfully.";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-// Update Cashier
-if (isset($_POST['update_cashier'])) {
-    $cashierID = $_POST['cashier_id'];
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $nic = $_POST['nic'];
-    $phone = $_POST['phone'];
-    $email = $_POST['email'];
-
-    $sql = "UPDATE Cashier SET FirstName='$firstName', LastName='$lastName', NIC='$nic', PhoneNumber='$phone', Email='$email' WHERE CashierID=$cashierID";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Cashier updated successfully.";
-    } else {
-        echo "Error updating record: " . $conn->error;
-    }
-}
-
-// Delete Cashier
-if (isset($_GET['delete_cashier'])) {
-    $cashierID = $_GET['delete_cashier'];
-
-    $sql = "DELETE FROM Cashier WHERE CashierID=$cashierID";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Cashier deleted successfully.";
-    } else {
-        echo "Error deleting record: " . $conn->error;
-    }
-}
-
-// Read Cashiers
-$sql = "SELECT * FROM Cashier";
-$result = $conn->query($sql);  // This is where the error occurs
-
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $row['CashierID'] . "</td>";
-        echo "<td>" . $row['FirstName'] . "</td>";
-        echo "<td>" . $row['LastName'] . "</td>";
-        echo "<td>" . $row['NIC'] . "</td>";
-        echo "<td>" . $row['PhoneNumber'] . "</td>";
-        echo "<td>" . $row['Email'] . "</td>";
-        echo "<td><a href='edit.php?id=" . $row['CashierID'] . "'>Edit</a> | <a href='?delete_cashier=" . $row['CashierID'] . "'>Delete</a></td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='7'>No cashiers found.</td></tr>";
-}
-
-$conn->close();
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -287,7 +189,7 @@ $conn->close();
                         title="Email must be in the format user@example.com">
                 </div>
 
-                <button type="submit">Add</button>
+                <button type="submit" name="add_cashier">Add</button>
             </form>
         </div>
     </div>
@@ -314,7 +216,8 @@ $conn->close();
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" required>
 
-                <button type="submit">Update</button>
+                <button type="submit" name="update_cashier">Add</button>
+                
             </form>
         </div>
     </div>

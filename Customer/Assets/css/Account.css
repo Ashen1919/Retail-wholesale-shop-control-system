@@ -50,100 +50,122 @@
 .profile-avatar i:hover{
   color: white;
 }
-
-.personal-info{
-  background-color: #f3f5f8;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(230, 223, 223, 0.1);
+/* Personal Information Section */
+.personal-info {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #f3f5f8;
+    padding: 20px;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(230, 223, 223, 0.1);
+  
 }
 
-.profile-info {
-  margin-left: 20px;
+
+.info-fields label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    color: #000;
 }
 
-.profile-info h3 {
-  margin: 0;
-  font-size: 1.5rem;
-  color: rgb(10, 10, 10);
+.info-fields input[type="text"] {
+    width: 100%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #e9ecef;
 }
-
-.profile-info p {
-  margin: 0;
-  color: #c7c7c7;
-}
-
-.personal-info h4 {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-}
-
-.info-fields {
-  display: flex;
-  justify-content: space-around;
-  gap: 30px;
-}
-
-.left-fields {
-  display: flex;
-  flex-direction: column;
-}
-
-.right-fields {
-  display: flex;
-  flex-direction: column;
-}
-
-.field {
-  display: inline-block;
-  position: relative;
-  border: 2px solid #1f1e1e; 
-  padding: 2px 10px;
-  border-radius: 5px;
-  margin: 10px 0;
-  width: 400px;
-}
-
-.field label {
-  position: absolute;
-  top: -10px;
-  left: 10px; 
-  background-color: #dcdfe4;
-  background: #f3f5f8; 
-  padding: 0 5px; 
-  font-size: 14px; 
-  color: #0f0404;
-}
-
-.field input {
-  border: none; 
-  outline: none; 
+/* Label Style */
+label {
+  font-weight: bold;
+  color: #333;
   font-size: 16px;
-  width: 100%; 
-  padding: 10px;
-  background-color: #f6f7f8;
-  color: rgb(247, 243, 243);
+  margin-right: 10px;
 }
 
-.edit-button {
-  text-align: right;
+/* Text Display Style */
+#first-name {
+  font-size: 16px;
+  color: #959799;  
+  font-weight: 500;
+  background-color: #e8e9eb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  border: #f8f3f3;
+  width: 100%;
+}
+
+/* For Disabled Input Field */
+input[disabled] {
+  display: flex;
+  background-color: #e9ecef;
+  color: #fcfdff;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 5px;
+ 
 
 }
 
-.edit-button i {
-  padding-bottom: 7px;
+.info-fields a {
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 200px;
+    padding: 10px 15px;
+    background-color: #0b54a3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+.one_line{
+  display: flex;
+  justify-content: row;
+  width: 100%;
+
+}
+.details_box1{
+  width: 60%;
+  height: 70%;
+  border: 1px solid #f7f3f3;
+  margin-left: 50px;
+
 }
 
-.edit-button button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+.details_box2{
+  width: 60%;
+  height: 70%;
+  border: 1px solid #f7f3f3;
+  margin-left: 86px;
 }
 
-.edit-button button:hover {
-  background-color: #1423ec;
+.details_box3{
+  width: 60%;
+  height: 70%;
+  border: 1px solid #f7f3f3;
+  margin-left: 12px;
 }
 
+.details_box4{
+  width: 60%;
+  height: 70%;
+  border: 1px solid #f7f3f3;
+  margin-left: 67px;
+}
+
+.details_box5{
+  width: 60%;
+  height: 70%;
+  border: 1px solid #f7f3f3;
+  margin-left: 56px;
+}
+.info-fields a:hover {
+    background-color: #176ee0;
+    color: white;
+}
 /* Update Profile Modals styles */
 .modal {
   display: none;
@@ -213,21 +235,6 @@
   padding: 0 5px; 
   font-size: 14px; 
   color: #494949;
-}
-
-.box input[type="text"],
-.box input[type="email"],
-.box input[type="tel"],
-.box input[type="number"],
-.box input[type="date"],
-.box textarea {
-  border: none; 
-  outline: none; 
-  font-size: 16px;
-  width: 100%; 
-  padding: 5px;
-  background-color: #fff;
-  color: rgb(0, 0, 0);
 }
 
 .box textarea {
@@ -321,31 +328,3 @@
 .logout-button button:hover {
   background-color: #aa0303;
 }
-
-
-.dlt-button {
-  text-align: center;
- 
-}
-
-.dlt-button button{
-  text-align: center;
-  background-color: #db0909; 
-  border: none;
-  border-radius: 5px;
-  width: 100px;
-}
-.dlt-button i {
-  padding-bottom: 7px;
-}
-
-.dlt-button button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.dlt-button button:hover {
-  background-color: #aa0303;
-}
-

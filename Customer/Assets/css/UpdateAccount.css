@@ -15,12 +15,31 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
-    height: 600px;
+    height: 550px;
 }
+
+.close {
+    color: #858383;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: end;
+  
+   
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .form-container h1 {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 35px;
+    font-size: 31px;
 }
 .form-container label {
     font-weight: bold;
