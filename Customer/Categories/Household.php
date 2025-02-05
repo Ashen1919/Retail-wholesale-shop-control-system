@@ -1,3 +1,29 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all household category products
+$sql = "SELECT * FROM products WHERE product_category = 'Household'";
+// Handle sorting
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+switch($sort) {
+    case 'price-low':
+        $sql .= " ORDER BY retail_price ASC";
+        break;
+    case 'price-high':
+        $sql .= " ORDER BY retail_price DESC";
+        break;
+    case 'best-sellers':
+        $sql .= " ORDER BY quantity DESC";
+        break;
+    default:
+        $sql .= " ORDER BY id DESC"; // newest first
+}
+
+$result = mysqli_query($conn, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,103 +69,38 @@
 
         <div class="sort-section">
             <label for="sort">Sort by:</label>
-            <select name="sort" id="sort">
-                <option value="best-sellers">Best Sellers</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="newest">Newest First</option>
+            <select name="sort" id="sort" onchange="window.location.href='?sort='+this.value">
+                <option value="best-sellers"<?php echo $sort == 'best-sellers' ? 'selected' : ''; ?>>Best Sellers</option>
+                <option value="price-low"<?php echo $sort == 'price-low' ? 'selected' : ''; ?>>Price: Low to High</option>
+                <option value="price-high"<?php echo $sort == 'price-high' ? 'selected' : ''; ?>>Price: High to Low</option>
+                <option value="newest"<?php echo $sort == 'newest' ? 'selected' : ''; ?>>Newest First</option>
             </select>
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Household_Page/diva.jpg" alt="Pack of 10 Eggs">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Diva Colour Guard Liquid   </h3>
-                    <p class="price">Rs. 609.00</p>
-                    <p class="weight">(1l)</p>
-                    <button class="add-to-cart"> Add to Cart
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
+                    <button onclick="location.href='../Cart/productview.php?id=<?php echo $row['product_id']; ?>';" class="add-to-cart">
+                        View Product
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-            
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/surf.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Surf Excel Matic Top Load</h3>
-                    <p class="price">Rs. 476.00</p>
-                    <p class="weight">(1kg)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/lifeboy.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Lifebuoy Active Total Soap</h3>
-                    <p class="price">Rs. 127.00</p>
-                    <p class="weight">(100g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Household_Page/lysol.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Lysol Floral Disinfectant </h3>
-                    <p class="price">Rs. 425.00</p>
-                    <p class="weight">(500ml)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Household_Page/vim.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Vim Liquid Dishwash </h3>
-                    <p class="price">Rs. 425.00</p>
-                    <p class="weight">(500ml)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Household_Page/mortein.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Mortein Fast Killer </h3>
-                    <p class="price">Rs. 1147.00</p>
-                    <p class="weight">(400ml)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            
+            ?>
         </div>
     </main>
     <!-- Include Footer -->

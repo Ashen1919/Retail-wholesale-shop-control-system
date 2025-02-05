@@ -1,3 +1,29 @@
+<?php 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//Fetch all grocery category products
+$sql = "SELECT * FROM products WHERE product_category = 'Grocery'";
+
+// Handle sorting
+$sort = isset($_GET['sort']) ? $_GET['sort'] : 'newest';
+switch($sort) {
+    case 'price-low':
+        $sql .= " ORDER BY retail_price ASC";
+        break;
+    case 'price-high':
+        $sql .= " ORDER BY retail_price DESC";
+        break;
+    case 'best-sellers':
+        $sql .= " ORDER BY quantity DESC";
+        break;
+    default:
+        $sql .= " ORDER BY id DESC"; // newest first
+}
+
+$result = mysqli_query($conn, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,103 +70,39 @@
 
         <div class="sort-section">
             <label for="sort">Sort by:</label>
-            <select name="sort" id="sort">
-                <option value="best-sellers">Best Sellers</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="newest">Newest First</option>
+            <select name="sort" id="sort" onchange="window.location.href='?sort='+this.value">
+                <option value="best-sellers"<?php echo $sort == 'best-sellers' ? 'selected' : ''; ?>>Best Sellers</option>
+                <option value="price-low"<?php echo $sort == 'price-low' ? 'selected' : ''; ?>>Price: Low to High</option>
+                <option value="price-high"<?php echo $sort == 'price-high' ? 'selected' : ''; ?>>Price: High to Low</option>
+                <option value="newest"<?php echo $sort == 'newest' ? 'selected' : ''; ?>>Newest First</option>
             </select>
         </div>
 
         <div class="products-grid">
-            <!-- Product Card 1 -->
+
+            <?php
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+              ?>  
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/samba.jpg" alt="Samba">
+                    <img src="../../Admin/Assets/images/products/<?php echo $row['image'] ?>" alt="Product images">
                 </div>
                 <div class="product-details">
-                    <h3>Rice Samba Bulk</h3>
-                    <p class="price">Rs. 240.00</p>
-                    <p class="weight">(1kg)</p>
-                    <button class="add-to-cart"> Add to Cart
+                    <h3><?php echo $row['product_name'] ?></h3>
+                    <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
+                    <p class="weight">(<?php echo $row['units'] ?>)</p>
+                    <button onclick="location.href='../Cart/productview.php?id=<?php echo $row['product_id']; ?>';" class="add-to-cart">
+                        View Product
                     </button>
                 </div>
             </div>
+              <?php
+            }
 
-            
-
-            <!-- Product Card 2 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/eggs.jpg" alt="Pack of 10 Eggs">
-                </div>
-                <div class="product-details">
-                    <h3>Pack of 10 Eggs</h3>
-                    <p class="price">Rs. 521.00</p>
-                    <p class="weight">(Large 10S)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 3 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/white-sugar.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>White Sugar</h3>
-                    <p class="price">Rs. 298.00</p>
-                    <p class="weight">(1 kg)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 4 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Grocery_Page/dhal.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Mysoore Dhal Bulk</h3>
-                    <p class="price">Rs. 280.00</p>
-                    <p class="weight">(1kg)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 5 -->
-            <div class="product-card">
-                <div class="product-image">
-                <img src="../Assets/images/Grocery_Page/canned-fish.jpg" alt="Catch Canned Fish">
-                </div>
-                <div class="product-details">
-                    <h3>Catch Canned Fish</h3>
-                    <p class="price">Rs. 650.00</p>
-                    <p class="weight">(425g)</p>
-                    <button class="add-to-cart">Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            <!-- Product Card 6 -->
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../Assets/images/Grocery_Page/noodles.jpg" alt="White Sugar">
-                </div>
-                <div class="product-details">
-                    <h3>Harischandra Plain Noodles</h3>
-                    <p class="price">Rs. 300.00</p>
-                    <p class="weight">(400g)</p>
-                    <button class="add-to-cart"> Add to Cart
-                    </button>
-                </div>
-            </div>
-
-            
+            ?>
         </div>
     </main>
     <!-- Include Footer -->

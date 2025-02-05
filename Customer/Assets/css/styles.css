@@ -364,6 +364,7 @@ Nav Bar
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    display: none;
   }
 
   .navmenu {
@@ -477,10 +478,10 @@ Nav Bar
     display: block;
   }
   .right-side-icons {
-    display: none;
+    display: flex;
   }
   .right-side-mobile-icons {
-    display: flex;
+    display: none;
   }
   .right-side-mobile-icons a i {
     font-size: 25px;
@@ -531,6 +532,9 @@ Nav Bar
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+  }
+  .dropdown{
+    margin-left: 7px;
   }
 
   .navmenu {
@@ -682,8 +686,45 @@ Nav Bar
   }
 }
 
+
 .right-side-icons {
   margin-right: 20px;
+  gap: 4px;
+  align-items: center;
+}
+.dropdown img{
+  border: 2px solid #000000;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dropdown{
+  transition: 0.3s ease-out;
+  position: relative;
+  display: inline-block;
+}
+.dropdown:hover .links{
+  display: block;
+  transition: 0.3s ease-in;
+}
+.dropdown .links{
+  display: none;
+  z-index: 1;
+  background-color: #faf9f9;
+  position: absolute;
+  min-width: 80px;
+  right: -5px;
+}
+.dropdown .links a:hover{
+  background-color: #f1f1f1;
+  transition: 0.3s ease-in;
+  color: #c50101;
+}
+.dropdown .links a{
+  display: block;
+  text-decoration: none;
+  font-size: 15px;
+  color: #000000;
+  transition: 0.3s ease-out;
 }
 .right-side-icons a {
   padding: 10px;

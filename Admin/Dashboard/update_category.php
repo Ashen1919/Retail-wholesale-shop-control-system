@@ -1,4 +1,16 @@
 <?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
 include('db_con.php');
 
 // Fetch category data
@@ -32,10 +44,34 @@ if (isset($_POST['update_btn'])) {
 
         if ($data) {
             header("location:categories.php");
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Category is being updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            </script>';
+        } else {
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
         }
     }
 }
 
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -59,6 +95,8 @@ if (isset($_POST['update_btn'])) {
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -73,9 +111,11 @@ if (isset($_POST['update_btn'])) {
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -174,6 +214,9 @@ if (isset($_POST['update_btn'])) {
                 </div>
             </div>
         </div>
+
+        <!--Sweet alert js import-->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

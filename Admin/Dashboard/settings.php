@@ -1,3 +1,17 @@
+<?php
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +47,11 @@
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -185,27 +201,32 @@
             <form id="updateAdminForm" class="updateForm">
                 <div class="box">
                     <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+" title="Only alphabetic characters are allowed.">
+                    <input type="text" id="first-name" name="first-name" pattern="[A-Za-z]+"
+                        title="Only alphabetic characters are allowed.">
                 </div>
                 <div class="box">
                     <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="last-name" pattern="[A-Za-z]+" title="Only alphabetic characters are allowed." >
+                    <input type="text" id="last-name" name="last-name" pattern="[A-Za-z]+"
+                        title="Only alphabetic characters are allowed.">
                 </div>
                 <div class="box">
                     <label for="nic">NIC</label>
-                    <input type="text" id="nic" name="nic" maxlength="12" pattern="[0-9]{9}[vVxX]|[0-9]{12}" title="Enter a valid NIC (e.g., 123456789V or 200012345678)" >
+                    <input type="text" id="nic" name="nic" maxlength="12" pattern="[0-9]{9}[vVxX]|[0-9]{12}"
+                        title="Enter a valid NIC (e.g., 123456789V or 200012345678)">
                 </div>
                 <div class="box">
                     <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="dob" pattern="\d{4}-\d{2}-\d{2}" title="Enter a valid date (e.g., 1990-12-31)"> 
+                    <input type="date" id="dob" name="dob" pattern="\d{4}-\d{2}-\d{2}"
+                        title="Enter a valid date (e.g., 1990-12-31)">
                 </div>
                 <div class="box">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@example\.com" title="Email must be in the format user@example.com"> 
+                    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@example\.com"
+                        title="Email must be in the format user@example.com">
                 </div>
                 <div class="box">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" inputmode="numeric"> 
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" inputmode="numeric">
                 </div>
                 <div class="box">
                     <label for="address">Address</label>
@@ -213,7 +234,7 @@
                 </div>
                 <div class="box">
                     <label for="postal-code">Postal Code</label>
-                    <input type="number" id="postal-code" name="postal-code" maxlength="5" >
+                    <input type="number" id="postal-code" name="postal-code" maxlength="5">
                 </div>
                 <button type="submit">Update</button>
             </form>
@@ -227,12 +248,13 @@
             <h3>Update Profile Picture</h3>
             <form id="updatePictureForm">
                 <label for="profilePicture"></label>
-                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" onchange="previewImage(event)" required>
-                
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*"
+                    onchange="previewImage(event)" required>
+
                 <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
+                    <img id="imagePreview" src="" alt="Image Preview" />
                 </div>
-                
+
                 <button type="submit">Upload</button>
             </form>
         </div>

@@ -1,12 +1,6 @@
 const cashierTableBody = document.getElementById("cashierTableBody");
 const addCashierBtn = document.getElementById("addCashierBtn");
 
-// Sample Data
-const cashiers = [
-  { id: 1, firstName: "John", lastName: "Doe", nic: "123456789V", phone: "0771234567", email: "john@example.com" },
-  { id: 2, firstName: "Jane", lastName: "Smith", nic: "987654321V", phone: "0777654321", email: "jane@example.com" }
-];
-
 // Function to Render Table Rows
 function renderTable() {
   cashierTableBody.innerHTML = "";
@@ -39,4 +33,8 @@ renderTable();
 
 function openModal(modalId) {
   document.getElementById(modalId).style.display = 'block';
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
 }

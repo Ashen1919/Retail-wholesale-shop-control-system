@@ -1,3 +1,118 @@
+<?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+//Database connection
+include('db_con.php');
+
+//generate auto-generated ID
+$auto_sql = "SELECT promo_id FROM promotions ORDER BY id DESC LIMIT 1";
+$result_auto = mysqli_query($conn, $auto_sql);
+
+if (mysqli_num_rows($result_auto) > 0) {
+    $rows = $result_auto->fetch_assoc();
+    $lastid = $rows['promo_id'];
+    $num = (int) substr($lastid, 2);
+    $new_id = 'O-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+} else {
+    $new_id = 'O-00001';
+}
+
+//Add a promotion
+if (isset($_POST['submit'])) {
+    $promo_id = $_POST['promoId'];
+    $promo_title = $_POST['promoTitle'];
+    $description = $_POST['promoDescription'];
+
+    $image_name = $_FILES['promoImage']['name'];
+    $tmp = explode(".", $image_name);
+    $newFileName = round(microtime(true)) . '.' . end($tmp);
+    $uploadPath = "../Assets/images/promotions/" . $newFileName;
+
+    if (move_uploaded_file($_FILES['promoImage']['tmp_name'], $uploadPath)) {
+        $add_sql = "INSERT INTO promotions(promo_id, promo_title, description, image) VALUES ('$promo_id', '$promo_title', '$description', '$newFileName')";
+        $data = mysqli_query($conn, $add_sql);
+
+        if ($data) {
+            header("location:promotion.php");
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Promotions is being added",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+        } else {
+            $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+        }
+    }
+}
+
+//Fetch all promotions
+$sql_all_prmo = "SELECT * FROM promotions";
+$result_promo = mysqli_query($conn, $sql_all_prmo);
+
+//Delete promotion
+if (isset($_GET['id'])) {
+    $pr_id = $_GET['id'];
+
+    $delete_sql = "DELETE FROM promotions WHERE id = '$pr_id'";
+    $del_data = mysqli_query($conn, $delete_sql);
+
+    if ($del_data) {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Promotion is being deleted",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
+    } else {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "error",
+                        title: "Oops! Something went wrong.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                });
+            </script>';
+    }
+}
+
+//Close connection
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +134,8 @@
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -33,9 +150,11 @@
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -123,114 +242,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p001</td>
-                            <td>Summer Sale</td>
-                            <td>Enjoy up to 50% off on select items during our Summer Sale!</td>
-                            <td><img src="../Assets/images/promotions/Summer Sale.png" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p002</td>
-                            <td>Winter Discount</td>
-                            <td>Get 30% off on all products this winter season!</td>
-                            <td><img src="..\Assets\images\promotions\Winter Discount.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>p003</td>
-                            <td>Black Friday</td>
-                            <td>Exclusive discounts on electronics for Black Friday!</td>
-                            <td><img src="..\Assets\images\promotions\Black Friday.jpeg" alt="Promo Image" width="50"></td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i class="bi bi-pencil-square"></i></button> 
-                                    <button class="delete"><i class="bi bi-trash-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($result_promo)) {
+                            ?>
+                            <tr>
+                                <td><?php echo $row['promo_id'] ?></td>
+                                <td><?php echo $row['promo_title'] ?></td>
+                                <td><?php echo $row['description'] ?></td>
+                                <td><img src="../Assets/images/promotions/<?php echo $row['image'] ?>" alt="Promo Image"
+                                        width="50">
+                                </td>
+                                <td>
+                                    <div class="action">
+                                        <a href="update_promo.php?id=<?php echo $row['id'] ?>"><button class="edit"><i
+                                                    class="bi bi-pencil-square"></i></button></a>
+                                        <a onclick="confirm ('Are you sure, Do you want to delete this promotion? ')"
+                                            href="promotion.php?id=<?php echo $row['id'] ?>"><button name="delete"
+                                                class="delete"><i class="bi bi-trash-fill"></i></button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -249,55 +283,27 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('addPromoModal')">&times;</span>
             <h3>Add Promo</h3>
-            <form id="addPromoForm">
+            <form id="addPromoForm" method="post" action="" enctype="multipart/form-data">
                 <label for="promoId">Promo ID:</label>
-                <input type="text" id="promoId" name="promoId" disabled>
+                <input type="text" id="promoId" name="promoId" value="<?php echo $new_id; ?>" required readonly>
 
                 <label for="promoTitle">Title:</label>
                 <input type="text" id="promoTitle" name="promoTitle" required>
-                
+
                 <label for="promoDescription">Description:</label>
                 <textarea id="promoDescription" name="promoDescription" required></textarea>
-                
+
                 <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)" required>
-                
-                <div id="imagePreviewContainer" style="display: none;">
-                    <img id="imagePreview" src="" alt="Image Preview"/>
-                </div>
-                
-                <button type="submit">Add Promo</button>
+                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="previewImage(event)"
+                    required>
+
+                <button type="submit" name="submit">Add Promo</button>
             </form>
         </div>
     </div>
 
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Promo</h3>
-            <form id="updatePromoForm">
-                <label for="promoId">Promo ID:</label>
-                <input type="text" id="promoId" name="promoId" disabled>
-
-                <label for="promoTitle">Title:</label>
-                <input type="text" id="promoTitle" name="promoTitle" required>
-                
-                <label for="promoDescription">Description:</label>
-                <textarea id="promoDescription" name="promoDescription" required></textarea>
-                
-                <label for="promoImage">Image:</label>
-                <input type="file" id="promoImage" name="promoImage" accept="image/*" onchange="upreviewImage(event)" required>
-                
-                <div id="u_imagePreviewContainer" style="display: none;">
-                    <img id="u_imagePreview" src="" alt="Image Preview"/>
-                </div>
-                
-                <button type="submit">Update Promo</button>
-            </form>
-        </div>
-    </div>
-
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/promotion.js"></script>
 

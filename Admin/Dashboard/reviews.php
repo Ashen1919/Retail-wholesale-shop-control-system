@@ -1,3 +1,45 @@
+<?php
+
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+//Databas connection
+include('db_con.php');
+
+//Fetch All Feedbacks
+$sql_feed = "SELECT * FROM reviews ORDER BY review_id DESC";
+$result_feed = mysqli_query($conn, $sql_feed);
+
+//Review status update
+if (isset($_POST['accept'])) {
+    $review_id = $_POST['review_id'];
+    $sql_update = "UPDATE reviews SET status = 'Accepted' WHERE review_id = '$review_id'";
+    if (mysqli_query($conn, $sql_update)) {
+        header("location:reviews.php");
+        exit();
+    }
+}
+
+if (isset($_POST['reject'])) {
+    $review_id = $_POST['review_id'];
+    $sql_update = "UPDATE reviews SET status = 'Rejected' WHERE review_id = '$review_id'";
+    if (mysqli_query($conn, $sql_update)) {
+        header("location:reviews.php");
+        exit();
+    }
+}
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +75,11 @@
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -116,29 +160,44 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Occupation</th>
                                 <th>Ratings</th>
                                 <th>Feedback</th>
                                 <th>Status</th>
+                                <th>Image</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Ashen Gimhana</td>
-                                <td>Software Engineer</td>
-                                <td>5</td>
-                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                                efficiently, and tracking was accurate.</td>
-                                <td>Pending</td>
-                                <td>
-                                    <div class="action">
-                                        <button  class="edit">Accept</button>
-                                        <button class="delete">Reject</i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            while ($row = mysqli_fetch_assoc($result_feed)) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $row['review_id'] ?></td>
+                                    <td><?php echo $row['name'] ?></td>
+                                    <td><?php echo $row['occupation'] ?></td>
+                                    <td><?php echo $row['rating'] ?></td>
+                                    <td><?php echo $row['feedback'] ?></td>
+                                    <td><?php echo $row['status'] ?></td>
+                                    <td style="padding:6px;"><img
+                                            src="../../Customer/Assets/images/feedback/<?php echo $row['image'] ?>"
+                                            alt="User Image" style="width:60px; height:60px;"></td>
+                                    <td>
+                                        <div class="action">
+                                            <form action="reviews.php" method="post">
+                                                <input type="hidden" name="review_id"
+                                                    value="<?php echo $row['review_id']; ?>">
+                                                <button class="edit" name="accept">Accept</button>
+                                                <button class="delete" name="reject">Reject</i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -148,6 +207,8 @@
     </div>
     <!--End of main body-->
 
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
 
 </body>

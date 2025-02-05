@@ -213,6 +213,22 @@
     margin-top: 10px;
   }
   
+  .modal-content_update {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+    box-sizing: border-box; 
+    display: flex; 
+    justify-self: center;
+    margin-top: 10px;
+  }
+
   .close {
     color: #aaa;
     font-size: 28px;
@@ -274,6 +290,7 @@
     color: #000;
     margin-top: 0px;
     display: block;
+    font-weight: 500;
   }
   
   textarea {
@@ -295,6 +312,25 @@
     padding: 5px;
   }
   .modal-content .full-row .head-row .right-row{
+    width: 50%;
+    display: block;
+    padding: 5px;
+  }
+  .modal-content_update .full-row{
+    display: block;
+    width: 100%;
+  }
+  .modal-content_update .full-row .head-row{
+    width: 100%;
+    display: flex;
+  }
+  .modal-content_update .full-row .head-row .left-row{
+    width: 50%;
+    display: block;
+    border-right: 1px solid #888 ;
+    padding: 5px;
+  }
+  .modal-content_update .full-row .head-row .right-row{
     width: 50%;
     display: block;
     padding: 5px;

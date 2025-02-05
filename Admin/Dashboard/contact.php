@@ -1,3 +1,24 @@
+<?php
+//check loged in 
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
+    header("location:../../Customer/login_signup_page/login_signup_page.php");
+    exit();
+}
+
+//database connection
+include('db_con.php');
+
+//fetch all contact information
+$sql_contact = "SELECT * FROM contact ORDER BY id DESC";
+$result = mysqli_query($conn, $sql_contact);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +54,11 @@
                 <p>Admin</p>
             </div>
             <div class="log-out">
-                <button class="logout-button">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                <a href="../logout.php" style="text-decoration:none;">
+                    <button class="logout-button">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </button>
+                </a>
             </div>
 
         </div>
@@ -110,7 +133,7 @@
 
         <!--Right side-->
         <div class="right-side">
-        <h2 style="color: white; margin-bottom: 20px">Contact</h2>
+            <h2 style="color: white; margin-bottom: 20px">Contact</h2>
             <div class="customer-content">
                 <div class="category-table">
                     <table>
@@ -123,13 +146,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                while( $row = mysqli_fetch_assoc($result)){
+                            ?>
                             <tr>
-                                <td>Ashen Gimhana</td>
-                                <td>ashendissanayaka0@gmail.com</td>
-                                <td>About payment problem</td>
-                                <td>The inventory is well-stocked, and customer support was responsive. Online orders are processed
-                                efficiently, and tracking was accurate.</td>
+                                <td><?php echo $row['name']; ?></td>
+                                <td><?php echo $row['email']; ?>@gmail.com</td>
+                                <td><?php echo $row['subject']; ?></td>
+                                <td><?php echo $row['message']; ?></td>
                             </tr>
+                            <?php
+                                }
+                            ?>
                         </tbody>
                     </table>
                 </div>
