@@ -25,6 +25,8 @@ body {
     font-weight: bold;
     cursor: pointer;
     text-align: end;
+    margin-top: -25px;
+    margin-left: 10px;
   
    
 }
