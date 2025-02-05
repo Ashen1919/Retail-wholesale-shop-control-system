@@ -22,8 +22,8 @@
         <div class="header-section">
             <div>
                 <label for="bill-number">Bill Number : </label>
-                <select id="billNumber">
-                    <option value="" disabled selected></option>
+                <input type="text" id="billNumber">
+                <select id="savedBills" onclick="populateBillNumberDropdown()" onchange="updateBillNumberInput()">
                 </select>
             </div>
             <div>
@@ -137,8 +137,8 @@
                 </div>
             </div>
             <div class="final-action">
-                <button class="save-btn">Save</button>
-                <button class="print-btn">Print</button>
+                <button onclick="handleSave()" class="save-btn">Save</button>
+                <button onclick="handlePrint()" class="print-btn">Print</button>
             </div>
         </div>
     </div>
