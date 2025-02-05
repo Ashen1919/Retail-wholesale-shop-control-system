@@ -1,3 +1,20 @@
+<?php 
+session_start();
+
+error_reporting(0);
+
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//fetch user details
+$email = $_SESSION['user_email'];
+$sql_user = "SELECT * FROM customers WHERE email = '".$email."'";
+$res_user = mysqli_query($conn, $sql_user);
+$row_user = mysqli_fetch_assoc($res_user);
+
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,28 +24,26 @@
     <title>Sandaru Food Mart</title>
 
     <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
     <link href="../Assets/css/styles.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <!--Preloader-->
-    
+
     <!--End of Preloader-->
     <!--Header-->
     <header class="header-wrapper">
-        
-        <!--Top Bar-->   
+
+        <!--Top Bar-->
         <div class="topBar">
             <div class="contact-details">
                 <ul class="contact">
@@ -57,9 +72,7 @@
         <!--Nav Bar-->
         <div class="navbar">
             <div class="logo">
-                <a href="../../index.php"><img
-                        src="../Assets/images/logo.png"
-                        alt="logo">
+                <a href="../../index.php"><img src="../Assets/images/logo.png" alt="logo">
                     <p>Sandaru Food <span class="mart">Mart</span></p>
                 </a>
             </div>
@@ -89,7 +102,25 @@
                     <div class="right-side-mobile-icons">
                         <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                         <a class="wishlist" href=""><i class="bi bi-heart"></i></i></a>
-                        <a class="profile" href="../login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
+                        <?php
+                        if ($_SESSION['user_email']) {
+                            ?>
+                            <div class="dropdown">
+                                <img src="../Assets/images/customers/<?php echo $row_user['image'] ?>"
+                                    alt="Profile Image" style="width:50px; height:50px;">
+                                <div class="links">
+                                    <a href="../Update Account Page/UpdateAccount.php">Settings</a>
+                                    <a href="../logout.php">Logout</a>
+                                </div>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <a class="profile" href="../login_signup_page/login_signup_page.php"
+                                id="openModalBtn"><i class="bi bi-person-circle "></i></a>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </ul>
                 <div class="search-icon">
@@ -99,7 +130,25 @@
             <div class="right-side-icons">
                 <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
                 <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
-                <a class="profile" href="../login_signup_page/login_signup_page.php"><i class="bi bi-person-circle "></i></a>
+                <?php
+                if ($_SESSION['user_email']) {
+                    ?>
+                    <div class="dropdown">
+                        <img src="../Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image"
+                            style="width:50px; height:50px;">
+                        <div class="links">
+                            <a href="../Update Account Page/UpdateAccount.php">Settings</a>
+                            <a href="../logout.php">Logout</a>
+                        </div>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <a class="profile" href="../login_signup_page/login_signup_page.php" id="openModalBtn"><i
+                            class="bi bi-person-circle "></i></a>
+                    <?php
+                }
+                ?>
             </div>
         </div>
         <!--End of Nav Bar-->
@@ -109,7 +158,7 @@
 
     <script src="../Assets/js/script.js"></script>
 
-    
+
 </body>
 
 </html>

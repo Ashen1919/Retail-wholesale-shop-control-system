@@ -14,6 +14,49 @@ $data_promo = mysqli_query($conn, $sql_promo);
 $sql = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql);
 
+//fetch user details
+$email = $_SESSION['user_email'];
+$sql_user = "SELECT * FROM customers WHERE email = '".$email."'";
+$res_user = mysqli_query($conn, $sql_user);
+$row_user = mysqli_fetch_assoc($res_user);
+
+//Send contact information
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $subject = $_POST['subject'];
+    $message = $_POST['message'];
+
+    $sql_con = "INSERT INTO contact(name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+    $res_con = mysqli_query($conn, $sql_con);
+
+    if($res_con){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Information has been submitted.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
+
 mysqli_close($conn);
 ?>
 
@@ -72,7 +115,7 @@ mysqli_close($conn);
                 </form>
             </div>
             <div class="social-icon">
-                <a href="./Admin/Dashboard/index.php"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
             </div>
@@ -116,11 +159,11 @@ mysqli_close($conn);
                         if ($_SESSION['user_email']) {
                             ?>
                             <div class="dropdown">
-                                <img src="./Customer/Assets/images/shopping cart.png" alt=""
+                                <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image"
                                     style="width:50px; height:50px;">
                                 <div class="links">
-                                    <a href="">Settings</a>
-                                    <a href="">Logout</a>
+                                    <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
+                                    <a href="./Customer/logout.php">Logout</a>
                                 </div>
                             </div>
                             <?php
@@ -144,9 +187,9 @@ mysqli_close($conn);
                 if ($_SESSION['user_email']) {
                     ?>
                     <div class="dropdown">
-                        <img src="./Customer/Assets/images/shopping cart.png" alt="" style="width:50px; height:50px;">
+                        <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image" style="width:50px; height:50px;">
                         <div class="links">
-                            <a href="">Settings</a>
+                            <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
                             <a href="./Customer/logout.php">Logout</a>
                         </div>
                     </div>
@@ -561,31 +604,31 @@ mysqli_close($conn);
                 </div><!-- End Google Maps -->
 
                 <div class="col-lg-6">
-                    <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+                    <form action="" method="post" class="php-email-form" data-aos="fade-up"
                         data-aos-delay="400">
                         <div class="row gy-4">
 
                             <div class="col-md-6">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
 
                             <div class="col-md-6 ">
                                 <input type="email" class="form-control" name="email" placeholder="Your Email"
-                                    required="">
+                                    required>
                             </div>
 
                             <div class="col-md-12">
                                 <input type="text" class="form-control" name="subject" placeholder="Subject"
-                                    required="">
+                                    required>
                             </div>
 
                             <div class="col-md-12">
                                 <textarea class="form-control" name="message" rows="6" placeholder="Message"
-                                    required=""></textarea>
+                                    required></textarea>
                             </div>
 
                             <div class="col-md-12 text-center">
-                                <button type="submit">Send Message</button>
+                                <button type="submit" name="submit" >Send Message</button>
                             </div>
 
                         </div>
