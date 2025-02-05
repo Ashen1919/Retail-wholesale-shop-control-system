@@ -1,38 +1,83 @@
 <?php
-// handleCounter.php
-
 // Include database connection
 include("../Admin/Dashboard/db_con.php");
 
 // Ensure JSON response format
 header('Content-Type: application/json');
 
-// Read input data
+// Read input data (for POST requests)
 $data = json_decode(file_get_contents("php://input"), true);
+
+// Initialize response array
+$response = ["success" => false, "message" => "Invalid request"];
+
+
+// Get In-Progress Orders
+if (isset($_GET['get_in_progress_orders']) && $_GET['get_in_progress_orders'] === 'true') {
+    if (!$conn) {
+        echo json_encode(["success" => false, "message" => "Database connection failed"]);
+        exit;
+    }
+
+    // Fetch orders with status 'in-progress'
+    $query = "SELECT id FROM orders WHERE status = 'in-progress' ORDER BY id ASC";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $orders = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $orders[] = $row['id'];
+        }
+        echo json_encode(["success" => true, "orders" => $orders]);
+    } else {
+        echo json_encode(["success" => false, "message" => "No in-progress orders found"]);
+    }
+    exit;
+}
+
+
+
 
 // ---------------------------------
 // Get Last Order ID
 // ---------------------------------
 if (isset($_GET['get_last_id']) && $_GET['get_last_id'] === 'true') {
-    $query = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
-    $result = mysqli_query($conn, $query);
-
-    if ($result && mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $lastId = intval($row['id']); // Convert to integer to prevent NaN
-        $formattedId = "O-" . str_pad($lastId + 1, 5, "0", STR_PAD_LEFT);
-        echo json_encode(["success" => true, "last_order_id" => $formattedId]);
+    if (!$conn) {
+        $response = ["success" => false, "message" => "Database connection failed"];
     } else {
-        // If no orders exist, start from "O-00001"
-        echo json_encode(["success" => true, "last_order_id" => "O-00001"]);
+        $query = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
+        $result = mysqli_query($conn, $query);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $lastId = $row['id']; // Example: "O-00002"
+
+            // Extract numeric part (remove "O-" prefix)
+            $numericPart = intval(preg_replace('/[^0-9]/', '', $lastId));
+
+            // Generate next ID
+            $nextNumericId = $numericPart + 1;
+            $formattedId = "O-" . str_pad($nextNumericId, 5, "0", STR_PAD_LEFT);
+
+            $response = [
+                "success" => true,
+                "last_order_id" => $lastId,
+                "next_order_id" => $formattedId
+            ];
+        } else {
+            $response = [
+                "success" => true,
+                "last_order_id" => "O-00001",
+                "next_order_id" => "O-00001"
+            ];
+        }
     }
-    exit;
 }
 
 // ---------------------------------
 // Search Customer (By First & Last Name)
 // ---------------------------------
-if (isset($data['searchCustomer'])) {
+elseif (isset($data['searchCustomer'])) {
     $searchTerm = mysqli_real_escape_string($conn, $data['searchCustomer']);
 
     $query = "SELECT id, first_name, last_name FROM customers 
@@ -44,17 +89,16 @@ if (isset($data['searchCustomer'])) {
         while ($row = mysqli_fetch_assoc($result)) {
             $customers[] = $row;
         }
-        echo json_encode(["success" => true, "customers" => $customers]);
+        $response = ["success" => true, "customers" => $customers];
     } else {
-        echo json_encode(["success" => false, "message" => "No customers found"]);
+        $response = ["success" => false, "message" => "No customers found"];
     }
-    exit;
 }
 
 // ---------------------------------
 // Search Product by Product ID
 // ---------------------------------
-if (isset($data['search'])) {
+elseif (isset($data['search'])) {
     $searchTerm = mysqli_real_escape_string($conn, $data['search']);
 
     $query = "SELECT product_id FROM products WHERE product_id LIKE '%$searchTerm%'";
@@ -65,17 +109,16 @@ if (isset($data['search'])) {
         while ($row = mysqli_fetch_assoc($result)) {
             $products[] = $row;
         }
-        echo json_encode(["success" => true, "products" => $products]);
+        $response = ["success" => true, "products" => $products];
     } else {
-        echo json_encode(["success" => false, "message" => "No products found"]);
+        $response = ["success" => false, "message" => "No products found"];
     }
-    exit;
 }
 
 // ---------------------------------
 // Fetch Product Details (With Price Based on Retail/Wholesale)
 // ---------------------------------
-if (isset($data['product_id']) && isset($data['type'])) {
+elseif (isset($data['product_id']) && isset($data['type'])) {
     $productId = mysqli_real_escape_string($conn, $data['product_id']);
     $type = mysqli_real_escape_string($conn, $data['type']);
 
@@ -91,7 +134,7 @@ if (isset($data['product_id']) && isset($data['type'])) {
                  (($type === 'wholesale') ? $product['whole_price'] : null);
 
         // Return product details and the selected price
-        echo json_encode([
+        $response = [
             "success" => true,
             "product" => [
                 "name" => $product['product_name'],
@@ -99,15 +142,16 @@ if (isset($data['product_id']) && isset($data['type'])) {
                 "wholesale_price" => $product['whole_price'],
             ],
             "price" => $price
-        ]);
+        ];
     } else {
-        echo json_encode(["success" => false, "message" => "Product not found"]);
+        $response = ["success" => false, "message" => "Product not found"];
     }
-    exit;
 }
 
 // ---------------------------------
-// If No Valid Request Found
+// Output JSON Response
 // ---------------------------------
-echo json_encode(["success" => false, "message" => "Invalid request"]);
+echo json_encode($response);
+exit;
+
 ?>

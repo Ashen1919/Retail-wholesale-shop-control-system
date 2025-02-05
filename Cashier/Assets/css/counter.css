@@ -385,3 +385,6 @@ button:hover i.bi-trash {
     background-color: #b40000;
 }
   
+#savedBills {
+    width: 70px;
+}
