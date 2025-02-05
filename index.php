@@ -14,6 +14,12 @@ $data_promo = mysqli_query($conn, $sql_promo);
 $sql = "SELECT * FROM categories";
 $result = mysqli_query($conn, $sql);
 
+//fetch user details
+$email = $_SESSION['user_email'];
+$sql_user = "SELECT * FROM customers WHERE email = '".$email."'";
+$res_user = mysqli_query($conn, $sql_user);
+$row_user = mysqli_fetch_assoc($res_user);
+
 mysqli_close($conn);
 ?>
 
@@ -72,7 +78,7 @@ mysqli_close($conn);
                 </form>
             </div>
             <div class="social-icon">
-                <a href="./Admin/Dashboard/index.php"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="whatsapp"><i class="bi bi-whatsapp"></i></a>
                 <a href="#"><i class="bi bi-linkedin"></i></a>
             </div>
@@ -116,11 +122,11 @@ mysqli_close($conn);
                         if ($_SESSION['user_email']) {
                             ?>
                             <div class="dropdown">
-                                <img src="./Customer/Assets/images/shopping cart.png" alt=""
+                                <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image"
                                     style="width:50px; height:50px;">
                                 <div class="links">
-                                    <a href="">Settings</a>
-                                    <a href="">Logout</a>
+                                    <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
+                                    <a href="./Customer/logout.php">Logout</a>
                                 </div>
                             </div>
                             <?php
@@ -144,9 +150,9 @@ mysqli_close($conn);
                 if ($_SESSION['user_email']) {
                     ?>
                     <div class="dropdown">
-                        <img src="./Customer/Assets/images/shopping cart.png" alt="" style="width:50px; height:50px;">
+                        <img src="./Customer/Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image" style="width:50px; height:50px;">
                         <div class="links">
-                            <a href="">Settings</a>
+                            <a href="./Customer/Update Account Page/UpdateAccount.php">Settings</a>
                             <a href="./Customer/logout.php">Logout</a>
                         </div>
                     </div>

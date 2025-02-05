@@ -689,14 +689,12 @@ Nav Bar
 
 .right-side-icons {
   margin-right: 20px;
-  display: inline-flex;
   gap: 4px;
   align-items: center;
 }
 .dropdown img{
   border: 2px solid #000000;
   border-radius: 50%;
-  padding: 4px;
   cursor: pointer;
 }
 .dropdown{
@@ -713,12 +711,13 @@ Nav Bar
   z-index: 1;
   background-color: #faf9f9;
   position: absolute;
-  min-width: 60px;
+  min-width: 80px;
   right: -5px;
 }
 .dropdown .links a:hover{
   background-color: #f1f1f1;
   transition: 0.3s ease-in;
+  color: #c50101;
 }
 .dropdown .links a{
   display: block;
