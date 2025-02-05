@@ -93,7 +93,7 @@ $result = mysqli_query($conn, $sql);
                     <h3><?php echo $row['product_name'] ?></h3>
                     <p class="price">Rs. <?php echo $row['retail_price'] ?>.00</p>
                     <p class="weight">(<?php echo $row['units'] ?>)</p>
-                    <button class="add-to-cart"> Add to Cart
+                    <button class="add-to-cart"> View Product
                     </button>
                 </div>
             </div>

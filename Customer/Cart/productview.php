@@ -18,10 +18,11 @@
     
 </head>
 <body>
-    <!-- Include Header -->
-<?php include '../includes/header.php'; ?>
 
-     <body>
+    <!-- Include Header -->
+    <?php include '../includes/header.php'; ?>
+
+    
   <div class="product-page">
 
     <div class="product-image">
@@ -31,26 +32,47 @@
            </div>
  
     <div class="product-details">
-      <h2>Brand: Zesta</h2>
-      <h1>Zesta 90g 50 Tea Bags</h1>
-      <p class="price">Rs. 300.00</p>
       
-      <div class="quantity">
-        <label for="quantity">Select Quantity:</label>
-        <div class="quantity-controls">
-          <button id="decrease">-</button>
-          <input type="number" id="quantity" value="1" min="1">
-          <button id="increase">+</button>
-        </div>
-      </div>
-
-      <button class="add-to-cart">Add to Cart</button>
+      <h1>Zesta Tea Bags</h1>
+      <div class="units">90g | 50 Tea Bags per Pack</div>
+      <div class="price">Rs. 300.00</div>
       </br>
-      <button class="wishlist">Add to Wishlist</button>
-      <p class="stock-info">In Stock</p>
-      <p class="delivery-info">Island wide delivery</p>
+      <div class="action-buttons">
+                    <button class="add-to-cart">
+                        Add to Cart
+                    </button>
+                    <button class="wishlist">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        Add to Wishlist
+                    </button>
+                </div>
+      <div class="product-meta">
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                    <span>In Stock</span>
+                </div>
+                <div class="meta-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span>Island wide delivery available</span>
+                </div>
+            </div>
+            <div class="about-product">
+            <h2>About this Product</h2>
+            <p>Experience the rich heritage of Ceylon tea with Zesta Tea Bags. Each carefully selected tea bag contains premium quality Ceylon black tea leaves, ensuring a perfect brew with every cup. 
+              </p>
+        </div>
     </div>
   </div>
+
+  <!-- Include Footer -->
+  <?php include '../includes/footer.php'; ?>
+
   <!-- js Files -->
   <script src="../Assets/js/cart.js"></script>
 
