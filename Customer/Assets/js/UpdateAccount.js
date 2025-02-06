@@ -1,3 +1,4 @@
+
 const passwordInput = document.getElementById('password');
 const togglePassword = document.getElementById('togglePassword');
 const rt_passwordInput = document.getElementById('rt-password');
@@ -20,3 +21,12 @@ rt_togglePassword.addEventListener('click', () => {
   // Toggle the icon
   rt_togglePassword.className = isPasswordVisible ? 'fas fa-eye-slash toggle-icon' : 'fas fa-eye toggle-icon';
 });
+renderTable();
+
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = 'block';
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
