@@ -1,3 +1,109 @@
+// Add event listener for given amount input and initialize event handlers
+function initializeEventHandlers() {
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    
+    if (givenAmountInput) {
+        // Remove any existing event listeners
+        givenAmountInput.removeEventListener('input', handleGivenAmountChange);
+        // Add new event listener
+        givenAmountInput.addEventListener('input', handleGivenAmountChange);
+    }
+}
+
+// Handler for given amount changes
+function handleGivenAmountChange(event) {
+    updateBalance();
+}
+
+// Call initializeEventHandlers when the page loads
+window.addEventListener('load', initializeEventHandlers);
+
+// Also call it when the DOM is ready
+document.addEventListener('DOMContentLoaded', initializeEventHandlers);
+
+// Add this at the beginning of your JavaScript file to ensure it runs when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the given amount input element
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    
+    // Add event listener for input changes
+    if (givenAmountInput) {
+        givenAmountInput.addEventListener('input', updateBalance);
+        console.log('Event listener added to given amount input');
+    }
+});
+
+window.onload = function() {
+    console.log("Window loaded! Fetching in-progress orders...");
+    populateBillNumberDropdown();  // Fetch in-progress orders to populate the dropdown
+};
+
+function populateBillNumberDropdown() {
+    console.log("Fetching in-progress orders...");
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", "handleCounter.php?get_in_progress_orders=true", true);
+
+    xhr.onload = function() {
+        console.log("AJAX request finished!");
+        if (xhr.status === 200) {
+            try {
+                console.log("Response received:", xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+
+                if (response.success) {
+                    console.log("In-progress orders found:", response.orders);
+
+                    const savedBillsDropdown = document.getElementById("savedBills");
+                    savedBillsDropdown.innerHTML = '';  // Clear previous options
+
+                    const defaultOption = document.createElement("option");
+                    defaultOption.value = "";
+                    defaultOption.textContent = "Saved";
+                    defaultOption.disabled = true;
+                    defaultOption.selected = true;
+                    savedBillsDropdown.appendChild(defaultOption);
+
+                    // Add each in-progress order to the dropdown
+                    response.orders.forEach(orderId => {
+                        console.log("Adding order:", orderId);
+                        const option = document.createElement("option");
+                        option.value = orderId;
+                        option.textContent = orderId;
+                        savedBillsDropdown.appendChild(option);
+                    });
+                } else {
+                    console.error("No in-progress orders found.");
+                }
+            } catch (error) {
+                console.error("Error parsing JSON response:", error);
+            }
+        } else {
+            console.error("Failed to fetch data. HTTP Status:", xhr.status);
+        }
+    };
+
+    xhr.send();
+}
+
+// Function to update the bill number input when an order is selected
+function updateBillNumberInput() {
+    const savedBillsDropdown = document.getElementById("savedBills");
+    const billNumberInput = document.getElementById("billNumber");
+
+    // Get the selected order ID from the dropdown
+    const selectedOrderId = savedBillsDropdown.value;
+
+    // Update the input field with the selected order ID
+    billNumberInput.value = selectedOrderId;
+}
+
+
+
+
+
+
+
 function newBill() {
     // Step 1: Create an AJAX request to fetch the last order ID from the backend
     const xhr = new XMLHttpRequest();
@@ -10,14 +116,21 @@ function newBill() {
                 
                 if (response.success) {
                     const lastOrderId = response.last_order_id.trim();  // The last order ID returned from the backend
+                    console.log(lastOrderId);
 
                     // Step 2: Increment the order ID to generate the new one
                     const orderId = generateNextId(lastOrderId);
 
                     // Step 3: Get the current date and time
                     const now = new Date();
-                    const currentDate = now.toISOString().split("T")[0]; // Format: YYYY-MM-DD
-                    const currentTime = now.toLocaleTimeString([], { hour12: false }); // Format: HH:MM:SS
+
+                    // Get the current date in local format (YYYY-MM-DD)
+                    const currentDate = now.getFullYear() + '-' + 
+                                        String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                                        String(now.getDate()).padStart(2, '0');
+
+                    // Get the current time in local format (HH:MM:SS)
+                    const currentTime = now.toLocaleTimeString([], { hour12: false });
 
                     // Add the Order ID to the dropdown
                     const billNumberDropdown = document.getElementById("billNumber");
@@ -50,6 +163,7 @@ function newBill() {
     };
     xhr.send();
 }
+
 
 function generateNextId(lastOrderId) {
     if (!lastOrderId || !/^O-\d{5}$/.test(lastOrderId)) {
@@ -287,21 +401,17 @@ document.addEventListener('DOMContentLoaded', function () {
         var quantityInput = document.getElementById("quantity");
         var unitPriceInput = document.getElementById("sellingPrice");
 
-        // Check if both fields are available
         if (quantityInput && unitPriceInput) {
             console.log("Quantity and Unit Price fields found");
 
-            // Get the quantity and unit price values
-            var quantity = parseFloat(quantityInput.value) || 0; // Default to 0 if empty or invalid
-            var unitPrice = parseFloat(unitPriceInput.value) || 0; // Default to 0 if empty or invalid
+            var quantity = parseFloat(quantityInput.value) || 0;
+            var unitPrice = parseFloat(unitPriceInput.value) || 0;
 
-            // Calculate the amount
             var amount = quantity * unitPrice;
 
-            // Dynamically update the amount input field
             var amountInput = document.getElementById("amount");
             if (amountInput) {
-                amountInput.value = amount.toFixed(2); // Display with 2 decimal places
+                amountInput.value = amount.toFixed(2);
             } else {
                 console.log("Amount input field not found!");
             }
@@ -315,7 +425,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var quantityInput = document.getElementById("quantity");
         var unitPriceInput = document.getElementById("sellingPrice");
 
-        // Only proceed if both fields are available
         if (quantityInput && unitPriceInput) {
             console.log("Both quantity and unit price fields are ready.");
 
@@ -328,34 +437,111 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log("Waiting for quantity and unit price fields...");
         }
-    }, 100); // Check every 100ms
-});
+    }, 100);
 
+    // Modified fetchProductDetails function to update amount after price change
+    window.fetchProductDetails = function(productId) {
+        var type = document.querySelector('input[name="type"]:checked')?.value;
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Add event listener for "Given Amount" input to update balance in real-time
-    const givenAmountInput = document.querySelector('input[placeholder="0.00"]:not([disabled])');
+        if (!type) {
+            alert("Please select Retail or Wholesale.");
+            return;
+        }
+
+        console.log("Selected type:", type);
+
+        fetch('handleCounter.php', {
+            method: 'POST',
+            body: JSON.stringify({ product_id: productId, type: type }),
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.getElementById("name").value = data.product.name;
+                var price = data.price;
+                document.getElementById("sellingPrice").value = price;
+                // After updating the price, recalculate the amount
+                updateAmount();
+            } else {
+                alert("Product not found.");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    // Modified radio button event listeners to update amount when type changes
+    const radioButtons = document.getElementsByName("type");
+    radioButtons.forEach(radio => {
+        radio.addEventListener("change", function() {
+            var productId = document.getElementById("productID").value;
+            if (productId) {
+                fetchProductDetails(productId);
+            }
+        });
+    });
+
+    // Add event listener for given amount input
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
     if (givenAmountInput) {
-        givenAmountInput.addEventListener('input', updateBalance);
+        givenAmountInput.addEventListener('input', function() {
+            updateBalance();
+        });
     }
-
-    // Add button functionality
-    const addButton = document.querySelector('.add-btn');
-    addButton.addEventListener('click', addRow);
 });
 
-// Function to update balance based on Given Amount
+
+
+
+// Update the existing updateBalance function
 function updateBalance() {
-    const totalAmount = parseFloat(document.querySelector('input[placeholder="0.00"]:disabled').value) || 0;
-    const givenAmount = parseFloat(document.querySelector('input[placeholder="0.00"]:not([disabled])').value) || 0;
+    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    const balanceInput = document.querySelector('.amount-section .styled-input-box:last-child input');
+    const lendingAmountInput = document.querySelector('#styled-input-box input');
+    const lendingCheckbox = document.querySelector('input[value="lending"]');
 
-    const balance = givenAmount - totalAmount;
+    const totalAmount = parseFloat(totalAmountInput.value) || 0;
+    const givenAmount = parseFloat(givenAmountInput.value) || 0;
+    const lendingAmount = (lendingCheckbox && lendingCheckbox.checked) ? (parseFloat(lendingAmountInput.value) || 0) : 0;
 
-    // Update the Balance field in real-time
-    const balanceInput = document.querySelector('input[placeholder="0.00"]:disabled');
-    if (balanceInput) {
-        balanceInput.value = balance.toFixed(2); // Show the balance with 2 decimal points
+    // Calculate amount to be paid after lending
+    const amountAfterLending = totalAmount - lendingAmount;
+
+    // Calculate balance based on given amount and amount after lending
+    const balance = givenAmount - amountAfterLending;
+
+    // Update balance display
+    balanceInput.value = balance.toFixed(2);
+    console.log('Balance updated:', balance.toFixed(2));
+}
+
+// Function to update the total amount
+function updateTotalAmount() {
+    const tableBody = document.getElementById("tableBody");
+    let totalAmount = 0;
+
+    // Loop through the rows and sum up the amounts
+    const rows = tableBody.querySelectorAll("tr");
+    rows.forEach(row => {
+        const amountCell = row.cells[5];
+        const amount = Math.abs(parseFloat(amountCell.textContent)) || 0; // Use Math.abs to ensure positive value
+
+        if (amount > 0) {
+            totalAmount += amount;
+        }
+    });
+
+    // Update the Total Amount field
+    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+    if (totalAmountInput) {
+        totalAmountInput.value = Math.abs(totalAmount).toFixed(2); // Ensure positive value with Math.abs
     }
+
+    // Update balance when the total amount changes
+    updateBalance();
 }
 
 // Function to add a row to the table
@@ -364,72 +550,59 @@ function addRow() {
     const name = document.getElementById("name").value;
     const quantity = document.getElementById("quantity").value;
     const unitPrice = document.getElementById("sellingPrice").value;
-    const amount = document.getElementById("amount").value;
+    const amount = Math.abs(parseFloat(document.getElementById("amount").value)) || 0; // Use Math.abs for amount
 
-    // Ensure the amount is a valid number before adding
-    if (productID && name && quantity && unitPrice && !isNaN(amount) && amount > 0) {
+    if (productID && name && quantity && unitPrice && amount > 0) {
         const tableBody = document.getElementById("tableBody");
 
         // Create a new row
         const row = document.createElement("tr");
 
         // Add cells to the row
-        const noCell = document.createElement("td");
-        const productIDCell = document.createElement("td");
-        const nameCell = document.createElement("td");
-        const quantityCell = document.createElement("td");
-        const unitPriceCell = document.createElement("td");
-        const amountCell = document.createElement("td");
+        const cells = [
+            tableBody.rows.length + 1,
+            productID,
+            name,
+            quantity,
+            unitPrice,
+            amount.toFixed(2)  // Ensure positive value is displayed
+        ].map(value => {
+            const cell = document.createElement("td");
+            cell.textContent = value;
+            return cell;
+        });
+
+        // Create action cell with edit and delete buttons
         const actionCell = document.createElement("td");
-
-        noCell.textContent = tableBody.rows.length + 1; // Auto-increment row number
-        productIDCell.textContent = productID;
-        nameCell.textContent = name;
-        quantityCell.textContent = quantity;
-        unitPriceCell.textContent = unitPrice;
-        amountCell.textContent = amount;
-
-        // Add action buttons with icons (using Bootstrap Icons)
+        
         const editButton = document.createElement("button");
-        editButton.innerHTML = '<i class="bi bi-pencil"></i>'; // Pencil icon for editing
-        editButton.onclick = function () {
-            editRow(row);
-        };
+        editButton.innerHTML = '<i class="bi bi-pencil"></i>';
+        editButton.onclick = () => editRow(row);
 
         const deleteButton = document.createElement("button");
-        deleteButton.innerHTML = '<i class="bi bi-trash"></i>'; // Trash icon for deletion
-        deleteButton.onclick = function () {
-            deleteRow(row);
-        };
+        deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
+        deleteButton.onclick = () => deleteRow(row);
 
-        // Add buttons to the action cell
         actionCell.appendChild(editButton);
         actionCell.appendChild(deleteButton);
 
         // Append all cells to the row
-        row.appendChild(noCell);
-        row.appendChild(productIDCell);
-        row.appendChild(nameCell);
-        row.appendChild(quantityCell);
-        row.appendChild(unitPriceCell);
-        row.appendChild(amountCell);
-        row.appendChild(actionCell);
+        [...cells, actionCell].forEach(cell => row.appendChild(cell));
 
         // Append the row to the table body
         tableBody.appendChild(row);
 
-        // Reset secondary header fields after adding
+        // Reset form and update totals
         clearForm();
-
-        // Update total amount after adding the row
+        updateRowNumbers();
         updateTotalAmount();
     } else {
         alert("Please fill in all the fields with valid data.");
     }
-
-    // Update row numbers after adding a new row
-    updateRowNumbers();
 }
+
+// Keep other existing functions (clearForm, editRow, deleteRow, updateRowNumbers) as they are
+// Just ensure they call updateTotalAmount() after making any changes
 
 // Function to reset the fields in the secondary header
 function clearForm() {
@@ -479,32 +652,7 @@ function updateRowNumbers() {
     });
 }
 
-// Function to update the total amount
-function updateTotalAmount() {
-    const tableBody = document.getElementById("tableBody");
-    let totalAmount = 0;
 
-    // Loop through the rows and sum up the amounts
-    const rows = tableBody.querySelectorAll("tr");
-    rows.forEach(row => {
-        const amountCell = row.cells[5]; // The "Amount" cell is the 6th cell in each row
-        const amount = parseFloat(amountCell.textContent);
-
-        // Only add valid numeric amounts
-        if (!isNaN(amount) && amount > 0) {
-            totalAmount += amount;
-        }
-    });
-
-    // Update the Total Amount field
-    const totalAmountInput = document.querySelector('input[placeholder="0.00"]:disabled');  // Assuming this is the "Total Amount" input field
-    if (totalAmountInput) {
-        totalAmountInput.value = totalAmount.toFixed(2); // Update total amount
-    }
-
-    // Update balance when the given amount changes
-    updateBalance();
-}
 
 
 
@@ -554,3 +702,88 @@ function updatePrice() {
         fetchProductDetails(productId);
     }
 }
+
+// Initialize event handlers for lending functionality
+function initializeLendingHandlers() {
+    const lendingCheckbox = document.querySelector('input[value="lending"]');
+    const fullAmountCheckbox = document.querySelector('input[value="full"]');
+    const lendingAmountInput = document.querySelector('#styled-input-box input');
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+    
+    if (lendingCheckbox && fullAmountCheckbox && lendingAmountInput) {
+        // Handle lending checkbox changes
+        lendingCheckbox.addEventListener('change', function() {
+            if (!this.checked) {
+                // If unchecked, clear lending amount and full amount checkbox
+                lendingAmountInput.value = '';
+                fullAmountCheckbox.checked = false;
+                lendingAmountInput.disabled = true;
+            } else {
+                lendingAmountInput.disabled = false;
+            }
+            updateAmounts();
+        });
+
+        // Handle full amount checkbox changes
+        fullAmountCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                // If checked, automatically check lending checkbox
+                lendingCheckbox.checked = true;
+                lendingAmountInput.disabled = false;
+                // Set lending amount to total amount
+                const totalAmount = parseFloat(totalAmountInput.value) || 0;
+                lendingAmountInput.value = totalAmount.toFixed(2);
+            }
+            updateAmounts();
+        });
+
+        // Handle lending amount input changes
+        lendingAmountInput.addEventListener('input', function() {
+            const totalAmount = parseFloat(totalAmountInput.value) || 0;
+            const lendingAmount = parseFloat(this.value) || 0;
+
+            // Ensure lending amount doesn't exceed total amount
+            if (lendingAmount > totalAmount) {
+                this.value = totalAmount.toFixed(2);
+            }
+            
+            // If lending amount equals total amount, check full amount box
+            fullAmountCheckbox.checked = parseFloat(this.value) === totalAmount;
+            
+            updateAmounts();
+        });
+
+        // Handle given amount input changes
+        givenAmountInput.addEventListener('input', updateAmounts);
+    }
+}
+
+// Function to update all amounts and balance
+function updateAmounts() {
+    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    const balanceInput = document.querySelector('.amount-section .styled-input-box:last-child input');
+    const lendingAmountInput = document.querySelector('#styled-input-box input');
+    const lendingCheckbox = document.querySelector('input[value="lending"]');
+
+    const totalAmount = parseFloat(totalAmountInput.value) || 0;
+    const givenAmount = parseFloat(givenAmountInput.value) || 0;
+    const lendingAmount = (lendingCheckbox && lendingCheckbox.checked) ? (parseFloat(lendingAmountInput.value) || 0) : 0;
+
+    // Calculate amount to be paid after lending
+    const amountAfterLending = totalAmount - lendingAmount;
+
+    // Calculate balance based on given amount and amount after lending
+    const balance = givenAmount - amountAfterLending;
+
+    // Update balance display
+    balanceInput.value = balance.toFixed(2);
+}
+
+// Initialize all event handlers when the page loads
+window.addEventListener('load', function() {
+    initializeLendingHandlers();
+    initializeEventHandlers(); // Keep existing event handlers
+});
+
