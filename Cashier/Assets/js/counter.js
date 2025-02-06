@@ -112,12 +112,13 @@ function populateOrderItems(items) {
 }
 
 
+// Modify the updateBillNumberInput function to properly store NIC
 function updateBillNumberInput() {
     const selectedBill = document.getElementById("savedBills").value;
     if (!selectedBill) return;
 
     console.log("Fetching details for bill:", selectedBill);
-    document.getElementById("billNumber").value = selectedBill; // Set bill number input
+    document.getElementById("billNumber").value = selectedBill;
 
     const xhr = new XMLHttpRequest();
     xhr.open("GET", `handleCounter.php?fetch_bill_details=true&bill_number=${selectedBill}`, true);
@@ -135,9 +136,14 @@ function updateBillNumberInput() {
                     document.getElementById("orderDate").value = bill.date;
                     document.getElementById("orderTime").value = bill.time;
                     
+                    // Store NIC in the hidden field
+                    const phoneInput = document.getElementById("customerPhone");
+                    if (phoneInput && bill.nic) {
+                        phoneInput.setAttribute("data-nic", bill.nic);
+                    }
+
                     // Set customer information if NIC exists
                     if (bill.nic) {
-                        // You might need to fetch customer details using the NIC
                         fetchCustomerByNIC(bill.nic);
                     }
 
@@ -433,21 +439,25 @@ function searchCustomer() {
     }
 }
 
+// Update existing selectCustomer function to store NIC
 function selectCustomer() {
     var select = document.getElementById("customerDropdown");
     var selectedOption = select.options[select.selectedIndex];
 
     var selectedName = selectedOption.textContent;
     var selectedPhone = selectedOption.getAttribute("data-phone");
+    var selectedNIC = selectedOption.value; // NIC is stored in the value attribute
 
     // Set the value of the input to the selected customer's name
     document.getElementById("customer").value = selectedName;
 
-    // Display the phone number (for example, in a span or input field)
-    document.getElementById("customerPhoneDisplay").textContent = selectedPhone; // Display phone number in a div/span
+    // Display the phone number
+    document.getElementById("customerPhoneDisplay").textContent = selectedPhone;
 
-    // Optionally, store the customer's phone number in a hidden field if needed
-    document.getElementById("customerPhone").value = selectedPhone; // Assuming you have a hidden input field with ID customerPhone
+    // Store both phone and NIC in the hidden field
+    const phoneInput = document.getElementById("customerPhone");
+    phoneInput.value = selectedPhone;
+    phoneInput.setAttribute("data-nic", selectedNIC); // Store NIC as data attribute
 
     // Hide the dropdown after selection
     select.style.display = "none";
@@ -1028,3 +1038,129 @@ window.addEventListener('load', function() {
     initializeEventHandlers(); // Keep existing event handlers
 });
 
+// Add these functions to your counter.js file
+
+// First, let's modify the getProductDetailsFromTable function to ensure consistent formatting
+function getProductDetailsFromTable() {
+    const tableBody = document.getElementById("tableBody");
+    if (!tableBody || tableBody.rows.length === 0) {
+        console.log("No products in table");
+        return null;
+    }
+    
+    const products = [];
+    
+    for (let i = 0; i < tableBody.rows.length; i++) {
+        const row = tableBody.rows[i];
+        
+        // Get cell values and ensure they're properly formatted numbers
+        const productId = row.cells[1].textContent.trim();
+        const quantity = parseFloat(row.cells[3].textContent).toFixed(0); // No decimals for quantity
+        const unitPrice = parseFloat(row.cells[4].textContent).toFixed(2); // Two decimals for price
+        
+        // Validate data
+        if (!productId || isNaN(quantity) || isNaN(unitPrice)) {
+            console.log("Invalid data in row:", i + 1);
+            continue;
+        }
+        
+        products.push(`${productId}|${quantity}|${unitPrice}`);
+    }
+    
+    return products.length > 0 ? products.join(',') : null;
+}
+
+// Modify handleSave to properly handle the NIC
+function handleSave() {
+    // Validate bill number
+    const billNumber = document.getElementById("billNumber").value.trim();
+    if (!billNumber) {
+        alert("Bill number is required");
+        return;
+    }
+    
+    // Get and validate product details
+    const productDetails = getProductDetailsFromTable();
+    if (!productDetails) {
+        alert("Please add at least one valid product to the bill");
+        return;
+    }
+    
+    // Get NIC from the hidden field
+    const customerPhoneInput = document.getElementById("customerPhone");
+    const nic = customerPhoneInput ? customerPhoneInput.getAttribute("data-nic") : "";
+    
+    // Format all numeric values consistently
+    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+    const balanceInput = document.querySelector('.amount-section .styled-input-box:last-child input');
+    const lendingAmountInput = document.querySelector('#styled-input-box input');
+    
+    const payload = {
+        bill_number: billNumber,
+        nic: nic || null, // Send the NIC if available
+        date: document.getElementById("orderDate").value,
+        time: document.getElementById("orderTime").value,
+        product_details: productDetails,
+        total_amount: (parseFloat(totalAmountInput.value) || 0).toFixed(2),
+        lending_amount: (parseFloat(lendingAmountInput?.value) || 0).toFixed(2),
+        given_amount: (parseFloat(givenAmountInput.value) || 0).toFixed(2),
+        balance: (parseFloat(balanceInput.value) || 0).toFixed(2)
+    };
+    
+    console.log("Saving bill with payload:", payload);
+    
+    // Add validation check for required fields
+    if (!payload.date || !payload.time) {
+        alert("Date and time are required");
+        return;
+    }
+    
+    fetch('handleBillSave.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Server response:", data);
+        
+        if (data.success) {
+            alert("Bill saved successfully!");
+            // Reload the page after a short delay
+            setTimeout(() => window.location.reload(), 1000);
+        } else {
+            throw new Error(data.message || "Failed to save bill");
+        }
+    })
+    .catch(error => {
+        console.error('Error saving bill:', error);
+        alert(`Error saving bill: ${error.message}`);
+    });
+}
+// Add a helper function to inspect in-progress bill format
+function inspectInProgressBill(billNumber) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `handleCounter.php?fetch_bill_details=true&bill_number=${billNumber}`, true);
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success && response.bill) {
+                    console.log("In-progress bill format:", {
+                        productDetails: response.bill.product_details,
+                        format: typeof response.bill.product_details,
+                        example: response.bill.product_details.split(',')[0]
+                    });
+                }
+            } catch (error) {
+                console.error("Error parsing bill details:", error);
+            }
+        }
+    };
+    
+    xhr.send();
+}
