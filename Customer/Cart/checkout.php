@@ -61,6 +61,8 @@
     </div>
     <script src="../Assets/js/checkout.js"></script>
 
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
 
 </body>
