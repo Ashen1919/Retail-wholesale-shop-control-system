@@ -40,7 +40,8 @@ body {
 .form-container h1 {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 31px;
+    font-size: 29px;
+    margin-left: 2px;
 }
 .form-container label {
     font-weight: bold;
