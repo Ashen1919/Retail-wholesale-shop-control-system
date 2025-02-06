@@ -28,9 +28,11 @@
             </div>
             <div>
                 <label for="customer">Customer : </label>
-                <input type="text" id="customer" oninput="searchCustomer()" autocomplete="off">
+                <input type="text" id="customer" oninput="searchCustomer()" placeholder="Search by name" autocomplete="off">
                 <select id="customerDropdown" size="5" style="display:none;" onclick="selectCustomer()">
                 </select>
+                <div id="customerPhoneDisplay"></div>
+                <input type="hidden" id="customerPhone" name="customerPhone">
             </div>
             <div class="radio">
                 <label>
@@ -95,7 +97,7 @@
                         <th>Quantity</th>
                         <th>Unit Price</th>
                         <th>Amount</th>
-                        <th style="width: 110px;">Action</th>
+                        <th style="width: 120px;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -143,37 +145,25 @@
         </div>
     </div>
 
-    <!-- Register New Customer Modal-->
+    <!-- Register Wholesale Customer Modal-->
     <div id="registerCustomerModal" class="modal">
         <div class="modal-content">
             <button class="close" onclick="closeModal('registerCustomerModal')"><i class="bi bi-x"></i></button>
-            <h2>Register Customer</h2>
+            <h2>Register Wholesale Customer</h2>
             <form id="registerCustomerForm" action="path_to_php_script.php" method="POST" onsubmit="submitCustomerForm(event)">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
+                <label for="nic">NIC:</label>
+                <input type="text" id="nic" name="nic" required>
 
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-                
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
 
-                <label for="type">Customer Type:</label>
-                <div class="radio_type">
-                    <label for="type">
-                        <input type="radio" id="retail-c" name="type">
-                        Retail
-                    </label>
-                    <label for="type">
-                        <input type="radio" id="wholesale-c" name="type">
-                        Wholesale
-                    </label>
-                </div>
+                <label for="email">email:</label>
+                <input type="email" id="email" name="email" required>
                 
-                <button type="submit">Add Customer</button>
+                <button type="submit">Register</button>
             </form>
         </div>
     </div>

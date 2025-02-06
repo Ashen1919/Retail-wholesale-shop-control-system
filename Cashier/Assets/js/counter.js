@@ -46,17 +46,19 @@ function populateBillNumberDropdown() {
 
     xhr.onload = function() {
         console.log("AJAX request finished!");
+        console.log("Response received:", xhr.responseText);
+
         if (xhr.status === 200) {
             try {
-                console.log("Response received:", xhr.responseText);
                 const response = JSON.parse(xhr.responseText);
 
-                if (response.success) {
+                if (response.success && response.orders.length > 0) {
                     console.log("In-progress orders found:", response.orders);
 
                     const savedBillsDropdown = document.getElementById("savedBills");
-                    savedBillsDropdown.innerHTML = '';  // Clear previous options
+                    savedBillsDropdown.innerHTML = ''; // Clear previous options
 
+                    // Default option
                     const defaultOption = document.createElement("option");
                     defaultOption.value = "";
                     defaultOption.textContent = "Saved";
@@ -64,9 +66,8 @@ function populateBillNumberDropdown() {
                     defaultOption.selected = true;
                     savedBillsDropdown.appendChild(defaultOption);
 
-                    // Add each in-progress order to the dropdown
+                    // Populate orders
                     response.orders.forEach(orderId => {
-                        console.log("Adding order:", orderId);
                         const option = document.createElement("option");
                         option.value = orderId;
                         option.textContent = orderId;
@@ -86,17 +87,225 @@ function populateBillNumberDropdown() {
     xhr.send();
 }
 
-// Function to update the bill number input when an order is selected
-function updateBillNumberInput() {
-    const savedBillsDropdown = document.getElementById("savedBills");
-    const billNumberInput = document.getElementById("billNumber");
 
-    // Get the selected order ID from the dropdown
-    const selectedOrderId = savedBillsDropdown.value;
+function populateOrderItems(items) {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = ""; // Clear existing rows
 
-    // Update the input field with the selected order ID
-    billNumberInput.value = selectedOrderId;
+    items.forEach((item, index) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${item.product_id}</td>
+            <td>${item.product_name}</td>
+            <td>${item.quantity}</td>
+            <td>${item.unit_price}</td>
+            <td>${item.total_price}</td>
+            <td>
+                <button onclick="removeRow(this)">Remove</button>
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+    });
 }
+
+
+function updateBillNumberInput() {
+    const selectedBill = document.getElementById("savedBills").value;
+    if (!selectedBill) return;
+
+    console.log("Fetching details for bill:", selectedBill);
+    document.getElementById("billNumber").value = selectedBill; // Set bill number input
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `handleCounter.php?fetch_bill_details=true&bill_number=${selectedBill}`, true);
+
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            try {
+                console.log("Bill details response:", xhr.responseText);
+                const response = JSON.parse(xhr.responseText);
+
+                if (response.success && response.bill) {
+                    const bill = response.bill;
+                    
+                    // Set basic bill information
+                    document.getElementById("orderDate").value = bill.date;
+                    document.getElementById("orderTime").value = bill.time;
+                    
+                    // Set customer information if NIC exists
+                    if (bill.nic) {
+                        // You might need to fetch customer details using the NIC
+                        fetchCustomerByNIC(bill.nic);
+                    }
+
+                    // Parse and populate product details
+                    populateProductTable(bill.product_details);
+
+                    // Set amounts
+                    const totalAmountInput = document.querySelector('.amount-section .styled-input-box:first-child input');
+                    const givenAmountInput = document.querySelector('.amount-section .styled-input-box:nth-child(2) input');
+                    const balanceInput = document.querySelector('.amount-section .styled-input-box:last-child input');
+                    const lendingAmountInput = document.querySelector('#styled-input-box input');
+
+                    if (totalAmountInput) totalAmountInput.value = bill.total_amount;
+                    if (givenAmountInput) givenAmountInput.value = bill.given_amount;
+                    if (balanceInput) balanceInput.value = bill.balance;
+                    if (lendingAmountInput) lendingAmountInput.value = bill.lending_amount;
+
+                } else {
+                    console.error("No details found for this bill.");
+                }
+            } catch (error) {
+                console.error("Error parsing bill details response:", error);
+            }
+        }
+    };
+
+    xhr.send();
+}
+
+function populateProductTable(productDetailsString) {
+    const tableBody = document.getElementById("tableBody");
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    // Split the product details string by comma to get individual products
+    const products = productDetailsString.split(',').map(item => item.trim());
+
+    products.forEach((product, index) => {
+        // Split each product string by | to get ID, quantity, and price
+        const [productId, quantity, unitPrice] = product.split('|');
+        
+        // Calculate amount
+        const amount = parseFloat(quantity) * parseFloat(unitPrice);
+
+        // Create new row
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${productId}</td>
+            <td id="name_${productId}">Loading...</td>
+            <td>${quantity}</td>
+            <td>${unitPrice}</td>
+            <td>${amount.toFixed(2)}</td>
+            <td>
+                <button onclick="editRow(this.parentElement.parentElement)">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button onclick="deleteRow(this.parentElement.parentElement)">
+                    <i class="bi bi-trash"></i>
+                </button>
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+
+        // Fetch product name for each product ID
+        fetchProductName(productId);
+    });
+
+    // Update total amount after populating table
+    updateTotalAmount();
+}
+
+function fetchProductName(productId) {
+    // Make an AJAX call to fetch product name
+    fetch('handleCounter.php', {
+        method: 'POST',
+        body: JSON.stringify({ product_id: productId, type: 'retail' }), // Default to retail type
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Update the product name in the table
+            const nameCell = document.getElementById(`name_${productId}`);
+            if (nameCell) {
+                nameCell.textContent = data.product.name;
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching product name:', error);
+    });
+}
+
+function fetchCustomerByNIC(nic) {
+    // Make an AJAX call to fetch customer details by NIC
+    fetch('handleCounter.php', {
+        method: 'POST',
+        body: JSON.stringify({ searchCustomerByNIC: nic }),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success && data.customer) {
+            document.getElementById("customer").value = data.customer.name;
+            document.getElementById("customerPhone").value = data.customer.phone;
+            document.getElementById("customerPhoneDisplay").textContent = data.customer.phone;
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching customer details:', error);
+    });
+}
+
+function fetchBillDetails(billNumber) {
+    console.log("🔍 Fetching details for bill:", billNumber);
+
+    const url = `handleCounter.php?fetch_bill_details=true&bill_number=${encodeURIComponent(billNumber)}`;
+    console.log("🌍 Request URL:", url);
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+
+    xhr.onload = function () {
+        console.log("📩 Bill details response:", xhr.responseText);
+
+        if (xhr.status === 200) {
+            try {
+                const response = JSON.parse(xhr.responseText);
+                if (response.success && response.bill) {
+                    console.log("✅ Bill details found:", response.bill);
+                    displayBillDetails(response.bill);
+                } else {
+                    console.error("❌ Error: No details found. Message:", response.message);
+                }
+            } catch (error) {
+                console.error("🚨 JSON Parse Error:", error);
+            }
+        } else {
+            console.error("❌ Failed to fetch data. HTTP Status:", xhr.status);
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error("❌ Network error occurred.");
+    };
+
+    xhr.send();
+}
+
+
+
+function displayBillDetails(bill) {
+    console.log("Displaying bill details:", bill);
+    document.getElementById("billNumber").innerText = bill.bill_number;
+    document.getElementById("billDate").innerText = bill.date;
+    document.getElementById("billTime").innerText = bill.time;
+    document.getElementById("totalAmount").innerText = bill.total_amount;
+    document.getElementById("givenAmount").innerText = bill.given_amount;
+    document.getElementById("balance").innerText = bill.balance;
+
+    // Parse and display product details
+    const products = bill.product_details.split('|'); 
+    let productInfo = `Product: ${products[0]}, Quantity: ${products[1]}, Price: ${products[2]}`;
+    document.getElementById("productDetails").innerText = productInfo;
+}
+
+
 
 
 
@@ -166,18 +375,18 @@ function newBill() {
 
 
 function generateNextId(lastOrderId) {
-    if (!lastOrderId || !/^O-\d{5}$/.test(lastOrderId)) {
-        return "O-00001"; // Default if the format is incorrect
+    if (!lastOrderId || !/^B-\d{5}$/.test(lastOrderId)) {
+        return "B-00001"; // Default if the format is incorrect
     }
 
-    // Extract the number part of the last ID (e.g., 'O-00001' -> '00001')
-    const numberPart = lastOrderId.substring(2); // Get the number after "O-"
+    // Extract the number part of the last ID (e.g., 'B-00001' -> '00001')
+    const numberPart = lastOrderId.substring(2); // Get the number after "B-"
 
     // Increment the number safely
     const nextNumber = parseInt(numberPart, 10) + 1;
 
-    // Format the new ID (e.g., O-00002)
-    return "O-" + String(nextNumber).padStart(5, "0");
+    // Format the new ID (e.g., B-00002)
+    return "B-" + String(nextNumber).padStart(5, "0");
 }
 
 
@@ -185,7 +394,6 @@ function searchCustomer() {
     var input = document.getElementById("customer");
     var filter = input.value.toLowerCase(); // Convert the input to lowercase
     var select = document.getElementById("customerDropdown");
-    var options = select.getElementsByTagName("option");
 
     // Show the dropdown if the input is not empty, hide it if empty
     if (filter === "") {
@@ -210,8 +418,9 @@ function searchCustomer() {
                 // Populate the dropdown with matching customers
                 data.customers.forEach(customer => {
                     var option = document.createElement("option");
-                    option.value = customer.id;
-                    option.textContent = `${customer.first_name} ${customer.last_name}`;  // Concatenate first and last name
+                    option.value = customer.nic; // Use NIC as value for selection
+                    option.textContent = customer.name;  // Display the customer's name
+                    option.setAttribute("data-phone", customer.phone); // Store the phone number as a data attribute
                     select.appendChild(option);
                 });
             } else {
@@ -224,21 +433,27 @@ function searchCustomer() {
     }
 }
 
-
 function selectCustomer() {
     var select = document.getElementById("customerDropdown");
-    var selectedValue = select.options[select.selectedIndex].value;
-    var selectedText = select.options[select.selectedIndex].textContent;
+    var selectedOption = select.options[select.selectedIndex];
+
+    var selectedName = selectedOption.textContent;
+    var selectedPhone = selectedOption.getAttribute("data-phone");
 
     // Set the value of the input to the selected customer's name
-    document.getElementById("customer").value = selectedText;
+    document.getElementById("customer").value = selectedName;
 
-    // Optionally, store the customer ID in a hidden field or handle it as needed
-    // document.getElementById("customerId").value = selectedValue;
+    // Display the phone number (for example, in a span or input field)
+    document.getElementById("customerPhoneDisplay").textContent = selectedPhone; // Display phone number in a div/span
+
+    // Optionally, store the customer's phone number in a hidden field if needed
+    document.getElementById("customerPhone").value = selectedPhone; // Assuming you have a hidden input field with ID customerPhone
 
     // Hide the dropdown after selection
     select.style.display = "none";
 }
+
+
 
 
 function openModal(modalId) {
@@ -246,8 +461,34 @@ function openModal(modalId) {
 }
 
 function closeModal(modalId) {
+    // Reset the form fields
+    document.getElementById("registerCustomerForm").reset();
+    
+    // Hide the modal
     document.getElementById(modalId).style.display = 'none';
 }
+
+function submitCustomerForm(event) {
+    event.preventDefault(); // Prevent the form from submitting in the traditional way
+
+    var form = document.getElementById('registerCustomerForm');
+    var formData = new FormData(form);
+
+    // Send the form data using AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "path_to_php_script.php", true);
+    xhr.onload = function () {
+        var response = JSON.parse(xhr.responseText);
+        if (response.success) {
+            alert(response.message);
+            closeModal('registerCustomerModal'); // Close the modal after success
+        } else {
+            alert(response.message);
+        }
+    };
+    xhr.send(formData);
+}
+
 
 function resetPage() {
     // Reload the page to reset everything
