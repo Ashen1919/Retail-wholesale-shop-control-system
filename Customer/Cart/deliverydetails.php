@@ -93,7 +93,7 @@
             <form>
                 <div class="mb-3">
                     <label for="name" class="form-label">Your Name:</label>
-                    <input type="text" id="name" class="form-control" required>
+                    <input type="text" id="name" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address:</label>
@@ -140,6 +140,7 @@
     
     <script src="../Assets/js/script.js"></script>
 
+    
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
     

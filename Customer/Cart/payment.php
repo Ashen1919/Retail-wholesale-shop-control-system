@@ -87,9 +87,10 @@
             alert('Payment submitted!');
         });
     </script>
-
-   
-
+    
+    
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
 
 </body>
