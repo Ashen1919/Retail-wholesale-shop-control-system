@@ -416,17 +416,16 @@ mysqli_close($conn);
     <section id="contact" class="contact section">
 
         <!-- Section Title -->
-        <div class="container title-section" data-aos="fade-up">
+        <div class="container title-section" >
             <h2 class="section-title" style="font-family: poppins;">Contact Us</h2>
         </div><!-- End Section Title -->
 
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="container" >
 
             <div class="row gy-4">
 
                 <div class="col-lg-6">
-                    <div class="info-item d-flex flex-column justify-content-center align-items-center"
-                        data-aos="fade-up" data-aos-delay="200">
+                    <div class="info-item d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-geo-alt"></i>
                         <h4 class="mt-3">Address</h4>
                         <p>328/1/D, Kokiskade Junction, Kirillawala, Kandy Road.</p>
@@ -434,8 +433,7 @@ mysqli_close($conn);
                 </div><!-- End Info Item -->
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="info-item d-flex flex-column justify-content-center align-items-center"
-                        data-aos="fade-up" data-aos-delay="300">
+                    <div class="info-item d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-telephone"></i>
                         <h4 class="mt-3">Call Us</h4>
                         <p>+94 33 267 8970</p>
@@ -443,8 +441,7 @@ mysqli_close($conn);
                 </div><!-- End Info Item -->
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="info-item d-flex flex-column justify-content-center align-items-center"
-                        data-aos="fade-up" data-aos-delay="400">
+                    <div class="info-item d-flex flex-column justify-content-center align-items-center">
                         <i class="bi bi-envelope"></i>
                         <h4 class="mt-3">Email Us</h4>
                         <p>sandarufoodmart@gmail.com</p>
@@ -454,7 +451,7 @@ mysqli_close($conn);
             </div>
 
             <div class="row gy-4 mt-1">
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-6">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3959.80522962877!2d79.987123!3d7.032164999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwMDEnNTUuOCJOIDc5wrA1OScxMy42IkU!5e0!3m2!1sen!2slk!4v1737170173296!5m2!1sen!2slk"
                         frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy"
@@ -462,8 +459,7 @@ mysqli_close($conn);
                 </div><!-- End Google Maps -->
 
                 <div class="col-lg-6">
-                    <form action="" method="post" class="php-email-form" data-aos="fade-up"
-                        data-aos-delay="400">
+                    <form action="" method="post" class="php-email-form" >
                         <div class="row gy-4">
 
                             <div class="col-md-6">
