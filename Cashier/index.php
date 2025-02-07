@@ -44,7 +44,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "cashier") {
                 </div>
                 <div class="profile-details">
                     <h3>Cashier Name</h3>
-                    <button class="logout-button">Logout</button>
+                    <button class="logout-button" onclick="logout()">Logout</button>
                 </div>
             </div>
         </div>
