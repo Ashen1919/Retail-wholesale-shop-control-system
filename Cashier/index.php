@@ -10,6 +10,14 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "cashier") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
+
+//database connection
+include("../Admin/Dashboard/db_con.php");
+
+//fetch all cashiers
+$sql = "SELECT * FROM customers WHERE userType = 'cashier'";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +51,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "cashier") {
                     <img src="Assets/images/person.png" alt="Cashier Profile Picture">
                 </div>
                 <div class="profile-details">
-                    <h3>Cashier Name</h3>
+                    <h3><?php echo $row['first_name']." ". $row['last_name'] ; ?></h3>
                     <button class="logout-button" onclick="logout()">Logout</button>
                 </div>
             </div>
