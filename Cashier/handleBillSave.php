@@ -61,40 +61,43 @@ try {
     $given_amount = number_format((float)$data['given_amount'], 2, '.', '');
     $balance = number_format((float)$data['balance'], 2, '.', '');
     
+    // Get status from request, default to 'in-progress' if not specified
+    $status = isset($data['status']) ? mysqli_real_escape_string($conn, $data['status']) : 'in-progress';
+    
     // Use prepared statement
-    // Modify the query in handleBillSave.php to allow NULL NIC values
     $query = "REPLACE INTO bills (
-     bill_number, 
-     nic,
-      date,
-      time,
-      product_details,
-      total_amount,
-      lending_amount,
-      given_amount,
-      balance,
-      status
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'in-progress')";
+        bill_number, 
+        nic,
+        date,
+        time,
+        product_details,
+        total_amount,
+        lending_amount,
+        given_amount,
+        balance,
+        status
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     // If NIC is empty string or null, set it to NULL for database
     $nic = (isset($data['nic']) && !empty($data['nic'])) ? $data['nic'] : null;
     
-    // Modify the prepare statement to handle NULL NIC
+    // Modify the prepare statement to handle NULL NIC and status
     $stmt = mysqli_prepare($conn, $query);
     if (!$stmt) {
-      throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
+        throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
     }
     
-    mysqli_stmt_bind_param($stmt, "sssssdddd",
-     $bill_number,
-     $nic,
-     $date,
-     $time,
-     $product_details,
-     $total_amount,
-     $lending_amount,
+    mysqli_stmt_bind_param($stmt, "sssssdddds",
+        $bill_number,
+        $nic,
+        $date,
+        $time,
+        $product_details,
+        $total_amount,
+        $lending_amount,
         $given_amount,
-     $balance
+        $balance,
+        $status
     );
     
     if (!mysqli_stmt_execute($stmt)) {

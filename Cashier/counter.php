@@ -139,7 +139,7 @@
                 </div>
             </div>
             <div class="final-action">
-                <button onclick="handleSave()" class="save-btn">Save</button>
+                <button onclick="handleRegularSave()" class="save-btn">Save</button>
                 <button onclick="handlePrint()" class="print-btn">Print</button>
             </div>
         </div>

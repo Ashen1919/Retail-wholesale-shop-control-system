@@ -1070,8 +1070,7 @@ function getProductDetailsFromTable() {
     return products.length > 0 ? products.join(',') : null;
 }
 
-// Modify handleSave to properly handle the NIC
-function handleSave() {
+function handleSave(isPrinting = false) {
     // Validate bill number
     const billNumber = document.getElementById("billNumber").value.trim();
     if (!billNumber) {
@@ -1105,7 +1104,8 @@ function handleSave() {
         total_amount: (parseFloat(totalAmountInput.value) || 0).toFixed(2),
         lending_amount: (parseFloat(lendingAmountInput?.value) || 0).toFixed(2),
         given_amount: (parseFloat(givenAmountInput.value) || 0).toFixed(2),
-        balance: (parseFloat(balanceInput.value) || 0).toFixed(2)
+        balance: (parseFloat(balanceInput.value) || 0).toFixed(2),
+        status: isPrinting ? 'completed' : 'in-progress' // Set status based on whether we're printing
     };
     
     console.log("Saving bill with payload:", payload);
@@ -1116,7 +1116,7 @@ function handleSave() {
         return;
     }
     
-    fetch('handleBillSave.php', {
+    return fetch('handleBillSave.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1129,8 +1129,7 @@ function handleSave() {
         
         if (data.success) {
             alert("Bill saved successfully!");
-            // Reload the page after a short delay
-            setTimeout(() => window.location.reload(), 1000);
+            return data; // Return the response for chaining
         } else {
             throw new Error(data.message || "Failed to save bill");
         }
@@ -1138,7 +1137,41 @@ function handleSave() {
     .catch(error => {
         console.error('Error saving bill:', error);
         alert(`Error saving bill: ${error.message}`);
+        throw error; // Re-throw for handling by the caller
     });
+}
+
+// Modified print handler with proper page reload
+function handlePrint() {
+    handleSave(true)
+        .then(() => {
+            // Trigger print dialog
+            window.print();
+            
+            // Set a timeout to reload the page after printing
+            // Using a longer timeout to ensure print dialog completes
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000); // 2 second delay
+        })
+        .catch(error => {
+            console.error('Error during print process:', error);
+            // Reload even if there's an error, after showing the error message
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+}
+
+// Regular save handler
+function handleRegularSave() {
+    handleSave(false)
+        .then(() => {
+            // Reload the page after a short delay
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
 }
 // Add a helper function to inspect in-progress bill format
 function inspectInProgressBill(billNumber) {
