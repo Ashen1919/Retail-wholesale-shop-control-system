@@ -70,3 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("counter-button").classList.add("active");
 });
 
+function logout() {
+    // Clear session or local storage if you are using them
+    sessionStorage.clear();  // or localStorage.clear();
+    
+    // Redirect the user to the login page or homepage
+    window.location.href = '../Customer/login_signup_page/login_signup_page.php'; // or your desired page
+}
