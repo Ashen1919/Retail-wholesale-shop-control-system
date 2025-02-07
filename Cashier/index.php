@@ -15,7 +15,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "cashier") {
 include("../Admin/Dashboard/db_con.php");
 
 //fetch all cashiers
-$sql = "SELECT * FROM customers WHERE userType = 'cashier'";
+$email = $_SESSION['user_email'];
+$sql = "SELECT * FROM customers WHERE userType = 'cashier' AND email = '".$email."'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -52,7 +53,7 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div class="profile-details">
                     <h3><?php echo $row['first_name']." ". $row['last_name'] ; ?></h3>
-                    <button class="logout-button" onclick="logout()">Logout</button>
+                    <a href="./logout.php"><button class="logout-button" >Logout</button></a>
                 </div>
             </div>
         </div>
