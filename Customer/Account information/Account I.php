@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +11,6 @@
     <link href="../Assets/images/logo.png" rel="apple-touch-icon">
 
     <!-- Css Stylesheets -->
-    <link href="../Assets/css/style.css" rel="stylesheet">
     <link href="../Assets/css/Account.css" rel="stylesheet">
     <link href="../Assets/css/UpdateAccount.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,97 +21,84 @@
 </head>
 
 <body>
+    <!-- Include Header -->
+    <?php include '../includes/header.php'; ?>
 
-    <body>
+    <div class="profile-container">
 
+        <!--Information Section -->
+        <form action="" method="post">
+            <div class="information-section">
+                
+                <div class="personal-info-section">
+                    <!-- Profile Section -->
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <img src="../Assets/images/profile_default.jpg" alt="Profile Picture">
+                            <button onclick="openModal('updatePictureModal')"><i class="bi bi-camera-fill"></i></button>
+                        </div>
+                        <div class="profile-info">
+                            <h3>Welcome Customer</h3>
 
-        <div class="right-side">
-            <div class="logout-button">
-                <button class="btn-dlt">
-                    <i class="bi bi-box-arrow-right"></i> Logout
-                </button>
+                        </div>
+                    </div>
+                    <!--Personal info-->
+                    <div class="info-section">
+                        <h4 style="margin-bottom: 10px;">Personal Information</h4>
+                        <div class="info-fields">
+                            <div class="info">
+                                <label for="">Name :</label>
+                                <input type="text" name="name" id="name" value="Customer name">
+                            </div>
+                            <div class="info">
+                                <label for="">Email :</label>
+                                <input type="text" name="Email" id="Email" value="Customer Email" readonly>
+                            </div>
+                            <div class="info">
+                                <label for="">Contact :</label>
+                                <input type="text" name="Contact" id="Contact" value="Customer Contact">
+                            </div>
+                            <div class="info">
+                                <label for="">Account Status :</label>
+                                <p>Active</p>
+                            </div>
+                        </div>
+
+                        <button class="per-submit">Update</button>
+                    </div>
+
+                </div>
             </div>
+        </form>
+    </div>
 
+    <!-- Update Profile Picture Modal -->
+    <div id="updatePictureModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('updatePictureModal')">&times;</span>
+            <h3>Update Profile Picture</h3>
+            <form id="updatePictureForm">
+                <label for="profilePicture"></label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*"
+                    onchange="previewImage(event)" required>
 
-
-            <div class="profile-container">
-
-                <!-- Profile Section -->
-                <div class="profile-header">
-                    <div class="profile-avatar">
-                        <img src="../Assets/images/profile_default.jpg" alt="Profile Picture">
-                        <button onclick="openModal('updatePictureModal')"><i class="bi bi-camera-fill"></i></button>
-                    </div>
-                    <div class="profile-info">
-                        <h3>Customer Name</h3>
-
-                    </div>
+                <div id="imagePreviewContainer" style="display: none;">
+                    <img id="imagePreview" src="" alt="Image Preview" />
                 </div>
 
-                <!-- Personal Information Section -->
-                <h4>Personal Information</h4>
-                <div class="personal-info">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
 
-                    <div class="info-fields">
-                        <div class="left-fields">
-                                <div class="one_line">
-                                <label for="first-name">Full Name:</label>
-                                <div class="details_box1">
-                                <input type="text" id="first-name" value="S.S.M.Chathuranganee" disabled>
-                                </div>
-                                </div>
-                                <div class="one_line">  
-                                <label for="email">Email:</label>
-                                <div class="details_box2">
-                                <input type="text" id="first-name" value="san@gmail.com" disabled>
-                          </div>
-                          </div>
-                          <div class="one_line">
-                                <label for="phone">Phone Number:</label>
-                                <div class="details_box3">
-                                <input type="text" id="first-name" value="0764578541" disabled>
-                            </div>
-                            </div>
-                            <div class="one_line">
-                                <label for="last-name">Address:</label>
-                                <div class="details_box4">
-                                <input type="text" id="first-name" value="Kekirawa/Anuradhapura" disabled>
-                            </div>
-                            </div>
-                            <div class="one_line">
-                                <label for="password">Password:</label>
-                                <div class="details_box5">
-                                <input type="password" id="first-name" value="sandubb" disabled>
-                                </div>
-                        </div>
-                    </div>
-                        <a href="../Update Account Page/UpdateAccount.php" rel="stylesheet">
-                        <i class="bi bi-pencil-square"></i> Edit 
-                  
-           
-                    <!-- Update Profile Picture Modal -->
-                    <div id="updatePictureModal" class="modal">
-                        <div class="modal-content">
-                            <span class="close" onclick="closeModal('updatePictureModal')">&times;</span>
-                            <h3>Update Profile Picture</h3>
-                            <form id="updatePictureForm">
-                                <label for="profilePicture"></label>
-                                <input type="file" id="profilePicture" name="profilePicture" accept="image/*"
-                                    onchange="previewImage(event)" required>
+    <!-- Include Footer -->
+    <?php include '../includes/footer.php'; ?>
 
-                                <div id="imagePreviewContainer" style="display: none;">
-                                    <img id="imagePreview" src="" alt="Image Preview" />
-                                </div>
+    <!--Script files-->
+    <script src="../Assets/js/script.js"></script>
+    <script src="../Assets/js/AccountI.js"></script>
+    <script src="../Assets/js/UpdateAccount.js"></script>
 
-                                <button type="submit">Upload</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <script src="../Assets/js/script.js"></script>
-                    <script src="../Assets/js/AccountI.js"></script>
-                    <script src="../Assets/js/UpdateAccount.js"></script>
-
-    </body>
+</body>
 
 </html>

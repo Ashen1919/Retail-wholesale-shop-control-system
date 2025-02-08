@@ -1,10 +1,15 @@
 
 .right-side {
-  padding: 20px;
-  height: 100vh;
+  height: auto;
   overflow: hidden;
 }
-
+.profile-container{
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  padding: 15px;
+}
 .profile-header {
   display: flex;
   align-items: center;
@@ -14,6 +19,8 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  justify-self: center;
 }
 
 .profile-avatar{
@@ -51,123 +58,84 @@
 .profile-avatar i:hover{
   color: white;
 }
+
 /* Personal Information Section */
-.personal-info {
-    margin-top: 20px;
-    text-align: left;
-    background-color: #f3f5f8;
-    padding: 20px;
-    height: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(230, 223, 223, 0.1);
-  
+.profile-container .information-section{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.personal-info-section{
+  display: block;
+  width: 50%;
+}
+.info-section{
+  background-color: #f3f5f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-
-.info-fields label {
-    display: block;
-    font-weight: bold;
-    margin: 10px 0 5px;
-    color: #000;
+.info-fields{
+  display: block;
+  width: 100%;
 }
 
-.info-fields input[type="text"] {
-    width: 100%;
-    padding: 1px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #e9ecef;
+.info{
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
 }
-/* Label Style */
-label {
+
+.info label{
   font-weight: bold;
-  color: #333;
-  font-size: 16px;
-  margin-right: 10px;
+  font-size: 18px;
+  white-space: nowrap;
 }
 
-/* Text Display Style */
-#first-name {
-  font-size: 16px;
-  color: #959799;  
-  font-weight: 500;
-  background-color: #e8e9eb;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
-  border: #f8f3f3;
-  width: 100%;
+.info input{
+  padding: 3px;
+  outline: none;
+  border-radius: 10px;
+  width: 250px;
+  position: absolute;
+  left: 30%;
 }
 
-/* For Disabled Input Field */
-input[disabled] {
-  display: flex;
-  background-color: #e9ecef;
-  color: #fcfdff;
-  border: 1px solid #ccc;
-  padding: 8px;
-  border-radius: 5px;
- 
-
+.info-section button{
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  transition: 0.3s ease-out;
+  border: none;
 }
 
-.info-fields a {
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 260px;
-    padding: 10px 10px;
-    background-color: #0b54a3;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    width: 80px;
-    
-}
-.one_line{
-  display: flex;
-  justify-content: row;
-  width: 100%;
-
-}
-.details_box1{
-  width: 60%;
-  height: 70%;
-  border: 1px solid #f7f3f3;
-  margin-left: 50px;
-
+.info-section button:hover{
+  transition: 0.3s ease-in;
+  background-color: #0061c9;
 }
 
-.details_box2{
-  width: 60%;
-  height: 70%;
-  border: 1px solid #f7f3f3;
-  margin-left: 86px;
+.billing-info-section{
+  background-color: #f3f5f8;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 40%;
 }
 
-.details_box3{
-  width: 60%;
-  height: 70%;
-  border: 1px solid #f7f3f3;
-  margin-left: 12px;
-}
-
-.details_box4{
-  width: 60%;
-  height: 70%;
-  border: 1px solid #f7f3f3;
-  margin-left: 67px;
-}
-
-.details_box5{
-  width: 60%;
-  height: 70%;
-  border: 1px solid #f7f3f3;
-  margin-left: 56px;
-}
-.info-fields a:hover {
-    background-color: #176ee0;
-    color: white;
+@media (max-width:481px){
+  .profile-header{
+    width: 100%;
+  }
+  .personal-info-section{
+    width: 100%;
+  }
 }
 /* Update Profile Modals styles */
 .modal {
