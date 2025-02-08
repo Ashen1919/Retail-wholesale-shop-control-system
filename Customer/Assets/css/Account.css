@@ -67,7 +67,7 @@
 }
 .personal-info-section{
   display: block;
-  width: 50%;
+  width: auto;
 }
 .info-section{
   background-color: #f3f5f8;
@@ -91,6 +91,20 @@
   position: relative;
 }
 
+.info .active-st{
+  padding: 3px 6px;
+  border-radius: 10px;
+  background-color: #28a745;
+  color: white;
+}
+
+.info .disable-st{
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #e71d1d;
+  color: white;
+}
+
 .info label{
   font-weight: bold;
   font-size: 18px;
@@ -101,7 +115,7 @@
   padding: 3px;
   outline: none;
   border-radius: 10px;
-  width: 250px;
+  width: 350px;
   position: absolute;
   left: 30%;
 }
