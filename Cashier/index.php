@@ -62,5 +62,6 @@ $row = mysqli_fetch_assoc($result);
     </div>
     <script src="./Assets/js/index.js"></script>
     <script src="./Assets/js/counter.js"></script>
+    <script src="./Assets/js/repaymentsForm.js"></script>
 </body>
 </html>

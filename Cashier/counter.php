@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="./Assets/css/counter.css" rel="stylesheet">
     <link href="./Assets/css/registerCustomer.css" rel="stylesheet">
+    <link href="./Assets/css/repaymentsModal.css" rel="stylesheet">
 </head>
 
 <body>
@@ -108,7 +109,7 @@
         <div class="footer-section">
             <div class="four-btns">
                 <div class="upper-btns">
-                    <button class="continue-btn">Continue</button>
+                    <button onclick="openRepayModal('repaymentModal')" class="continue-btn">Repayments</button>
                     <button onclick="newBill()" class="new-btn">New</button>
                 </div>
                 <div class="lower-btns"> 
@@ -168,7 +169,35 @@
         </div>
     </div>
 
+    <!-- Repayments Modal-->
+    <div id="repaymentModal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal('repaymentModal')"><i class="bi bi-x"></i></button>
+            <h2>Repayments</h2>
+            <form id="repaymentForm" action="path_to_php_script.php" method="POST" onsubmit="submitRepaymentForm(event)">
+                <div>
+                    <label for="name">Name : </label>
+                    <input type="text" id="repayCustomer" oninput="repaySearchCustomer()" placeholder="Search by name" autocomplete="off">
+                    <select id="repayCustomerDropdown" size="5" style="display:none;" onclick="repaySelectCustomer()">
+                    </select>
+                    <div id="repayCustomerDisplay"></div>
+                    <input type="hidden" id="repayPhone" name="customerPhone">
+                    <input type="hidden" id="data-nic" name="customerNIC">
+                </div>
+
+                <label for="date">Date:</label>
+                <input type="date" id="crntDate" name="date" readonly>
+
+                <label for="amount">Amount:</label>
+                <input type="number" id="repayAmount" name="amount" required>
+                
+                <button type="submit">Pay</button>
+            </form>
+        </div>
+    </div>
+
     <script src="./Assets/js/counter.js"></script>
+    <script src="./Assets/js/repaymentsForm.js"></script>
 
 </body>
 </html>
