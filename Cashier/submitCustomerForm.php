@@ -2,14 +2,13 @@
 include("../Admin/Dashboard/db_con.php");
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $conn->real_escape_string($_POST['email']);
-    $firstName = $conn->real_escape_string($_POST['firstName']);
-    $lastName = $conn->real_escape_string($_POST['lastName']);
+    $name = $conn->real_escape_string($_POST['name']);
+    $nic = $conn->real_escape_string($_POST['nic']);
     $phone = $conn->real_escape_string($_POST['phone']);
-    $choice = $_POST['type'];
+    $email = $conn->real_escape_string($_POST['email']);
 
-    $sql = "INSERT INTO customers (email, first_name, last_name, phone_number) 
-            VALUES ('$email', '$firstName', '$lastName', '$phone', '$choice')";
+    $sql = "INSERT INTO wholesale_customers (name, nic, phone, email) 
+            VALUES ('$name', '$nic', '$phone', '$email')";
 
     if ($conn->query($sql) === TRUE) {
         echo json_encode(["success" => true, "message" => "Customer added successfully"]);

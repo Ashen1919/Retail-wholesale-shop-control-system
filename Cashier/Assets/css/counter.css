@@ -17,12 +17,23 @@ body {
     margin-bottom: 20px;
 }
 
+.header-section div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .header-section input[type="text"], 
 .header-section input[type="number"], 
 .header-section select {
     padding: 5px;
     border: 1px solid #ccc;
     width: 180px;
+}
+
+#orderDate,
+#orderTime {
+    width: 100px;
 }
 
 .header-section button {

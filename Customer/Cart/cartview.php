@@ -21,7 +21,7 @@
             background-color: #f9f9f9;
         }
 
-        .container {
+        .container_cart {
             display: grid;
             grid-template-columns: 3fr 1fr;
             gap: 20px;
@@ -168,7 +168,7 @@
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
-    <div class="container">
+    <div class="container_cart">
         <div class="cart-items">
             <div class="cart-header">
                 <h2>Shopping Cart</h2>

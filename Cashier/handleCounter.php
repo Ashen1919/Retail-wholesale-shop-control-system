@@ -11,53 +11,88 @@ $data = json_decode(file_get_contents("php://input"), true);
 // Initialize response array
 $response = ["success" => false, "message" => "Invalid request"];
 
+// Debugging: Check received GET parameters
+if (!empty($_GET)) {
+    error_log("Received GET parameters: " . json_encode($_GET));
+}
 
+// ---------------------------------
 // Get In-Progress Orders
-if (isset($_GET['get_in_progress_orders']) && $_GET['get_in_progress_orders'] === 'true') {
-    if (!$conn) {
-        echo json_encode(["success" => false, "message" => "Database connection failed"]);
+// ---------------------------------
+if (isset($_GET['get_in_progress_orders'])) {
+    error_log("Fetching in-progress orders...");
+
+    $query = "SELECT bill_number FROM bills WHERE status = 'in-progress' ORDER BY bill_number ASC";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        $orders = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $orders[] = $row['bill_number'];
+        }
+
+        echo json_encode(["success" => true, "orders" => $orders]);
+        exit;
+    } else {
+        echo json_encode(["success" => false, "message" => "Database error: " . mysqli_error($conn)]);
         exit;
     }
+}
 
-    // Fetch orders with status 'in-progress'
-    $query = "SELECT id FROM orders WHERE status = 'in-progress' ORDER BY id ASC";
+// ---------------------------------
+// Fetch Bill Details
+// ---------------------------------
+elseif (isset($_GET['fetch_bill_details']) && isset($_GET['bill_number'])) {
+    $billNumber = mysqli_real_escape_string($conn, $_GET['bill_number']);
+    error_log("Fetching details for bill: " . $billNumber);
+
+    $query = "SELECT * FROM bills WHERE bill_number = '$billNumber'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        $orders = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $orders[] = $row['id'];
-        }
-        echo json_encode(["success" => true, "orders" => $orders]);
+        $billDetails = mysqli_fetch_assoc($result);
+        echo json_encode(["success" => true, "bill" => $billDetails]);
     } else {
-        echo json_encode(["success" => false, "message" => "No in-progress orders found"]);
+        echo json_encode(["success" => false, "message" => "No details found for this bill."]);
     }
     exit;
 }
 
+// Add this to your existing handleCounter.php file
+elseif (isset($data['searchCustomerByNIC'])) {
+    $nic = mysqli_real_escape_string($conn, $data['searchCustomerByNIC']);
+    
+    $query = "SELECT name, phone FROM wholesale_customers WHERE nic = '$nic'";
+    $result = mysqli_query($conn, $query);
 
-
+    if ($result && mysqli_num_rows($result) > 0) {
+        $customer = mysqli_fetch_assoc($result);
+        $response = ["success" => true, "customer" => $customer];
+    } else {
+        $response = ["success" => false, "message" => "Customer not found"];
+    }
+}
 
 // ---------------------------------
-// Get Last Order ID
+// Get Last Bill Number
 // ---------------------------------
-if (isset($_GET['get_last_id']) && $_GET['get_last_id'] === 'true') {
+elseif (isset($_GET['get_last_id']) && $_GET['get_last_id'] === 'true') {
     if (!$conn) {
         $response = ["success" => false, "message" => "Database connection failed"];
     } else {
-        $query = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
+        $query = "SELECT bill_number FROM bills ORDER BY bill_number DESC LIMIT 1";
         $result = mysqli_query($conn, $query);
 
         if ($result && mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            $lastId = $row['id']; // Example: "O-00002"
+            $lastId = $row['bill_number'];
 
-            // Extract numeric part (remove "O-" prefix)
+            // Extract numeric part (remove "B-" prefix)
             $numericPart = intval(preg_replace('/[^0-9]/', '', $lastId));
 
             // Generate next ID
             $nextNumericId = $numericPart + 1;
-            $formattedId = "O-" . str_pad($nextNumericId, 5, "0", STR_PAD_LEFT);
+            $formattedId = "B-" . str_pad($nextNumericId, 5, "0", STR_PAD_LEFT);
 
             $response = [
                 "success" => true,
@@ -67,21 +102,20 @@ if (isset($_GET['get_last_id']) && $_GET['get_last_id'] === 'true') {
         } else {
             $response = [
                 "success" => true,
-                "last_order_id" => "O-00001",
-                "next_order_id" => "O-00001"
+                "last_order_id" => "B-00001",
+                "next_order_id" => "B-00001"
             ];
         }
     }
 }
 
 // ---------------------------------
-// Search Customer (By First & Last Name)
+// Search Wholesale Customer (By Name)
 // ---------------------------------
 elseif (isset($data['searchCustomer'])) {
     $searchTerm = mysqli_real_escape_string($conn, $data['searchCustomer']);
 
-    $query = "SELECT id, first_name, last_name FROM customers 
-              WHERE first_name LIKE '%$searchTerm%' OR last_name LIKE '%$searchTerm%'";
+    $query = "SELECT name, nic, phone FROM wholesale_customers WHERE name LIKE '%$searchTerm%'";
     $result = mysqli_query($conn, $query);
 
     if ($result && mysqli_num_rows($result) > 0) {
@@ -122,7 +156,6 @@ elseif (isset($data['product_id']) && isset($data['type'])) {
     $productId = mysqli_real_escape_string($conn, $data['product_id']);
     $type = mysqli_real_escape_string($conn, $data['type']);
 
-    // Query to get product details from the database
     $query = "SELECT product_name, retail_price, whole_price FROM products WHERE product_id = '$productId'";
     $result = mysqli_query($conn, $query);
 
@@ -153,5 +186,4 @@ elseif (isset($data['product_id']) && isset($data['type'])) {
 // ---------------------------------
 echo json_encode($response);
 exit;
-
 ?>
