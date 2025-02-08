@@ -200,4 +200,184 @@
     <script src="./Assets/js/repaymentsForm.js"></script>
 
 </body>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Regular page styles */
+        .print-only {
+            display: none;
+        }
+
+        /* Print-specific styles */
+        @media print {
+            /* Hide everything except the bill */
+            body * {
+                visibility: hidden;
+            }
+
+            .print-only, .print-only * {
+                visibility: visible;
+                display: block;
+            }
+
+            .print-only {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            /* Bill styles */
+            .bill-container {
+                font-family: 'Courier New', monospace;
+                width: 80mm; /* Standard receipt width */
+                margin: 0 auto;
+                padding: 10px;
+            }
+
+            .bill-header {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .bill-header h1 {
+                font-size: 30px;
+                margin: 15px 0;
+            }
+
+            .bill-info {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            .bill-info div {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .bill-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 10px 0;
+                font-size: 12px;
+            }
+
+            .bill-table tr{
+                display: flex;
+            }
+
+            .bill-table th,
+            .bill-table td {
+                text-align: left;
+                padding: 3px 0;
+            }
+
+            /* Define specific column widths */
+            .bill-table th:nth-child(1),
+            .bill-table td:nth-child(1) {
+                width: 55%;  /* Product name */
+            }
+
+            .bill-table th:nth-child(2),
+            .bill-table td:nth-child(2) {
+                width: 10%;  /* Quantity */
+            }
+
+            .bill-table th:nth-child(3),
+            .bill-table td:nth-child(3) {
+                width: 15%;  /* Unit price */
+            }
+
+            .bill-table th:nth-child(4),
+            .bill-table td:nth-child(4) {
+                width: 20%;  /* Amount */
+            }
+
+            .bill-table .amount {
+                text-align: right;
+            }
+
+            .bill-totals {
+                margin-top: 10px;
+                border-top: 1px dashed #000;
+                padding-top: 5px;
+            }
+
+            .bill-totals div {
+                display: flex;
+                justify-content: space-between;
+                font-size: 12px;
+                margin: 3px 0;
+            }
+
+            .bill-footer {
+                text-align: center;
+                margin-top: 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Print-only bill layout -->
+    <div class="print-only">
+        <div class="bill-container">
+            <div class="bill-header">
+                <h1>Sandaru Food Mart</h1>
+                <p>No: 328/1/D, Kokiskade Junction, Kirillawala, Kandy Road</p>
+                <p>Phone: +94 33 267 8970</p>
+                <p>Email: sandarufoodmart@gmail.com</p>
+            </div>
+
+            <div class="bill-info">
+                <div>Bill No: <span id="print-bill-number"></span></div>
+                <div>Cashier: <span id="print-cashier"></span></div>
+                <div>Date: <span id="print-date"></span></div>
+                <div>Time: <span id="print-time"></span></div>
+                <div>Customer: <span id="print-customer"></span></div>
+            </div>
+
+            <table class="bill-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th class="amount">Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="print-items">
+                    <!-- Items will be populated dynamically -->
+                </tbody>
+            </table>
+
+            <div class="bill-totals">
+                <div>
+                    <span>Total:</span>
+                    <span id="print-total"></span>
+                </div>
+                <div>
+                    <span>Given Amount:</span>
+                    <span id="print-given"></span>
+                </div>
+                <div>
+                    <span>Balance:</span>
+                    <span id="print-balance"></span>
+                </div>
+                <div id="print-lending-container" style="display: none;">
+                    <span>Lending Amount:</span>
+                    <span id="print-lending"></span>
+                </div>
+            </div>
+
+            <div class="bill-footer">
+                <p>Thank you very much!</p>
+                <p>Come again...</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
 </html>

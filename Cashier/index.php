@@ -53,6 +53,7 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div class="profile-details">
                     <h3><?php echo $row['first_name']." ". $row['last_name'] ; ?></h3>
+                    <input type="hidden" id="cashier-name" value="<?php echo $row['first_name']." ". $row['last_name']; ?>">
                     <a href="./logout.php"><button class="logout-button" >Logout</button></a>
                 </div>
             </div>
