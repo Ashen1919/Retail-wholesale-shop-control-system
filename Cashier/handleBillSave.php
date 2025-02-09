@@ -42,8 +42,8 @@ try {
         
         // Validate and format each part
         $product_id = mysqli_real_escape_string($conn, trim($parts[0]));
-        $quantity = number_format((float)$parts[1], 0, '.', ''); // No decimals for quantity
-        $unit_price = number_format((float)$parts[2], 2, '.', ''); // Two decimals for price
+        $quantity = number_format((float)$parts[1], 0, '.', '');
+        $unit_price = number_format((float)$parts[2], 2, '.', '');
         
         if (!is_numeric($quantity) || !is_numeric($unit_price)) {
             throw new Exception("Invalid quantity or price format");
@@ -64,7 +64,7 @@ try {
     // Get status from request, default to 'in-progress' if not specified
     $status = isset($data['status']) ? mysqli_real_escape_string($conn, $data['status']) : 'in-progress';
     
-    // Use prepared statement
+    // Save bill details
     $query = "REPLACE INTO bills (
         bill_number, 
         nic,
@@ -78,10 +78,6 @@ try {
         status
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-    // If NIC is empty string or null, set it to NULL for database
-    $nic = (isset($data['nic']) && !empty($data['nic'])) ? $data['nic'] : null;
-    
-    // Modify the prepare statement to handle NULL NIC and status
     $stmt = mysqli_prepare($conn, $query);
     if (!$stmt) {
         throw new Exception("Failed to prepare statement: " . mysqli_error($conn));
@@ -102,6 +98,26 @@ try {
     
     if (!mysqli_stmt_execute($stmt)) {
         throw new Exception("Failed to execute statement: " . mysqli_stmt_error($stmt));
+    }
+    
+    // If there's a lending amount and NIC, save to lendings table
+    if ($lending_amount > 0 && $nic) {
+        $lending_query = "INSERT INTO lendings (nic, date, amount) VALUES (?, ?, ?)";
+        $lending_stmt = mysqli_prepare($conn, $lending_query);
+        
+        if (!$lending_stmt) {
+            throw new Exception("Failed to prepare lending statement: " . mysqli_error($conn));
+        }
+        
+        mysqli_stmt_bind_param($lending_stmt, "ssd",
+            $nic,
+            $date,
+            $lending_amount
+        );
+        
+        if (!mysqli_stmt_execute($lending_stmt)) {
+            throw new Exception("Failed to save lending information: " . mysqli_stmt_error($lending_stmt));
+        }
     }
     
     // Verify the saved data
@@ -125,7 +141,7 @@ try {
     
     echo json_encode([
         "success" => true,
-        "message" => "Bill saved successfully",
+        "message" => "Bill saved successfully" . ($lending_amount > 0 ? " with lending information" : ""),
         "bill_number" => $bill_number,
         "product_details" => $saved_data['product_details']
     ]);
