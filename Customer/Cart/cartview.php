@@ -208,11 +208,14 @@
                 <strong>Total</strong>
                 <strong id="total">Rs. 300</strong>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <button class="checkout-btn">
+                <a href="../cart/checkout.php" class="checkout-btn">Checkout</a></button>
             <br/>
-            <button class="shopping-btn">Keep Shopping</button>
+            <button class="shopping-btn">
+                <a href="../../index.php" class="shopping-btn">Keep Shopping</a></button>
         </div>
     </div>
+
 
 <!-- js files -->
     <script>
