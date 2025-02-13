@@ -101,7 +101,7 @@ mysqli_close($conn);
                     <li><a href="#contact">Contact us</a></li>
                     <div class="right-side-mobile-icons">
                         <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
-                        <a class="wishlist" href="../MyOrders/orderhistory.php"><i class="bi bi-heart"></i></i></a>
+                        <a class="wishlist" href=""><i class="bi bi-heart"></i></i></a>
                         <?php
                         if ($_SESSION['user_email']) {
                             ?>
@@ -109,7 +109,7 @@ mysqli_close($conn);
                                 <img src="../Assets/images/customers/<?php echo $row_user['image'] ?>"
                                     alt="Profile Image" style="width:50px; height:50px;">
                                 <div class="links">
-                                    <a href="../Update Account Page/UpdateAccount.php">Settings</a>
+                                    <a href="../Account information/Account I.php">Settings</a>
                                     <a href="../logout.php">Logout</a>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ mysqli_close($conn);
             </nav>
             <div class="right-side-icons">
                 <a class="cart" href="../Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
-                <a class="wishlist" href="../MyOrders/orderhistory.php"><i class="bi bi-heart  "></i></i></a>
+                <a class="wishlist" href=""><i class="bi bi-heart  "></i></i></a>
                 <?php
                 if ($_SESSION['user_email']) {
                     ?>
@@ -137,7 +137,7 @@ mysqli_close($conn);
                         <img src="../Assets/images/customers/<?php echo $row_user['image'] ?>" alt="Profile Image"
                             style="width:50px; height:50px;">
                         <div class="links">
-                            <a href="../Update Account Page/UpdateAccount.php">Settings</a>
+                            <a href="../Account information/Account I.php">Settings</a>
                             <a href="../logout.php">Logout</a>
                         </div>
                     </div>
