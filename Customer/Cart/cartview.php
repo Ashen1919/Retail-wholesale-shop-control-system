@@ -1,5 +1,9 @@
-<!-- Include Header -->
-<?php include '../includes/header.php'; ?>
+<?php 
+//include header
+include '../includes/header.php'; 
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +27,8 @@
             <div class="cart-header">
                 <h2>Your Shopping Cart</h2>
             </div>
-            <div class="cart-item">
+            <!-- <h5><i>Your cart is empty!</i></h5> -->
+            <!-- <div class="cart-item">
                 <div style="display:flex; align-items: center; ">
                     <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
                     <div class="item-details">
@@ -40,7 +45,7 @@
                     <p class="item-price">Rs. 300</p>
                     <button class="removeBtn"><i class="bi bi-x"></i></button>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="order-summary">
