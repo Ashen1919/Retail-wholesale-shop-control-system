@@ -142,12 +142,7 @@
             </div>
             <div class="status-delivered">Delivered</div>
         </div>
-        
-        <!-- <div class="keep-shopping">
-            <button a href="../../index.php" class="btn btn-primary">
-            <h3 style="font-weight:600; margin-bottom:10px;">Keep Shopping</h3>
-            </button>
-        </div> -->
+
 
         <div class="keep-shopping">
                     <a href="../../index.php" class="styled-link">
