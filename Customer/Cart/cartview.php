@@ -84,6 +84,14 @@ if ($res_product && mysqli_num_rows($res_product) > 0) {
     mysqli_data_seek($res_product, 0);
 }
 
+//store details in sessions
+if (isset($_POST['checkout-Btn'])) {
+    $_SESSION['total_price'] = $total_price;
+    $_SESSION['sub_total'] = $sub_total;
+    header("Location: ./checkout.php");
+    exit();
+}
+
 //close connection
 mysqli_close($conn);
 ?>
@@ -160,14 +168,13 @@ mysqli_close($conn);
             </div>
             <div>
                 <span>Shipping Fee</span>
-                <span>Rs. 300</span>
+                <span>Rs. 300.00</span>
             </div>
             <div>
                 <strong>Total</strong>
                 <strong id="total">Rs. <?php echo number_format($sub_total, 2); ?></strong>
             </div>
-            <a href=""><button class="checkout-btn">Proceed to Checkout</button></a>
-            <br />
+            <button type="button" id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
             <a href=""><button class="shopping-btn">Keep Shopping</button></a>
         </div>
     </div>
@@ -179,15 +186,43 @@ mysqli_close($conn);
     <!--Real time price update-->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            let total = <?php echo $sub_total; ?>;
             const priceElements = document.querySelectorAll(".item-price");
             const quantityControls = document.querySelectorAll(".quantity-control");
+            const subtotalElement = document.getElementById("subtotal");
+            const totalElement = document.getElementById("total");
 
+            // Function to recalculate and update the total and subtotal
+            function updateTotal() {
+                let newTotal = 0;
+                document.querySelectorAll(".cart-item").forEach((item, index) => {
+                    let itemPrice = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
+                    let itemQuantity = parseInt(item.querySelector(".number").textContent);
+                    newTotal += itemPrice * itemQuantity;
+                });
+
+                // Shipping fee (static as per your code)
+                let shippingFee = 300;
+                let finalTotal = newTotal + shippingFee;
+
+                // Update the totals in the DOM
+                subtotalElement.textContent = "Rs. " + newTotal.toFixed(2);
+                totalElement.textContent = "Rs. " + finalTotal.toFixed(2);
+
+                // Save the values to localStorage
+                localStorage.setItem("subtotal", newTotal.toFixed(2));
+                localStorage.setItem("total", finalTotal.toFixed(2));
+            }
+
+            // Retrieve stored quantity from localStorage, if available
             quantityControls.forEach((control, index) => {
                 const decrementBtn = control.querySelector("#decrement");
                 const incrementBtn = control.querySelector("#increment");
                 const quantitySpan = control.querySelector(".number");
-                let price = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
+
+                let savedQuantity = localStorage.getItem("quantity_" + index);
+                if (savedQuantity) {
+                    quantitySpan.textContent = savedQuantity;
+                }
 
                 decrementBtn.addEventListener("click", function () {
                     let quantity = parseInt(quantitySpan.textContent);
@@ -195,6 +230,7 @@ mysqli_close($conn);
                         quantity--;
                         quantitySpan.textContent = quantity;
                         updateTotal();
+                        localStorage.setItem("quantity_" + index, quantity); // Save to localStorage
                     }
                 });
 
@@ -203,26 +239,23 @@ mysqli_close($conn);
                     quantity++;
                     quantitySpan.textContent = quantity;
                     updateTotal();
+                    localStorage.setItem("quantity_" + index, quantity); // Save to localStorage
                 });
+            });
 
-                function updateTotal() {
-                    let newTotal = 0;
-                    document.querySelectorAll(".cart-item").forEach((item, i) => {
-                        let itemPrice = parseFloat(priceElements[i].textContent.replace("Rs. ", ""));
-                        let itemQuantity = parseInt(item.querySelector(".number").textContent);
-                        newTotal += itemPrice * itemQuantity;
-                    });
+            // Initial total calculation when page loads
+            updateTotal();
 
-                    let shippingFee = 300;
-                    let finalTotal = newTotal + shippingFee;
-
-                    document.getElementById("subtotal").textContent = "Rs. " + newTotal.toFixed(2);
-                    document.getElementById("total").textContent = "Rs. " + finalTotal.toFixed(2);
-                }
-
+            // Save subtotal and total to localStorage when checkout button is clicked
+            document.getElementById("checkoutBtn").addEventListener("click", function () {
+                // Save final totals to localStorage before redirecting to checkout page
+                localStorage.setItem("subtotal", subtotalElement.textContent.replace("Rs. ", ""));
+                localStorage.setItem("total", totalElement.textContent.replace("Rs. ", ""));
+                window.location.href = './checkout.php';
             });
         });
     </script>
+
 
 </body>
 

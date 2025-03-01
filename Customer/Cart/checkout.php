@@ -1,3 +1,11 @@
+<?php
+session_start();
+error_reporting(0);
+
+$total_price = $_SESSION['total_price'];
+$sub_total = $_SESSION['sub_total'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,15 +49,15 @@
             <h3>Order Summary</h3>
             <div>
                 <span>Subtotal</span>
-                <span id="subtotal">Rs. 300</span>
+                <span id="checkout-subtotal"></span>
             </div>
             <div>
                 <span>Shipping Fee</span>
-                <span>Rs. 250</span>
+                <span>Rs. 300.00</span>
             </div>
             <div>
                 <strong>Total</strong>
-                <strong id="total">Rs. 550</strong>
+                <span id="checkout-total"></span>
             </div>
             <a href="..\Cart\payment.php"><button class="checkout-btn">Pay Now</button></a>
             <br />
@@ -60,7 +68,20 @@
 
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve the subtotal and total from localStorage
+            const subtotal = localStorage.getItem("subtotal");
+            const total = localStorage.getItem("total");
 
+            if (subtotal && total) {
+                // Update the DOM elements with the retrieved values
+                document.getElementById("checkout-subtotal").textContent = "Rs. " + subtotal;
+                document.getElementById("checkout-total").textContent = "Rs. " + total;
+            }
+        });
+
+    </script>
 
 </body>
 
