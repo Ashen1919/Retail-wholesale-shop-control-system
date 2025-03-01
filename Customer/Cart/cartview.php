@@ -166,13 +166,11 @@ mysqli_close($conn);
                 <strong>Total</strong>
                 <strong id="total">Rs. <?php echo number_format($sub_total, 2); ?></strong>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <a href=""><button class="checkout-btn">Proceed to Checkout</button></a>
             <br />
-            <button class="shopping-btn">Keep Shopping</button>
+            <a href=""><button class="shopping-btn">Keep Shopping</button></a>
         </div>
     </div>
-
-
 
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>

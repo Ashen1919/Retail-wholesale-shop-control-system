@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
@@ -12,7 +11,7 @@ body {
 .payment-container {
     display: flex;
     flex-wrap: wrap;
-    max-width: 950px;
+    max-width: 1050px;
     margin: 50px auto;
     background: #fff;
     border-radius: 8px;
@@ -50,6 +49,7 @@ body {
     text-align: center;
     cursor: pointer;
     transition: all 0.3s;
+    height: 150px;
 }
 
 .method-item.active {
@@ -85,10 +85,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-h2 {
-    color: #007bff;
 }
 
 h3 {
@@ -131,6 +127,10 @@ h3 {
 
 .order-summary h3 {
     margin: 0 0 10px;
+}
+
+.order-summary{
+    width: 400px;
 }
 
 .order-summary div {
