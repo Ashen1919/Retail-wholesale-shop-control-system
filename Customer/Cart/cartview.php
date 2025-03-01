@@ -1,8 +1,44 @@
-<?php 
+<?php
+session_start();
+error_reporting(0);
 //include header
-include '../includes/header.php'; 
+include '../includes/header.php';
 
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
+//retrieve cart details
+$email = $_SESSION['user_email'];
+$cart_sql = "SELECT product_id FROM cart WHERE email = '$email'";
+$res_cart = mysqli_query($conn, $cart_sql);
+
+if (mysqli_num_rows($res_cart) > 0) {
+    $product_ids = [];
+    while ($row = mysqli_fetch_assoc($res_cart)) {
+        $product_ids[] = $row['product_id'];
+    }
+}else{
+    $res_product = false;
+}
+
+if (!empty($product_ids)) {
+    $escaped_ids = array_map(function ($id) use ($conn) {
+        return mysqli_real_escape_string($conn, $id);
+    }, $product_ids);
+
+    $product_ids_string = "'" . implode("','", $escaped_ids) . "'";
+
+    // Retrieve product details
+    $product_sql = "SELECT * FROM products WHERE product_id IN ($product_ids_string)";
+    $res_product = mysqli_query($conn, $product_sql);
+
+    if (!$res_product) {
+        die("Product Query Failed: " . mysqli_error($conn));
+    }
+}
+
+//close connection
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -27,25 +63,39 @@ include '../includes/header.php';
             <div class="cart-header">
                 <h2>Your Shopping Cart</h2>
             </div>
-            <!-- <h5><i>Your cart is empty!</i></h5> -->
-            <!-- <div class="cart-item">
-                <div style="display:flex; align-items: center; ">
-                    <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
-                    <div class="item-details">
-                        <h4>Zesta 90g 50 Tea Bags</h4>
-                        <p>Brand: Zesta</p>
+            <?php
+            if ($res_product && mysqli_num_rows($res_product) > 0) {
+                ?>
+                <?php
+                while ($row = mysqli_fetch_assoc($res_product)) {
+                    ?>
+                    <div class="cart-item">
+                        <div style="display:flex; align-items: center; ">
+                            <img src="../../Admin/Assets/images/products/<?php echo $row['image']; ?>" alt="Tea Bags">
+                            <div class="item-details">
+                                <h4><?php echo $row['product_name']; ?></h4>
+                                <p>Brand: <?php echo $row['supplier']; ?></p>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button id="decrement">-</button>
+                                <span class="number">1</span>
+                                <button id="increment">+</button>
+                            </div>
+                            <p class="item-price">Rs. <?php echo $row['retail_price']; ?></p>
+                            <button class="removeBtn"><i class="bi bi-x"></i></button>
+                        </div>
                     </div>
-                </div>
-                <div class="item-actions">
-                    <div class="quantity-control">
-                        <button id="decrement">-</button>
-                        <span class="number">1</span>
-                        <button id="increment">+</button>
-                    </div>
-                    <p class="item-price">Rs. 300</p>
-                    <button class="removeBtn"><i class="bi bi-x"></i></button>
-                </div>
-            </div> -->
+                    <?php
+                }
+                ?>
+                <?php
+            } else {
+                ?>
+                <h5><i>Your cart is empty!</i></h5>
+            <?php } ?>
+
         </div>
 
         <div class="order-summary">
