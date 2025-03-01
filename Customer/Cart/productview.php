@@ -71,6 +71,7 @@ function formatPrice($price)
         <div class="product-details">
 
             <h1><?php echo htmlspecialchars($product['product_name']); ?></h1>
+            <h6>Brand: &nbsp; <?php echo htmlspecialchars($product['supplier']); ?></h6>
             <div class="units"><?php echo htmlspecialchars($product['units']); ?></div>
             <div class="price">Rs. <?php echo formatPrice($product['retail_price']); ?></div>
             </br>
