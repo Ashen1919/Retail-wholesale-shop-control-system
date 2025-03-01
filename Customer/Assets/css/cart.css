@@ -112,10 +112,6 @@ body {
     cursor: pointer;
 }
 
-.quantity-control #decrement {
-    color: #999;
-}
-
 .quantity-control .number {
     display: flex;
     justify-content: center;

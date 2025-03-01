@@ -17,7 +17,7 @@ if (mysqli_num_rows($res_cart) > 0) {
     while ($row = mysqli_fetch_assoc($res_cart)) {
         $product_ids[] = $row['product_id'];
     }
-}else{
+} else {
     $res_product = false;
 }
 
@@ -35,6 +35,53 @@ if (!empty($product_ids)) {
     if (!$res_product) {
         die("Product Query Failed: " . mysqli_error($conn));
     }
+}
+
+//remove from cart
+if (isset($_POST['remove_from_cart'])) {
+    $remove_pro_id = $_POST['remove_product_id'];
+    $remove_sql = "DELETE FROM cart WHERE product_id = '$remove_pro_id'";
+    $res_remove = mysqli_query($conn, $remove_sql);
+
+    if ($res_remove) {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully removed from cart",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location.href = "./cartview.php";
+                });
+            });
+        </script>';
+    } else {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            </script>';
+    }
+}
+
+//total price calculation
+$total_price = 0;
+$sub_total = 0;
+
+if ($res_product && mysqli_num_rows($res_product) > 0) {
+    while ($row = mysqli_fetch_assoc($res_product)) {
+        $total_price += $row['retail_price'];
+    }
+    $sub_total = $total_price + 300;
+    mysqli_data_seek($res_product, 0);
 }
 
 //close connection
@@ -57,6 +104,9 @@ mysqli_close($conn);
 </head>
 
 <body>
+
+    <?php if (isset($message))
+        echo $message; ?>
 
     <div class="container_cart">
         <div style="display: block; width:100%;">
@@ -84,7 +134,11 @@ mysqli_close($conn);
                                 <button id="increment">+</button>
                             </div>
                             <p class="item-price">Rs. <?php echo $row['retail_price']; ?></p>
-                            <button class="removeBtn"><i class="bi bi-x"></i></button>
+                            <form action="./cartview.php" method="post">
+                                <input style="display:none;" type="text" name="remove_product_id" id=""
+                                    value="<?php echo $row['product_id']; ?>">
+                                <button class="removeBtn" name="remove_from_cart"><i class="bi bi-x"></i></button>
+                            </form>
                         </div>
                     </div>
                     <?php
@@ -102,15 +156,15 @@ mysqli_close($conn);
             <h3>Order Summary</h3>
             <div>
                 <span>Subtotal</span>
-                <span id="subtotal">Rs. 300</span>
+                <span id="subtotal">Rs. <?php echo number_format($total_price, 2); ?></span>
             </div>
             <div>
                 <span>Shipping Fee</span>
-                <span>Rs. 0</span>
+                <span>Rs. 300</span>
             </div>
             <div>
                 <strong>Total</strong>
-                <strong id="total">Rs. 300</strong>
+                <strong id="total">Rs. <?php echo number_format($sub_total, 2); ?></strong>
             </div>
             <button class="checkout-btn">Proceed to Checkout</button>
             <br />
@@ -122,6 +176,55 @@ mysqli_close($conn);
 
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Real time price update-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let total = <?php echo $sub_total; ?>;
+            const priceElements = document.querySelectorAll(".item-price");
+            const quantityControls = document.querySelectorAll(".quantity-control");
+
+            quantityControls.forEach((control, index) => {
+                const decrementBtn = control.querySelector("#decrement");
+                const incrementBtn = control.querySelector("#increment");
+                const quantitySpan = control.querySelector(".number");
+                let price = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
+
+                decrementBtn.addEventListener("click", function () {
+                    let quantity = parseInt(quantitySpan.textContent);
+                    if (quantity > 1) {
+                        quantity--;
+                        quantitySpan.textContent = quantity;
+                        updateTotal();
+                    }
+                });
+
+                incrementBtn.addEventListener("click", function () {
+                    let quantity = parseInt(quantitySpan.textContent);
+                    quantity++;
+                    quantitySpan.textContent = quantity;
+                    updateTotal();
+                });
+
+                function updateTotal() {
+                    let newTotal = 0;
+                    document.querySelectorAll(".cart-item").forEach((item, i) => {
+                        let itemPrice = parseFloat(priceElements[i].textContent.replace("Rs. ", ""));
+                        let itemQuantity = parseInt(item.querySelector(".number").textContent);
+                        newTotal += itemPrice * itemQuantity;
+                    });
+
+                    let shippingFee = 300;
+                    let finalTotal = newTotal + shippingFee;
+
+                    document.getElementById("subtotal").textContent = "Rs. " + newTotal.toFixed(2);
+                    document.getElementById("total").textContent = "Rs. " + finalTotal.toFixed(2);
+                }
+
+            });
+        });
+    </script>
 
 </body>
 
