@@ -185,7 +185,7 @@ mysqli_close($conn);
                 </div>
             </nav>
             <div class="right-side-icons">
-                <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
+                <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i><span class="cart-item-number">0</span></a>
                 <a class="wishlist" href=""><i class="bi bi-basket2"></i></a>
                 <?php
                 if ($_SESSION['user_email']) {

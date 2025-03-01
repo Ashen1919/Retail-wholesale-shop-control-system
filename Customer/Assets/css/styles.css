@@ -692,6 +692,22 @@ Nav Bar
   gap: 4px;
   align-items: center;
 }
+.right-side-icons .cart{
+  position: relative;
+}
+.right-side-icons .cart .cart-item-number{
+  position: absolute;
+  top: 7px;
+  right: -3px;
+  padding: 3px 7px;
+  background-color: #ea1818;
+  color: white;
+  border-radius: 100%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
 .dropdown img{
   border: 2px solid #000000;
   border-radius: 50%;
