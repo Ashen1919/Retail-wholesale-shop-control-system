@@ -68,29 +68,9 @@ include '../includes/header.php';
         </div>
     </div>
 
-    <!-- js files -->
-    <script>
-        const updateQuantity = (change, index) => {
-            const quantityInput = document.getElementById(`quantity-${index}`);
-            const currentQuantity = parseInt(quantityInput.value);
-            const newQuantity = Math.max(1, currentQuantity + change);
-            quantityInput.value = newQuantity;
-            updateTotals();
-        };
-
-        const updateTotals = () => {
-            const quantity = parseInt(document.getElementById('quantity-0').value);
-            const pricePerItem = 300;
-            const subtotal = quantity * pricePerItem;
-            document.getElementById('subtotal').textContent = `Rs. ${subtotal}`;
-            document.getElementById('total').textContent = `Rs. ${subtotal}`;
-        };
-    </script>
-
 
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
-    <script src="../Assets/js/cart.js"></script>
 
 </body>
 
