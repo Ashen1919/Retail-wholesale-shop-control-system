@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart - Sandaru Food Mart</title>
-        
+    <title>Delivery Details - Sandaru Food Mart</title>
+    <!-- Favicons -->
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
     <!-- CSS Files -->
     <link href="../Assets/css/cart_style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -36,6 +38,13 @@
             border-radius: 10px;
             color: white;
             width: 50%;
+        }
+        .form-section .cancel-btn{
+            padding: 10px;
+            border-radius: 20px;
+            background-color: #f8f9fa;
+            font-weight: bold;
+            border: none;
         }
         .form-control {
             background-color: #dcdcdc;
@@ -82,6 +91,20 @@
         .track-button img {
             margin-left: 10px;
         }
+        @media(max-width:481px){
+            .delivery-container{
+                display: block;
+                max-width: 100%;
+                margin: 10px 10px;
+            }
+            .form-section{
+                width: 100%;
+            }
+            .progress-section{
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +116,7 @@
             <form>
                 <div class="mb-3">
                     <label for="name" class="form-label">Your Name:</label>
-                    <input type="text" id="name" class="form-control">
+                    <input type="text" id="name" class="form-control" required>
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address:</label>
@@ -112,8 +135,8 @@
                     <input type="text" id="contactNumber" class="form-control" required>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="button" class="btn btn-cancel">Cancel</button>
-                    <button type="submit" class="btn btn-confirm">Confirm Order</button>
+                    <button type="button" class="btn btn-cancel cancel-btn">Cancel</button>
+                    <button type="submit" class="btn btn-confirm cancel-btn">Confirm Order</button>
                 </div>
             </form>
         </div>
@@ -132,7 +155,7 @@
                 <p>Order Delivery</p>
             </div>
             <a href="#" class="track-button">
-                <h4 style="font-weight:600; margin-bottom:10px;">Track Your Order</h4>
+                <h4 style="font-weight:600; margin-top: 10px;">Track Your Order</h4>
                 <img src="..\Assets\images\cart images\truck-d.png" alt="Delivery Icon" height="35">
             </a>
         </div>
