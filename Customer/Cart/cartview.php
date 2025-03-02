@@ -127,7 +127,7 @@ mysqli_close($conn);
                 <?php
                 while ($row = mysqli_fetch_assoc($res_product)) {
                     ?>
-                    <div class="cart-item">
+                    <div class="cart-item" data-id="<?php echo $row['product_id']; ?>">
                         <div style="display:flex; align-items: center; ">
                             <img src="../../Admin/Assets/images/products/<?php echo $row['image']; ?>" alt="Tea Bags">
                             <div class="item-details">
@@ -194,61 +194,73 @@ mysqli_close($conn);
             // Function to recalculate and update the total and subtotal
             function updateTotal() {
                 let newTotal = 0;
+                let cartData = [];
+
                 document.querySelectorAll(".cart-item").forEach((item, index) => {
+                    let itemId = item.getAttribute("data-id"); // Get product ID
                     let itemPrice = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
                     let itemQuantity = parseInt(item.querySelector(".number").textContent);
+
                     newTotal += itemPrice * itemQuantity;
+                    cartData.push(`${itemId}=${itemQuantity}`); // Format as "id=quantity"
                 });
 
-                // Shipping fee (static as per your code)
                 let shippingFee = 300;
                 let finalTotal = newTotal + shippingFee;
 
-                // Update the totals in the DOM
+                // Update totals in the DOM
                 subtotalElement.textContent = "Rs. " + newTotal.toFixed(2);
                 totalElement.textContent = "Rs. " + finalTotal.toFixed(2);
 
                 // Save the values to localStorage
                 localStorage.setItem("subtotal", newTotal.toFixed(2));
                 localStorage.setItem("total", finalTotal.toFixed(2));
+                localStorage.setItem("cart", cartData.join("&")); // Save cart data in "id=quantity&id=quantity" format
             }
 
-            // Retrieve stored quantity from localStorage, if available
+            // Restore quantities from localStorage
             quantityControls.forEach((control, index) => {
                 const decrementBtn = control.querySelector("#decrement");
                 const incrementBtn = control.querySelector("#increment");
                 const quantitySpan = control.querySelector(".number");
+                const item = control.closest(".cart-item");
+                let itemId = item.getAttribute("data-id"); // Get product ID
 
-                let savedQuantity = localStorage.getItem("quantity_" + index);
-                if (savedQuantity) {
-                    quantitySpan.textContent = savedQuantity;
+                let savedCart = localStorage.getItem("cart");
+                if (savedCart) {
+                    let cartItems = savedCart.split("&");
+                    cartItems.forEach(cartItem => {
+                        let [id, quantity] = cartItem.split("=");
+                        if (id === itemId) {
+                            quantitySpan.textContent = quantity; // Restore quantity
+                        }
+                    });
                 }
 
+                // Decrement quantity
                 decrementBtn.addEventListener("click", function () {
                     let quantity = parseInt(quantitySpan.textContent);
                     if (quantity > 1) {
                         quantity--;
                         quantitySpan.textContent = quantity;
                         updateTotal();
-                        localStorage.setItem("quantity_" + index, quantity); // Save to localStorage
                     }
                 });
 
+                // Increment quantity
                 incrementBtn.addEventListener("click", function () {
                     let quantity = parseInt(quantitySpan.textContent);
                     quantity++;
                     quantitySpan.textContent = quantity;
                     updateTotal();
-                    localStorage.setItem("quantity_" + index, quantity); // Save to localStorage
                 });
             });
 
             // Initial total calculation when page loads
             updateTotal();
 
-            // Save subtotal and total to localStorage when checkout button is clicked
+            // Save subtotal, total, and cart data when checkout button is clicked
             document.getElementById("checkoutBtn").addEventListener("click", function () {
-                // Save final totals to localStorage before redirecting to checkout page
                 localStorage.setItem("subtotal", subtotalElement.textContent.replace("Rs. ", ""));
                 localStorage.setItem("total", totalElement.textContent.replace("Rs. ", ""));
                 window.location.href = './checkout.php';
