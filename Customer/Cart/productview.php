@@ -95,7 +95,7 @@ $category_res = mysqli_query($conn, $category_sql);
 $res_cat = mysqli_fetch_assoc($category_res);
 $category = $res_cat['product_category'];
 
-$features_sql = "SELECT * FROM products WHERE product_category = '$category' LIMIT 3";
+$features_sql = "SELECT * FROM products WHERE product_category = '$category' AND product_id != '$product_id' LIMIT 3 ";
 $features_res = mysqli_query($conn, $features_sql);
 
 // Close statement and connection
@@ -202,7 +202,7 @@ function formatPrice($price)
                         <h5><?php echo $rows['product_name']; ?></h5>
                         <p>Brand: <?php echo $rows['supplier']; ?></p>
                         <p style="font-weight: bold;">Rs. <?php echo $rows['retail_price']; ?>.00</p>
-                        <button class="view">View Product</button>
+                        <button onclick="location.href='productview.php?id=<?php echo $rows['product_id']; ?>';" class="view">View Product</button>
                     </div>
                 </div>
             <?php } ?>
