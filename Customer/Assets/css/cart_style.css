@@ -139,7 +139,7 @@ body {
 
   .features_product .products{
     width: 100%;
-    height: 200px;
+    height: auto;
     margin: 10px 0px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -155,8 +155,7 @@ body {
 
   .features_product .products .pro_image img{
     width: 100%;
-    height: 160px;
-    object-fit: cover;
+    height: auto;
   }
 
   .features_product .products .pro_details{

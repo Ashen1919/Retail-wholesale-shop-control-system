@@ -89,6 +89,15 @@ if (isset($_POST['addCartBtn'])) {
     }
 }
 
+//features product section
+$category_sql = "SELECT product_category FROM products WHERE product_id = '$product_id'";
+$category_res = mysqli_query($conn, $category_sql);
+$res_cat = mysqli_fetch_assoc($category_res);
+$category = $res_cat['product_category'];
+
+$features_sql = "SELECT * FROM products WHERE product_category = '$category' LIMIT 3";
+$features_res = mysqli_query($conn, $features_sql);
+
 // Close statement and connection
 $stmt->close();
 $conn->close();
@@ -182,17 +191,21 @@ function formatPrice($price)
             </div>
         </div>
         <div class="features_product">
-            <div class="products">
-                <div class="pro_image">
-                    <img src="../../Admin/Assets/images/products/1738485912.jpg" alt="product image">
+            <?php
+            while ($rows = mysqli_fetch_assoc($features_res)) {
+                ?>
+                <div class="products">
+                    <div class="pro_image">
+                        <img src="../../Admin/Assets/images/products/<?php echo $rows['image']; ?>" alt="product image">
+                    </div>
+                    <div class="pro_details">
+                        <h5><?php echo $rows['product_name']; ?></h5>
+                        <p>Brand: <?php echo $rows['supplier']; ?></p>
+                        <p style="font-weight: bold;">Rs. <?php echo $rows['retail_price']; ?>.00</p>
+                        <button class="view">View Product</button>
+                    </div>
                 </div>
-                <div class="pro_details">
-                    <h5>Product Title</h5>
-                    <p>Brand: Brand Name</p>
-                    <p style="font-weight: bold;">Rs. 300.00</p>
-                    <button class="view">View Product</button>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 
