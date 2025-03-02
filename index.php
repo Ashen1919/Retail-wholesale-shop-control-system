@@ -158,7 +158,7 @@ mysqli_close($conn);
                     <li><a href="#contact">Contact us</a></li>
                     <div class="right-side-mobile-icons">
                         <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i></a>
-                        <a class="wishlist" href=""><i class="bi bi-basket2"></i></a>
+                        <a class="wishlist" href="./Customer/MyOrders/orderhistory.php"><i class="bi bi-basket2"></i></a>
                         <?php
                         if ($_SESSION['user_email']) {
                             ?>
@@ -186,7 +186,7 @@ mysqli_close($conn);
             </nav>
             <div class="right-side-icons">
                 <a class="cart" href="./Customer/Cart/cartview.php"><i class="bi bi-cart4 "></i><span class="cart-item-number">0</span></a>
-                <a class="wishlist" href=""><i class="bi bi-basket2"></i></a>
+                <a class="wishlist" href="./Customer/MyOrders/orderhistory.php"><i class="bi bi-basket2"></i></a>
                 <?php
                 if ($_SESSION['user_email']) {
                     ?>
