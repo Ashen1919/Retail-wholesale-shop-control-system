@@ -1,3 +1,9 @@
+<?php 
+session_start();
+
+$order_id = $_SESSION['order_id'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +36,18 @@
             padding: 40px;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: auto;
         }
         .success-icon {
             font-size: 100px;
             margin-bottom: 20px;
+        }
+        .back{
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #ffffff;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -43,7 +57,8 @@
             <i class="bi bi-check-circle-fill"></i>
         </div>
         <h1>Your Order Successfully!</h1>
-        <p>Your Order Id: <strong>01234</strong></p>
+        <p>Your Order Id: <strong><?php echo $order_id ?></strong></p>
+        <a href="../../index.php"><button class="back">Back To Home</button></a>
     </div>
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">

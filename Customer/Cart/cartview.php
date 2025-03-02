@@ -197,12 +197,12 @@ mysqli_close($conn);
                 let cartData = [];
 
                 document.querySelectorAll(".cart-item").forEach((item, index) => {
-                    let itemId = item.getAttribute("data-id"); // Get product ID
+                    let itemId = item.getAttribute("data-id"); 
                     let itemPrice = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
                     let itemQuantity = parseInt(item.querySelector(".number").textContent);
 
                     newTotal += itemPrice * itemQuantity;
-                    cartData.push(`${itemId}=${itemQuantity}`); // Format as "id=quantity"
+                    cartData.push(`${itemId}=${itemQuantity}`); 
                 });
 
                 let shippingFee = 300;
@@ -215,7 +215,7 @@ mysqli_close($conn);
                 // Save the values to localStorage
                 localStorage.setItem("subtotal", newTotal.toFixed(2));
                 localStorage.setItem("total", finalTotal.toFixed(2));
-                localStorage.setItem("cart", cartData.join("&")); // Save cart data in "id=quantity&id=quantity" format
+                localStorage.setItem("cart", cartData.join("&")); 
             }
 
             // Restore quantities from localStorage
@@ -224,7 +224,7 @@ mysqli_close($conn);
                 const incrementBtn = control.querySelector("#increment");
                 const quantitySpan = control.querySelector(".number");
                 const item = control.closest(".cart-item");
-                let itemId = item.getAttribute("data-id"); // Get product ID
+                let itemId = item.getAttribute("data-id"); 
 
                 let savedCart = localStorage.getItem("cart");
                 if (savedCart) {
@@ -232,7 +232,7 @@ mysqli_close($conn);
                     cartItems.forEach(cartItem => {
                         let [id, quantity] = cartItem.split("=");
                         if (id === itemId) {
-                            quantitySpan.textContent = quantity; // Restore quantity
+                            quantitySpan.textContent = quantity; 
                         }
                     });
                 }
