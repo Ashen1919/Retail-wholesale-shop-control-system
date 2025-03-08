@@ -33,7 +33,7 @@ if (isset($_POST['addCartBtn'])) {
     $email = $_SESSION['user_email'];
     if ($email) {
         //check exist product in table
-        $check_product = "SELECT product_id FROM cart WHERE product_id = '$product_id'";
+        $check_product = "SELECT product_id FROM cart WHERE product_id = '$product_id' AND email = '$email'";
         $result_pro = mysqli_query($conn, $check_product);
 
         if (mysqli_num_rows($result_pro) > 0) {

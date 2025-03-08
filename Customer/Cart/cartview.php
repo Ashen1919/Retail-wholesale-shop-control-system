@@ -268,7 +268,6 @@ mysqli_close($conn);
         });
     </script>
 
-
 </body>
 
 </html>
