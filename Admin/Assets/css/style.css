@@ -192,13 +192,14 @@ Main Content
     text-decoration: none;
     color: #ffffff;
 }
-.left-side a:hover{
+.left-side a:hover .dashboard{
     color: #ffffff;
-}
-.dashboard:hover{
     background-color: #363f4b;
     transition: 0.2s ease-out;
-    
+}
+.left-side a:focus .dashboard{
+    color: #ffffff;
+    background-color: #363f4b;
 }
 .dashboard:hover i{
     color: #f01515;
