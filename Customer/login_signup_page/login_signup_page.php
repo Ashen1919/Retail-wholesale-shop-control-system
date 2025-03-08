@@ -36,9 +36,10 @@ if (isset($_POST['sign_btn'])) {
         $def_status = 'active';
         $def_cusType = 'retail';
         $def_userType = 'user';
+        $date = date("Y-m-d");
 
         //Insert a new user
-        $create_user_sql = "INSERT INTO customers(email, first_name, last_name, phone_number, password, image, status, customerType, userType) VALUES ('$email', '$first_name', '$last_name', '$phone', '$hashed_password', '$def_profile_img', '$def_status', '$def_cusType', '$def_userType')";
+        $create_user_sql = "INSERT INTO customers(email, first_name, last_name, phone_number, password, image, status, customerType, userType, date) VALUES ('$email', '$first_name', '$last_name', '$phone', '$hashed_password', '$def_profile_img', '$def_status', '$def_cusType', '$def_userType', '$date')";
         $res_user = mysqli_query($conn, $create_user_sql);
 
         if ($res_user) {
