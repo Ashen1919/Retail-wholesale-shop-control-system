@@ -205,7 +205,7 @@ if (isset($_POST['update'])) {
                         </tr>
                         <tr style="width:100%">
                             <td style="width:30%; padding: 15px; text-align: center;">Product Details & Quantities</td>
-                            <td style="width:70%"><?php echo $row['order_details']; ?></td>
+                            <td style="width:70%;"><?php echo $row['order_details']; ?></td>
                         </tr>
                         <tr style="width:100%">
                             <td style="width:30%; padding: 15px; text-align: center;">Update Status</td>

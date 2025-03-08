@@ -10,12 +10,12 @@ $auto_sql = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
 $result_auto = mysqli_query($conn, $auto_sql);
 
 if (mysqli_num_rows($result_auto) > 0) {
-  $rows = $result_auto->fetch_assoc();
-  $lastid = $rows['id'];
-  $num = (int) substr($lastid, 2);
-  $new_id = 'O-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
+    $rows = $result_auto->fetch_assoc();
+    $lastid = $rows['id'];
+    $num = (int) substr($lastid, 2);
+    $new_id = 'O-' . str_pad($num + 1, 5, '0', STR_PAD_LEFT);
 } else {
-  $new_id = 'O-00001';
+    $new_id = 'O-00001';
 }
 
 date_default_timezone_set('Asia/Kolkata');
@@ -38,15 +38,30 @@ if (isset($_POST['pay-btn'])) {
     $total = $_POST['total'];
     $cart = $_POST['cart'];
 
-        //sql query
-        $order_sql = "INSERT INTO orders(id, type, status, payment, name, email, date, time, phone_number, address, city, p_code, order_details, lending_amount, full_amount) VALUES('$new_id', '$type', '$status', '$payment', '$name', '$email', '$date', '$time', '$contact', '$address', '$city', '$p_code', '$cart', '$lending_amount', '$total')";
-        $res_order = mysqli_query($conn, $order_sql);
+    //sql query
+    $order_sql = "INSERT INTO orders(id, type, status, payment, name, email, date, time, phone_number, address, city, p_code, order_details, lending_amount, full_amount) VALUES('$new_id', '$type', '$status', '$payment', '$name', '$email', '$date', '$time', '$contact', '$address', '$city', '$p_code', '$cart', '$lending_amount', '$total')";
+    $res_order = mysqli_query($conn, $order_sql);
 
-        if($res_order){
-            header("location: ./conformmsg.php");
-            exit();
-        }else{
-            $message = '<script>
+    if ($res_order) {
+        // Process the cart data (product_id=quantity format)
+        $cart_items = explode("&", $cart);
+
+        foreach ($cart_items as $item) {
+            list($product_id, $quantity) = explode("=", $item);
+
+            // Convert quantity to integer
+            $quantity = (int) $quantity;
+
+            // Update product stock in the database
+            $update_stock_sql = "UPDATE products SET quantity = quantity - $quantity WHERE product_id = '$product_id'";
+            mysqli_query($conn, $update_stock_sql);
+        }
+
+        // Redirect after successful order
+        header("location: ./conformmsg.php");
+        exit();
+    } else {
+        $message = '<script>
                 document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     position: "top-end",
@@ -57,7 +72,7 @@ if (isset($_POST['pay-btn'])) {
                 });
             });
         </script>';
-        }
+    }
 }
 ?>
 
@@ -212,7 +227,8 @@ if (isset($_POST['pay-btn'])) {
                     <input type="text" name="contact" id="contactNumber" class="form-control" required>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button onclick="location.href = './checkout.php'" type="button" class="btn btn-cancel cancel-btn">Cancel</button>
+                    <button onclick="location.href = './checkout.php'" type="button"
+                        class="btn btn-cancel cancel-btn">Cancel</button>
                     <button type="submit" name="pay-btn" class="btn btn-confirm cancel-btn">Confirm Order</button>
                 </div>
                 <input type="hidden" name="total" id="total-hidden">

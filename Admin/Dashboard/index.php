@@ -10,6 +10,49 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
+
+//database connection
+include('db_con.php');
+
+//Today overview section
+$today_date = date("Y-m-d");
+
+//orders count
+$today_order_sql = "SELECT COUNT(*) AS order_count FROM orders WHERE date = '$today_date'";
+$res_order_today = mysqli_query($conn, $today_order_sql);
+$row_today = mysqli_fetch_assoc($res_order_today);
+$order_count = $row_today['order_count'];
+
+//customers count
+$today_customer_sql = "SELECT COUNT(*) AS customer_count FROM customers WHERE date = '$today_date'";
+$res_customer_today = mysqli_query($conn, $today_customer_sql);
+$row_today = mysqli_fetch_assoc($res_customer_today);
+$customer_count = $row_today['customer_count'];
+
+//today earnings
+$today_earning_sql = "SELECT SUM(full_amount) AS total_earning FROM orders WHERE date = '$today_date'";
+$res_earning_today = mysqli_query($conn, $today_earning_sql);
+$row_earning_today = mysqli_fetch_assoc($res_earning_today);
+$today_earning = $row_earning_today['total_earning'] ?? 0;
+
+//Total overview section
+//orders count
+$total_order_sql = "SELECT COUNT(*) AS order_count FROM orders";
+$res_order_total = mysqli_query($conn, $total_order_sql);
+$row_total = mysqli_fetch_assoc($res_order_total);
+$order_count_total = $row_total['order_count'];
+
+//customers count
+$total_customer_sql = "SELECT COUNT(*) AS customer_count FROM customers";
+$res_customer_total = mysqli_query($conn, $total_customer_sql);
+$row_total_cus = mysqli_fetch_assoc($res_customer_total);
+$customer_count_total = $row_total_cus['customer_count'];
+
+//today earnings
+$total_earning_sql = "SELECT SUM(full_amount) AS total_earning FROM orders";
+$res_earning_total = mysqli_query($conn, $total_earning_sql);
+$row_earning_total = mysqli_fetch_assoc($res_earning_total);
+$total_earning = $row_earning_total['total_earning'] ?? 0;
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +73,6 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 </head>
-
 
 <body>
     <?php if (isset($message))
@@ -139,21 +181,21 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Earnings</h5>
                                 <i class="bi bi-cash"></i>
-                                <p class="value">194,000</p>
+                                <p class="value"><?php echo $today_earning ?></p>
                             </div>
                             <div class="card-2">
                                 <h5
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Orders</h5>
                                 <i class="bi bi-basket2-fill"></i>
-                                <p class="value">125</p>
+                                <p class="value"><?php echo $order_count ?></p>
                             </div>
                             <div class="card-3">
                                 <h5
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Customers</h5>
                                 <i class="bi bi-people-fill"></i>
-                                <p class="value">45</p>
+                                <p class="value"><?php echo $customer_count ?></p>
                             </div>
                         </div>
                     </div>
@@ -165,21 +207,21 @@ if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Earnings</h5>
                                 <i class="bi bi-cash"></i>
-                                <p class="value">10,100,000</p>
+                                <p class="value"><?php echo $total_earning ?></p>
                             </div>
                             <div class="card-2">
                                 <h5
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Orders</h5>
                                 <i class="bi bi-basket2-fill"></i>
-                                <p class="value">8,375</p>
+                                <p class="value"><?php echo $order_count_total ?></p>
                             </div>
                             <div class="card-3">
                                 <h5
                                     style="margin-top:1.5rem; justify-content:center; display:flex; font-weight:500; color:white;">
                                     Customers</h5>
                                 <i class="bi bi-people-fill"></i>
-                                <p class="value">4,312</p>
+                                <p class="value"><?php echo $customer_count_total ?></p>
                             </div>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ if (isset($_POST['addCartBtn'])) {
     $email = $_SESSION['user_email'];
     if ($email) {
         //check exist product in table
-        $check_product = "SELECT product_id FROM cart WHERE product_id = '$product_id'";
+        $check_product = "SELECT product_id FROM cart WHERE product_id = '$product_id' AND email = '$email'";
         $result_pro = mysqli_query($conn, $check_product);
 
         if (mysqli_num_rows($result_pro) > 0) {
@@ -134,6 +134,7 @@ function formatPrice($price)
     <!-- Include Header -->
     <?php include '../includes/header.php'; ?>
 
+    <!-- Product view section -->
     <div class="product_view">
         <div class="product-page">
 
@@ -153,9 +154,11 @@ function formatPrice($price)
                 </br>
                 <div class="action-buttons">
                     <form action="" method="post">
-                        <button class="add-to-cart" name="addCartBtn">
+                        <?php echo ($product['quantity'] > 0) ? '<button class="add-to-cart" name="addCartBtn">
                             Add to Cart
-                        </button>
+                        </button>' : '<button class="add-to-cart" name="addCartBtn" type="button" disabled >
+                            Add to Cart
+                        </button>'; ?>
                     </form>
                     </button>
                     <button class="wishlist">
@@ -170,11 +173,19 @@ function formatPrice($price)
                 </div>
                 <div class="product-meta">
                     <div class="meta-item">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M20 6L9 17l-5-5"></path>
-                        </svg>
-                        <span><?php echo ($product['quantity'] > 0) ? 'In Stock' : 'Out of Stock'; ?></span>
+
+                        <span><?php echo ($product['quantity'] > 0) ? '<div>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M20 6L9 17l-5-5"></path>
+                            </svg>
+                            In Stock
+                        </div>' : '<div style="color:red;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                            </svg>
+                            Out Of Stock
+                        </div>'; ?></span>
                     </div>
                     <div class="meta-item">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -190,6 +201,7 @@ function formatPrice($price)
                 </div>
             </div>
         </div>
+        <!--Features products section-->
         <div class="features_product">
             <?php
             while ($rows = mysqli_fetch_assoc($features_res)) {
@@ -202,7 +214,8 @@ function formatPrice($price)
                         <h5><?php echo $rows['product_name']; ?></h5>
                         <p>Brand: <?php echo $rows['supplier']; ?></p>
                         <p style="font-weight: bold;">Rs. <?php echo $rows['retail_price']; ?>.00</p>
-                        <button onclick="location.href='productview.php?id=<?php echo $rows['product_id']; ?>';" class="view">View Product</button>
+                        <button onclick="location.href='productview.php?id=<?php echo $rows['product_id']; ?>';"
+                            class="view">View Product</button>
                     </div>
                 </div>
             <?php } ?>
