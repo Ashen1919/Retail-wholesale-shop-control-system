@@ -1141,22 +1141,64 @@ function handleSave(isPrinting = false) {
     });
 }
 
-// Modified print handler with proper page reload
+function populatePrintBill() {
+    // Populate bill information
+    document.getElementById('print-bill-number').textContent = document.getElementById('billNumber').value;
+    document.getElementById('print-cashier').textContent = document.getElementById('cashier-name').value;
+    document.getElementById('print-date').textContent = document.getElementById('orderDate').value;
+    document.getElementById('print-time').textContent = document.getElementById('orderTime').value;
+    document.getElementById('print-customer').textContent = document.getElementById('customer').value;
+
+    // Populate items
+    const tableBody = document.getElementById('tableBody');
+    const printItems = document.getElementById('print-items');
+    printItems.innerHTML = '';
+
+    Array.from(tableBody.rows).forEach(row => {
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+            <td>${row.cells[2].textContent}</td>
+            <td>${row.cells[3].textContent}</td>
+            <td>${row.cells[4].textContent}</td>
+            <td class="amount">${row.cells[5].textContent}</td>
+        `;
+        printItems.appendChild(newRow);
+    });
+
+    // Populate totals
+    const totalAmount = document.querySelector('.amount-section .styled-input-box:first-child input').value;
+    const givenAmount = document.querySelector('.amount-section .styled-input-box:nth-child(2) input').value;
+    const balance = document.querySelector('.amount-section .styled-input-box:last-child input').value;
+    const lendingAmount = document.querySelector('#styled-input-box input')?.value;
+
+    document.getElementById('print-total').textContent = totalAmount;
+    document.getElementById('print-given').textContent = givenAmount;
+    document.getElementById('print-balance').textContent = balance;
+
+    // Show lending amount if present
+    const lendingContainer = document.getElementById('print-lending-container');
+    if (lendingAmount && parseFloat(lendingAmount) > 0) {
+        document.getElementById('print-lending').textContent = lendingAmount;
+        lendingContainer.style.display = 'flex';
+    } else {
+        lendingContainer.style.display = 'none';
+    }
+}
+
+// Modify the existing handlePrint function
 function handlePrint() {
     handleSave(true)
         .then(() => {
-            // Trigger print dialog
-            window.print();
+            populatePrintBill(); // Populate the print layout
+            window.print(); // Trigger print dialog
             
-            // Set a timeout to reload the page after printing
-            // Using a longer timeout to ensure print dialog completes
+            // Reload page after printing
             setTimeout(() => {
                 window.location.reload();
-            }, 2000); // 2 second delay
+            }, 2000);
         })
         .catch(error => {
             console.error('Error during print process:', error);
-            // Reload even if there's an error, after showing the error message
             setTimeout(() => {
                 window.location.reload();
             }, 1000);

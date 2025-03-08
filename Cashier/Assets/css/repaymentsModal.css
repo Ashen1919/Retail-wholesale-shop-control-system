@@ -1,0 +1,90 @@
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); 
+    transition: opacity 0.3s ease;
+    overflow: hidden;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.close {
+    color: #8d8d8d;
+    font-size: 45px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    color: #000000;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#repaymentModal input[type="text"], 
+#repaymentModal input[type="date"], 
+#repaymentModal input[type="number"],
+#repaymentModal input[type="hidden"],
+#repayCustomerDisplay {
+    width: 100%;
+    padding: 5px;
+    margin: 0 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    color: #000;
+}
+
+#repaymentModal button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+#repaymentModal button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#repaymentModal label {
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    color: #4e4e4e;
+    margin-top: 0px;
+    display: block;
+}

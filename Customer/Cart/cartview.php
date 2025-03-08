@@ -1,241 +1,274 @@
+<?php
+session_start();
+error_reporting(0);
+//include header
+include '../includes/header.php';
+
+//Database connection
+$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+
+//retrieve cart details
+$email = $_SESSION['user_email'];
+$cart_sql = "SELECT product_id FROM cart WHERE email = '$email'";
+$res_cart = mysqli_query($conn, $cart_sql);
+
+if (mysqli_num_rows($res_cart) > 0) {
+    $product_ids = [];
+    while ($row = mysqli_fetch_assoc($res_cart)) {
+        $product_ids[] = $row['product_id'];
+    }
+} else {
+    $res_product = false;
+}
+
+if (!empty($product_ids)) {
+    $escaped_ids = array_map(function ($id) use ($conn) {
+        return mysqli_real_escape_string($conn, $id);
+    }, $product_ids);
+
+    $product_ids_string = "'" . implode("','", $escaped_ids) . "'";
+
+    // Retrieve product details
+    $product_sql = "SELECT * FROM products WHERE product_id IN ($product_ids_string)";
+    $res_product = mysqli_query($conn, $product_sql);
+
+    if (!$res_product) {
+        die("Product Query Failed: " . mysqli_error($conn));
+    }
+}
+
+//remove from cart
+if (isset($_POST['remove_from_cart'])) {
+    $remove_pro_id = $_POST['remove_product_id'];
+    $remove_sql = "DELETE FROM cart WHERE product_id = '$remove_pro_id'";
+    $res_remove = mysqli_query($conn, $remove_sql);
+
+    if ($res_remove) {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Successfully removed from cart",
+                    showConfirmButton: false,
+                    timer: 1500
+                }).then(() => {
+                    window.location.href = "./cartview.php";
+                });
+            });
+        </script>';
+    } else {
+        $message = '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+            </script>';
+    }
+}
+
+//total price calculation
+$total_price = 0;
+$sub_total = 0;
+
+if ($res_product && mysqli_num_rows($res_product) > 0) {
+    while ($row = mysqli_fetch_assoc($res_product)) {
+        $total_price += $row['retail_price'];
+    }
+    $sub_total = $total_price + 300;
+    mysqli_data_seek($res_product, 0);
+}
+
+//store details in sessions
+if (isset($_POST['checkout-Btn'])) {
+    $_SESSION['total_price'] = $total_price;
+    $_SESSION['sub_total'] = $sub_total;
+    header("Location: ./checkout.php");
+    exit();
+}
+
+//close connection
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart - Sandaru Food Mart</title>
     <!-- Favicons -->
-    <link
-        href="../Assets/images/logo.png"
-        rel="icon">
-    <link
-        href="../Assets/images/logo.png"
-        rel="apple-touch-icon">
-    
-    <!-- CSS Files -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-
-        .container_cart {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart-items {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .order-summary {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .cart-header h2 {
-            margin: 0;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-
-        .cart-item img {
-            width: 80px;
-            height: auto;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
-        .item-details {
-            flex: 1;
-        }
-
-        .item-details h4 {
-            margin: 0 0 5px;
-        }
-
-        .item-price {
-            font-size: 1.2em;
-            color: #e67e22;
-            font-weight: bold;
-        }
-
-        .item-actions {
-            display: flex;
-            align-items: center;
-        }
-
-        .quantity-control {
-            display: flex;
-            align-items: center;
-            margin-right: 10px;
-        }
-
-        .quantity-control button {
-            width: 30px;
-            height: 30px;
-            background: #ddd;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .quantity-control input {
-            width: 50px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 0 5px;
-        }
-
-        .remove-btn {
-            color: red;
-            cursor: pointer;
-            font-size: 2em;
-        }
-
-        .order-summary h3 {
-            margin: 0 0 10px;
-        }
-
-        .order-summary div {
-            display: flex;
-            justify-content: space-between;
-            margin: 5px 0;
-        }
-
-        .checkout-btn {
-            background: #e67e22;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            width: 100%;
-        }
-
-        .checkout-btn:hover {
-            background: #cf6d1f;
-        }
-
-        .shopping-btn {
-            background:rgb(14, 181, 56);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 20px;
-            width: 100%;
-        }
-        .shopping-btn:hover {
-            background:rgb(58, 237, 97);
-        }
-
-    </style>
+    <link href="../Assets/images/logo.png" rel="icon">
+    <link href="../Assets/images/logo.png" rel="apple-touch-icon">
+    <!-- css files -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../Assets/css/cart.css">
 </head>
+
 <body>
-    <!-- Include Header -->
-    <?php include '../includes/header.php'; ?>
+
+    <?php if (isset($message))
+        echo $message; ?>
 
     <div class="container_cart">
-        <div class="cart-items">
+        <div style="display: block; width:100%;">
             <div class="cart-header">
-                <h2>Shopping Cart</h2>
-                <button>Delete All</button>
+                <h2>Your Shopping Cart</h2>
             </div>
-
-            <div class="cart-item">
-            <img src="../Assets/images/cart images/teabag.png" alt="Tea Bags">
-                <div class="item-details">
-                    <h4>Zesta 90g 50 Tea Bags</h4>
-                    <p>Brand: Zesta</p>
-                    
-                </div>
-                <div class="item-actions">
-                    <div class="quantity-control">
-                        <button onclick="updateQuantity(-1, 0)">-</button>
-                        <input type="number" id="quantity-0" value="1" min="1">
-                        <button onclick="updateQuantity(1, 0)">+</button>
+            <?php
+            if ($res_product && mysqli_num_rows($res_product) > 0) {
+                ?>
+                <?php
+                while ($row = mysqli_fetch_assoc($res_product)) {
+                    ?>
+                    <div class="cart-item" data-id="<?php echo $row['product_id']; ?>">
+                        <div style="display:flex; align-items: center; ">
+                            <img src="../../Admin/Assets/images/products/<?php echo $row['image']; ?>" alt="Tea Bags">
+                            <div class="item-details">
+                                <h4><?php echo $row['product_name']; ?></h4>
+                                <p>Brand: <?php echo $row['supplier']; ?></p>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button id="decrement">-</button>
+                                <span class="number">1</span>
+                                <button id="increment">+</button>
+                            </div>
+                            <p class="item-price">Rs. <?php echo $row['retail_price']; ?></p>
+                            <form action="./cartview.php" method="post">
+                                <input style="display:none;" type="text" name="remove_product_id" id=""
+                                    value="<?php echo $row['product_id']; ?>">
+                                <button class="removeBtn" name="remove_from_cart"><i class="bi bi-x"></i></button>
+                            </form>
+                        </div>
                     </div>
-                    <p class="item-price">Rs. 300</p>
-                    <span class="remove-btn">&#x1F5D1;</span>
-                </div>
-            </div>
+                    <?php
+                }
+                ?>
+                <?php
+            } else {
+                ?>
+                <h5><i>Your cart is empty!</i></h5>
+            <?php } ?>
+
         </div>
 
         <div class="order-summary">
             <h3>Order Summary</h3>
             <div>
                 <span>Subtotal</span>
-                <span id="subtotal">Rs. 300</span>
+                <span id="subtotal">Rs. <?php echo number_format($total_price, 2); ?></span>
             </div>
             <div>
                 <span>Shipping Fee</span>
-                <span>Rs. 0</span>
+                <span>Rs. 300.00</span>
             </div>
             <div>
                 <strong>Total</strong>
-                <strong id="total">Rs. 300</strong>
+                <strong id="total">Rs. <?php echo number_format($sub_total, 2); ?></strong>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
-            <br/>
-            <button class="shopping-btn">Keep Shopping</button>
+            <button type="button" id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
+            <a href=""><button class="shopping-btn">Keep Shopping</button></a>
         </div>
     </div>
 
-<!-- js files -->
-    <script>
-        const updateQuantity = (change, index) => {
-            const quantityInput = document.getElementById(`quantity-${index}`);
-            const currentQuantity = parseInt(quantityInput.value);
-            const newQuantity = Math.max(1, currentQuantity + change);
-            quantityInput.value = newQuantity;
-            updateTotals();
-        };
-
-        const updateTotals = () => {
-            const quantity = parseInt(document.getElementById('quantity-0').value);
-            const pricePerItem = 300;
-            const subtotal = quantity * pricePerItem;
-            document.getElementById('subtotal').textContent = `Rs. ${subtotal}`;
-            document.getElementById('total').textContent = `Rs. ${subtotal}`;
-        };
-    </script>
-    
-
     <!-- Include Footer -->
     <?php include '../includes/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--Real time price update-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const priceElements = document.querySelectorAll(".item-price");
+            const quantityControls = document.querySelectorAll(".quantity-control");
+            const subtotalElement = document.getElementById("subtotal");
+            const totalElement = document.getElementById("total");
+
+            // Function to recalculate and update the total and subtotal
+            function updateTotal() {
+                let newTotal = 0;
+                let cartData = [];
+
+                document.querySelectorAll(".cart-item").forEach((item, index) => {
+                    let itemId = item.getAttribute("data-id"); 
+                    let itemPrice = parseFloat(priceElements[index].textContent.replace("Rs. ", ""));
+                    let itemQuantity = parseInt(item.querySelector(".number").textContent);
+
+                    newTotal += itemPrice * itemQuantity;
+                    cartData.push(`${itemId}=${itemQuantity}`); 
+                });
+
+                let shippingFee = 300;
+                let finalTotal = newTotal + shippingFee;
+
+                // Update totals in the DOM
+                subtotalElement.textContent = "Rs. " + newTotal.toFixed(2);
+                totalElement.textContent = "Rs. " + finalTotal.toFixed(2);
+
+                // Save the values to localStorage
+                localStorage.setItem("subtotal", newTotal.toFixed(2));
+                localStorage.setItem("total", finalTotal.toFixed(2));
+                localStorage.setItem("cart", cartData.join("&")); 
+            }
+
+            // Restore quantities from localStorage
+            quantityControls.forEach((control, index) => {
+                const decrementBtn = control.querySelector("#decrement");
+                const incrementBtn = control.querySelector("#increment");
+                const quantitySpan = control.querySelector(".number");
+                const item = control.closest(".cart-item");
+                let itemId = item.getAttribute("data-id"); 
+
+                let savedCart = localStorage.getItem("cart");
+                if (savedCart) {
+                    let cartItems = savedCart.split("&");
+                    cartItems.forEach(cartItem => {
+                        let [id, quantity] = cartItem.split("=");
+                        if (id === itemId) {
+                            quantitySpan.textContent = quantity; 
+                        }
+                    });
+                }
+
+                // Decrement quantity
+                decrementBtn.addEventListener("click", function () {
+                    let quantity = parseInt(quantitySpan.textContent);
+                    if (quantity > 1) {
+                        quantity--;
+                        quantitySpan.textContent = quantity;
+                        updateTotal();
+                    }
+                });
+
+                // Increment quantity
+                incrementBtn.addEventListener("click", function () {
+                    let quantity = parseInt(quantitySpan.textContent);
+                    quantity++;
+                    quantitySpan.textContent = quantity;
+                    updateTotal();
+                });
+            });
+
+            // Initial total calculation when page loads
+            updateTotal();
+
+            // Save subtotal, total, and cart data when checkout button is clicked
+            document.getElementById("checkoutBtn").addEventListener("click", function () {
+                localStorage.setItem("subtotal", subtotalElement.textContent.replace("Rs. ", ""));
+                localStorage.setItem("total", totalElement.textContent.replace("Rs. ", ""));
+                window.location.href = './checkout.php';
+            });
+        });
+    </script>
+
 
 </body>
+
 </html>

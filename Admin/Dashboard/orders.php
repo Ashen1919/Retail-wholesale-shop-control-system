@@ -10,6 +10,13 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
+
+//database connection
+include('./db_con.php');
+
+//retrieve all data
+$all_orders = "SELECT * FROM orders ORDER BY id DESC";
+$res_orders = mysqli_query($conn, $all_orders);
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +40,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -142,29 +151,33 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
                             <th>Order ID</th>
                             <th>Email</th>
                             <th>Order Date</th>
-                            <th>Order Type</th>
+                            <th>Payment</th>
                             <th>Order Status</th>
                             <th>Total Amount</th>
-                            <th>Address</th>
+                            <th>Contact</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>ashengimhana58@gmail.com</td>
-                            <td>19/01/2025</td>
-                            <td>Online</td>
-                            <td>In-progress</td>
-                            <td>2,570</td>
-                            <td>NO:222,Nedungolla,Mandawala</td>
-                            <td>
-                                <div class="action">
-                                    <button onclick="openModal('updatePromoModal')" class="edit"><i
-                                            class="bi bi-pencil-square"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        while ($row = mysqli_fetch_assoc($res_orders)) {
+                            ?>
+                            <tr>
+                                <td><?php echo $row['id']; ?></td>
+                                <td><?php echo $row['email']; ?></td>
+                                <td><?php echo $row['date']; ?></td>
+                                <td><?php echo $row['payment']; ?></td>
+                                <td><?php echo $row['status']; ?></td>
+                                <td><?php echo $row['full_amount']; ?></td>
+                                <td><?php echo $row['phone_number']; ?></td>
+                                <td>
+                                    <div class="action">
+                                        <a href="update_order.php?id=<?php echo $row['table_id'] ?>"><button
+                                                class="edit">View</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -173,28 +186,10 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     </div>
     <!--End of main body-->
 
-    <!-- Update Promo Modal -->
-    <div id="updatePromoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('updatePromoModal')">&times;</span>
-            <h3>Update Order Status</h3>
-            <form id="addPromoForm">
-
-                <label for="name" style="margin-top:5px;">Order Status:</label>
-                <select name="type" id="type">
-                    <option value="select one...">Select One...</option>
-                    <option value="in-progress">In-progress</option>
-                    <option value="ready-to-ship">Ready to ship</option>
-                    <option value="delivered">Delivered</option>
-                    <option value="canceled">Canceled</option>
-                </select>
-
-                <button type="submit">Update</button>
-            </form>
-        </div>
-    </div>
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/promotion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </body>
 
 </html>
