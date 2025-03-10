@@ -256,3 +256,57 @@
         position: relative;
     }
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+.pageNumbers {
+    display: flex;
+    margin: 0 10px;
+}
+
+.page-number {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+    text-decoration: none;
+}
+
+.page-number.active {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+.control {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+}
+
+.control:hover {
+    background-color: #f5f5f5;
+}
+
+.control.disabled {
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
