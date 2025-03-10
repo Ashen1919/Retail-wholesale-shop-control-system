@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_email'])) {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
-if(isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin"){
+if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
@@ -53,6 +53,13 @@ $total_earning_sql = "SELECT SUM(full_amount) AS total_earning FROM orders";
 $res_earning_total = mysqli_query($conn, $total_earning_sql);
 $row_earning_total = mysqli_fetch_assoc($res_earning_total);
 $total_earning = $row_earning_total['total_earning'] ?? 0;
+
+//Low stock alert section
+$sql_alert = "SELECT * FROM products WHERE quantity < 10";
+$res_alert = mysqli_query($conn, $sql_alert);
+$row_alert = mysqli_fetch_assoc($res_alert);
+
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -253,49 +260,37 @@ $total_earning = $row_earning_total['total_earning'] ?? 0;
                 </div>
                 <!--Top selling section-->
                 <div class="top-selling">
-                    <h3 style="color: white; margin-bottom: 15px">Top Selling</h3>
+                    <h3 style="color: white; margin-bottom: 15px">Low Stock Alert</h3>
                     <div class="table-section">
-                        <table class="table-top">
-                            <thead>
-                                <tr>
-                                    <th>Product Name</th>
-                                    <th>Price</th>
-                                    <th>Status</th>
-                                    <th>Sold</th>
-                                    <th>Total Earning</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Nadu Rice 5Kg</td>
-                                    <td>1,500</td>
-                                    <td>In Stock</td>
-                                    <td>200</td>
-                                    <td>300,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Dhal 1Kg</td>
-                                    <td>340</td>
-                                    <td>In Stock</td>
-                                    <td>155</td>
-                                    <td>52,700</td>
-                                </tr>
-                                <tr>
-                                    <td>Sugar 1Kg</td>
-                                    <td>400</td>
-                                    <td>Low Stock</td>
-                                    <td>100</td>
-                                    <td>40,000</td>
-                                </tr>
-                                <tr>
-                                    <td>Samba Rice 10Kg</td>
-                                    <td>2,500</td>
-                                    <td>In Stock</td>
-                                    <td>95</td>
-                                    <td>161,500</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <?php
+                        if (mysqli_num_rows($res_alert) > 0) {
+                            ?>
+                            <table class="table-top">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Unit Weight</th>
+                                        <th>Quantity</th>
+                                        <th>Supplier</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $row_alert['product_name']; ?></td>
+                                        <td><?php echo $row_alert['product_category']; ?></td>
+                                        <td><?php echo $row_alert['purchased_price']; ?></td>
+                                        <td><?php echo $row_alert['units']; ?></td>
+                                        <td><?php echo $row_alert['quantity']; ?></td>
+                                        <td><?php echo $row_alert['supplier']; ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        <?php
+                        } else { ?>
+                            <strong><i>There are no items to show</i></strong>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

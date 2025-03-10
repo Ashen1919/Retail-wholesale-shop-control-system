@@ -730,6 +730,7 @@ Nav Bar
   min-width: 80px;
   right: -5px;
 }
+
 .dropdown .links a:hover{
   background-color: #f1f1f1;
   transition: 0.3s ease-in;
