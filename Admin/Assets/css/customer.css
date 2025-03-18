@@ -1,3 +1,13 @@
+.right-side-customer {
+    width: 80%;
+    background-color: #111827;
+    padding: 10px;
+    height: auto;
+    right: 0;
+    margin-left: 20%;
+    margin-top: 65px;
+}
+
 .customer-content{
     width: 100%;
     height: auto;
