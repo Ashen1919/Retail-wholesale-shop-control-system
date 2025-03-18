@@ -201,7 +201,7 @@ mysqli_close($conn);
         <!--End of left side-->
 
         <!--Right side-->
-        <div class="right-side">
+        <div class="right-side-customer">
             <div class="customer-content">
                 <h2 style="color:white; margin-bottom:20px;">Customer Management </h2>
                 <div class="category-table">
