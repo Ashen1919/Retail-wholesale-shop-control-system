@@ -5,6 +5,7 @@ error_reporting(0);
 //Database connection
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
+/*
 //generate auto-generated ID
 $auto_sql = "SELECT id FROM orders ORDER BY id DESC LIMIT 1";
 $result_auto = mysqli_query($conn, $auto_sql);
@@ -19,19 +20,18 @@ if (mysqli_num_rows($result_auto) > 0) {
 }
 
 date_default_timezone_set('Asia/Kolkata');
+*/
 
 //Order placing process
 if (isset($_POST['pay-btn'])) {
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $city = $_POST['city'];
-    $p_code = $_POST['p_code'];
-    $contact = $_POST['contact'];
-    $email = $_SESSION['user_email'];
-    $lending_amount = 0;
-    $payment = "paid";
     $_SESSION['order_id'] = $new_id;
-
+    $_SESSION['name'] = $_POST['name'];
+    $_SESSION['address'] = $_POST['address'];
+    $_SESSION['city'] = $_POST['city'];
+    $_SESSION['p_code'] = $_POST['p_code'];
+    $_SESSION['contact'] = $_POST['contact'];
+}
+/*
     //payment details
     $card_number = "4635-6040-1234-5678";
     $card_name = "nextwave";
@@ -94,8 +94,7 @@ if (isset($_POST['pay-btn'])) {
                 });
             });
         </script>';
-    }
-}
+    }*/
 ?>
 
 <!DOCTYPE html>
@@ -121,10 +120,18 @@ if (isset($_POST['pay-btn'])) {
         }
 
         .user-info {
-            display: flex;
-            justify-content: center;
+            display: block;
+            justify-self: center;
             gap: 20px;
             margin: 10px 0px;
+            width: 400px;
+        }
+
+        .user-info button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-self: center;
         }
 
         .payment-form {
@@ -133,7 +140,7 @@ if (isset($_POST['pay-btn'])) {
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
         }
 
         .payment-form .form-label {
@@ -150,7 +157,7 @@ if (isset($_POST['pay-btn'])) {
             border-radius: 10px;
             color: white;
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
         }
 
         .form-section .cancel-btn {
@@ -193,63 +200,30 @@ if (isset($_POST['pay-btn'])) {
         <div class="user-info">
             <div class="form-section">
                 <h4 class="text-center">Delivery Details</h4>
-                <form method="post" action="">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Your Name:</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Address:</label>
-                        <input type="text" name="address" id="address" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="city" class="form-label">City:</label>
-                        <input type="text" name="city" id="city" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="postalCode" class="form-label">Postal Code:</label>
-                        <input type="text" name="p_code" id="postalCode" class="form-control" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contactNumber" class="form-label">Contact Number:</label>
-                        <input type="text" name="contact" id="contactNumber" class="form-control" required>
-                    </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name:</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address:</label>
+                    <input type="text" name="address" id="address" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City:</label>
+                    <input type="text" name="city" id="city" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="postalCode" class="form-label">Postal Code:</label>
+                    <input type="text" name="p_code" id="postalCode" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contactNumber" class="form-label">Contact Number:</label>
+                    <input type="text" name="contact" id="contactNumber" class="form-control" required>
+                </div>
+                <form action="./stripe_charge.php" method="POST">
                     <input type="hidden" name="total" id="total-hidden">
                     <input type="hidden" name="cart" id="cart-hidden">
-            </div>
-            <div class="payment-form">
-                <h4 class="text-center mb-4">Payment Information</h4>
-                <div class="text-center mb-3">
-                    <img src="..\Assets\images\cart images\visa.png" alt="Visa" height="30">
-                    <img src="..\Assets\images\cart images\mastercard-4.svg" alt="MasterCard" height="30">
-
-                </div>
-                <div class="mb-3">
-                    <label for="cardNumber" class="form-label">Card Number</label>
-                    <input type="text" class="form-control" name="card-number" id="cardNumber" placeholder="Card number"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label for="cardName" class="form-label">Name on Card</label>
-                    <input type="text" class="form-control" name="card-name" id="cardName" placeholder="Name on card"
-                        required>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="expiryDate" class="form-label">Expiry Date</label>
-                        <input type="text" class="form-control" name="expire" id="expiryDate" placeholder="MM/YY"
-                            required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="cvv" class="form-label">CVV</label>
-                        <input type="text" name="cvv" class="form-control" id="cvv" placeholder="CVV" required>
-                    </div>
-                </div>
-                <p class="text-muted text-center mb-3" style="font-size: 0.9rem;">
-                    We will save this card for your convenience. If required, you can remove the card in the
-                    "Payment Options" section in the "Account" menu.
-                </p>
-                <button type="submit" name="pay-btn" class="btn btn-primary">Pay Now</button>
+                    <button type="submit" name="pay-btn" class="btn btn-primary">Pay with Stripe</button>
                 </form>
             </div>
         </div>
