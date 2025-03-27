@@ -20,7 +20,6 @@ if (mysqli_num_rows($result_auto) > 0) {
 }
 
 date_default_timezone_set('Asia/Kolkata');
-*/
 
 //Order placing process
 if (isset($_POST['pay-btn'])) {
@@ -31,7 +30,6 @@ if (isset($_POST['pay-btn'])) {
     $_SESSION['p_code'] = $_POST['p_code'];
     $_SESSION['contact'] = $_POST['contact'];
 }
-/*
     //payment details
     $card_number = "4635-6040-1234-5678";
     $card_name = "nextwave";
@@ -199,32 +197,34 @@ if (isset($_POST['pay-btn'])) {
     <body>
         <div class="user-info">
             <div class="form-section">
-                <h4 class="text-center">Delivery Details</h4>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Your Name:</label>
-                    <input type="text" name="name" id="name" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="address" class="form-label">Address:</label>
-                    <input type="text" name="address" id="address" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="city" class="form-label">City:</label>
-                    <input type="text" name="city" id="city" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="postalCode" class="form-label">Postal Code:</label>
-                    <input type="text" name="p_code" id="postalCode" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="contactNumber" class="form-label">Contact Number:</label>
-                    <input type="text" name="contact" id="contactNumber" class="form-control" required>
-                </div>
                 <form action="./stripe_charge.php" method="POST">
+                    <h4 class="text-center">Delivery Details</h4>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name:</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address:</label>
+                        <input type="text" name="address" id="address" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City:</label>
+                        <input type="text" name="city" id="city" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="postalCode" class="form-label">Postal Code:</label>
+                        <input type="text" name="p_code" id="postalCode" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactNumber" class="form-label">Contact Number:</label>
+                        <input type="text" name="contact" id="contactNumber" class="form-control" required>
+                    </div>
                     <input type="hidden" name="total" id="total-hidden">
                     <input type="hidden" name="cart" id="cart-hidden">
+
                     <button type="submit" name="pay-btn" class="btn btn-primary">Pay with Stripe</button>
                 </form>
+
             </div>
         </div>
 
@@ -248,6 +248,7 @@ if (isset($_POST['pay-btn'])) {
                     console.log("No total or cart data found in localStorage.");
                 }
             });
+
         </script>
 
 

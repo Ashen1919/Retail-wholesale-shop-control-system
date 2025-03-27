@@ -18,12 +18,8 @@ if (mysqli_num_rows($result_auto) > 0) {
 } else {
     $new_id = 'O-00001';
 }
+
 $_SESSION['order_id'] = $new_id;
-$_SESSION['name'] = $_POST['name'];
-$_SESSION['address'] = $_POST['address'];
-$_SESSION['city'] = $_POST['city'];
-$_SESSION['p_code'] = $_POST['p_code'];
-$_SESSION['contact'] = $_POST['contact'];
 
 // Get POST data
 $total = (int) ($_POST['total'] * 100); 
@@ -47,6 +43,11 @@ $session = \Stripe\Checkout\Session::create([
 
 $_SESSION['cart'] = $cart; 
 $_SESSION['total'] = $_POST['total'];
+$_SESSION['name'] = $_POST['name'];
+$_SESSION['address'] = $_POST['address'];
+$_SESSION['city'] = $_POST['city'];
+$_SESSION['p_code'] = $_POST['p_code'];
+$_SESSION['contact'] = $_POST['contact'];
 
 // Redirect to Stripe
 header("Location: " . $session->url);
