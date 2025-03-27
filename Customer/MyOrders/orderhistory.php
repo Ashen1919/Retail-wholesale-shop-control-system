@@ -6,7 +6,7 @@ error_reporting(0);
 $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 
 $email = $_SESSION['user_email'];
-$sql_order = "SELECT * FROM orders WHERE email = '$email'";
+$sql_order = "SELECT * FROM orders WHERE email = '$email' ORDER BY id DESC";
 $res_order = mysqli_query($conn, $sql_order);
 ?>
 

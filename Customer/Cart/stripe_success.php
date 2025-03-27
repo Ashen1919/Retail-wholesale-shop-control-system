@@ -9,6 +9,8 @@ $conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
 // Get the session ID from URL
 $session_id = $_GET['session_id'];
 
+date_default_timezone_set('Asia/Kolkata');
+
 try {
     $session = \Stripe\Checkout\Session::retrieve($session_id);
     if ($session->payment_status === "paid") {
