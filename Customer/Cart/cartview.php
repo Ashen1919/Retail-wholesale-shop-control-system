@@ -175,7 +175,7 @@ mysqli_close($conn);
                 <strong id="total">Rs. <?php echo number_format($sub_total, 2); ?></strong>
             </div>
             <button type="button" id="checkoutBtn" class="checkout-btn">Proceed to Checkout</button>
-            <a href=""><button class="shopping-btn">Keep Shopping</button></a>
+            <a href="../../index.php"><button class="shopping-btn">Keep Shopping</button></a>
         </div>
     </div>
 
