@@ -10,6 +10,53 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     header("location:../../Customer/login_signup_page/login_signup_page.php");
     exit();
 }
+
+//database connection
+include('db_con.php');
+
+//Get the email from session
+$email = $_SESSION['user_email'];
+
+//retrieve all data of admin
+$sql_admin = "SELECT * FROM customers WHERE email = '$email'";
+$res_admin = mysqli_query($conn, $sql_admin);
+$row_admin = mysqli_fetch_assoc($res_admin);
+
+//update admin details
+if(isset($_POST['edit'])){
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $phone_number = $_POST['phone_number'];
+
+    $sql_update = "UPDATE customers SET first_name = '$first_name', last_name = '$last_name', phone_number = '$phone_number' WHERE email = '$email'";
+    $res_update = mysqli_query($conn, $sql_update);
+
+    if($res_update){
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Admin Details Updating successful!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }else{
+        $message = '<script>
+            document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "error",
+                    title: "Oops! Something went wrong.",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            });
+        </script>';
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +80,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
 </head>
 
 <body>
+    <?php if (isset($message))
+        echo $message; ?>
     <!--Top Bar-->
     <div class="top-bar">
         <div class="left">
@@ -135,7 +184,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
                         <button onclick="openModal('updatePictureModal')"><i class="bi bi-camera-fill"></i></button>
                     </div>
                     <div class="profile-info">
-                        <h3>Full Name</h3>
+                        <h3><?php echo $row_admin['first_name']. ' '. $row_admin['last_name']; ?></h3>
                         <p>Admin</p>
                     </div>
                 </div>
@@ -143,49 +192,35 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
                 <!-- Personal Information Section -->
                 <div class="personal-info">
                     <h4>Personal Information</h4>
-                    <div class="info-fields">
-                        <div class="left-fields">
-                            <div class="field">
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" disabled>
+                    <form action="" method="post">
+                        <div class="info-fields">
+                            <div class="left-fields">
+                                <div class="field">
+                                    <label for="first-name">First Name</label>
+                                    <input type="text" name="first_name" value="<?php echo $row_admin['first_name']; ?>" id="first-name">
+                                </div>
+                                <div class="field">
+                                    <label for="email">Email</label>
+                                    <input type="text" name="email" value="<?php echo $row_admin['email']; ?>" id="email" disabled>
+                                </div>
                             </div>
-                            <div class="field">
-                                <label for="nic">NIC</label>
-                                <input type="text" id="nic" disabled>
-                            </div>
-                            <div class="field">
-                                <label for="email">Email</label>
-                                <input type="text" id="email" disabled>
-                            </div>
-                            <div class="field">
-                                <label for="address">Address</label>
-                                <input type="text" id="address" disabled>
-                            </div>
-                        </div>
-                        <div class="right-fields">
-                            <div class="field">
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" disabled>
-                            </div>
-                            <div class="field">
-                                <label for="dob">Date of Birth</label>
-                                <input type="text" id="dob" disabled>
-                            </div>
-                            <div class="field">
-                                <label for="phone">Phone Number</label>
-                                <input type="text" id="phone" disabled>
-                            </div>
-                            <div class="field">
-                                <label for="postal-code">Postal Code</label>
-                                <input type="text" id="postal-code" disabled>
+                            <div class="right-fields">
+                                <div class="field">
+                                    <label for="last-name">Last Name</label>
+                                    <input type="text" name="last_name" value="<?php echo $row_admin['last_name']; ?>" id="last-name">
+                                </div>
+                                <div class="field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="text" name="phone_number" value="<?php echo $row_admin['phone_number']; ?>" id="phone">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="edit-button">
-                        <button onclick="openModal('updateAdminModal')" class="btn btn-primary">
-                            <i class="bi bi-pencil-square"></i> Edit
-                        </button>
-                    </div>
+                        <div class="edit-button">
+                            <button onclick="openModal('updateAdminModal')" name="edit" class="btn btn-primary">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -194,7 +229,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
     <!--End of main body-->
 
     <!-- Update Admin Modal -->
-    <div id="updateAdminModal" class="modal">
+    <!--<div id="updateAdminModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('updateAdminModal')">&times;</span>
             <h3>Update Admin</h3>
@@ -239,7 +274,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
                 <button type="submit">Update</button>
             </form>
         </div>
-    </div>
+    </div>-->
 
     <!-- Update Profile Picture Modal -->
     <div id="updatePictureModal" class="modal">
@@ -260,6 +295,8 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] !== "admin") {
         </div>
     </div>
 
+    <!--Sweet alert js import-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Assets/js/script.js"></script>
     <script src="../Assets/js/settings.js"></script>
 
