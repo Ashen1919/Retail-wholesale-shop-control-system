@@ -4,7 +4,7 @@ session_start();
 
 error_reporting(0);
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("db31641.public.databaseasp.net", "db31641", "b%8N4xL+o?5X", "db31641");
 
 //Fetch all promotions
 $sql_promo = "SELECT * FROM promotions ORDER BY id DESC";
