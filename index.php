@@ -4,7 +4,7 @@ session_start();
 
 error_reporting(0);
 //Database connection
-$conn = mysqli_connect("db31641.public.databaseasp.net", "db31641", "b%8N4xL+o?5X", "db31641");
+$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
 
 //Fetch all promotions
 $sql_promo = "SELECT * FROM promotions ORDER BY id DESC";

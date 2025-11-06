@@ -2,7 +2,7 @@
 
 session_start();
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
 
 //Register a user
 if (isset($_POST['sign_btn'])) {

@@ -1,6 +1,6 @@
 <?php
 //DB connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
 
 //Auto generate review ID
 $sql_feed = "SELECT review_id FROM reviews ORDER BY review_id DESC LIMIT 1";

@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
 
 //fetch user details
 $email = $_SESSION['user_email'];
