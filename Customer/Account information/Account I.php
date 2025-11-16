@@ -3,7 +3,7 @@
 session_start();
 error_reporting(0);
 //DB connection
-$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
+$conn = mysqli_connect("sql300.infinityfree.com", "if0_40430873", "5AtOP4p1s1Rm1", "if0_40430873_FoodmartDB");
 
 //fetch customer details
 $email = $_SESSION['user_email'];

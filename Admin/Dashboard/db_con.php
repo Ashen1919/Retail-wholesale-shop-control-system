@@ -1,8 +1,8 @@
 <?php
-    $db_server = "sql102.hstn.me";
-    $db_user = "mseet_40350860";
-    $db_password = "NT2KlmwHcXeQ";
-    $db_database = "mseet_40350860_sandaru_food_mart";
+    $db_server = "sql300.infinityfree.com";
+    $db_user = "if0_40430873";
+    $db_password = "5AtOP4p1s1Rm1";
+    $db_database = "if0_40430873_FoodmartDB";
 
     try{
         $conn = mysqli_connect($db_server, $db_user, $db_password, $db_database);

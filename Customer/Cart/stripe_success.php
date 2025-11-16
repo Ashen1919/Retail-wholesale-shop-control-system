@@ -4,7 +4,7 @@ require '../../vendor/autoload.php';
 
 \Stripe\Stripe::setApiKey('sk_test_51R6YUUCswnulFFr3MCt1iDHSfr4An8eYLIUvxwrQio6Vl0z6pPv8UzH4l5E4XcguwcJ4IPKLT0qj6ZgOP88qwM3700y8yOJAoV');
 
-$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
+$conn = mysqli_connect("sql300.infinityfree.com", "if0_40430873", "5AtOP4p1s1Rm1", "if0_40430873_FoodmartDB");
 
 // Get the session ID from URL
 $session_id = $_GET['session_id'];

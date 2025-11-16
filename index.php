@@ -4,7 +4,7 @@ session_start();
 
 error_reporting(0);
 //Database connection
-$conn = mysqli_connect("sql102.hstn.me", "mseet_40350860", "NT2KlmwHcXeQ", "mseet_40350860_sandaru_food_mart");
+$conn = mysqli_connect("sql300.infinityfree.com", "if0_40430873", "5AtOP4p1s1Rm1", "if0_40430873_FoodmartDB");
 
 //Fetch all promotions
 $sql_promo = "SELECT * FROM promotions ORDER BY id DESC";
