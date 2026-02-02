@@ -1,6 +1,6 @@
 <?php
 //DB connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_41029296", "B1bzeFTatJgPH", "if0_41029296_shop_db");
 
 //Auto generate review ID
 $sql_feed = "SELECT review_id FROM reviews ORDER BY review_id DESC LIMIT 1";

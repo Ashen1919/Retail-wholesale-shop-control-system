@@ -4,7 +4,7 @@ session_start();
 error_reporting(0);
 
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_41029296", "B1bzeFTatJgPH", "if0_41029296_shop_db");
 
 // Check connection
 if ($conn->connect_error) {

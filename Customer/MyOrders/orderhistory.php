@@ -3,7 +3,7 @@ session_start();
 error_reporting(0);
 
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_41029296", "B1bzeFTatJgPH", "if0_41029296_shop_db");
 
 $email = $_SESSION['user_email'];
 $sql_order = "SELECT * FROM orders WHERE email = '$email' ORDER BY id DESC";

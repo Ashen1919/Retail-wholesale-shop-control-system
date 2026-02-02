@@ -1,6 +1,6 @@
 <?php 
 //Database connection
-$conn = mysqli_connect("localhost", "root", "", "sandaru1_retail_shop");
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_41029296", "B1bzeFTatJgPH", "if0_41029296_shop_db");
 
 //Fetch all beverages category products
 $sql = "SELECT * FROM products WHERE product_category = 'Beverages'";
