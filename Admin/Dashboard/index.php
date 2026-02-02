@@ -57,7 +57,6 @@ $total_earning = $row_earning_total['total_earning'] ?? 0;
 //Low stock alert section
 $sql_alert = "SELECT * FROM products WHERE quantity < 10";
 $res_alert = mysqli_query($conn, $sql_alert);
-$row_alert = mysqli_fetch_assoc($res_alert);
 
 mysqli_close($conn);
 ?>
@@ -277,6 +276,9 @@ mysqli_close($conn);
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    while($row_alert = mysqli_fetch_assoc($res_alert)){
+                                    ?>
                                     <tr>
                                         <td><?php echo $row_alert['product_name']; ?></td>
                                         <td><?php echo $row_alert['product_category']; ?></td>
@@ -285,6 +287,8 @@ mysqli_close($conn);
                                         <td><?php echo $row_alert['quantity']; ?></td>
                                         <td><?php echo $row_alert['supplier']; ?></td>
                                     </tr>
+                                    <?php
+                                    } ?>
                                 </tbody>
                             </table>
                         <?php

@@ -1,6 +1,6 @@
 <?php 
 //Database connection
-$conn = mysqli_connect("sql300.infinityfree.com", "if0_40430873", "5AtOP4p1s1Rm1", "if0_40430873_FoodmartDB");
+$conn = mysqli_connect("sql103.infinityfree.com", "if0_41029296", "B1bzeFTatJgPH", "if0_41029296_shop_db");
 
 //Fetch all fruits category products
 $sql = "SELECT * FROM products WHERE product_category = 'Fruits'";
